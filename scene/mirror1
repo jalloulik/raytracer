@@ -1,0 +1,5 @@
+cam|origin:0:0:10|rotation:0:0:0:angle:0|translation:0:0:0
+#spot|origin:5:2:10|intensity:100
+spot|origin:0:0:10|intensity:100
+#cone|origin:0:0:0|vec:0:1:0|angle:25|color:r:1:g:100:b:150|rotation:0:0:0:angle:0|translation:0:0:0|rotation:0:0:0:angle:0
+plane|origin:0:0:0|normal:0:0:1|color:r:0:g:0:b:255|rotation:0:0:0:angle:0|translation:0:0:0
