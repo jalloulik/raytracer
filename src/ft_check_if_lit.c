@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 18:11:29 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/03/22 09:10:41 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/04/26 07:56:44 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,7 @@ int		ft_check_obst(t_3dpt *o, t_3dpt *p_to_light, t_prim *obst, double dist)
 {
 	double t;
 
-	t = -1;
-	if (obst->type == SPHERE)
-		t = ft_resolve_sphere(obst, p_to_light, o);
-	else if (obst->type == PLANE)
-		t = ft_resolve_plane(obst, p_to_light, o);
-	else if (obst->type == CYLINDER)
-		t = ft_resolve_cyl(obst, p_to_light, o);
-	else if (obst->type == CONE)
-		t = ft_resolve_cone(obst, p_to_light, o);
+	t = ft_return_prim_dist(obst, p_to_light, o);
 	if (t >= 0 && t < dist)
 		return (0);
 	else

@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/03/22 14:22:44 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/04/26 08:48:38 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,7 @@ typedef struct		s_prim
 	t_3dpt			g_to_l_move;
 	t_quater		l_to_g_rot;
 	t_quater		g_to_l_rot;
+	int				reflective;
 	struct s_prim	*next;
 }					t_prim;
 
@@ -224,7 +225,7 @@ double				ft_resolve_plane(t_prim *prim, t_3dpt *dir,
 															t_3dpt *origin);
 
 double				ft_calculate_dist(t_3dpt *p1, t_3dpt *p2);
-void				ft_calculate_normal(t_prim *prim);
+void				ft_calculate_normal(t_prim *prim, t_3dpt *p);
 
 double				ft_resolve_cone(t_prim *prim, t_3dpt *dir,
 															t_3dpt *ray_origin);
@@ -285,5 +286,9 @@ void				ft_error_cone(void);
 void				ft_error_plane(void);
 void				ft_error_cyl(void);
 void				ft_error_cam(void);
+
+double				ft_return_prim_dist(t_prim *prim, t_3dpt *ray,
+														t_3dpt *origin);
+void				ft_resolve_prim(t_prim *prim, t_ray *ray, t_cam *cam);
 
 #endif
