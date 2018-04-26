@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rtv1.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/04/26 08:48:38 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/04/26 10:22:24 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,6 +176,7 @@ typedef struct		s_ray
 
 typedef struct		s_light
 {
+	int				type;
 	t_3dpt			origin;
 	double			intensity;
 	double			dist;
@@ -240,7 +241,7 @@ void				ft_rotate_all(t_prim *prim);
 
 void				ft_sum_vectors(t_3dpt *result, t_3dpt *vec1, t_3dpt *vec2);
 
-t_light				*ft_add_lst_light(t_light *list);
+t_light				*ft_add_lst_light(t_light *list, int type);
 
 void				ft_cross_product(t_3dpt *result, t_3dpt *vec1,
 																t_3dpt *vec2);

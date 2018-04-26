@@ -6,11 +6,12 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/27 10:56:10 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/04/26 08:06:40 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/04/26 10:25:00 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+#include "rt_tf.h"
 
 t_prim	*ft_get_last(t_prim *last)
 {
