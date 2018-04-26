@@ -6,7 +6,7 @@
 #    By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/06 17:18:00 by kjalloul          #+#    #+#              #
-#    Updated: 2018/04/16 07:02:51 by kjalloul         ###   ########.fr        #
+#    Updated: 2018/04/26 08:47:20 by kjalloul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,8 @@ SRC = main.c\
 		ft_rotate_primitives.c\
 		ft_create_local_prim.c\
 		ft_check_if_lit.c\
-		ft_errors.c
+		ft_errors.c\
+		ft_resolve_primitives.c
 
 OBJ = $(SRC:%.c=$(OBJPATH)%.o)
 

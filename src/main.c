@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:27 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/03/21 17:49:16 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/04/26 08:45:59 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,28 +21,6 @@ void	ft_get_first_ray(t_ray *ray, t_cam *cam, t_2dpt *pos)
 	ray->vpcurrent.z = cam->vp.vplr.z + (cam->vdr.z * cam->vp.xindent *
 		(double)(pos->x)) - (cam->vdu.z * cam->vp.yindent * (double)(pos->y));
 	ft_calculate_vector(&(ray->dir), &(cam->origin), &(ray->vpcurrent));
-}
-
-void	ft_resolve_prim(t_prim *prim, t_ray *ray, t_cam *cam)
-{
-	while (prim != NULL)
-	{
-		if (prim->type == SPHERE)
-			prim->t = ft_resolve_sphere(prim, &(ray->dir), &(cam->origin));
-		else if (prim->type == PLANE)
-			prim->t = ft_resolve_plane(prim, &(ray->dir), &(cam->origin));
-		else if (prim->type == CYLINDER)
-			prim->t = ft_resolve_cyl(prim, &(ray->dir), &(cam->origin));
-		else if (prim->type == CONE)
-			prim->t = ft_resolve_cone(prim, &(ray->dir), &(cam->origin));
-		if (prim->t >= 0)
-		{
-			ft_calculate_vec_end(&(prim->p), &(cam->origin), &(ray->dir),
-																	prim->t);
-			ft_calculate_normal(prim);
-		}
-		prim = prim->next;
-	}
 }
 
 void	ft_set_scene(t_winenv *mlxenv, t_cam *cam, t_light *light, t_prim *list)
