@@ -1,6 +1,6 @@
 cam|origin:0:0:25|rotation:1:0:0:angle:0|translation:0:0:0
-spot|origin:8:0:10|intensity:50
-spot|origin:-8:0:10|intensity:50
+sun|origin:-3:0:1|intensity:50
+ambiant|intensity:20
 plane|origin:0:0:-10|normal:0:0:1|color:r:128:g:128:b:128|rotation:0:0:0:angle:0|translation:0:0:0
 plane|origin:0:-10:0|normal:0:1:0|color:r:128:g:128:b:128|rotation:0:0:0:angle:0|translation:0:0:0
 plane|origin:0:10:0|normal:0:-1:0|color:r:128:g:128:b:128|rotation:0:0:0:angle:0|translation:0:0:0

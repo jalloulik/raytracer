@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 08:07:13 by tfavart           #+#    #+#             */
-/*   Updated: 2018/04/26 10:51:32 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/04/26 13:25:50 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,9 @@ void			ft_get_ambiant(t_prim *prim, t_ray *ray, t_light *light)
 	ray->color2.green = (unsigned char)g;
 	ray->color2.blue = (unsigned char)b;
 	ray->color2.alpha = 0;
+}
+
+void			ft_check_ambiant(t_prim *small, t_light *light, t_ray *ray)
+{
+	ft_get_ambiant(small, ray, light);
 }

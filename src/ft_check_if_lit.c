@@ -6,14 +6,13 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 18:11:29 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/04/26 10:52:28 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/04/26 13:34:17 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
-#include "rt_tf.h"
 
-void	ft_get_shade(t_prim *prim, t_ray *ray, t_light *light)
+void		ft_get_shade(t_prim *prim, t_ray *ray, t_light *light)
 {
 	int		r;
 	int		g;
@@ -40,9 +39,10 @@ void	ft_get_shade(t_prim *prim, t_ray *ray, t_light *light)
 	ray->color2.alpha = 0;
 }
 
-int		ft_check_obst(t_3dpt *o, t_3dpt *p_to_light, t_prim *obst, double dist)
+int			ft_check_obst(t_3dpt *o, t_3dpt *p_to_light, t_prim *obst,
+double dist)
 {
-	double t;
+	double	t;
 
 	t = ft_return_prim_dist(obst, p_to_light, o);
 	if (t >= 0 && t < dist)
@@ -51,7 +51,7 @@ int		ft_check_obst(t_3dpt *o, t_3dpt *p_to_light, t_prim *obst, double dist)
 		return (1);
 }
 
-void	ft_get_dotr(t_prim *small, t_light *light, t_3dpt *p, t_ray *ray)
+void		ft_get_dotr(t_prim *small, t_light *light, t_3dpt *p, t_ray *ray)
 {
 	t_3dpt	light_reflect;
 	t_3dpt	p_to_cam;
@@ -63,7 +63,8 @@ void	ft_get_dotr(t_prim *small, t_light *light, t_3dpt *p, t_ray *ray)
 	light->dotr = ft_calculate_dot(&light_reflect, &p_to_cam);
 }
 
-void	ft_check_lit(t_prim *list, t_prim *small, t_light *light, t_ray *ray)
+void		ft_check_lit(t_prim *list, t_prim *small, t_light *light,
+t_ray *ray)
 {
 	t_3dpt	p_to_light;
 	double	dist_to_light;
@@ -81,15 +82,10 @@ void	ft_check_lit(t_prim *list, t_prim *small, t_light *light, t_ray *ray)
 		}
 		list = list->next;
 	}
-	if (light->type == LIGHT)
+	light->dotd = ft_calculate_dot(&p_to_light, &(small->normal));
+	if (light->dotd >= 0 && light->dotd <= 1)
 	{
-		light->dotd = ft_calculate_dot(&p_to_light, &(small->normal));
-		if (light->dotd >= 0 && light->dotd <= 1)
-		{
-			ft_get_dotr(small, light, &p_to_light, ray);
-			ft_get_shade(small, ray, light);
-		}
+		ft_get_dotr(small, light, &p_to_light, ray);
+		ft_get_shade(small, ray, light);
 	}
-	else if (light->type == AMBIANT)
-		ft_get_ambiant(small, ray, light);
 }
