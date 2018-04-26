@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_if_lit.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 18:11:29 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/04/26 07:56:44 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/04/26 10:52:28 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+#include "rt_tf.h"
 
 void	ft_get_shade(t_prim *prim, t_ray *ray, t_light *light)
 {
@@ -80,10 +81,15 @@ void	ft_check_lit(t_prim *list, t_prim *small, t_light *light, t_ray *ray)
 		}
 		list = list->next;
 	}
-	light->dotd = ft_calculate_dot(&p_to_light, &(small->normal));
-	if (light->dotd >= 0 && light->dotd <= 1)
+	if (light->type == LIGHT)
 	{
-		ft_get_dotr(small, light, &p_to_light, ray);
-		ft_get_shade(small, ray, light);
+		light->dotd = ft_calculate_dot(&p_to_light, &(small->normal));
+		if (light->dotd >= 0 && light->dotd <= 1)
+		{
+			ft_get_dotr(small, light, &p_to_light, ray);
+			ft_get_shade(small, ray, light);
+		}
 	}
+	else if (light->type == AMBIANT)
+		ft_get_ambiant(small, ray, light);
 }
