@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/27 10:56:10 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/04/26 10:25:00 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/04/26 11:17:17 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ void	ft_parsing_primitives(int fd, t_prim **list, t_light **spots)
 				ft_spot_setup(tab, spots);
 			else if (ft_strequ(tab[0], "ambiant") == 1)
 				ft_ambiant_setup(tab, spots);
+			else if (ft_strequ(tab[0], "sun") == 1)
+				ft_sun_setup(tab, spots);
 		}
 		free(str);
 		ft_free_tab(tab);

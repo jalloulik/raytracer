@@ -3,21 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_color_universe.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 16:41:38 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/04/17 14:53:04 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/04/26 13:28:00 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+#include "rt_tf.h"
 
 void	ft_multi_spot(t_prim *list, t_prim *small, t_light *light, t_ray *ray)
 {
 	ft_set_color(&(ray->color2), 0, 0, 0);
 	while (light != NULL)
 	{
-		ft_check_lit(list, small, light, ray);
+		if (light->type == LIGHT)
+			ft_check_lit(list, small, light, ray);
+		else if (light->type == SUN)
+			ft_check_sun(list, small, light, ray);
+		else if (light->type == AMBIANT)
+			ft_check_ambiant(small, light, ray);
 		light = light->next;
 	}
 }
