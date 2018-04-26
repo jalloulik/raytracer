@@ -3,24 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_if_lit.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 18:11:29 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/04/26 13:34:17 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/04/26 14:43:29 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+#include "rt_tf.h"
 
-void		ft_get_shade(t_prim *prim, t_ray *ray, t_light *light)
+void	ft_get_shade(t_prim *prim, t_color *color, t_light *light)
 {
 	int		r;
 	int		g;
 	int		b;
 
-	r = prim->color2.red * light->dotd * light->intensity + ray->color2.red;
-	g = prim->color2.green * light->dotd * light->intensity + ray->color2.green;
-	b = prim->color2.blue * light->dotd * light->intensity + ray->color2.blue;
+	r = prim->color2.red * light->dotd * light->intensity + color->red;
+	g = prim->color2.green * light->dotd * light->intensity + color->green;
+	b = prim->color2.blue * light->dotd * light->intensity + color->blue;
 	if (light->dotr >= 0 && light->dotr <= 1)
 	{
 		r = r + light->color.red * light->intensity * pow(light->dotr, HARD);
@@ -33,14 +34,13 @@ void		ft_get_shade(t_prim *prim, t_ray *ray, t_light *light)
 		g = 255;
 	if (b > 255)
 		b = 255;
-	ray->color2.red = (unsigned char)r;
-	ray->color2.green = (unsigned char)g;
-	ray->color2.blue = (unsigned char)b;
-	ray->color2.alpha = 0;
+	color->red = (unsigned char)r;
+	color->green = (unsigned char)g;
+	color->blue = (unsigned char)b;
+	color->alpha = 0;
 }
 
-int			ft_check_obst(t_3dpt *o, t_3dpt *p_to_light, t_prim *obst,
-double dist)
+int		ft_check_obst(t_3dpt *o, t_3dpt *p_to_light, t_prim *obst, double dist)
 {
 	double	t;
 
@@ -51,7 +51,7 @@ double dist)
 		return (1);
 }
 
-void		ft_get_dotr(t_prim *small, t_light *light, t_3dpt *p, t_ray *ray)
+void	ft_get_dotr(t_prim *small, t_light *light, t_3dpt *p, t_3dpt *origin)
 {
 	t_3dpt	light_reflect;
 	t_3dpt	p_to_cam;
@@ -59,33 +59,43 @@ void		ft_get_dotr(t_prim *small, t_light *light, t_3dpt *p, t_ray *ray)
 	light_reflect.x = 2 * small->normal.x * light->dotd - p->x;
 	light_reflect.y = 2 * small->normal.y * light->dotd - p->y;
 	light_reflect.z = 2 * small->normal.z * light->dotd - p->z;
-	ft_calculate_vector(&(p_to_cam), &(small->p), &(ray->cam->origin));
+	ft_calculate_vector(&(p_to_cam), &(small->p), origin);
 	light->dotr = ft_calculate_dot(&light_reflect, &p_to_cam);
 }
 
-void		ft_check_lit(t_prim *list, t_prim *small, t_light *light,
-t_ray *ray)
+void	ft_check_lit(t_obj *obj, t_prim *small, t_color *color, t_3dpt *origin)
 {
 	t_3dpt	p_to_light;
 	double	dist_to_light;
 	int		lit;
+	t_prim	*prim;
 
-	dist_to_light = ft_calculate_dist(&(small->p), &(light->origin));
-	ft_calculate_vector(&(p_to_light), &(small->p), &(light->origin));
-	while (list != NULL)
+	prim = obj->prim;
+	if (obj->light->type == LIGHT)
 	{
-		if (list != small)
+		dist_to_light = ft_calculate_dist(&(small->p), &(obj->light->origin));
+		ft_calculate_vector(&(p_to_light), &(small->p), &(obj->light->origin));
+	}
+	else if (obj->light->type == SUN)
+	{
+		ft_set_3dpt(&p_to_light, 0, 0, 0);
+		dist_to_light = ft_calculate_dist(&p_to_light, &(obj->light->origin));
+		ft_calculate_vector(&p_to_light, &p_to_light, &(obj->light->origin));
+	}
+	while (prim != NULL)
+	{
+		if (prim != small)
 		{
-			lit = ft_check_obst(&(small->p), &p_to_light, list, dist_to_light);
+			lit = ft_check_obst(&(small->p), &p_to_light, prim, dist_to_light);
 			if (lit == 0)
 				return ;
 		}
-		list = list->next;
+		prim = prim->next;
 	}
-	light->dotd = ft_calculate_dot(&p_to_light, &(small->normal));
-	if (light->dotd >= 0 && light->dotd <= 1)
+	obj->light->dotd = ft_calculate_dot(&p_to_light, &(small->normal));
+	if (obj->light->dotd >= 0 && obj->light->dotd <= 1)
 	{
-		ft_get_dotr(small, light, &p_to_light, ray);
-		ft_get_shade(small, ray, light);
+		ft_get_dotr(small, obj->light, &p_to_light, origin);
+		ft_get_shade(small, color, obj->light);
 	}
 }

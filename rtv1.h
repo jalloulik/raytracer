@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rtv1.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/04/26 13:29:37 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/04/26 14:44:04 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,13 +188,19 @@ typedef struct		s_light
 	struct s_light	*next;
 }					t_light;
 
+typedef struct		s_obj
+{
+	t_light			*light;
+	t_prim			*prim;
+}					t_obj;
+
 void				ft_init_sphere(t_sphere *sphr, t_3dpt origin, double radius,
 																	int color);
 void				ft_init_cam_vectors(t_cam *cam);
 void				ft_init_cam(t_cam *cam);
 void				ft_get_topleft_indent(t_cam *cam);
 
-void				ft_figure_color(t_prim *prim, t_ray *ray, t_light *light);
+t_color				ft_figure_color(t_obj *obj, t_3dpt *origin);
 
 void				ft_calculate_vector(t_3dpt *vector, t_3dpt *start,
 																t_3dpt *end);
@@ -279,8 +285,8 @@ void				ft_rotate_plan(t_prim *prim);
 void				ft_rotate_cyl(t_prim *prim);
 void				ft_rotate_cone(t_prim *prim);
 
-void				ft_check_lit(t_prim *list, t_prim *small, t_light *light,
-																t_ray *ray);
+void				ft_check_lit(t_obj *obj, t_prim *small, t_color *color,
+																t_3dpt *origin);
 
 void				ft_error_sphere(void);
 void				ft_error_cone(void);
@@ -291,5 +297,9 @@ void				ft_error_cam(void);
 double				ft_return_prim_dist(t_prim *prim, t_3dpt *ray,
 														t_3dpt *origin);
 void				ft_resolve_prim(t_prim *prim, t_ray *ray, t_cam *cam);
+
+int					ft_check_obst(t_3dpt *o, t_3dpt *p_to_light, t_prim *obst, double dist);
+void				ft_get_dotr(t_prim *small, t_light *light, t_3dpt *p, t_3dpt *origin);
+void				ft_get_shade(t_prim *prim, t_color *color, t_light *light);
 
 #endif

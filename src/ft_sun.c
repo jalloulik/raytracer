@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 11:17:40 by tfavart           #+#    #+#             */
-/*   Updated: 2018/04/26 13:32:41 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/04/26 14:44:40 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,32 +46,4 @@ void			ft_sun_setup(char **tab, t_light **spots)
 		ft_error("Spot intensity needs to be between 0 and 200");
 	ft_free_tab(tmp);
 	ft_set_color(&(last->color), 255, 255, 255);
-}
-
-void			ft_check_sun(t_prim *list, t_prim *small, t_light *light,
-t_ray *ray)
-{
-	t_3dpt		p_to_light;
-	double		dist_to_light;
-	int			lit;
-
-	ft_set_3dpt(&p_to_light, 0, 0, 0);
-	dist_to_light = ft_calculate_dist(&p_to_light, &(light->origin));
-	ft_calculate_vector(&p_to_light, &p_to_light, &(light->origin));
-	while (list != NULL)
-	{
-		if (list != small)
-		{
-			lit = ft_check_obst(&(small->p), &p_to_light, list, dist_to_light);
-			if (lit == 0)
-				return ;
-		}
-		list = list->next;
-	}
-	light->dotd = ft_calculate_dot(&p_to_light, &(small->normal));
-	if (light->dotd >= 0 && light->dotd <= 1)
-	{
-		ft_get_dotr(small, light, &p_to_light, ray);
-		ft_get_shade(small, ray, light);
-	}
 }

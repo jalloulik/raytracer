@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 08:07:13 by tfavart           #+#    #+#             */
-/*   Updated: 2018/04/26 13:25:50 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/04/26 14:40:27 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,28 +39,23 @@ void			ft_ambiant_setup(char **tab, t_light **spots)
 	ft_free_tab(tmp);
 }
 
-void			ft_get_ambiant(t_prim *prim, t_ray *ray, t_light *light)
+void			ft_get_ambiant(t_prim *prim, t_color *color, t_light *light)
 {
 	int			r;
 	int			g;
 	int			b;
 
-	r = ray->color2.red + prim->color2.red * light->intensity;
-	g = ray->color2.green + prim->color2.green * light->intensity;
-	b = ray->color2.blue + prim->color2.blue * light->intensity;
+	r = color->red + prim->color2.red * light->intensity;
+	g = color->green + prim->color2.green * light->intensity;
+	b = color->blue + prim->color2.blue * light->intensity;
 	if (r > 255)
 		r = 255;
 	if (g > 255)
 		g = 255;
 	if (b > 255)
 		b = 255;
-	ray->color2.red = (unsigned char)r;
-	ray->color2.green = (unsigned char)g;
-	ray->color2.blue = (unsigned char)b;
-	ray->color2.alpha = 0;
-}
-
-void			ft_check_ambiant(t_prim *small, t_light *light, t_ray *ray)
-{
-	ft_get_ambiant(small, ray, light);
+	color->red = (unsigned char)r;
+	color->green = (unsigned char)g;
+	color->blue = (unsigned char)b;
+	color->alpha = 0;
 }
