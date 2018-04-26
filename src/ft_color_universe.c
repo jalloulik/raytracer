@@ -6,18 +6,24 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 16:41:38 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/04/17 14:53:04 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/04/26 13:27:50 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void	ft_multi_spot(t_prim *list, t_prim *small, t_light *light, t_ray *ray)
+void	ft_multi_spot(t_obj *obj, t_prim *small, t_color *color, t_3dpt *origin)
 {
-	ft_set_color(&(ray->color2), 0, 0, 0);
+	t_light	*light;
+	t_obj	perspot;
+
+	perspot.prim = obj->prim;
+	light = obj->light;
+	ft_set_color(color, 0, 0, 0);
 	while (light != NULL)
 	{
-		ft_check_lit(list, small, light, ray);
+		perspot.light = light;
+		ft_check_lit(&perspot, small, color, origin);
 		light = light->next;
 	}
 }
@@ -51,15 +57,17 @@ t_prim	*ft_find_closest(t_prim *prim)
 	return (smallest);
 }
 
-void	ft_figure_color(t_prim *prim, t_ray *ray, t_light *light)
+t_color	ft_figure_color(t_obj *obj, t_3dpt *origin)
 {
-	t_prim *smallest;
+	t_prim	*smallest;
+	t_color	color;
 
-	smallest = ft_find_closest(prim);
+	smallest = ft_find_closest(obj->prim);
 	if (smallest == NULL)
 	{
-		ft_set_color(&(ray->color2), 0, 0, 0);
-		return ;
+		ft_set_color(&color, 0, 0, 0);
+		return (color);
 	}
-	ft_multi_spot(prim, smallest, light, ray);
+	ft_multi_spot(obj, smallest, &color, origin);
+	return (color);
 }

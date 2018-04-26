@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/04/26 08:48:38 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/04/26 13:31:19 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,13 +187,19 @@ typedef struct		s_light
 	struct s_light	*next;
 }					t_light;
 
+typedef struct		s_obj
+{
+	t_light			*light;
+	t_prim			*prim;
+}					t_obj;
+
 void				ft_init_sphere(t_sphere *sphr, t_3dpt origin, double radius,
 																	int color);
 void				ft_init_cam_vectors(t_cam *cam);
 void				ft_init_cam(t_cam *cam);
 void				ft_get_topleft_indent(t_cam *cam);
 
-void				ft_figure_color(t_prim *prim, t_ray *ray, t_light *light);
+t_color				ft_figure_color(t_obj *obj, t_3dpt *origin);
 
 void				ft_calculate_vector(t_3dpt *vector, t_3dpt *start,
 																t_3dpt *end);
@@ -278,8 +284,8 @@ void				ft_rotate_plan(t_prim *prim);
 void				ft_rotate_cyl(t_prim *prim);
 void				ft_rotate_cone(t_prim *prim);
 
-void				ft_check_lit(t_prim *list, t_prim *small, t_light *light,
-																t_ray *ray);
+void				ft_check_lit(t_obj *obj, t_prim *small, t_color *color,
+																t_3dpt *origin);
 
 void				ft_error_sphere(void);
 void				ft_error_cone(void);
