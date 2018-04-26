@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rtv1.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/04/26 14:44:04 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/04/26 19:49:52 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,6 +177,8 @@ typedef struct		s_ray
 typedef struct		s_light
 {
 	int				type;
+	t_sphere		sphere;
+	double			t;
 	t_3dpt			origin;
 	double			intensity;
 	double			dist;

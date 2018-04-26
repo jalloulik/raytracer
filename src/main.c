@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:27 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/04/26 13:30:00 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/04/26 20:40:54 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+#include "rt_tf.h"
 
 void	ft_get_first_ray(t_ray *ray, t_cam *cam, t_2dpt *pos)
 {
@@ -46,7 +47,11 @@ void	ft_set_scene(t_winenv *mlxenv, t_cam *cam, t_light *light, t_prim *list)
 		{
 			ft_get_first_ray(&ray, cam, &pos);
 			ft_resolve_prim(obj.prim, &ray, cam);
-			total_color = ft_figure_color(&obj, &(ray.cam->origin));
+			ft_resolve_light(obj.light, &ray, cam);
+			if (ft_test_smallest(obj.light, obj.prim) == 1)
+				ft_set_color(&total_color, 255, 255, 255);
+			else
+				total_color = ft_figure_color(&obj, &(ray.cam->origin));
 			ft_fill_img_rgb(mlxenv->img, pos.x, pos.y, total_color);
 		}
 	}

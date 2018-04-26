@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 11:45:00 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/04/26 10:25:34 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/04/26 19:48:16 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ void			ft_spot_setup(char **tab, t_light **spots)
 	if (last->intensity < 0 || last->intensity > 2)
 		ft_error("Spot intensity needs to be between 0 and 200");
 	ft_free_tab(tmp);
+	last->sphere.radius = 1;
 	ft_set_color(&(last->color), 255, 255, 255);
 }
