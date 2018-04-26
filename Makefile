@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+         #
+#    By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/06 17:18:00 by kjalloul          #+#    #+#              #
-#    Updated: 2018/04/26 08:47:20 by kjalloul         ###   ########.fr        #
+#    Updated: 2018/04/26 12:59:06 by tfavart          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,9 @@ SRC = main.c\
 		ft_create_local_prim.c\
 		ft_check_if_lit.c\
 		ft_errors.c\
-		ft_resolve_primitives.c
+		ft_resolve_primitives.c \
+		ft_ambiant.c\
+		ft_sun.c
 
 OBJ = $(SRC:%.c=$(OBJPATH)%.o)
 

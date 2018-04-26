@@ -6,11 +6,12 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 18:11:29 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/04/26 13:29:08 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/04/26 14:43:29 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+#include "rt_tf.h"
 
 void	ft_get_shade(t_prim *prim, t_color *color, t_light *light)
 {
@@ -41,7 +42,7 @@ void	ft_get_shade(t_prim *prim, t_color *color, t_light *light)
 
 int		ft_check_obst(t_3dpt *o, t_3dpt *p_to_light, t_prim *obst, double dist)
 {
-	double t;
+	double	t;
 
 	t = ft_return_prim_dist(obst, p_to_light, o);
 	if (t >= 0 && t < dist)
@@ -70,8 +71,17 @@ void	ft_check_lit(t_obj *obj, t_prim *small, t_color *color, t_3dpt *origin)
 	t_prim	*prim;
 
 	prim = obj->prim;
-	dist_to_light = ft_calculate_dist(&(small->p), &(obj->light->origin));
-	ft_calculate_vector(&(p_to_light), &(small->p), &(obj->light->origin));
+	if (obj->light->type == LIGHT)
+	{
+		dist_to_light = ft_calculate_dist(&(small->p), &(obj->light->origin));
+		ft_calculate_vector(&(p_to_light), &(small->p), &(obj->light->origin));
+	}
+	else if (obj->light->type == SUN)
+	{
+		ft_set_3dpt(&p_to_light, 0, 0, 0);
+		dist_to_light = ft_calculate_dist(&p_to_light, &(obj->light->origin));
+		ft_calculate_vector(&p_to_light, &p_to_light, &(obj->light->origin));
+	}
 	while (prim != NULL)
 	{
 		if (prim != small)

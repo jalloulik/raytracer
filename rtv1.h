@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/04/26 13:31:19 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/04/26 14:44:04 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,6 +176,7 @@ typedef struct		s_ray
 
 typedef struct		s_light
 {
+	int				type;
 	t_3dpt			origin;
 	double			intensity;
 	double			dist;
@@ -246,7 +247,7 @@ void				ft_rotate_all(t_prim *prim);
 
 void				ft_sum_vectors(t_3dpt *result, t_3dpt *vec1, t_3dpt *vec2);
 
-t_light				*ft_add_lst_light(t_light *list);
+t_light				*ft_add_lst_light(t_light *list, int type);
 
 void				ft_cross_product(t_3dpt *result, t_3dpt *vec1,
 																t_3dpt *vec2);
@@ -296,5 +297,9 @@ void				ft_error_cam(void);
 double				ft_return_prim_dist(t_prim *prim, t_3dpt *ray,
 														t_3dpt *origin);
 void				ft_resolve_prim(t_prim *prim, t_ray *ray, t_cam *cam);
+
+int					ft_check_obst(t_3dpt *o, t_3dpt *p_to_light, t_prim *obst, double dist);
+void				ft_get_dotr(t_prim *small, t_light *light, t_3dpt *p, t_3dpt *origin);
+void				ft_get_shade(t_prim *prim, t_color *color, t_light *light);
 
 #endif
