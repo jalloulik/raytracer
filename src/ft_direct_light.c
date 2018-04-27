@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 15:34:51 by tfavart           #+#    #+#             */
-/*   Updated: 2018/04/27 08:22:59 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/04/27 09:01:34 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ void			ft_resolve_light(t_light *light, t_ray *ray, t_cam *cam)
 			light->prim.sphere.origin.x = light->origin.x;
 			light->prim.sphere.origin.y = light->origin.y;
 			light->prim.sphere.origin.z = light->origin.z;
-			light->t = ft_resolve_sphere(&(light->prim), &(ray->dir), &(cam->origin));
+			light->t = ft_resolve_sphere(&(light->prim),
+									&(ray->dir), &(cam->origin));
 		}
 		light = light->next;
 	}
