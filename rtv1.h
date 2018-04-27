@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/04/27 08:17:25 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/04/27 08:25:09 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,7 +177,6 @@ typedef struct		s_ray
 typedef struct		s_light
 {
 	int				type;
-	t_sphere		sphere;
 	t_prim			prim;
 	double			t;
 	t_3dpt			origin;
