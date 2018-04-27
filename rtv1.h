@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/04/27 08:25:09 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/04/27 16:55:38 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@
 # define ERRCOLOR "Color Usage color:r:00:g:00:b:00"
 # define ERR_COLOR_RANGE "Colors can only be between 0 and 255"
 # define ERRDIV "Can not divide by 0"
+
+int					g_limit;
 
 typedef struct		s_2dpt
 {
@@ -298,10 +300,12 @@ void				ft_error_cam(void);
 
 double				ft_return_prim_dist(t_prim *prim, t_3dpt *ray,
 														t_3dpt *origin);
-void				ft_resolve_prim(t_prim *prim, t_ray *ray, t_cam *cam);
+void				ft_resolve_prim(t_prim *prim, t_3dpt *ray_dir, t_3dpt *origin);
 
 int					ft_check_obst(t_3dpt *o, t_3dpt *p_to_light, t_prim *obst, double dist);
 void				ft_get_dotr(t_prim *small, t_light *light, t_3dpt *p, t_3dpt *origin);
 void				ft_get_shade(t_prim *prim, t_color *color, t_light *light);
+
+t_color				ft_throw_ray(t_obj *obj, t_3dpt *ray_dir, t_3dpt *origin);
 
 #endif

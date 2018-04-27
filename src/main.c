@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:27 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/04/26 20:40:54 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/04/27 16:56:13 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,23 @@ void	ft_get_first_ray(t_ray *ray, t_cam *cam, t_2dpt *pos)
 	ray->vpcurrent.z = cam->vp.vplr.z + (cam->vdr.z * cam->vp.xindent *
 		(double)(pos->x)) - (cam->vdu.z * cam->vp.yindent * (double)(pos->y));
 	ft_calculate_vector(&(ray->dir), &(cam->origin), &(ray->vpcurrent));
+}
+
+t_color	ft_throw_ray(t_obj *obj, t_3dpt *ray_dir, t_3dpt *origin)
+{
+	t_color		total_color;
+
+	g_limit++;
+	ft_set_color(&total_color, 0, 0, 0);
+	ft_resolve_prim(obj->prim, ray_dir, origin);
+	// ft_resolve_light(obj->light, ray_dir, origin);
+	// if (ft_test_smallest(obj->light, obj->prim) == 1)
+	// 	ft_set_color(&total_color, 255, 255, 255);
+	// else
+	// {
+		total_color = ft_figure_color(obj, origin);
+	// }
+	return (total_color);
 }
 
 void	ft_set_scene(t_winenv *mlxenv, t_cam *cam, t_light *light, t_prim *list)
@@ -46,12 +63,8 @@ void	ft_set_scene(t_winenv *mlxenv, t_cam *cam, t_light *light, t_prim *list)
 		while (++pos.y < WIN_HEIGHT)
 		{
 			ft_get_first_ray(&ray, cam, &pos);
-			ft_resolve_prim(obj.prim, &ray, cam);
-			ft_resolve_light(obj.light, &ray, cam);
-			if (ft_test_smallest(obj.light, obj.prim) == 1)
-				ft_set_color(&total_color, 255, 255, 255);
-			else
-				total_color = ft_figure_color(&obj, &(ray.cam->origin));
+			g_limit = 0;
+			total_color = ft_throw_ray(&obj, &(ray.dir), &(cam->origin));
 			ft_fill_img_rgb(mlxenv->img, pos.x, pos.y, total_color);
 		}
 	}

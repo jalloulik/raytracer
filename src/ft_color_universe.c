@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 16:41:38 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/04/26 14:39:37 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/04/27 16:37:45 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,11 @@ void	ft_multi_spot(t_obj *obj, t_prim *small, t_color *color, t_3dpt *origin)
 	while (light != NULL)
 	{
 		perspot.light = light;
-		if (light->type == LIGHT || light->type == SUN)
-			ft_check_lit(&perspot, small, color, origin);
-		else if (light->type == AMBIANT)
-			ft_get_ambiant(small, color, perspot.light);
+		ft_check_lit(&perspot, small, color, origin);
+		// if (light->type == LIGHT || light->type == SUN)
+		// 	ft_check_lit(&perspot, small, color, origin);
+		// else if (light->type == AMBIANT)
+		// 	ft_get_ambiant(small, color, perspot.light);
 		light = light->next;
 	}
 }

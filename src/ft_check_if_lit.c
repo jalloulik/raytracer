@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 18:11:29 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/04/27 09:00:00 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/04/27 17:00:44 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,19 @@ void	ft_get_dotr(t_prim *small, t_light *light, t_3dpt *p, t_3dpt *origin)
 double	ft_get_dist_to_light(t_obj *obj, t_prim *small)
 {
 	double	dist_to_light;
-	t_3dpt	point;
+	// t_3dpt	point;
 
 	dist_to_light = 0;
-	if (obj->light->type == LIGHT)
-	{
-		dist_to_light = ft_calculate_dist(&(small->p), &(obj->light->origin));
-	}
-	else if (obj->light->type == SUN)
-	{
-		ft_set_3dpt(&point, 0, 0, 0);
-		dist_to_light = ft_calculate_dist(&point, &(obj->light->origin));
-	}
+	// if (obj->light->type == LIGHT)
+	// {
+	// 	dist_to_light = ft_calculate_dist(&(small->p), &(obj->light->origin));
+	// }
+	// else if (obj->light->type == SUN)
+	// {
+	// 	ft_set_3dpt(&point, 0, 0, 0);
+	// 	dist_to_light = ft_calculate_dist(&point, &(obj->light->origin));
+	// }
+	dist_to_light = ft_calculate_dist(&(small->p), &(obj->light->origin));
 	return (dist_to_light);
 }
 
@@ -69,6 +70,27 @@ void	ft_calculate_vec_to_light(t_3dpt *p_to_light, t_obj *obj, t_prim *small)
 	}
 }
 
+void	ft_calc_reflec_vec(t_3dpt *result, t_3dpt *norm, t_3dpt *p, t_3dpt *src)
+{
+	t_3dpt	path_to_cam;
+	double cam_dot;
+
+	ft_calculate_vector(&path_to_cam, p, src);
+	cam_dot = ft_calculate_dot(&path_to_cam, norm);
+	if (cam_dot >= 0 && cam_dot <= 1)
+	{
+		if (result == NULL)
+			ft_error("Vector is NULL");
+		result->x = 2 * norm->x * cam_dot - path_to_cam.x;
+		result->y = 2 * norm->y * cam_dot - path_to_cam.y;
+		result->z = 2 * norm->z * cam_dot - path_to_cam.z;
+		// ft_putendl("HOH");
+		ft_normalize_vector(result);
+	}
+}
+
+#include "stdio.h"
+
 void	ft_check_lit(t_obj *obj, t_prim *small, t_color *color, t_3dpt *origin)
 {
 	t_3dpt	p_to_light;
@@ -77,6 +99,23 @@ void	ft_check_lit(t_obj *obj, t_prim *small, t_color *color, t_3dpt *origin)
 	t_prim	*prim;
 
 	prim = obj->prim;
+	if (small->reflective == 1 && g_limit < 10)
+	{
+		t_3dpt light_reflect;
+		t_color tmp;
+		t_3dpt	path_to_cam;
+		double cam_dot;
+
+		ft_calculate_vector(&path_to_cam, &(small->p), origin);
+		cam_dot = ft_calculate_dot(&path_to_cam, &(small->normal));
+		if (cam_dot >= 0 && cam_dot <= 1)
+		{
+			ft_calc_reflec_vec(&light_reflect, &(small->normal), &(small->p), origin);
+			tmp = ft_throw_ray(obj, &light_reflect, &(small->p));
+			ft_set_color(color, tmp.red, tmp.green, tmp.blue);
+		}
+		return ;
+	}
 	dist_to_light = ft_get_dist_to_light(obj, small);
 	ft_calculate_vec_to_light(&p_to_light, obj, small);
 	while (prim != NULL)
