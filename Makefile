@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+         #
+#    By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/06 17:18:00 by kjalloul          #+#    #+#              #
-#    Updated: 2018/04/26 19:48:56 by tfavart          ###   ########.fr        #
+#    Updated: 2018/04/27 09:00:35 by kjalloul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,8 @@ SRC = main.c\
 		ft_resolve_primitives.c \
 		ft_ambiant.c\
 		ft_sun.c \
-		ft_direct_light.c
+		ft_direct_light.c\
+		ft_shade.c
 
 OBJ = $(SRC:%.c=$(OBJPATH)%.o)
 
