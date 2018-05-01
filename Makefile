@@ -6,7 +6,7 @@
 #    By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/06 17:18:00 by kjalloul          #+#    #+#              #
-#    Updated: 2018/04/27 09:00:35 by kjalloul         ###   ########.fr        #
+#    Updated: 2018/04/30 13:29:17 by kjalloul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,8 @@ SRC = main.c\
 		ft_ambiant.c\
 		ft_sun.c \
 		ft_direct_light.c\
-		ft_shade.c
+		ft_shade.c\
+		ft_throw_rays.c
 
 OBJ = $(SRC:%.c=$(OBJPATH)%.o)
 

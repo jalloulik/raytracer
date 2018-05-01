@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:27 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/04/27 16:56:13 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/01 13:56:04 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,10 @@ void	ft_get_first_ray(t_ray *ray, t_cam *cam, t_2dpt *pos)
 	ft_calculate_vector(&(ray->dir), &(cam->origin), &(ray->vpcurrent));
 }
 
-t_color	ft_throw_ray(t_obj *obj, t_3dpt *ray_dir, t_3dpt *origin)
+t_color	ft_throw_ray(t_obj *obj, t_3dpt *ray_dir, t_3dpt *origin, t_prim *prev)
 {
 	t_color		total_color;
 
-	g_limit++;
 	ft_set_color(&total_color, 0, 0, 0);
 	ft_resolve_prim(obj->prim, ray_dir, origin);
 	// ft_resolve_light(obj->light, ray_dir, origin);
@@ -36,7 +35,7 @@ t_color	ft_throw_ray(t_obj *obj, t_3dpt *ray_dir, t_3dpt *origin)
 	// 	ft_set_color(&total_color, 255, 255, 255);
 	// else
 	// {
-		total_color = ft_figure_color(obj, origin);
+		total_color = ft_figure_color(obj, origin, prev);
 	// }
 	return (total_color);
 }
@@ -64,7 +63,7 @@ void	ft_set_scene(t_winenv *mlxenv, t_cam *cam, t_light *light, t_prim *list)
 		{
 			ft_get_first_ray(&ray, cam, &pos);
 			g_limit = 0;
-			total_color = ft_throw_ray(&obj, &(ray.dir), &(cam->origin));
+			total_color = ft_trace_ray(&obj, &(ray.dir), &(cam->origin), NULL);
 			ft_fill_img_rgb(mlxenv->img, pos.x, pos.y, total_color);
 		}
 	}

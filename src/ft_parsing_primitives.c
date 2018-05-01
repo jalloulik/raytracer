@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 16:22:12 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/03/21 18:48:09 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/01 14:05:51 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,12 @@ void	ft_plane_setup(char **tab, t_prim **prims)
 	ft_free_tab(tmp);
 	ft_parse_color(tab[3], &(last->color2), &ft_error_plane);
 	ft_parsing_mov(tab[4], tab[5], last, &ft_error_plane);
+	last->reflective = 0;
+	if (ft_count_tab(tab) >= 6)
+	{
+		if (ft_strequ(tab[6], "reflect"))
+			last->reflective = 1;
+	}
 }
 
 void	ft_cylinder_setup(char **tab, t_prim **prims)
@@ -80,6 +86,12 @@ void	ft_cylinder_setup(char **tab, t_prim **prims)
 	ft_free_tab(tmp);
 	ft_parse_color(tab[4], &(last->color2), &ft_error_cyl);
 	ft_parsing_mov(tab[5], tab[6], last, &ft_error_cyl);
+	last->reflective = 0;
+	if (ft_count_tab(tab) >= 6)
+	{
+		if (ft_strequ(tab[6], "reflect"))
+			last->reflective = 1;
+	}
 }
 
 void	ft_cone_setup(char **tab, t_prim **prims)
@@ -108,6 +120,12 @@ void	ft_cone_setup(char **tab, t_prim **prims)
 	ft_free_tab(tmp);
 	ft_parse_color(tab[4], &(last->color2), &ft_error_cone);
 	ft_parsing_mov(tab[5], tab[6], last, &ft_error_cone);
+	last->reflective = 0;
+	if (ft_count_tab(tab) >= 6)
+	{
+		if (ft_strequ(tab[6], "reflect"))
+			last->reflective = 1;
+	}
 }
 
 void	ft_sphere_setup(char **tab, t_prim **prims)
@@ -135,4 +153,10 @@ void	ft_sphere_setup(char **tab, t_prim **prims)
 	ft_free_tab(tmp);
 	ft_parse_color(tab[3], &(last->color2), &ft_error_sphere);
 	ft_parsing_mov(tab[4], tab[5], last, &ft_error_sphere);
+	last->reflective = 0;
+	if (ft_count_tab(tab) >= 6)
+	{
+		if (ft_strequ(tab[6], "reflect"))
+			last->reflective = 1;
+	}
 }

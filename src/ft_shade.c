@@ -6,11 +6,32 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 08:59:35 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/04/27 09:00:10 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/04/30 15:08:29 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+
+t_color	ft_combine_colors(t_color *base, t_color *reflect)
+{
+	int		r;
+	int		g;
+	int		b;
+	t_color result;
+
+
+	r = base->red + reflect->red;
+	g = base->green + reflect->green;
+	b = base->blue + reflect->blue;
+	if (r > 255)
+		r = 255;
+	if (g > 255)
+		g = 255;
+	if (b > 255)
+		b = 255;
+	ft_set_color(&result, r, g, b);
+	return (result);
+}
 
 void	ft_get_shade(t_prim *prim, t_color *color, t_light *light)
 {

@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 16:41:38 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/04/27 16:37:45 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/01 13:31:20 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,12 @@ t_prim	*ft_find_closest(t_prim *prim)
 	return (smallest);
 }
 
-t_color	ft_figure_color(t_obj *obj, t_3dpt *origin)
+t_color	ft_figure_color(t_obj *obj, t_3dpt *origin, t_prim *prev)
 {
 	t_prim	*smallest;
 	t_color	color;
 
-	smallest = ft_find_closest(obj->prim);
+	smallest = ft_find_closest_exclude(obj->prim, prev);
 	if (smallest == NULL)
 	{
 		ft_set_color(&color, 0, 0, 0);

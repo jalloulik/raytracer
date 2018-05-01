@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/04/27 16:55:38 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/01 13:32:01 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,7 +204,7 @@ void				ft_init_cam_vectors(t_cam *cam);
 void				ft_init_cam(t_cam *cam);
 void				ft_get_topleft_indent(t_cam *cam);
 
-t_color				ft_figure_color(t_obj *obj, t_3dpt *origin);
+t_color				ft_figure_color(t_obj *obj, t_3dpt *origin, t_prim *prev);
 
 void				ft_calculate_vector(t_3dpt *vector, t_3dpt *start,
 																t_3dpt *end);
@@ -306,6 +306,11 @@ int					ft_check_obst(t_3dpt *o, t_3dpt *p_to_light, t_prim *obst, double dist);
 void				ft_get_dotr(t_prim *small, t_light *light, t_3dpt *p, t_3dpt *origin);
 void				ft_get_shade(t_prim *prim, t_color *color, t_light *light);
 
-t_color				ft_throw_ray(t_obj *obj, t_3dpt *ray_dir, t_3dpt *origin);
+t_color	ft_throw_ray(t_obj *obj, t_3dpt *ray_dir, t_3dpt *origin, t_prim *prev);
+t_color	ft_combine_colors(t_color *base, t_color *reflect);
+t_color		ft_trace_ray(t_obj *obj, t_3dpt *ray_dir, t_3dpt *origin, t_prim *prev);
+t_prim	*ft_find_closest(t_prim *prim);
+void	ft_calc_reflec_vec(t_3dpt *result, t_3dpt *norm, t_3dpt *p, t_3dpt *src);
+t_prim	*ft_find_closest_exclude(t_prim *prim, t_prim *prev);
 
 #endif
