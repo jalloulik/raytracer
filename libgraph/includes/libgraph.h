@@ -108,5 +108,7 @@ void			ft_fill_img_rgb(t_mlximg img, int x, int y, t_color color);
 void			ft_create_img(t_winenv *mlxenv, int length, int height);
 int				ft_key_hook_exit(int keycode);
 void			ft_set_3dpt(t_3dpt *point, double x, double y, double z);
+t_3dpt			*new_vect(double x, double y, double z);
+double			v_scale(t_3dpt *u1, t_3dpt *u2);
 
 #endif

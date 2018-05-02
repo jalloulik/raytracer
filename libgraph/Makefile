@@ -23,7 +23,10 @@ SRC = ft_fill_img.c\
 		ft_mlx_init.c\
 		ft_key_exit.c\
 		ft_set_3dpt.c\
-		ft_fill_img_rgb.c
+		ft_fill_img_rgb.c\
+		ft_vect.c\
+		ft_vect2.c\
+		ft_line.c\
 
 OBJ = $(SRC:%.c=%.o)
 
