@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   util.c                                             :+:      :+:    :+:   */
+/*   plane.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yvillepo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/20 13:16:18 by yvillepo          #+#    #+#             */
-/*   Updated: 2018/05/02 20:43:54 by yvillepo         ###   ########.fr       */
+/*   Created: 2018/03/05 10:40:59 by yvillepo          #+#    #+#             */
+/*   Updated: 2018/05/02 20:14:58 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-t_vect	*new_vect(double x, double y, double z)
+t_3dpt		*inter_plane(t_3dpt *normal, double d, t_3dpt *pos, t_3dpt *dir)
 {
-	t_vect	*new;
+	double	t;
 
-	new = ft_memalloc(sizeof(*new));
-	new->x = x;
-	new->y = y;
-	new->z = z;
-	return (new);
-}
-
-double	calc_height_screen(t_mlx *mlx)
-{
-	return (tan(mlx->fov / 2) * 2);
+	t = dir->x * plane->normal.x + dir->y * plane->normal.y
+			+ dir->z * plane->normal.z;
+	if (t == 0)
+		return (NULL);
+	t = (-((plane->normal.x * pos->x + plane->normal.y *
+					pos->y + plane->normal.z
+					* pos->z + plane->d) / t));
+	return (calc_point(pos, dir, t);
 }

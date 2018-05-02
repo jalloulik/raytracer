@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   util.c                                             :+:      :+:    :+:   */
+/*   parse_util.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yvillepo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/20 13:16:18 by yvillepo          #+#    #+#             */
-/*   Updated: 2018/05/02 20:43:54 by yvillepo         ###   ########.fr       */
+/*   Created: 2018/05/02 19:01:34 by yvillepo          #+#    #+#             */
+/*   Updated: 2018/05/02 20:51:55 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+#include "stdio.h"
 
-t_vect	*new_vect(double x, double y, double z)
+void	read_vect(char *str, t_3dpt *vect)
 {
-	t_vect	*new;
+	char **tab;
 
-	new = ft_memalloc(sizeof(*new));
-	new->x = x;
-	new->y = y;
-	new->z = z;
-	return (new);
-}
-
-double	calc_height_screen(t_mlx *mlx)
-{
-	return (tan(mlx->fov / 2) * 2);
+	tab = ft_strsplit(str, ':');
+	if (ft_count_tab(tab) < 4)
+	{
+		printf ("%d",ft_count_tab(tab));
+		exit (0);
+	}
+	vect->x = ft_atoi(tab[1]);	
+	vect->y = ft_atoi(tab[2]);	
+	vect->z = ft_atoi(tab[3]);	
 }

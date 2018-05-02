@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/27 10:56:10 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/03/22 13:53:22 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/02 20:23:24 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ void	ft_parsing_primitives(int fd, t_prim **list, t_light **spots)
 				ft_cylinder_setup(tab, list);
 			else if (ft_strequ(tab[0], "cone") == 1)
 				ft_cone_setup(tab, list);
+			else if (ft_strequ(tab[0], "cercle") == 1)
+				ft_cercle_setup(tab, list);
 			else if (ft_strequ(tab[0], "spot") == 1)
 				ft_spot_setup(tab, spots);
 		}

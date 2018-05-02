@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/04/26 08:48:38 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/02 20:39:04 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define PLANE 2
 # define CONE 3
 # define CYLINDER 4
+# define CERCLE 5
 # define VALID 1
 # define UNVALID 0
 
@@ -49,6 +50,20 @@ typedef struct		s_quater
 	double			y;
 	double			z;
 }					t_quater;
+
+typedef struct		s_line
+{
+	t_3dpt			*pos;
+	t_3dpt			*dir;
+}					t_line;
+
+typedef struct		s_cercle
+{
+	t_3dpt			pos;
+	t_3dpt			dir;
+	double			r;	
+	int				color;
+}					t_cercle;
 
 typedef struct		s_plane
 {
@@ -120,6 +135,7 @@ typedef struct		s_prim
 	t_plane			plane;
 	t_cone			cone;
 	t_cyl			cyl;
+	t_cercle		cercle;
 	double			t;
 	int				isvalid;
 	int				color;
@@ -290,5 +306,10 @@ void				ft_error_cam(void);
 double				ft_return_prim_dist(t_prim *prim, t_3dpt *ray,
 														t_3dpt *origin);
 void				ft_resolve_prim(t_prim *prim, t_ray *ray, t_cam *cam);
+
+t_3dpt				*inter_plane(t_plane *plane, t_3dpt *pos, t_3dpt *dir);
+t_3dpt				*calc_point(t_3dpt *pos, t_3dpt *dir, double t);
+void				read_vect(char *svect, t_3dpt *vect);
+void				ft_cercle_setup(char **tab, t_prim **prims);
 
 #endif
