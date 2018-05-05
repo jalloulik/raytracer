@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/30 13:03:55 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/01 13:59:08 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/05 03:13:53 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,20 +45,21 @@ t_color		ft_trace_ray(t_obj *obj, t_3dpt *ray_dir, t_3dpt *origin, t_prim *prev)
 {
 	t_color point_color;
 	t_color reflect_color;
+	t_color refract_color;
 	t_prim *base;
+	t_3dpt light_reflect;
+	t_3dpt	path_to_cam;
+	double cam_dot;
 
 	g_limit++;
 	ft_set_color(&reflect_color, 0, 0, 0);
+	ft_set_color(&refract_color, 0, 0, 0);
 	point_color = ft_throw_ray(obj, ray_dir, origin, prev);
 	base = ft_find_closest_exclude(obj->prim, prev);
 	if (base != NULL)
 	{
 		if (base->reflective == 1 && g_limit < 20)
 		{
-			t_3dpt light_reflect;
-			t_3dpt	path_to_cam;
-			double cam_dot;
-
 			ft_calculate_vector(&path_to_cam, &(base->p), origin);
 			cam_dot = ft_calculate_dot(&path_to_cam, &(base->normal));
 			if (cam_dot >= 0 && cam_dot <= 1)
@@ -67,6 +68,20 @@ t_color		ft_trace_ray(t_obj *obj, t_3dpt *ray_dir, t_3dpt *origin, t_prim *prev)
 				reflect_color = ft_trace_ray(obj, &light_reflect, &(base->p), base);
 			}
 		}
+		if (base->refractive == 1)
+		{
+			ft_calculate_vector(&path_to_cam, &(base->p), origin);
+			cam_dot = ft_calculate_dot(&path_to_cam, &(base->normal));
+			if (cam_dot >= 0 && cam_dot <= 1)
+			{
+				ft_refract(&light_reflect, base, origin, ray_dir);
+				refract_color = ft_trace_ray(obj, &light_reflect, &(base->p), base);
+			}
+		}
 	}
-	return (ft_combine_colors(&point_color, &reflect_color));
+	if (base != NULL && base->refractive == 1)
+		ft_percentage_color(&refract_color, base->refract_ratio);
+	if (base != NULL && base->reflective == 1)
+		ft_percentage_color(&reflect_color, base->reflec_ratio);
+	return (ft_combine_colors(&point_color, &reflect_color, &refract_color));
 }

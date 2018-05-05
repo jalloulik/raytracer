@@ -6,13 +6,31 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 08:59:35 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/04/30 15:08:29 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/05 01:44:48 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-t_color	ft_combine_colors(t_color *base, t_color *reflect)
+void ft_percentage_color(t_color *base, double percentage)
+{
+	double		r;
+	double		g;
+	double		b;
+
+	r = base->red * percentage;
+	g = base->green * percentage;
+	b = base->blue * percentage;
+	if (r > 255)
+		r = 255;
+	if (g > 255)
+		g = 255;
+	if (b > 255)
+		b = 255;
+	ft_set_color(base, (int)r, (int)g, (int)b);
+}
+
+t_color	ft_combine_colors(t_color *base, t_color *reflect, t_color *refract)
 {
 	int		r;
 	int		g;
@@ -20,9 +38,9 @@ t_color	ft_combine_colors(t_color *base, t_color *reflect)
 	t_color result;
 
 
-	r = base->red + reflect->red;
-	g = base->green + reflect->green;
-	b = base->blue + reflect->blue;
+	r = base->red + reflect->red + refract->red;
+	g = base->green + reflect->green + refract->green;
+	b = base->blue + reflect->blue + refract->blue;
 	if (r > 255)
 		r = 255;
 	if (g > 255)

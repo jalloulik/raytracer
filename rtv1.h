@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/01 13:32:01 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/05 01:44:58 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,14 @@
 # define UNVALID 0
 
 # define HARD 50
+
+# define VACUUM 1.0000
+# define AIR 1.0003
+# define ICE 1.31
+# define WATER 1.333
+# define PLEXIGLAS 1.51
+# define DENSEFLINTGLASS 1.66
+# define DIAMOND 2.417
 
 # define ERRUSAGE "Usage : ./rtv1 <filename>"
 # define ERRFILE "File does not exist"
@@ -137,6 +145,10 @@ typedef struct		s_prim
 	t_quater		l_to_g_rot;
 	t_quater		g_to_l_rot;
 	int				reflective;
+	double			reflec_ratio;
+	double			refract_ratio;
+	int				refractive;
+	double			refraction_index;
 	struct s_prim	*next;
 }					t_prim;
 
@@ -307,10 +319,13 @@ void				ft_get_dotr(t_prim *small, t_light *light, t_3dpt *p, t_3dpt *origin);
 void				ft_get_shade(t_prim *prim, t_color *color, t_light *light);
 
 t_color	ft_throw_ray(t_obj *obj, t_3dpt *ray_dir, t_3dpt *origin, t_prim *prev);
-t_color	ft_combine_colors(t_color *base, t_color *reflect);
+t_color	ft_combine_colors(t_color *base, t_color *reflect, t_color *refract);
 t_color		ft_trace_ray(t_obj *obj, t_3dpt *ray_dir, t_3dpt *origin, t_prim *prev);
 t_prim	*ft_find_closest(t_prim *prim);
 void	ft_calc_reflec_vec(t_3dpt *result, t_3dpt *norm, t_3dpt *p, t_3dpt *src);
 t_prim	*ft_find_closest_exclude(t_prim *prim, t_prim *prev);
+void	ft_refract(t_3dpt *result, t_prim *base, t_3dpt *origin, t_3dpt *dir);
+
+void ft_percentage_color(t_color *base, double percentage);
 
 #endif

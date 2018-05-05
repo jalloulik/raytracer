@@ -1,0 +1,4 @@
+cam|origin:0:0:10|rotation:0:0:0:angle:0|translation:0:0:0
+spot|origin:0:0:10|intensity:100
+plane|origin:0:0:0|normal:0:0:1|color:r:50:g:150:b:50|rotation:0:1:0:angle:45|translation:0:0:0|refract:ICE:100
+cylinder|origin:0:0:-5|vec:0:1:0|radius:1|color:r:250:g:0:b:0|rotation:0:0:1:angle:00|translation:0:0:0
