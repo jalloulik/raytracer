@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 08:59:35 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/05 04:43:58 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/05 06:46:18 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,27 @@ void ft_percentage_color(t_color *base, double percentage)
 
 void	ft_get_shadow(t_color *base, double percentage)
 {
-	int		r;
-	int		g;
-	int		b;
+	double		r;
+	double		g;
+	double		b;
 
 
-	r = base->red * (1 - percentage) + base->red;
-	g = base->green * (1 - percentage) + base->green;
-	b = base->blue * (1 - percentage) + base->blue;
+	// r = base->red * (1 - percentage);
+	// g = base->green * (1 - percentage);
+	// b = base->blue * (1 - percentage);
+	// r = base->red * (1 - percentage) + base->red;
+	// g = base->green * (1 - percentage) + base->green;
+	// b = base->blue * (1 - percentage) + base->blue;
+	r = (base->red * (1 - percentage) + base->red) / 2;
+	g = (base->green * (1 - percentage) + base->green) / 2;
+	b = (base->blue * (1 - percentage) + base->blue) / 2;
 	if (r > 255)
 		r = 255;
 	if (g > 255)
 		g = 255;
 	if (b > 255)
 		b = 255;
-	ft_set_color(base, r, g, b);
+	ft_set_color(base, (int)r, (int)g, (int)b);
 }
 
 t_color	ft_combine_colors(t_color *base, t_color *reflect, t_color *refract)

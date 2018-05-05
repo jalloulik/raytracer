@@ -1,7 +1,9 @@
 cam|origin:0:0:20|rotation:0:0:0:angle:0|translation:0:0:0
-spot|origin:0:0:20|intensity:100
-#plane|origin:0:0:0|normal:0:0:1|color:r:50:g:150:b:50|rotation:0:1:0:angle:45|translation:0:0:0|refract:ICE
-sphere|origin:0:0:0|radius:5|color:r:212:g:225:b:236|rotation:0:1:0:angle:0|translation:0:0:0|reflect:100|refract:DIAMOND
+#spot|origin:0:0:20|intensity:100
+spot|origin:15:10:30|intensity:100
+plane|origin:0:0:-10|normal:0:0:1|color:r:50:g:150:b:50|rotation:0:1:0:angle:0|translation:0:0:0
+#sphere|origin:0:0:0|radius:5|color:r:212:g:225:b:236|rotation:0:1:0:angle:0|translation:0:0:0|refract:AIR:20|reflect:50
+sphere|origin:0:0:0|radius:5|color:r:212:g:225:b:236|rotation:0:1:0:angle:0|translation:0:0:0
 sphere|origin:8:0:0|radius:2|color:r:250:g:00:b:0|rotation:0:1:0:angle:0|translation:0:0:0
 sphere|origin:-8:0:0|radius:2|color:r:50:g:200:b:0|rotation:0:1:0:angle:0|translation:0:0:0
 sphere|origin:8:8:0|radius:2|color:r:250:g:00:b:200|rotation:0:1:0:angle:0|translation:0:0:0
