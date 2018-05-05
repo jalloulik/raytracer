@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/05 01:44:58 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/05 04:30:48 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -327,5 +327,6 @@ t_prim	*ft_find_closest_exclude(t_prim *prim, t_prim *prev);
 void	ft_refract(t_3dpt *result, t_prim *base, t_3dpt *origin, t_3dpt *dir);
 
 void ft_percentage_color(t_color *base, double percentage);
+void	ft_get_shadow(t_color *base, double percentage);
 
 #endif

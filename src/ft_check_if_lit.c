@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 18:11:29 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/02 18:37:47 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/05 04:45:11 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,17 +96,28 @@ void	ft_check_lit(t_obj *obj, t_prim *small, t_color *color, t_3dpt *origin)
 	double	dist_to_light;
 	int		lit;
 	t_prim	*prim;
+	double	percentage;
 
+	percentage = 1;
 	prim = obj->prim;
 	dist_to_light = ft_get_dist_to_light(obj, small);
 	ft_calculate_vec_to_light(&p_to_light, obj, small);
 	while (prim != NULL)
 	{
-		if (prim != small && prim->refractive == 0)
+		// if (prim != small && prim->refractive == 0)
+		if (prim != small)
 		{
 			lit = ft_check_obst(&(small->p), &p_to_light, prim, dist_to_light);
 			if (lit == 0)
-				return ;
+			{
+				return;
+				if (prim->refractive == 1)
+				{
+					percentage = (percentage + (1 - prim->refract_ratio)) / 2;
+					// return ;
+				}
+			}
+
 		}
 		prim = prim->next;
 	}
@@ -116,4 +127,6 @@ void	ft_check_lit(t_obj *obj, t_prim *small, t_color *color, t_3dpt *origin)
 		ft_get_dotr(small, obj->light, &p_to_light, origin);
 		ft_get_shade(small, color, obj->light);
 	}
+	if (lit == 0)
+		ft_get_shadow(color, percentage);
 }

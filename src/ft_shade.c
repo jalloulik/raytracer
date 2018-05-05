@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 08:59:35 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/05 01:44:48 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/05 04:43:58 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,25 @@ void ft_percentage_color(t_color *base, double percentage)
 	if (b > 255)
 		b = 255;
 	ft_set_color(base, (int)r, (int)g, (int)b);
+}
+
+void	ft_get_shadow(t_color *base, double percentage)
+{
+	int		r;
+	int		g;
+	int		b;
+
+
+	r = base->red * (1 - percentage) + base->red;
+	g = base->green * (1 - percentage) + base->green;
+	b = base->blue * (1 - percentage) + base->blue;
+	if (r > 255)
+		r = 255;
+	if (g > 255)
+		g = 255;
+	if (b > 255)
+		b = 255;
+	ft_set_color(base, r, g, b);
 }
 
 t_color	ft_combine_colors(t_color *base, t_color *reflect, t_color *refract)
