@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 16:22:12 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/02 20:48:52 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/05/03 21:02:34 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,14 +172,35 @@ void	ft_cercle_setup(char **tab, t_prim **prims)
 	t_prim	*list;
 
 	list = *prims;
-	list = ft_add_lst_file(list, SPHERE);
+	list = ft_add_lst_file(list, CERCLE);
 	*prims = list;
 	last = ft_get_last(list);
 	if (ft_count_tab(tab) < 7)
 		exit (0);
 	read_vect(tab[1], &(last->cercle.pos));
 	read_vect(tab[2], &(last->cercle.dir));
+	ft_normalize_vector(&(last->cercle.dir));
 	last->cercle.r =  ft_atoi(tab[3]);
 	ft_parse_color(tab[4], &(last->color2), &ft_error_sphere);
 	ft_parsing_mov(tab[5], tab[6], last, &ft_error_sphere);
+}
+
+void	ft_rect_setup(char **tab, t_prim **prims)
+{
+	t_prim	*last;
+	t_prim	*list;
+
+	list = *prims;
+	list = ft_add_lst_file(list, RECT);
+	*prims = list;
+	last = ft_get_last(list);
+	if (ft_count_tab(tab) < 8)
+		exit (0);
+	read_vect(tab[1], &(last->cercle.pos));
+	read_vect(tab[2], &(last->cercle.dir));
+	ft_normalize_vector(&(last->cercle.dir));
+	last->carre.long =  ft_atoi(tab[3]);
+	last->carre.larg =  ft_atoi(tab[4]);
+	ft_parse_color(tab[5], &(last->color2), &ft_error_sphere);
+	ft_parsing_mov(tab[6], tab[7], last, &ft_error_sphere);
 }

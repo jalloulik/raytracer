@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 14:42:06 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/04/23 16:54:17 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/03 19:23:04 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,7 @@ void	ft_calculate_normal(t_prim *prim, t_3dpt *p)
 		ft_cylinder_normal(prim, p);
 	else if (prim->type == CONE)
 		ft_cone_normal(prim, p);
+	else if (prim->type == CERCLE)
+		ft_set_3dpt(&(prim->normal), prim->cercle.dir.x, prim->cercle.dir.y,
+		   prim->cercle.dir.z);
 }

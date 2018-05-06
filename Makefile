@@ -6,7 +6,7 @@
 #    By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/06 17:18:00 by kjalloul          #+#    #+#              #
-#    Updated: 2018/05/02 20:53:00 by yvillepo         ###   ########.fr        #
+#    Updated: 2018/05/03 18:47:42 by yvillepo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,10 @@ SRC = main.c\
 		ft_check_if_lit.c\
 		ft_errors.c\
 		ft_resolve_primitives.c\
-		parse_util.c
+		parse_util.c \
+		ft_resolve_cercle.c\
+		line.c\
+		plane.c
 
 OBJ = $(SRC:%.c=$(OBJPATH)%.o)
 

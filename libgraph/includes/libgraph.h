@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 16:33:59 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/02/19 15:32:51 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/03 18:29:22 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,5 +110,6 @@ int				ft_key_hook_exit(int keycode);
 void			ft_set_3dpt(t_3dpt *point, double x, double y, double z);
 t_3dpt			*new_vect(double x, double y, double z);
 double			v_scale(t_3dpt *u1, t_3dpt *u2);
+t_3dpt			*v_sub(t_3dpt *u1, t_3dpt *u2);
 
 #endif

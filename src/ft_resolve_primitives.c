@@ -6,10 +6,11 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 08:45:46 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/04/26 08:48:14 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/03 18:57:53 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "stdio.h"
 #include "rtv1.h"
 
 double	ft_return_prim_dist(t_prim *prim, t_3dpt *ray, t_3dpt *origin)
@@ -27,6 +28,8 @@ double	ft_return_prim_dist(t_prim *prim, t_3dpt *ray, t_3dpt *origin)
 		t = ft_resolve_cyl(prim, ray, origin);
 	else if (prim->type == CONE)
 		t = ft_resolve_cone(prim, ray, origin);
+	else if (prim->type == CERCLE)
+		t = ft_resolve_cercle(prim, ray, origin);
 	return (t);
 }
 

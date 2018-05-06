@@ -6,7 +6,7 @@
 /*   By: yvillepo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 11:44:22 by yvillepo          #+#    #+#             */
-/*   Updated: 2018/05/02 18:25:21 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/05/03 18:49:49 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,15 @@ double		v_l(t_3dpt *v)
 	return (sqrt(v->x * v->x + v->y * v->y + v->z * v->z));
 }
 
-double		v_scale(t_3dpt *u, t_3dpt *v)
+double		dist(t_3dpt *v, t_3dpt *v2)
 {
-	return (u->x * v->x + u->y * u->y + u->z * u->z);
-}
+	t_3dpt *u;
+	double	res;
 
-double		calc_angle(t_3dpt *v1, t_3dpt *v2)
-{
-	return (acos(v_mult(v1, v2) / (v_l(v1) * v_l(v2))));
+	u = v_sub(v, v2);
+	res = v_l(u);
+	free(u);
+	return (res);
 }
 
 void		v_unit(t_3dpt *v)
