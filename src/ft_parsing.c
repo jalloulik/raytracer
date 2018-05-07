@@ -73,6 +73,8 @@ void	ft_parsing_primitives(int fd, t_prim **list, t_light **spots)
 				ft_cone_setup(tab, list);
 			else if (ft_strequ(tab[0], "cercle") == 1)
 				ft_cercle_setup(tab, list);
+			else if (ft_strequ(tab[0], "rectangle") == 1)
+				ft_rectangle_setup(tab, list);
 			else if (ft_strequ(tab[0], "spot") == 1)
 				ft_spot_setup(tab, spots);
 		}

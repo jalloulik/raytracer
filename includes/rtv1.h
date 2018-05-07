@@ -24,7 +24,7 @@
 # define CONE 3
 # define CYLINDER 4
 # define CERCLE 5
-# define REC 6
+# define RECT 6
 # define VALID 1
 # define UNVALID 0
 
@@ -71,7 +71,7 @@ typedef struct		s_rect
 {
 	t_3dpt			pos;
 	t_3dpt			dir;
-	double			length;
+	double			height;
 	double			width;
 }					t_rect;
 
@@ -146,7 +146,7 @@ typedef struct		s_prim
 	t_cone			cone;
 	t_cyl			cyl;
 	t_cercle		cercle;
-	t_carre			carre;
+	t_rect			rect;
 	double			t;
 	int				isvalid;
 	int				color;
@@ -325,5 +325,6 @@ void				ft_cercle_setup(char **tab, t_prim **prims);
 void				ft_cercle_normal(t_prim *prim, t_3dpt *p);
 double				ft_resolve_cercle(t_prim *prim, t_3dpt *dir, t_3dpt *ray_origin);
 double				dist(t_3dpt *v, t_3dpt *v2);
+void				ft_rectangle_setup(char **tab, t_prim **prims);
 
 #endif
