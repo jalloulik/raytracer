@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 18:11:29 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/05 06:45:32 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/08 07:20:22 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,17 +104,14 @@ void	ft_check_lit(t_obj *obj, t_prim *small, t_color *color, t_3dpt *origin)
 	ft_calculate_vec_to_light(&p_to_light, obj, small);
 	while (prim != NULL)
 	{
-		// if (prim != small && prim->refractive == 0)
 		if (prim != small)
 		{
 			lit = ft_check_obst(&(small->p), &p_to_light, prim, dist_to_light);
 			if (lit == 0)
 			{
-				// return;
 				if (prim->refractive == 1)
 				{
 					percentage = (percentage + (1 - prim->refract_ratio)) / 2;
-					// return ;
 				}
 				else
 					percentage = (percentage + (1)) / 2;

@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/05 04:30:48 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/08 09:39:47 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 
 # define WIN_WIDTH 1000
 # define WIN_HEIGHT 1000
+
+# define TRUE 1
+# define FALSE 0
 
 # define SPHERE 1
 # define PLANE 2
@@ -174,6 +177,7 @@ typedef struct		s_cam
 	t_3dpt			rot_axis;
 	double			rot_angle;
 	t_3dpt			transl;
+	int				sepia;
 }					t_cam;
 
 typedef struct		s_ray
@@ -328,5 +332,6 @@ void	ft_refract(t_3dpt *result, t_prim *base, t_3dpt *origin, t_3dpt *dir);
 
 void ft_percentage_color(t_color *base, double percentage);
 void	ft_get_shadow(t_color *base, double percentage);
+void ft_sepia_filter(t_color *base);
 
 #endif
