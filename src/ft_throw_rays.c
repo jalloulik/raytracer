@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/30 13:03:55 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/05 03:13:53 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/08 09:57:40 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ t_color		ft_trace_ray(t_obj *obj, t_3dpt *ray_dir, t_3dpt *origin, t_prim *prev)
 				reflect_color = ft_trace_ray(obj, &light_reflect, &(base->p), base);
 			}
 		}
-		if (base->refractive == 1)
+		if (base->refractive == 1 && g_limit < 20)
 		{
 			ft_calculate_vector(&path_to_cam, &(base->p), origin);
 			cam_dot = ft_calculate_dot(&path_to_cam, &(base->normal));
