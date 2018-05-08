@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 16:51:11 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/03/21 17:42:41 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/08 20:15:08 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,21 @@ void	ft_create_local_cone(t_prim *prim)
 														&(prim->cone.vec));
 	ft_find_quaters_between(&(prim->g_to_l_rot), &(prim->cone.vec),
 													&(prim->cone.vec_local));
+}
+
+void	ft_create_local(t_prim *prim, t_3dpt *pos, t_3dpt *dir, t_3dpt *expected_dir)
+{
+
+	t_3dpt	p1;
+	t_3dpt	p2;
+
+	ft_set_3dpt(&(prim->l_to_g_move), pos->.x, pos->.y,
+														pos->.z);
+	ft_set_3dpt(&(prim->g_to_l_move), -1 * pos->.x,
+							-1 * pos->.y, -1 * pos->.z);
+	ft_set_3dpt(&(pos->_local), 0, 0, 0);
+	ft_set_3dpt(&(prim->cyl.vec_local), 0, 1, 0);
+	ft_find_quaters_between(&(prim->l_to_g_rot), &(prim->cyl.vec_local),
+															&(prim->cyl.vec));
+	ft_find_quaters_between(&(prim->g_to_l_rot), &(prim->cyl.vec),
 }
