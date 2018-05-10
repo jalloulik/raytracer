@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_spots.c                                         :+:      :+:    :+:   */
+/*   ft_sun.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/01 11:45:00 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/04/27 08:16:52 by kjalloul         ###   ########.fr       */
+/*   Created: 2018/04/26 11:17:40 by tfavart           #+#    #+#             */
+/*   Updated: 2018/04/26 14:44:40 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ static t_light	*ft_get_last_spot(t_light *last)
 	return (last);
 }
 
-void			ft_spot_setup(char **tab, t_light **spots)
+void			ft_sun_setup(char **tab, t_light **spots)
 {
-	t_light	*last;
-	t_light	*list;
-	char	**tmp;
+	t_light		*last;
+	t_light		*list;
+	char		**tmp;
 
 	list = *spots;
-	list = ft_add_lst_light(list, LIGHT);
+	list = ft_add_lst_light(list, SUN);
 	*spots = list;
 	last = ft_get_last_spot(list);
 	if (ft_count_tab(tab) < 3)
@@ -45,6 +45,5 @@ void			ft_spot_setup(char **tab, t_light **spots)
 	if (last->intensity < 0 || last->intensity > 2)
 		ft_error("Spot intensity needs to be between 0 and 200");
 	ft_free_tab(tmp);
-	last->prim.sphere.radius = 1;
 	ft_set_color(&(last->color), 255, 255, 255);
 }

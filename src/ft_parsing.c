@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/27 10:56:10 by kjalloul          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2018/05/02 20:23:24 by yvillepo         ###   ########.fr       */
+=======
+/*   Updated: 2018/04/26 11:17:17 by tfavart          ###   ########.fr       */
+>>>>>>> c968a43a00c83d53407570dce1ac880c6c4c49a0
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+#include "rt_tf.h"
 
 t_prim	*ft_get_last(t_prim *last)
 {
@@ -77,6 +82,10 @@ void	ft_parsing_primitives(int fd, t_prim **list, t_light **spots)
 				ft_rectangle_setup(tab, list);
 			else if (ft_strequ(tab[0], "spot") == 1)
 				ft_spot_setup(tab, spots);
+			else if (ft_strequ(tab[0], "ambiant") == 1)
+				ft_ambiant_setup(tab, spots);
+			else if (ft_strequ(tab[0], "sun") == 1)
+				ft_sun_setup(tab, spots);
 		}
 		free(str);
 		ft_free_tab(tab);

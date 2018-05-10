@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:27 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/04/26 08:45:59 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/04/26 20:40:54 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+#include "rt_tf.h"
 
 void	ft_get_first_ray(t_ray *ray, t_cam *cam, t_2dpt *pos)
 {
@@ -27,23 +28,31 @@ void	ft_set_scene(t_winenv *mlxenv, t_cam *cam, t_light *light, t_prim *list)
 {
 	t_2dpt		pos;
 	t_ray		ray;
+	t_obj		obj;
+	t_color		total_color;
 
+	obj.light = light;
+	obj.prim = list;
 	pos.x = -1;
 	cam->vp.pos = &pos;
 	ray.cam = cam;
 	ft_get_topleft_indent(cam);
-	ft_rotate_all(list);
-	ft_translante_all(list);
-	ft_create_local_vector_spaces(list);
+	ft_rotate_all(obj.prim);
+	ft_translante_all(obj.prim);
+	ft_create_local_vector_spaces(obj.prim);
 	while (++pos.x < WIN_WIDTH)
 	{
 		pos.y = -1;
 		while (++pos.y < WIN_HEIGHT)
 		{
 			ft_get_first_ray(&ray, cam, &pos);
-			ft_resolve_prim(list, &ray, cam);
-			ft_figure_color(list, &ray, light);
-			ft_fill_img_rgb(mlxenv->img, pos.x, pos.y, ray.color2);
+			ft_resolve_prim(obj.prim, &ray, cam);
+			ft_resolve_light(obj.light, &ray, cam);
+			if (ft_test_smallest(obj.light, obj.prim) == 1)
+				ft_set_color(&total_color, 255, 255, 255);
+			else
+				total_color = ft_figure_color(&obj, &(ray.cam->origin));
+			ft_fill_img_rgb(mlxenv->img, pos.x, pos.y, total_color);
 		}
 	}
 }
