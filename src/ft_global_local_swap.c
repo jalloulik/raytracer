@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 15:28:11 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/10 18:22:57 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/10 20:06:55 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	ft_rotate_all(t_prim *prim)
 	{
 		if (prim->type == SPHERE)
 		{
+			ft_rotate_sphere(prim);
 		}
 		else if (prim->type == PLANE)
 			ft_rotate_plan(prim);
@@ -51,7 +52,10 @@ void	ft_create_local_vector_spaces(t_prim *prim)
 	{
 		if (prim->type == SPHERE)
 		{
+			prim->textur.valid = TRUE;
+			// prim->textur.valid = FALSE;
 			ft_stb_load_textur(&(prim->textur), "assets/Stone_02_COLOR.tga");
+			ft_create_local_sphere(prim);
 		}
 		else if (prim->type == PLANE)
 		{

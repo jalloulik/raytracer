@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/10 18:42:53 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/10 20:07:11 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,9 @@ typedef struct		s_sphere
 {
 	double			radius;
 	t_3dpt			origin;
+	t_3dpt			vec;
+	t_3dpt			origin_local;
+	t_3dpt			vec_local;
 	int				color;
 	double			a;
 	double			b;
@@ -337,5 +340,7 @@ void ft_percentage_color(t_color *base, double percentage);
 void	ft_get_shadow(t_color *base, double percentage);
 void ft_sepia_filter(t_color *base);
 t_color		ft_get_sphere_texture(t_prim *prim);
+void	ft_create_local_sphere(t_prim *prim);
+void	ft_rotate_sphere(t_prim *prim);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:27 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/10 18:22:41 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/10 19:36:23 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ void	ft_set_scene(t_winenv *mlxenv, t_cam *cam, t_light *light, t_prim *list)
 			total_color = ft_trace_ray(&obj, &(ray.dir), &(cam->origin), NULL);
 			if (cam->sepia == TRUE)
 				ft_sepia_filter(&total_color);
-			//color = ft_get_texture_color(&textur, x, y);
 			ft_fill_img_rgb(mlxenv->img, pos.x, pos.y, total_color);
 		}
 	}
