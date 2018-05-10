@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/08 09:39:47 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/10 18:42:53 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@
 # define PLEXIGLAS 1.51
 # define DENSEFLINTGLASS 1.66
 # define DIAMOND 2.417
+
+# ifndef M_PI
+# define M_PI 3.14159265358979323846
+# endif
 
 # define ERRUSAGE "Usage : ./rtv1 <filename>"
 # define ERRFILE "File does not exist"
@@ -152,6 +156,7 @@ typedef struct		s_prim
 	double			refract_ratio;
 	int				refractive;
 	double			refraction_index;
+	t_texture		textur;
 	struct s_prim	*next;
 }					t_prim;
 
@@ -244,8 +249,6 @@ void				ft_check_camera(char *str, t_cam *cam);
 int					ft_count_tab(char **tab);
 void				ft_free_tab(char **tab);
 
-void				ft_set_color(t_color *color, int r, int g, int b);
-
 double				ft_resolve_sphere(t_prim *prim, t_3dpt *dir,
 														t_3dpt *ray_origin);
 double				ft_resolve_plane(t_prim *prim, t_3dpt *dir,
@@ -333,5 +336,6 @@ void	ft_refract(t_3dpt *result, t_prim *base, t_3dpt *origin, t_3dpt *dir);
 void ft_percentage_color(t_color *base, double percentage);
 void	ft_get_shadow(t_color *base, double percentage);
 void ft_sepia_filter(t_color *base);
+t_color		ft_get_sphere_texture(t_prim *prim);
 
 #endif

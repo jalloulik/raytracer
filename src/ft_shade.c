@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 08:59:35 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/08 09:26:40 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/10 18:42:38 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ void	ft_get_shade(t_prim *prim, t_color *color, t_light *light)
 	int		g;
 	int		b;
 
+	prim->color2 = ft_get_sphere_texture(prim);
 	r = prim->color2.red * light->dotd * light->intensity + color->red;
 	g = prim->color2.green * light->dotd * light->intensity + color->green;
 	b = prim->color2.blue * light->dotd * light->intensity + color->blue;
