@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 16:33:59 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/10 19:40:04 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/11 11:17:37 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ typedef struct		s_texture
 	int				n;
 	int				valid;
 	unsigned char 	*data;
+	double			scale;
 }					t_texture;
 
 void			ft_error(char *str);

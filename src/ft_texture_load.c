@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 18:27:28 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/10 20:05:20 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/11 10:33:51 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ t_color		ft_get_sphere_texture(t_prim *prim)
 	ft_normalize_vector(&local_normal);
 	tu = asin(local_normal.x) / M_PI + 0.5;
 	tv = asin(local_normal.y) / M_PI + 0.5;
-	x = prim->textur.width * tu * 10;
-	y = prim->textur.height * tv * 10;
-	if (x >= prim->textur.width)
+	x = prim->textur.width * tu * prim->textur.scale;
+	y = prim->textur.height * tv * prim->textur.scale;
+	if (x >= prim->textur.width && prim->textur.width > 0)
 	{
 		scale = x / prim->textur.width;
 		x = x - (prim->textur.width * (int)scale);
 	}
-	if (y >= prim->textur.height)
+	if (y >= prim->textur.height && prim->textur.height > 0)
 	{
 		scale = y / prim->textur.height;
 		y = y - (prim->textur.height * (int)scale);

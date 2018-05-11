@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 16:22:12 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/05 06:48:17 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/11 11:16:57 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,31 @@ void	ft_check_reflection(t_prim *last, char *str)
 					last->reflec_ratio = (double)ft_atoi(tmp[1]) / 100.0;
 				else
 					ft_error("Reflection percentage needs to be 1-100 range");
+			}
+		}
+		ft_free_tab(tmp);
+	}
+}
+
+void	ft_check_texture(t_prim *last, char *str)
+{
+	char **tmp;
+	char	*filename;
+
+	tmp = ft_strsplit(str, ':');
+	if (tmp != NULL)
+	{
+		if (ft_count_tab(tmp) >= 2 && ft_strequ(tmp[0], "texture") == 1)
+		{
+			filename = ft_strjoin("assets/", tmp[1]);
+			// ft_putendl(last->textur.filename);
+			last->textur.scale = 1;
+			last->textur.valid = TRUE;
+			ft_stb_load_textur(&(last->textur), filename);
+			free(filename);
+			if (ft_count_tab(tmp) >= 3)
+			{
+				last->textur.scale = (double)ft_atoi(tmp[2]);
 			}
 		}
 		ft_free_tab(tmp);
@@ -235,14 +260,23 @@ void	ft_sphere_setup(char **tab, t_prim **prims)
 	ft_parsing_mov(tab[4], tab[5], last, &ft_error_sphere);
 	last->reflective = 0;
 	last->refractive = 0;
+	last->textur.valid = FALSE;
 	if (ft_count_tab(tab) >= 6)
 	{
 		ft_check_reflection(last, tab[6]);
 		ft_check_refraction(last, tab[6]);
+		ft_check_texture(last, tab[6]);
 	}
 	if (ft_count_tab(tab) >= 7)
 	{
 		ft_check_reflection(last, tab[7]);
 		ft_check_refraction(last, tab[7]);
+		ft_check_texture(last, tab[7]);
+	}
+	if (ft_count_tab(tab) >= 8)
+	{
+		ft_check_reflection(last, tab[8]);
+		ft_check_refraction(last, tab[8]);
+		ft_check_texture(last, tab[8]);
 	}
 }
