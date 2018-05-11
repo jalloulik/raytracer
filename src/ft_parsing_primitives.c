@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 16:22:12 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/11 11:16:57 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/11 13:18:06 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,14 +98,36 @@ void	ft_check_texture(t_prim *last, char *str)
 		if (ft_count_tab(tmp) >= 2 && ft_strequ(tmp[0], "texture") == 1)
 		{
 			filename = ft_strjoin("assets/", tmp[1]);
-			// ft_putendl(last->textur.filename);
-			last->textur.scale = 1;
+			last->textur.xscale = 1;
+			last->textur.yscale = 1;
+			last->textur.xmove = 0;
+			last->textur.ymove = 0;
 			last->textur.valid = TRUE;
 			ft_stb_load_textur(&(last->textur), filename);
 			free(filename);
-			if (ft_count_tab(tmp) >= 3)
+			if (ft_count_tab(tmp) >= 4 && ft_strequ(tmp[2], "scale") == 1)
 			{
-				last->textur.scale = (double)ft_atoi(tmp[2]);
+				last->textur.xscale = (double)ft_atoi(tmp[3]);
+				if (ft_count_tab(tmp) >= 5 && ft_strequ(tmp[4], "mov") == 0)
+					last->textur.yscale = (double)ft_atoi(tmp[3]);
+				else
+				{
+					last->textur.yscale = last->textur.xscale;
+					if (ft_count_tab(tmp) >= 6 && ft_strequ(tmp[4], "mov") == 1)
+					{
+						if (ft_atoi(tmp[5]) < 0 || ft_atoi(tmp[5]) > 100)
+							ft_error("Scale needs to be between 0 and 100");
+						last->textur.xmove = (double)ft_atoi(tmp[5]) / 100 ;
+						if (ft_count_tab(tmp) >= 7)
+						{
+							if (ft_atoi(tmp[6]) < 0 || ft_atoi(tmp[6]) > 100)
+								ft_error("Scale needs to be between 0 and 100");
+							last->textur.ymove = (double)ft_atoi(tmp[6]) / 100;
+						}
+						else
+							last->textur.ymove = last->textur.xmove;
+					}
+				}
 			}
 		}
 		ft_free_tab(tmp);
