@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 14:42:06 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/03 19:23:04 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/05/10 19:41:20 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,7 @@ void	ft_calculate_normal(t_prim *prim, t_3dpt *p)
 	else if (prim->type == CERCLE)
 		ft_set_3dpt(&(prim->normal), prim->cercle.dir.x, prim->cercle.dir.y,
 		   prim->cercle.dir.z);
+	else if (prim->type == RECT)
+		ft_set_3dpt(&(prim->normal), prim->rect.dir.x, prim->rect.dir.y,
+		   prim->rect.dir.z);
 }

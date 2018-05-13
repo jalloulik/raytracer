@@ -6,11 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/27 10:56:10 by kjalloul          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2018/05/02 20:23:24 by yvillepo         ###   ########.fr       */
-=======
-/*   Updated: 2018/04/26 11:17:17 by tfavart          ###   ########.fr       */
->>>>>>> c968a43a00c83d53407570dce1ac880c6c4c49a0
+/*   Updated: 2018/05/10 19:55:14 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +74,7 @@ void	ft_parsing_primitives(int fd, t_prim **list, t_light **spots)
 				ft_cone_setup(tab, list);
 			else if (ft_strequ(tab[0], "cercle") == 1)
 				ft_cercle_setup(tab, list);
-			else if (ft_strequ(tab[0], "rectangle") == 1)
+			else if (ft_strequ(tab[0], "rect" ) == 1)
 				ft_rectangle_setup(tab, list);
 			else if (ft_strequ(tab[0], "spot") == 1)
 				ft_spot_setup(tab, spots);

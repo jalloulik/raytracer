@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 15:28:11 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/03/21 17:41:44 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/10 18:34:42 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ void	ft_create_local_vector_spaces(t_prim *prim)
 			ft_create_local_cyl(prim);
 		else if (prim->type == CONE)
 			ft_create_local_cone(prim);
+		else if (prim->type == RECT)
+			ft_create_local_rect(prim);
 		prim = prim->next;
 	}
 }

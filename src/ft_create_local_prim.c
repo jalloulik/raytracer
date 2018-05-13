@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 16:51:11 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/08 20:15:08 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/05/10 18:32:50 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,16 @@ void	ft_create_local_cone(t_prim *prim)
 													&(prim->cone.vec_local));
 }
 
-void	ft_create_local(t_prim *prim, t_3dpt *pos, t_3dpt *dir, t_3dpt *expected_dir)
+void	ft_create_local_rect(t_prim *prim)
 {
-
-	t_3dpt	p1;
-	t_3dpt	p2;
-
-	ft_set_3dpt(&(prim->l_to_g_move), pos->.x, pos->.y,
-														pos->.z);
-	ft_set_3dpt(&(prim->g_to_l_move), -1 * pos->.x,
-							-1 * pos->.y, -1 * pos->.z);
-	ft_set_3dpt(&(pos->_local), 0, 0, 0);
-	ft_set_3dpt(&(prim->cyl.vec_local), 0, 1, 0);
-	ft_find_quaters_between(&(prim->l_to_g_rot), &(prim->cyl.vec_local),
-															&(prim->cyl.vec));
-	ft_find_quaters_between(&(prim->g_to_l_rot), &(prim->cyl.vec),
+	ft_set_3dpt(&(prim->l_to_g_move), prim->rect.pos.x, prim->rect.pos.y,
+														prim->rect.pos.z);
+	ft_set_3dpt(&(prim->g_to_l_move), -1 * prim->rect.pos.x,
+						-1 * prim->rect.pos.y, -1 * prim->rect.pos.z);
+	ft_set_3dpt(&(prim->rect.pos_local), 0, 0, 0);
+	ft_set_3dpt(&(prim->rect.dir_local), 0, 1, 0);
+	ft_find_quaters_between(&(prim->l_to_g_rot), &(prim->rect.pos_local),
+														&(prim->rect.dir));
+	ft_find_quaters_between(&(prim->g_to_l_rot), &(prim->rect.dir),
+													&(prim->rect.pos_local));
 }

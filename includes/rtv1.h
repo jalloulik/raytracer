@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/03 20:58:06 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/05/10 18:18:48 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,12 @@ typedef struct		s_rect
 	t_3dpt			dir;
 	double			height;
 	double			width;
+	t_3dpt			origin_local;
+	t_3dpt			vec_local;
+	t_3dpt			l_to_g_move;
+	t_3dpt			g_to_l_move;
+	t_quater		l_to_g_rot;
+	t_quater		g_to_l_rot;
 }					t_rect;
 
 typedef struct		s_plane

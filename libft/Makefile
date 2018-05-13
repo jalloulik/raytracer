@@ -6,7 +6,7 @@
 #    By: kjalloul <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/06 17:18:00 by kjalloul          #+#    #+#              #
-#    Updated: 2017/12/12 17:43:54 by kjalloul         ###   ########.fr        #
+#    Updated: 2018/05/10 20:00:45 by yvillepo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,7 +75,8 @@ SRC = ft_putchar.c\
 	  ft_lstmap.c\
 	  ft_is_char_in_str.c\
 	  ft_count_char.c\
-	  get_next_line.c
+	  get_next_line.c\
+	  ft_absd.c
 
 OBJ = $(SRC:%.c=%.o)
 

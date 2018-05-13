@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/04/27 08:25:09 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/10 19:44:57 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # define PLANE 2
 # define CONE 3
 # define CYLINDER 4
+# define CERCLE 5
+# define RECT 6
 # define VALID 1
 # define UNVALID 0
 
@@ -49,6 +51,35 @@ typedef struct		s_quater
 	double			y;
 	double			z;
 }					t_quater;
+
+typedef struct		s_line
+{
+	t_3dpt			*pos;
+	t_3dpt			*dir;
+}					t_line;
+
+typedef struct		s_cercle
+{
+	t_3dpt			pos;
+	t_3dpt			dir;
+	double			r;	
+	double			t;
+	int				color;
+}					t_cercle;
+
+typedef struct		s_rect
+{
+	t_3dpt			pos;
+	t_3dpt			dir;
+	double			height;
+	double			width;
+	t_3dpt			pos_local;
+	t_3dpt			dir_local;
+	t_3dpt			l_to_g_move;
+	t_3dpt			g_to_l_move;
+	t_quater		l_to_g_rot;
+	t_quater		g_to_l_rot;
+}					t_rect;
 
 typedef struct		s_plane
 {
@@ -120,6 +151,8 @@ typedef struct		s_prim
 	t_plane			plane;
 	t_cone			cone;
 	t_cyl			cyl;
+	t_cercle		cercle;
+	t_rect			rect;
 	double			t;
 	int				isvalid;
 	int				color;
@@ -287,8 +320,8 @@ void				ft_rotate_plan(t_prim *prim);
 void				ft_rotate_cyl(t_prim *prim);
 void				ft_rotate_cone(t_prim *prim);
 
-void				ft_check_lit(t_obj *obj, t_prim *small, t_color *color,
-																t_3dpt *origin);
+void                ft_check_lit(t_obj *obj, t_prim *small, t_color *color,
+						t_3dpt *origin);
 
 void				ft_error_sphere(void);
 void				ft_error_cone(void);
@@ -299,9 +332,18 @@ void				ft_error_cam(void);
 double				ft_return_prim_dist(t_prim *prim, t_3dpt *ray,
 														t_3dpt *origin);
 void				ft_resolve_prim(t_prim *prim, t_ray *ray, t_cam *cam);
-
-int					ft_check_obst(t_3dpt *o, t_3dpt *p_to_light, t_prim *obst, double dist);
-void				ft_get_dotr(t_prim *small, t_light *light, t_3dpt *p, t_3dpt *origin);
-void				ft_get_shade(t_prim *prim, t_color *color, t_light *light);
+int                 ft_check_obst(t_3dpt *o, t_3dpt *p_to_light, t_prim *obst, double dist);
+void                ft_get_dotr(t_prim *small, t_light *light, t_3dpt *p, t_3dpt *origin);
+void                ft_get_shade(t_prim *prim, t_color *color, t_light *light);
+double				inter_plane(t_3dpt *normal, double d, t_3dpt *pos, t_3dpt *dir);
+t_3dpt				*calc_point(t_3dpt *pos, t_3dpt *dir, double t);
+void				read_vect(char *svect, t_3dpt *vect);
+void				ft_cercle_setup(char **tab, t_prim **prims);
+void				ft_cercle_normal(t_prim *prim, t_3dpt *p);
+double				ft_resolve_cercle(t_prim *prim, t_3dpt *dir, t_3dpt *ray_origin);
+double				dist(t_3dpt *v, t_3dpt *v2);
+void				ft_rectangle_setup(char **tab, t_prim **prims);
+void				ft_create_local_rect(t_prim *prim);
+double				ft_resolve_rect(t_prim *prim, t_3dpt *dir, t_3dpt *origin);
 
 #endif

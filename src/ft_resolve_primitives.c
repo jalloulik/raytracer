@@ -6,11 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 08:45:46 by kjalloul          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2018/05/03 18:57:53 by yvillepo         ###   ########.fr       */
-=======
-/*   Updated: 2018/04/26 19:37:10 by tfavart          ###   ########.fr       */
->>>>>>> c968a43a00c83d53407570dce1ac880c6c4c49a0
+/*   Updated: 2018/05/10 19:46:05 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +30,8 @@ double	ft_return_prim_dist(t_prim *prim, t_3dpt *ray, t_3dpt *origin)
 		t = ft_resolve_cone(prim, ray, origin);
 	else if (prim->type == CERCLE)
 		t = ft_resolve_cercle(prim, ray, origin);
+	else if (prim->type == RECT)
+		t = ft_resolve_rect(prim, ray, origin);
 	return (t);
 }
 
