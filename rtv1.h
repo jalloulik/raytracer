@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/10 20:07:11 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/11 16:11:15 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,7 @@ typedef struct		s_prim
 	double			dot;
 	t_3dpt			p;
 	t_3dpt			normal;
+	t_3dpt			textur_normal;
 	t_3dpt			rot_axis;
 	double			rot_angle;
 	t_3dpt			transl;
@@ -160,6 +161,7 @@ typedef struct		s_prim
 	int				refractive;
 	double			refraction_index;
 	t_texture		textur;
+	t_texture		textur_n;
 	struct s_prim	*next;
 }					t_prim;
 
@@ -342,5 +344,6 @@ void ft_sepia_filter(t_color *base);
 t_color		ft_get_sphere_texture(t_prim *prim);
 void	ft_create_local_sphere(t_prim *prim);
 void	ft_rotate_sphere(t_prim *prim);
+void	ft_get_sphere_texture_normal(t_prim *prim);
 
 #endif

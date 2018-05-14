@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 14:42:06 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/04/23 16:54:17 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/11 16:25:12 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,17 @@ void	ft_cone_normal(t_prim *prim, t_3dpt *p)
 void	ft_calculate_normal(t_prim *prim, t_3dpt *p)
 {
 	if (prim->type == SPHERE)
+	{
 		ft_calculate_vector(&(prim->normal), &(prim->sphere.origin), p);
+		ft_set_3dpt(&(prim->textur_normal), prim->normal.x, prim->normal.y, prim->normal.z);
+		if (prim->textur_n.valid == TRUE)
+		{
+			// ft_set_3dpt(&(prim->textur_normal), prim->normal.x, prim->normal.y, prim->normal.z);
+			ft_get_sphere_texture_normal(prim);
+			ft_normalize_vector(&(prim->normal));
+		}
+
+	}
 	else if (prim->type == PLANE)
 		ft_set_3dpt(&(prim->normal), prim->plane.normal.x,
 					prim->plane.normal.y, prim->plane.normal.z);

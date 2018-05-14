@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 16:33:59 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/11 12:07:03 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/11 16:12:41 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,5 +124,7 @@ void			ft_set_3dpt(t_3dpt *point, double x, double y, double z);
 void			ft_set_color(t_color *color, int r, int g, int b);
 t_color			ft_get_texture_color(t_texture *textur, int x, int y);
 void 			ft_stb_load_textur(t_texture *textur, char *file_path);
+void			ft_get_texture_normal(t_3dpt *normal, t_texture *textur,
+															int x, int y);
 
 #endif
