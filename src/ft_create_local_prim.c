@@ -53,3 +53,17 @@ void	ft_create_local_rect(t_prim *prim)
 	ft_find_quaters_between(&(prim->g_to_l_rot), &(prim->rect.dir),
 													&(prim->rect.pos_local));
 }
+
+void	ft_create_local_tore(t_prim *prim)
+{
+	ft_set_3dpt(&(prim->l_to_g_move), prim->tore.pos.x, prim->tore.pos.y,
+														prim->tore.pos.z);
+	ft_set_3dpt(&(prim->g_to_l_move), -1 * prim->tore.pos.x,
+						-1 * prim->tore.pos.y, -1 * prim->tore.pos.z);
+	ft_set_3dpt(&(prim->tore.pos_local), 0, 0, 0);
+	ft_set_3dpt(&(prim->tore.dir_local), 0, 1, 0);
+	ft_find_quaters_between(&(prim->l_to_g_rot), &(prim->tore.pos_local),
+														&(prim->tore.dir));
+	ft_find_quaters_between(&(prim->g_to_l_rot), &(prim->tore.dir),
+													&(prim->tore.pos_local));
+}

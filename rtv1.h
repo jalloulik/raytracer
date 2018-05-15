@@ -25,6 +25,7 @@
 # define CYLINDER 4
 # define CERCLE 5
 # define RECT 6
+# define TORE 7
 # define VALID 1
 # define UNVALID 0
 
@@ -75,10 +76,6 @@ typedef struct		s_rect
 	double			width;
 	t_3dpt			pos_local;
 	t_3dpt			dir_local;
-	t_3dpt			l_to_g_move;
-	t_3dpt			g_to_l_move;
-	t_quater		l_to_g_rot;
-	t_quater		g_to_l_rot;
 }					t_rect;
 
 typedef struct		s_plane
@@ -104,6 +101,16 @@ typedef struct		s_sphere
 	t_3dpt			path_to_light;
 	t_3dpt			normal;
 }					t_sphere;
+
+typedef struct		s_tore
+{
+	t_3dpt			pos;
+	t_3dpt			dir;
+	double			r1;
+	double			r2;
+	t_3dpt			pos_local;
+	t_3dpt			dir_local;
+}					t_tore;
 
 typedef struct		s_cyl
 {
@@ -153,6 +160,7 @@ typedef struct		s_prim
 	t_cyl			cyl;
 	t_cercle		cercle;
 	t_rect			rect;
+	t_tore			tore;
 	double			t;
 	int				isvalid;
 	int				color;

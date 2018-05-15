@@ -76,6 +76,8 @@ void	ft_parsing_primitives(int fd, t_prim **list, t_light **spots)
 				ft_cercle_setup(tab, list);
 			else if (ft_strequ(tab[0], "rect" ) == 1)
 				ft_rectangle_setup(tab, list);
+			else if (ft_strequ(tab[0], "tore") == 1)
+				ft_tore_setup(tab, list);
 			else if (ft_strequ(tab[0], "spot") == 1)
 				ft_spot_setup(tab, spots);
 			else if (ft_strequ(tab[0], "ambiant") == 1)
