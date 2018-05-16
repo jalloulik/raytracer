@@ -6,7 +6,7 @@
 /*   By: yvillepo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/02 19:01:34 by yvillepo          #+#    #+#             */
-/*   Updated: 2018/05/02 20:51:55 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/05/16 10:43:10 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	read_cut(char *str, t_prim *prim)
 		prim->cut.x = ft_atof(tab[1]);
 	else if (ft_strcmp(tab[0], "y"))
 		prim->cut.y = ft_atof(tab[1]);
-	else if (ft_strcmp(tab[0], "x"))
+	else if (ft_strcmp(tab[0], "z"))
 		prim->cut.z = ft_atof(tab[1]);
 	else
 		exit(0);

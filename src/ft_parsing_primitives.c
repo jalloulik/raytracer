@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 16:22:12 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/10 19:48:42 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/05/16 10:50:54 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,37 +56,6 @@ void	ft_plane_setup(char **tab, t_prim **prims)
 }
 
 void	ft_cylinder_setup(char **tab, t_prim **prims)
-{
-	t_prim	*last;
-	t_prim	*list;
-	char	**tmp;
-
-	list = *prims;
-	list = ft_add_lst_file(list, CYLINDER);
-	*prims = list;
-	last = ft_get_last(list);
-	if (ft_count_tab(tab) < 7)
-		ft_error_plane();
-	tmp = ft_strsplit(tab[1], ':');
-	if (ft_count_tab(tmp) != 4 || ft_strequ(tmp[0], "origin") == 0)
-		ft_error_cyl();
-	ft_set_3dpt(&(last->cyl.origin), (double)ft_atoi(tmp[1]),
-		(double)ft_atoi(tmp[2]), (double)ft_atoi(tmp[3]));
-	ft_free_tab(tmp);
-	ft_parse_vector(tab[2], &(last->cyl.vec));
-	tmp = ft_strsplit(tab[3], ':');
-	if (ft_count_tab(tmp) != 2 || ft_strequ(tmp[0], "radius") == 0)
-		ft_error_cyl();
-	if ((last->cyl.radius = ft_atoi(tmp[1])) <= 0)
-		ft_error("Radius can not be Null or negative");
-	ft_free_tab(tmp);
-	ft_parse_color(tab[4], &(last->color2), &ft_error_cyl);
-	ft_parsing_mov(tab[5], tab[6], last, &ft_error_cyl);
-	if (ft_count_tab(tab) >= 7)
-		read_all_cut(&tab[7], last);
-}
-
-void	ft_cylinder_finit_setup(char **tab, t_prim **prims)
 {
 	t_prim	*last;
 	t_prim	*list;
