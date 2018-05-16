@@ -51,6 +51,8 @@ void	ft_plane_setup(char **tab, t_prim **prims)
 	ft_free_tab(tmp);
 	ft_parse_color(tab[3], &(last->color2), &ft_error_plane);
 	ft_parsing_mov(tab[4], tab[5], last, &ft_error_plane);
+	if (ft_count_tab(tab) >= 6)
+		read_all_cut(&tab[6], last);
 }
 
 void	ft_cylinder_setup(char **tab, t_prim **prims)
@@ -80,6 +82,8 @@ void	ft_cylinder_setup(char **tab, t_prim **prims)
 	ft_free_tab(tmp);
 	ft_parse_color(tab[4], &(last->color2), &ft_error_cyl);
 	ft_parsing_mov(tab[5], tab[6], last, &ft_error_cyl);
+	if (ft_count_tab(tab) >= 7)
+		read_all_cut(&tab[7], last);
 }
 
 void	ft_cylinder_finit_setup(char **tab, t_prim **prims)
@@ -109,6 +113,8 @@ void	ft_cylinder_finit_setup(char **tab, t_prim **prims)
 	ft_free_tab(tmp);
 	ft_parse_color(tab[4], &(last->color2), &ft_error_cyl);
 	ft_parsing_mov(tab[5], tab[6], last, &ft_error_cyl);
+	if (ft_count_tab(tab) >= 7)
+		read_all_cut(&tab[7], last);
 }
 
 void	ft_cone_setup(char **tab, t_prim **prims)
@@ -137,6 +143,8 @@ void	ft_cone_setup(char **tab, t_prim **prims)
 	ft_free_tab(tmp);
 	ft_parse_color(tab[4], &(last->color2), &ft_error_cone);
 	ft_parsing_mov(tab[5], tab[6], last, &ft_error_cone);
+	if (ft_count_tab(tab) >= 7)
+		read_all_cut(&tab[7], last);
 }
 
 void	ft_sphere_setup(char **tab, t_prim **prims)
@@ -164,6 +172,9 @@ void	ft_sphere_setup(char **tab, t_prim **prims)
 	ft_free_tab(tmp);
 	ft_parse_color(tab[3], &(last->color2), &ft_error_sphere);
 	ft_parsing_mov(tab[4], tab[5], last, &ft_error_sphere);
+	if (ft_count_tab(tab) >= 6)
+		read_all_cut(&tab[6], last);
+
 }
 
 void	ft_cercle_setup(char **tab, t_prim **prims)

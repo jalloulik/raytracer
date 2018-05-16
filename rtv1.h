@@ -175,6 +175,7 @@ typedef struct		s_prim
 	t_3dpt			g_to_l_move;
 	t_quater		l_to_g_rot;
 	t_quater		g_to_l_rot;
+	t_3dpt			cut;
 	int				reflective;
 	struct s_prim	*next;
 }					t_prim;
@@ -353,5 +354,7 @@ double				dist(t_3dpt *v, t_3dpt *v2);
 void				ft_rectangle_setup(char **tab, t_prim **prims);
 void				ft_create_local_rect(t_prim *prim);
 double				ft_resolve_rect(t_prim *prim, t_3dpt *dir, t_3dpt *origin);
+void				read_all_cut(char **str, t_prim *prim);
+void				ft_tore_setup(char **tab, t_prim **prims);
 
 #endif

@@ -26,4 +26,33 @@ void	read_vect(char *str, t_3dpt *vect)
 	vect->x = ft_atoi(tab[1]);	
 	vect->y = ft_atoi(tab[2]);	
 	vect->z = ft_atoi(tab[3]);	
+	ft_free_tab(tab);
+}
+
+void	read_cut(char *str, t_prim *prim)
+{
+	char **tab;
+
+	tab = ft_strsplit(str, ':');
+	if (ft_count_tab(tab) < 2)
+		exit (0);
+	if (ft_strcmp(tab[0], "x"))
+		prim->cut.x = ft_atof(tab[1]);
+	else if (ft_strcmp(tab[0], "y"))
+		prim->cut.y = ft_atof(tab[1]);
+	else if (ft_strcmp(tab[0], "x"))
+		prim->cut.z = ft_atof(tab[1]);
+	else
+		exit(0);
+	ft_free_tab(tab);
+}
+
+void	read_all_cut(char **str, t_prim *prim)
+{
+	int		i;
+
+	i = ft_count_tab(str);
+
+	while (i--)
+		read_cut(str[i], prim);
 }
