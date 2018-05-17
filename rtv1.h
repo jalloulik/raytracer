@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rtv1.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yvillepo <yvillepo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/10 19:44:57 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/05/17 18:30:54 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,12 @@ typedef struct		s_cone
 	t_3dpt			normal;
 }					t_cone;
 
+typedef struct		t_cut
+{
+	t_3dpt			c1;
+	t_3dpt			c2;
+}					t_cut;
+
 typedef struct		s_prim
 {
 	int				type;
@@ -175,7 +181,7 @@ typedef struct		s_prim
 	t_3dpt			g_to_l_move;
 	t_quater		l_to_g_rot;
 	t_quater		g_to_l_rot;
-	t_3dpt			cut;
+	t_cut			*cut;
 	int				reflective;
 	struct s_prim	*next;
 }					t_prim;
@@ -356,5 +362,6 @@ void				ft_create_local_rect(t_prim *prim);
 double				ft_resolve_rect(t_prim *prim, t_3dpt *dir, t_3dpt *origin);
 void				read_all_cut(char **str, t_prim *prim);
 void				ft_tore_setup(char **tab, t_prim **prims);
+void				trie(t_3dpt *p1, t_3dpt *p2);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_util.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yvillepo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: yvillepo <yvillepo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/02 19:01:34 by yvillepo          #+#    #+#             */
-/*   Updated: 2018/05/16 10:43:10 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/05/17 18:31:23 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,48 @@ void	read_vect(char *str, t_3dpt *vect)
 	ft_free_tab(tab);
 }
 
+static void	init_cut(t_cut *cut)
+{
+	cut->c1.x = -10000000;
+	cut->c1.y = -10000000;
+	cut->c1.z = -10000000;
+	cut->c1.x = 10000000;
+	cut->c1.y = 10000000;
+	cut->c1.z = 10000000;
+}
+
+static double	read_val(char *str)
+{
+	if (ft_strequ(str, "+") == 0)
+		return (10000000);
+	else if (ft_strequ(str, "-") == 0)
+		return (-10000000);
+	else
+		return (ft_atof(str));
+}
+
 void	read_cut(char *str, t_prim *prim)
 {
 	char **tab;
 
 	tab = ft_strsplit(str, ':');
-	if (ft_count_tab(tab) < 2)
+	if (ft_count_tab(tab) < 3)
 		exit (0);
 	if (ft_strcmp(tab[0], "x"))
-		prim->cut.x = ft_atof(tab[1]);
+	{
+		prim->cut->c1.x = read_val(tab[1]);
+		prim->cut->c2.x = read_val(tab[2]);
+	}
 	else if (ft_strcmp(tab[0], "y"))
-		prim->cut.y = ft_atof(tab[1]);
+	{
+		prim->cut->c1.y = read_val(tab[1]);
+		prim->cut->c2.y = read_val(tab[2]);
+	}
 	else if (ft_strcmp(tab[0], "z"))
-		prim->cut.z = ft_atof(tab[1]);
+	{
+		prim->cut->c1.z = read_val(tab[1]);
+		prim->cut->c2.z = read_val(tab[2]);
+	}
 	else
 		exit(0);
 	ft_free_tab(tab);
@@ -52,7 +81,10 @@ void	read_all_cut(char **str, t_prim *prim)
 	int		i;
 
 	i = ft_count_tab(str);
-
+	if (!(prim->cut = (malloc(sizeof(*(prim->cut))))))
+		exit (-1);
+	init_cut(prim->cut);
 	while (i--)
 		read_cut(str[i], prim);
+	trie(&(prim->cut->c1), &(prim->cut->c2));
 }

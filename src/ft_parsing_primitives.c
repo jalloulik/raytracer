@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parsing_primitives.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yvillepo <yvillepo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 16:22:12 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/16 10:50:54 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/05/17 18:05:37 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	ft_plane_setup(char **tab, t_prim **prims)
 	ft_free_tab(tmp);
 	ft_parse_color(tab[3], &(last->color2), &ft_error_plane);
 	ft_parsing_mov(tab[4], tab[5], last, &ft_error_plane);
-	if (ft_count_tab(tab) >= 6)
+	if (ft_count_tab(tab) > 6)
 		read_all_cut(&tab[6], last);
 }
 
@@ -82,7 +82,7 @@ void	ft_cylinder_setup(char **tab, t_prim **prims)
 	ft_free_tab(tmp);
 	ft_parse_color(tab[4], &(last->color2), &ft_error_cyl);
 	ft_parsing_mov(tab[5], tab[6], last, &ft_error_cyl);
-	if (ft_count_tab(tab) >= 7)
+	if (ft_count_tab(tab) > 7)
 		read_all_cut(&tab[7], last);
 }
 
@@ -112,7 +112,7 @@ void	ft_cone_setup(char **tab, t_prim **prims)
 	ft_free_tab(tmp);
 	ft_parse_color(tab[4], &(last->color2), &ft_error_cone);
 	ft_parsing_mov(tab[5], tab[6], last, &ft_error_cone);
-	if (ft_count_tab(tab) >= 7)
+	if (ft_count_tab(tab) > 7)
 		read_all_cut(&tab[7], last);
 }
 
@@ -141,7 +141,7 @@ void	ft_sphere_setup(char **tab, t_prim **prims)
 	ft_free_tab(tmp);
 	ft_parse_color(tab[3], &(last->color2), &ft_error_sphere);
 	ft_parsing_mov(tab[4], tab[5], last, &ft_error_sphere);
-	if (ft_count_tab(tab) >= 6)
+	if (ft_count_tab(tab) > 6)
 		read_all_cut(&tab[6], last);
 
 }
