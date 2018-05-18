@@ -363,5 +363,6 @@ double				ft_resolve_rect(t_prim *prim, t_3dpt *dir, t_3dpt *origin);
 void				read_all_cut(char **str, t_prim *prim);
 void				ft_tore_setup(char **tab, t_prim **prims);
 void				trie(t_3dpt *p1, t_3dpt *p2);
+double				solv_seconde(t_prim *p, t_3dpt *param, t_3dpt *pos, t_3dpt *dir);
 
 #endif
