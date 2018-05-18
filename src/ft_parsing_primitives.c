@@ -6,7 +6,7 @@
 /*   By: yvillepo <yvillepo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 16:22:12 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/17 18:05:37 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/05/18 17:17:37 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ void	ft_cylinder_setup(char **tab, t_prim **prims)
 	ft_free_tab(tmp);
 	ft_parse_color(tab[4], &(last->color2), &ft_error_cyl);
 	ft_parsing_mov(tab[5], tab[6], last, &ft_error_cyl);
+	last->cut = 0;
 	if (ft_count_tab(tab) > 7)
 		read_all_cut(&tab[7], last);
 }

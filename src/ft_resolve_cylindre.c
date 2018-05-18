@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_resolve_cylindre.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yvillepo <yvillepo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 16:31:08 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/03/22 13:09:50 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/18 17:33:42 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,5 @@ double	ft_resolve_cyl(t_prim *prim, t_3dpt *dir, t_3dpt *origin)
 	ft_swap_g_to_l(&origin_local, origin, &(prim->g_to_l_move),
 													&(prim->g_to_l_rot));
 	ft_get_abcdet_cyl(cyl, &dir_local, &origin_local, &param);
-	solv_seconde(prim, &param, &origin_local, &dir_local);
-	return (-1);
+	return (solv_seconde(prim, &param, &origin_local, &dir_local));
 }
