@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 16:22:12 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/21 18:27:15 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/21 20:35:57 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,48 +87,55 @@ void	ft_check_reflection(t_prim *last, char *str)
 	}
 }
 
-void	ft_check_texture(t_prim *last, char *str)
+void	ft_check_texture(t_prim *last, char *str, char *type)
 {
 	char **tmp;
 	char	*filename;
+	t_texture *texture;
 
 	tmp = ft_strsplit(str, ':');
 	if (tmp != NULL)
 	{
-		if (ft_count_tab(tmp) >= 2 && ft_strequ(tmp[0], "texture") == 1)
+		if (ft_count_tab(tmp) >= 2 && (ft_strequ(tmp[0], "texture") == 1 || ft_strequ(tmp[0], "normal") == 1))
+		{
+			if (ft_strequ(tmp[0], "texture") == 1)
+				texture = &(last->textur);
+			else
+				texture = &(last->textur_n);
+		}
+		if (ft_count_tab(tmp) >= 2 && ft_strequ(tmp[0], type) == 1)
 		{
 			filename = ft_strjoin("assets/", tmp[1]);
-			last->textur.xscale = 1;
-			last->textur.yscale = 1;
-			last->textur.xmove = 0;
-			last->textur.ymove = 0;
-			last->textur.valid = TRUE;
-			ft_stb_load_textur(&(last->textur), filename);
+			texture->xscale = 1;
+			texture->yscale = 1;
+			texture->xmove = 0;
+			texture->ymove = 0;
+			texture->valid = TRUE;
+			ft_stb_load_textur(texture, filename);
 			//harcoded normal
-			ft_stb_load_textur(&(last->textur_n), "assets/Stone_02_NRM.tga");
-			// ft_stb_load_textur(&(last->textur_n), "assets/rock_01_nm.tga");
+			// ft_stb_load_textur(&(last->textur_n), "assets/Stone_02_NRM.tga");
 			free(filename);
 			if (ft_count_tab(tmp) >= 4 && ft_strequ(tmp[2], "scale") == 1)
 			{
-				last->textur.xscale = (double)ft_atoi(tmp[3]);
+				texture->xscale = (double)ft_atoi(tmp[3]);
 				if (ft_count_tab(tmp) >= 5 && ft_strequ(tmp[4], "mov") == 0)
-					last->textur.yscale = (double)ft_atoi(tmp[3]);
+					texture->yscale = (double)ft_atoi(tmp[3]);
 				else
 				{
-					last->textur.yscale = last->textur.xscale;
+					texture->yscale = texture->xscale;
 					if (ft_count_tab(tmp) >= 6 && ft_strequ(tmp[4], "mov") == 1)
 					{
 						if (ft_atoi(tmp[5]) < 0 || ft_atoi(tmp[5]) > 100)
 							ft_error("Scale needs to be between 0 and 100");
-						last->textur.xmove = (double)ft_atoi(tmp[5]) / 100 ;
+						texture->xmove = (double)ft_atoi(tmp[5]) / 100 ;
 						if (ft_count_tab(tmp) >= 7)
 						{
 							if (ft_atoi(tmp[6]) < 0 || ft_atoi(tmp[6]) > 100)
 								ft_error("Scale needs to be between 0 and 100");
-							last->textur.ymove = (double)ft_atoi(tmp[6]) / 100;
+							texture->ymove = (double)ft_atoi(tmp[6]) / 100;
 						}
 						else
-							last->textur.ymove = last->textur.xmove;
+							texture->ymove = texture->xmove;
 					}
 				}
 			}
@@ -286,22 +293,33 @@ void	ft_sphere_setup(char **tab, t_prim **prims)
 	last->reflective = 0;
 	last->refractive = 0;
 	last->textur.valid = FALSE;
+	last->textur_n.valid = FALSE;
 	if (ft_count_tab(tab) >= 6)
 	{
 		ft_check_reflection(last, tab[6]);
 		ft_check_refraction(last, tab[6]);
-		ft_check_texture(last, tab[6]);
+		ft_check_texture(last, tab[6], "texture");
+		ft_check_texture(last, tab[6], "normal");
 	}
 	if (ft_count_tab(tab) >= 7)
 	{
 		ft_check_reflection(last, tab[7]);
 		ft_check_refraction(last, tab[7]);
-		ft_check_texture(last, tab[7]);
+		ft_check_texture(last, tab[7], "texture");
+		ft_check_texture(last, tab[7], "normal");
 	}
 	if (ft_count_tab(tab) >= 8)
 	{
 		ft_check_reflection(last, tab[8]);
 		ft_check_refraction(last, tab[8]);
-		ft_check_texture(last, tab[8]);
+		ft_check_texture(last, tab[8], "texture");
+		ft_check_texture(last, tab[8], "normal");
+	}
+	if (ft_count_tab(tab) >= 9)
+	{
+		ft_check_reflection(last, tab[9]);
+		ft_check_refraction(last, tab[9]);
+		ft_check_texture(last, tab[9], "texture");
+		ft_check_texture(last, tab[9], "normal");
 	}
 }

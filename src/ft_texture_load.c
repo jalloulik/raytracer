@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 18:27:28 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/21 20:00:14 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/21 20:09:25 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,70 +63,25 @@ void	ft_get_sphere_texture_normal(t_prim *prim)
 {
 	t_3dpt coord;
 	t_3dpt	text_normal;
+	t_3dpt textur_test;
+	t_3dpt normal_bent;
 
 	ft_get_textur_coord(prim, &coord);
 	ft_get_texture_normal(&(text_normal), &(prim->textur_n), coord.x, coord.y);
 	ft_convert_normal_map(&(text_normal), &(text_normal));
 	ft_normalize_vector(&(text_normal));
 
-	t_3dpt textur_test;
-
 	ft_set_3dpt(&textur_test, 0, 0, 1);
-
-	t_3dpt normal_bent;
-
-	// t_3dpt test_normal;
-	// ft_set_3dpt(&test_normal, 128, 128, 255);
-	// ft_convert_normal_map(&test_normal, &test_normal);
-	// ft_normalize_vector(&(test_normal));
 
 	t_quater origin_to_textur;
 	t_quater textur_to_origin;
+
 	ft_find_quaters_between(&origin_to_textur, &(prim->original_normal), &textur_test);
 	ft_find_quaters_between(&textur_to_origin, &textur_test, &(prim->original_normal));
-
 	// ft_vec_quater_rot(&normal_bent, &text_normal, &(origin_to_textur));
 	ft_vec_quater_rot(&normal_bent, &text_normal, &(textur_to_origin));
 
-	// ft_vec_quater_rot(&normal_bent, &textur_test, &(textur_to_origin));
-	// ft_vec_quater_rot(&normal_bent, &textur_test, &(origin_to_textur));
-
-	// ft_vec_quater_rot(&normal_bent, &(prim->original_normal), &(origin_to_textur));
-	// ft_vec_quater_rot(&normal_bent, &(normal_bent), &(textur_to_origin));
-
-	// ft_vec_quater_rot(&normal_bent, &test_normal, &(origin_to_textur));
-	// ft_vec_quater_rot(&normal_bent, &test_normal, &(textur_to_origin));
-
 	ft_set_3dpt(&(prim->normal), normal_bent.x, normal_bent.y, normal_bent.z);
-
-	// ft_set_3dpt(&(prim->normal), text_normal.x, text_normal.y, text_normal.z);
 
 	ft_normalize_vector(&(prim->normal));
 }
-
-// void	ft_get_sphere_texture_normal(t_prim *prim)
-// {
-//
-// 	t_3dpt textur_test;
-//
-// 	ft_set_3dpt(&textur_test, 0, 0, 1);
-//
-// 	t_3dpt normal_bent;
-//
-// 	t_3dpt test_normal;
-// 	ft_set_3dpt(&test_normal, 128, 128, 255);
-// 	ft_convert_normal_map(&test_normal, &test_normal);
-// 	ft_normalize_vector(&(test_normal));
-//
-// 	t_quater origin_to_textur;
-// 	t_quater textur_to_origin;
-// 	ft_find_quaters_between(&origin_to_textur, &(prim->original_normal), &textur_test);
-// 	ft_find_quaters_between(&textur_to_origin, &textur_test, &(prim->original_normal));
-//
-// 	ft_vec_quater_rot(&normal_bent, &textur_test, &(textur_to_origin));
-//
-//
-// 	ft_set_3dpt(&(prim->normal), normal_bent.x, normal_bent.y, normal_bent.z);
-//
-// 	ft_normalize_vector(&(prim->normal));
-// }

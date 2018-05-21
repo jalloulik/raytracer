@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 15:28:11 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/21 18:51:00 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/21 20:38:04 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,6 @@ void	ft_create_local_vector_spaces(t_prim *prim)
 	{
 		if (prim->type == SPHERE)
 		{
-			//this line is making the first texture darker for some reason
-			// ft_stb_load_textur(&(prim->textur_n), "assets/Stone_02_NRM.tga");
-			// ft_putnbrendl(ft_strlen((char*)(prim->textur_n.data)));
-			prim->textur_n.valid = TRUE;
-			// prim->textur_n.valid = FALSE;
 			ft_create_local_sphere(prim);
 		}
 		else if (prim->type == PLANE)
