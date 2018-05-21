@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 16:22:12 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/11 13:18:06 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/21 18:27:15 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,9 @@ void	ft_check_texture(t_prim *last, char *str)
 			last->textur.ymove = 0;
 			last->textur.valid = TRUE;
 			ft_stb_load_textur(&(last->textur), filename);
+			//harcoded normal
+			ft_stb_load_textur(&(last->textur_n), "assets/Stone_02_NRM.tga");
+			// ft_stb_load_textur(&(last->textur_n), "assets/rock_01_nm.tga");
 			free(filename);
 			if (ft_count_tab(tmp) >= 4 && ft_strequ(tmp[2], "scale") == 1)
 			{

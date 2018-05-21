@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/11 16:11:15 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/21 15:20:24 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ typedef struct		s_prim
 	double			dot;
 	t_3dpt			p;
 	t_3dpt			normal;
-	t_3dpt			textur_normal;
+	t_3dpt			original_normal;
 	t_3dpt			rot_axis;
 	double			rot_angle;
 	t_3dpt			transl;
