@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 16:51:11 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/10 19:50:11 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/23 04:50:23 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,18 @@ void	ft_create_local_sphere(t_prim *prim)
 														&(prim->sphere.vec));
 	ft_find_quaters_between(&(prim->g_to_l_rot), &(prim->sphere.vec),
 													&(prim->sphere.vec_local));
+}
+
+void	ft_create_local_plane(t_prim *prim)
+{
+	ft_set_3dpt(&(prim->l_to_g_move), prim->plane.point.x,
+								prim->plane.point.y, prim->plane.point.z);
+	ft_set_3dpt(&(prim->g_to_l_move), -1 * prim->plane.point.x,
+						-1 * prim->plane.point.y, -1 * prim->plane.point.z);
+	ft_set_3dpt(&(prim->plane.point_local), 0, 0, 0);
+	ft_set_3dpt(&(prim->plane.normal_local), 0, 0, 1);
+	ft_find_quaters_between(&(prim->l_to_g_rot), &(prim->plane.normal_local),
+														&(prim->plane.normal));
+	ft_find_quaters_between(&(prim->g_to_l_rot), &(prim->plane.normal),
+													&(prim->plane.normal_local));
 }

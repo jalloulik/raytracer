@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/21 15:20:24 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/23 05:13:44 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ typedef struct		s_plane
 {
 	t_3dpt			normal;
 	t_3dpt			point;
+	t_3dpt			point_local;
+	t_3dpt			normal_local;
 	int				color;
 	t_3dpt			path_to_light;
 	double			d;
@@ -111,6 +113,7 @@ typedef struct		s_cyl
 	t_3dpt			o;
 	t_3dpt			path_to_light;
 	t_3dpt			normal;
+	t_3dpt			o_to_p;
 }					t_cyl;
 
 typedef struct		s_cone
@@ -344,6 +347,7 @@ void ft_sepia_filter(t_color *base);
 t_color		ft_get_sphere_texture(t_prim *prim);
 void	ft_create_local_sphere(t_prim *prim);
 void	ft_rotate_sphere(t_prim *prim);
-void	ft_get_sphere_texture_normal(t_prim *prim);
+void	ft_get_texture_prim_normal(t_prim *prim);
+void	ft_create_local_plane(t_prim *prim);
 
 #endif

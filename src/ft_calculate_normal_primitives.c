@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 14:42:06 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/21 20:38:13 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/23 05:13:37 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,14 +76,25 @@ void	ft_calculate_normal(t_prim *prim, t_3dpt *p)
 		if (prim->textur_n.valid == TRUE)
 		{
 			// ft_set_3dpt(&(prim->textur_normal), prim->normal.x, prim->normal.y, prim->normal.z);
-			ft_get_sphere_texture_normal(prim);
+			ft_get_texture_prim_normal(prim);
 		}
 	}
 	else if (prim->type == PLANE)
+	{
 		ft_set_3dpt(&(prim->normal), prim->plane.normal.x,
 					prim->plane.normal.y, prim->plane.normal.z);
+		if (prim->textur.valid == TRUE)
+			ft_set_3dpt(&(prim->original_normal), prim->normal.x, prim->normal.y, prim->normal.z);
+		if (prim->textur_n.valid == TRUE)
+		{
+			ft_get_texture_prim_normal(prim);
+		}
+	}
 	else if (prim->type == CYLINDER)
+	{
 		ft_cylinder_normal(prim, p);
+		ft_calculate_vector(&(prim->cyl.o_to_p), &(prim->cyl.origin), p);
+	}
 	else if (prim->type == CONE)
 		ft_cone_normal(prim, p);
 }
