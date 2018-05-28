@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/23 05:13:44 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/28 15:29:13 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,12 @@
 # define ERRDIV "Can not divide by 0"
 
 int					g_limit;
+
+typedef struct		s_uv
+{
+	double			tu;
+	double			tv;
+}					t_uv;
 
 typedef struct		s_2dpt
 {
@@ -333,21 +339,27 @@ int					ft_check_obst(t_3dpt *o, t_3dpt *p_to_light, t_prim *obst, double dist);
 void				ft_get_dotr(t_prim *small, t_light *light, t_3dpt *p, t_3dpt *origin);
 void				ft_get_shade(t_prim *prim, t_color *color, t_light *light);
 
-t_color	ft_throw_ray(t_obj *obj, t_3dpt *ray_dir, t_3dpt *origin, t_prim *prev);
-t_color	ft_combine_colors(t_color *base, t_color *reflect, t_color *refract);
-t_color		ft_trace_ray(t_obj *obj, t_3dpt *ray_dir, t_3dpt *origin, t_prim *prev);
-t_prim	*ft_find_closest(t_prim *prim);
-void	ft_calc_reflec_vec(t_3dpt *result, t_3dpt *norm, t_3dpt *p, t_3dpt *src);
-t_prim	*ft_find_closest_exclude(t_prim *prim, t_prim *prev);
-void	ft_refract(t_3dpt *result, t_prim *base, t_3dpt *origin, t_3dpt *dir);
+t_color				ft_throw_ray(t_obj *obj, t_3dpt *ray_dir, t_3dpt *origin, t_prim *prev);
+t_color				ft_combine_colors(t_color *base, t_color *reflect, t_color *refract);
+t_color				ft_trace_ray(t_obj *obj, t_3dpt *ray_dir, t_3dpt *origin, t_prim *prev);
+t_prim				*ft_find_closest(t_prim *prim);
+void				ft_calc_reflec_vec(t_3dpt *result, t_3dpt *norm, t_3dpt *p, t_3dpt *src);
+t_prim				*ft_find_closest_exclude(t_prim *prim, t_prim *prev);
+void				ft_refract(t_3dpt *result, t_prim *base, t_3dpt *origin, t_3dpt *dir);
 
-void ft_percentage_color(t_color *base, double percentage);
-void	ft_get_shadow(t_color *base, double percentage);
-void ft_sepia_filter(t_color *base);
-t_color		ft_get_sphere_texture(t_prim *prim);
-void	ft_create_local_sphere(t_prim *prim);
-void	ft_rotate_sphere(t_prim *prim);
-void	ft_get_texture_prim_normal(t_prim *prim);
-void	ft_create_local_plane(t_prim *prim);
+void 				ft_percentage_color(t_color *base, double percentage);
+void				ft_get_shadow(t_color *base, double percentage);
+void 				ft_sepia_filter(t_color *base);
+t_color				ft_get_sphere_texture(t_prim *prim);
+void				ft_create_local_sphere(t_prim *prim);
+void				ft_rotate_sphere(t_prim *prim);
+void				ft_get_texture_prim_normal(t_prim *prim);
+void				ft_create_local_plane(t_prim *prim);
+
+void				ft_get_textur_sphere(t_prim *prim, t_3dpt *coord);
+void				ft_get_textur_cyl(t_prim *prim, t_3dpt *coord);
+void				ft_get_textur_plane(t_prim *prim, t_3dpt *coord);
+void				ft_get_coord_from_uv(t_prim *prim, t_3dpt *coord, t_uv *uv);
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 18:11:29 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/08 07:20:22 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/28 16:23:38 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,6 @@ void	ft_calc_reflec_vec(t_3dpt *result, t_3dpt *norm, t_3dpt *p, t_3dpt *src)
 		ft_normalize_vector(result);
 	}
 }
-
-#include "stdio.h"
 
 void	ft_check_lit(t_obj *obj, t_prim *small, t_color *color, t_3dpt *origin)
 {
