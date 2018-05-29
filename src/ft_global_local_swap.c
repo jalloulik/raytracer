@@ -61,6 +61,8 @@ void	ft_create_local_vector_spaces(t_prim *prim)
 			ft_create_local_cone(prim);
 		else if (prim->type == RECT)
 			ft_create_local_rect(prim);
+		else if (prim->type == TORE)
+			ft_create_local_tore(prim);
 		prim = prim->next;
 	}
 }

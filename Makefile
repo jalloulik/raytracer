@@ -58,7 +58,10 @@ SRC = main.c\
 		ft_sun.c \
 		ft_direct_light.c\
 		ft_shade.c\
-		math.c
+		math.c \
+		print.c\
+		ft_resolve_tore.c\
+		solve_4thdeg.c
 
 OBJ = $(SRC:%.c=$(OBJPATH)%.o)
 

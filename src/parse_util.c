@@ -34,16 +34,16 @@ static void	init_cut(t_cut *cut)
 	cut->c1.x = -10000000;
 	cut->c1.y = -10000000;
 	cut->c1.z = -10000000;
-	cut->c1.x = 10000000;
-	cut->c1.y = 10000000;
-	cut->c1.z = 10000000;
+	cut->c2.x = 10000000;
+	cut->c2.y = 10000000;
+	cut->c2.z = 10000000;
 }
 
 static double	read_val(char *str)
 {
-	if (ft_strequ(str, "+") == 0)
+	if (ft_strequ(str, "+"))
 		return (10000000);
-	else if (ft_strequ(str, "-") == 0)
+	else if (ft_strequ(str, "-"))
 		return (-10000000);
 	else
 		return (ft_atof(str));
@@ -56,17 +56,17 @@ void	read_cut(char *str, t_prim *prim)
 	tab = ft_strsplit(str, ':');
 	if (ft_count_tab(tab) < 3)
 		exit (0);
-	if (ft_strcmp(tab[0], "x"))
+	if (ft_strcmp(tab[0], "x") == 0)
 	{
 		prim->cut->c1.x = read_val(tab[1]);
 		prim->cut->c2.x = read_val(tab[2]);
 	}
-	else if (ft_strcmp(tab[0], "y"))
+	else if (ft_strcmp(tab[0], "y") == 0)
 	{
 		prim->cut->c1.y = read_val(tab[1]);
 		prim->cut->c2.y = read_val(tab[2]);
 	}
-	else if (ft_strcmp(tab[0], "z"))
+	else if (ft_strcmp(tab[0], "z") == 0)
 	{
 		prim->cut->c1.z = read_val(tab[1]);
 		prim->cut->c2.z = read_val(tab[2]);
@@ -84,7 +84,10 @@ void	read_all_cut(char **str, t_prim *prim)
 	if (!(prim->cut = (malloc(sizeof(*(prim->cut))))))
 		exit (-1);
 	init_cut(prim->cut);
+	print_cut(prim->cut);
 	while (i--)
 		read_cut(str[i], prim);
+	print_cut(prim->cut);
 	trie(&(prim->cut->c1), &(prim->cut->c2));
+	print_cut(prim->cut);
 }

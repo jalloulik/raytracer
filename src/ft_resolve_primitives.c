@@ -32,6 +32,8 @@ double	ft_return_prim_dist(t_prim *prim, t_3dpt *ray, t_3dpt *origin)
 		t = ft_resolve_cercle(prim, ray, origin);
 	else if (prim->type == RECT)
 		t = ft_resolve_rect(prim, ray, origin);
+	else if (prim->type == TORE)
+		t = ft_resolve_tore(prim, ray, origin);
 	return (t);
 }
 

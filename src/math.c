@@ -1,4 +1,5 @@
 #include "rtv1.h"
+#include <stdio.h>
 /*
 double	cardan(t_3dpt *p)
 {
@@ -26,47 +27,75 @@ void			trie(t_3dpt *p1, t_3dpt *p2)
 	{
 		tmp = p1->x;
 		p1->x = p2->x;
-		p2->x = p1->x;
+		p2->x = tmp;
 
 	}
 	if (p1->y > p2->y)
 	{
 		tmp = p1->y;
 		p1->y = p2->y;
-		p2->y = p1->y;
+		p2->y = tmp;
 	}
 	if (p1->z > p2->z)
 	{
 		tmp = p1->z;
 		p1->z = p2->z;
-		p2->z = p1->z;
+		p2->z = tmp;
 	}
 }
 
-static double	find_d(double nb1, double nb2, double c1, double c2)
+static double	find_d(double nb1, double nb2, double c1, double c2, double t[2])
 {
 	if (nb1 < nb2)
 	{
-		if (c1 > nb1 && c1 < nb2)
-			return ((c1 - nb1) / (nb2 - nb1));
+		printf("ok\n");
+		if (c1 > nb1)
+		{
+			if (c1 < nb2)
+				return ((c1 - nb1) * (t[1] - t[0]) / (nb2 - nb1) + t[0]);
+			else
+				return (-1);
+		}
+		else
+		{
+			if (c2 < nb1)
+				return (-1);
+			else if (c2 > nb1)
+				return (t[0]);
+		}
 	}
-	if (nb1 > nb2)
+	else
 	{
-		if (c2 > nb1 && c2 < nb2)
-			return ((c2 - nb1) / (nb2 - nb1));
+		printf("ok2\n");
+		if (c2 < nb1)
+		{
+			if (c2 > nb2)
+				return (t[1]);
+			else
+				return (-1);
+		}
+		else
+		{
+			if (c1 > nb1)
+				return (-1);
+			else if (c1 < nb1)
+				return (t[1]);
+		}
 	}
 	return (-1);
 }
 
 static double	cut(t_3dpt *p1, t_3dpt *p2, double t[2], t_cut *cut)
 {
-	int	d1;
-	int d2;
-	int d3;
+	double	d1;
+//	double	d2;
+//	double	d3;
 
-	d1 = find_d(p1->x, p2->x, cut->c1.x, cut->c2.x);
+	d1 = find_d(p1->x, p2->x, cut->c1.x, cut->c2.x, t);
 		if (d1 < 0)
 			return (-1);
+	return (d1);
+	/*
 	d2 = find_d(p1->y, p2->y, cut->c1.y, cut->c2.y);
 	if (d2 < 0)
 			return (-1);
@@ -79,7 +108,7 @@ static double	cut(t_3dpt *p1, t_3dpt *p2, double t[2], t_cut *cut)
 		if (d3 < d2)
 			d1 = d3;
 	}
-	return (d1 * (t[2] - t[1]) + t[1]);
+	return (d1 * (t[2] - t[1]) + t[1]);*/
 }
 
 
