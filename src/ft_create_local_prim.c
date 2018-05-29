@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 16:51:11 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/10 18:32:50 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/05/29 22:55:36 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ void	ft_create_local_tore(t_prim *prim)
 						-1 * prim->tore.pos.y, -1 * prim->tore.pos.z);
 	ft_set_3dpt(&(prim->tore.pos_local), 0, 0, 0);
 	ft_set_3dpt(&(prim->tore.dir_local), 0, 1, 0);
-	ft_find_quaters_between(&(prim->l_to_g_rot), &(prim->tore.pos_local),
+	ft_find_quaters_between(&(prim->l_to_g_rot), &(prim->tore.dir_local),
 														&(prim->tore.dir));
 	ft_find_quaters_between(&(prim->g_to_l_rot), &(prim->tore.dir),
-													&(prim->tore.pos_local));
+													&(prim->tore.dir_local));
 }

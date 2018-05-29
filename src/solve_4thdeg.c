@@ -1,16 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   solve_4thdeg.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yvillepo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/05/29 22:21:54 by yvillepo          #+#    #+#             */
+/*   Updated: 2018/05/29 23:00:38 by yvillepo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "rtv1.h"
 
-#define PI          3.14159265358979323846
-
-/* epsilon surrounding for near zero values */
-
 #define     EQN_EPS     1e-9
-#define	    IsZero(x)	((x) > -EQN_EPS && (x) < EQN_EPS)
+#define            IsZero(x)   ((x) > -EQN_EPS && (x) < EQN_EPS)
 
-#ifdef NOCBRT
-#define     cbrt(x)     ((x) > 0.0 ? pow((double)(x), 1.0/3.0) : \
-                          ((x) < 0.0 ? -pow((double)-(x), 1.0/3.0) : 0.0))
-#endif
+double	cbrt(double x)
+{
+	if (x > 0.0)
+		return (pow(x, 1.0 / 3.0));
+	else if (x < 0.0)
+		return(-pow(-x, 1.0 / 3.0));
+	return (0);
+}
 
 double search_min(double num[4], double nb)
 {
@@ -290,6 +302,5 @@ double	SolveQuartic(c, s)
 
     for (i = 0; i < num; ++i)
 	s[ i ] -= sub;
-	printf ("ok\n");
     return num;
 }

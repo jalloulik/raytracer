@@ -37,9 +37,7 @@ double	ft_resolve_tore(t_prim *prim, t_3dpt *dir, t_3dpt *origin)
 	
 	calc_param(prim,  r, &pos_local, &dir_local);
 	t = SolveQuartic(r, s);
-	printf("t = %f %d \n",search_min(s, t), t);
 	return (search_min(s, t));
-	//return (ft_resolve_t(tore, &dir_local, &pos_local));
 }
 
 void	ft_cylinder_normal(t_prim *prim, t_3dpt *p)
@@ -67,7 +65,4 @@ void	ft_cylinder_normal(t_prim *prim, t_3dpt *p)
 									&(prim->l_to_g_move), &(prim->l_to_g_rot));
 	ft_set_3dpt(&(prim->cyl.o), global_o.x, global_o.y, global_o.z);
 	ft_calculate_vector(&(prim->normal), &(prim->cyl.o), p);
-	
-
-	
 }

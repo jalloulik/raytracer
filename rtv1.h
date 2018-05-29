@@ -6,7 +6,7 @@
 /*   By: yvillepo <yvillepo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/23 17:14:32 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/05/29 22:30:15 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@
 # define ERRCOLOR "Color Usage color:r:00:g:00:b:00"
 # define ERR_COLOR_RANGE "Colors can only be between 0 and 255"
 # define ERRDIV "Can not divide by 0"
+
+#define PI          3.14159265358979323846
 
 typedef struct		s_2dpt
 {

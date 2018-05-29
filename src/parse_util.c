@@ -6,7 +6,7 @@
 /*   By: yvillepo <yvillepo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/02 19:01:34 by yvillepo          #+#    #+#             */
-/*   Updated: 2018/05/17 18:31:23 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/05/29 19:30:54 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	read_vect(char *str, t_3dpt *vect)
 	vect->z = ft_atoi(tab[3]);	
 	ft_free_tab(tab);
 }
-
+/*
 static void	init_cut(t_cut *cut)
 {
 	cut->c1.x = -10000000;
@@ -90,4 +90,4 @@ void	read_all_cut(char **str, t_prim *prim)
 	print_cut(prim->cut);
 	trie(&(prim->cut->c1), &(prim->cut->c2));
 	print_cut(prim->cut);
-}
+}*/
