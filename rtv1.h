@@ -6,7 +6,7 @@
 /*   By: yvillepo <yvillepo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/17 18:30:54 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/05/23 17:14:32 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,16 @@ typedef struct		s_2dpt
 	int				x;
 	int				y;
 }					t_2dpt;
+
+typedef struct		s_6dpt
+{
+	double			p1;
+	double			p2;
+	double			p3;
+	double			p4;
+	double			p5;
+	double			p6;
+}					t_6dpt;
 
 typedef struct		s_quater
 {

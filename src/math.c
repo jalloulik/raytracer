@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   math.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yvillepo <yvillepo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/02/08 12:04:54 by yvillepo          #+#    #+#             */
+/*   Updated: 2018/05/23 17:39:29 by yvillepo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "rtv1.h"
 #include <stdio.h>
 /*
@@ -5,8 +17,9 @@ double	cardan(t_3dpt *p)
 {
 	return (0);
 }
-*/
-double			resolve4deg(t_quater *p, double e)
+
+
+double			resolve4deg2(t_quater *p, double e)
 {
 	t_3dpt	k;
 
@@ -17,6 +30,26 @@ double			resolve4deg(t_quater *p, double e)
 		(p->z * pow((p->y / 4), 2)) / pow(p->x, 3) -
 		0.25 * p->y * p->w / pow(p->x, 3) + e / p->x;
 	return (-1);
+}
+
+double			resolve4deg2(t_quater *p, double e)
+{
+	t_6dpt	p1;
+
+	p1.p1 = 2 * pow(p->z, 3) - 9 * p->y * p->z * p->w + 27 * p->x *
+		p->w * p->w + 27 * p->y * p->y * e - 72 * p->x * p->z * e;
+	if ((p1.p2 = -4 * pow((p->z * p->z - 3 * p->y * p->w + 12 * 
+		p->x * e)), 3) < 0)
+	p1.p2 = p1->x + sqrt(-4 * pow((p->z * p->z - 3 * p->y * p->w + 12 * 
+		p->x * e)), 3) + p1.p1 * p1.p1;
+	p1.p3 = (p->z * p->z - 3 * p->y * p->w + 12 * a * e) / (3 * a *
+		paw(p1->y / 2 ,1/3)) + paw(p1->y / 2 ,1/3) / (3 * a);
+	p4 = sqrt((b * b) / (4 * a * a) - (2 * c) / 3 * a + p3;
+	p5 = (b * b) / (2 * a * a) - (4 * c) / (3 * a) - p3;
+	p6 = ((-b * b * b) / (a * a * a) + (4 * b * c) / (a * a) - (8 * d) / a) /
+	(4 * p4);
+
+
 }
 
 void			trie(t_3dpt *p1, t_3dpt *p2)
@@ -95,7 +128,6 @@ static double	cut(t_3dpt *p1, t_3dpt *p2, double t[2], t_cut *cut)
 		if (d1 < 0)
 			return (-1);
 	return (d1);
-	/*
 	d2 = find_d(p1->y, p2->y, cut->c1.y, cut->c2.y);
 	if (d2 < 0)
 			return (-1);
@@ -108,9 +140,8 @@ static double	cut(t_3dpt *p1, t_3dpt *p2, double t[2], t_cut *cut)
 		if (d3 < d2)
 			d1 = d3;
 	}
-	return (d1 * (t[2] - t[1]) + t[1]);*/
-}
-
+	return (d1 * (t[2] - t[1]) + t[1]);
+}*/
 
 double			solv_seconde(t_prim *p, t_3dpt *param, t_3dpt *pos, t_3dpt *dir)
 {
