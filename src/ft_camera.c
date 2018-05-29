@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 11:40:09 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/08 10:20:28 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/29 16:07:04 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void		ft_init_cam_vec(char **tab, t_cam *cam)
 	ft_cam_mov(tab[2], tab[3], cam);
 }
 
-void	ft_check_sepia(char **tab, t_cam *cam)
+void			ft_check_sepia(char **tab, t_cam *cam)
 {
 	char **tmp;
 

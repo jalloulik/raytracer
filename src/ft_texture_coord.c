@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 15:22:38 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/28 15:26:59 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/29 17:19:36 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void		ft_get_textur_sphere(t_prim *prim, t_3dpt *coord)
 {
 	t_uv	uv;
-	t_3dpt local_normal;
+	t_3dpt	local_normal;
 
 	ft_vec_quater_rot(&local_normal, &(prim->original_normal),
 												&(prim->g_to_l_rot));
@@ -32,7 +32,7 @@ void		ft_get_textur_sphere(t_prim *prim, t_3dpt *coord)
 void		ft_get_textur_cyl(t_prim *prim, t_3dpt *coord)
 {
 	t_uv	uv;
-	t_3dpt local_normal;
+	t_3dpt	local_normal;
 
 	ft_vec_quater_rot(&local_normal, &(prim->cyl.o_to_p), &(prim->g_to_l_rot));
 	ft_normalize_vector(&local_normal);
@@ -50,7 +50,7 @@ void		ft_get_textur_cyl(t_prim *prim, t_3dpt *coord)
 void		ft_get_textur_plane(t_prim *prim, t_3dpt *coord)
 {
 	t_uv	uv;
-	t_3dpt local_p;
+	t_3dpt	local_p;
 
 	ft_swap_g_to_l(&local_p, &(prim->p), &(prim->g_to_l_move),
 												&(prim->g_to_l_rot));

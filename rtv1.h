@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/28 15:29:13 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/29 16:02:40 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -360,6 +360,8 @@ void				ft_get_textur_sphere(t_prim *prim, t_3dpt *coord);
 void				ft_get_textur_cyl(t_prim *prim, t_3dpt *coord);
 void				ft_get_textur_plane(t_prim *prim, t_3dpt *coord);
 void				ft_get_coord_from_uv(t_prim *prim, t_3dpt *coord, t_uv *uv);
-
+double				ft_shadow_percentage(t_obj *obj, t_prim *small, int *lit);
+void				ft_calculate_vec_to_light(t_3dpt *p_to_light, t_obj *obj, t_prim *small);
+double				ft_get_dist_to_light(t_obj *obj, t_prim *small);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 16:51:11 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/23 08:00:26 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/29 16:07:49 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,5 @@ void	ft_create_local_plane(t_prim *prim)
 	ft_find_quaters_between(&(prim->l_to_g_rot), &(prim->plane.normal_local),
 														&(prim->plane.normal));
 	ft_find_quaters_between(&(prim->g_to_l_rot), &(prim->plane.normal),
-													&(prim->plane.normal_local));
+												&(prim->plane.normal_local));
 }

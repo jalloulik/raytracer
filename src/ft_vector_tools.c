@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 17:30:01 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/04/30 15:33:11 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/29 17:21:30 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,7 @@ void	ft_normalize_vector(t_3dpt *source)
 
 	magnitude = sqrt(SQR(source->x) + SQR(source->y) + SQR(source->z));
 	if (magnitude == 0)
-	{
-		// ft_error(ERRDIV);
 		magnitude = 0.000000000000001;
-	}
 	if (source == NULL)
 		ft_error("Vector is NULL");
 	source->x = source->x / magnitude;

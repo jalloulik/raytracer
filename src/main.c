@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:27 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/21 20:03:54 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/28 17:10:16 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,7 @@ t_color	ft_throw_ray(t_obj *obj, t_3dpt *ray_dir, t_3dpt *origin, t_prim *prev)
 
 	ft_set_color(&total_color, 0, 0, 0);
 	ft_resolve_prim(obj->prim, ray_dir, origin);
-	// ft_resolve_light(obj->light, ray_dir, origin);
-	// if (ft_test_smallest(obj->light, obj->prim) == 1)
-	// 	ft_set_color(&total_color, 255, 255, 255);
-	// else
-	// {
-		total_color = ft_figure_color(obj, origin, prev);
-	// }
+	total_color = ft_figure_color(obj, origin, prev);
 	return (total_color);
 }
 
@@ -46,9 +40,7 @@ void	ft_set_scene(t_winenv *mlxenv, t_cam *cam, t_light *light, t_prim *list)
 	t_ray		ray;
 	t_obj		obj;
 	t_color		total_color;
-	// t_texture	textur;
 
-	// ft_stb_load_textur(&textur, "assets/Stone_02_COLOR.tga");
 	obj.light = light;
 	obj.prim = list;
 	pos.x = -1;

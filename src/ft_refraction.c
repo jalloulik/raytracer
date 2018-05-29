@@ -6,37 +6,36 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/01 15:01:24 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/03 20:03:43 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/29 17:17:56 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void	ft_refract(t_3dpt *result, t_prim *base, t_3dpt *origin, t_3dpt *dir)
+void	ft_refract(t_3dpt *rslt, t_prim *base, t_3dpt *origin, t_3dpt *dir)
 {
-	double n;
 	t_3dpt	path_to_cam;
-	double costhetai;
-	double sinthetat;
-	double n1;
-	double n2;
+	double	costhetai;
+	double	sinthetat;
+	double	n[3];
 
-	n = 1;
-	n1 = VACUUM;
-	n2 = base->refraction_index;
-	if (n2 != 0)
-		n = n1 / n2;
+	n[0] = 1;
+	n[1] = VACUUM;
+	n[2] = base->refraction_index;
+	if (n[2] != 0)
+		n[0] = n[1] / n[2];
 	else
 		ft_error("Index of refraction NULL");
 	ft_calculate_vector(&path_to_cam, &(base->p), origin);
 	costhetai = ft_calculate_dot(&path_to_cam, &(base->normal));
-	sinthetat = SQR(n) * (1 - SQR(costhetai));
+	sinthetat = SQR(n[0]) * (1 - SQR(costhetai));
 	if ((sinthetat) > 1.0)
-	{
-		printf("sinthetat total internal reflection %f\n",sinthetat);
-	}
-	result->x = n * dir->x + (n * costhetai - sqrt(1 - (sinthetat))) * base->normal.x;
-	result->y = n * dir->y + (n * costhetai - sqrt(1 - (sinthetat))) * base->normal.y;
-	result->z = n * dir->z + (n * costhetai - sqrt(1 - (sinthetat))) * base->normal.z;
-	ft_normalize_vector(result);
+		ft_putendl("sinthetat total internal reflection");
+	rslt->x = n[0] * dir->x + (n[0] * costhetai - sqrt(1 - (sinthetat)))
+														* base->normal.x;
+	rslt->y = n[0] * dir->y + (n[0] * costhetai - sqrt(1 - (sinthetat)))
+														* base->normal.y;
+	rslt->z = n[0] * dir->z + (n[0] * costhetai - sqrt(1 - (sinthetat)))
+														* base->normal.z;
+	ft_normalize_vector(rslt);
 }

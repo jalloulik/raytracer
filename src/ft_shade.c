@@ -6,13 +6,13 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 08:59:35 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/10 19:40:49 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/29 17:08:33 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void ft_sepia_filter(t_color *base)
+void	ft_sepia_filter(t_color *base)
 {
 	double		r;
 	double		g;
@@ -30,7 +30,7 @@ void ft_sepia_filter(t_color *base)
 	ft_set_color(base, (int)r, (int)g, (int)b);
 }
 
-void ft_percentage_color(t_color *base, double percentage)
+void	ft_percentage_color(t_color *base, double percentage)
 {
 	double		r;
 	double		g;
@@ -54,13 +54,6 @@ void	ft_get_shadow(t_color *base, double percentage)
 	double		g;
 	double		b;
 
-
-	// r = base->red * (1 - percentage);
-	// g = base->green * (1 - percentage);
-	// b = base->blue * (1 - percentage);
-	// r = base->red * (1 - percentage) + base->red;
-	// g = base->green * (1 - percentage) + base->green;
-	// b = base->blue * (1 - percentage) + base->blue;
 	r = (base->red * (1 - percentage) + base->red) / 2;
 	g = (base->green * (1 - percentage) + base->green) / 2;
 	b = (base->blue * (1 - percentage) + base->blue) / 2;
@@ -79,7 +72,6 @@ t_color	ft_combine_colors(t_color *base, t_color *reflect, t_color *refract)
 	int		g;
 	int		b;
 	t_color result;
-
 
 	r = base->red + reflect->red + refract->red;
 	g = base->green + reflect->green + refract->green;
