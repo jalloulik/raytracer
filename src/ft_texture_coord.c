@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 15:22:38 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/30 14:15:54 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/30 15:27:11 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,11 @@ void		ft_get_textur_cyl(t_prim *prim, t_3dpt *coord)
 
 	ft_swap_g_to_l(&local_p, &(prim->p), &(prim->g_to_l_move),
 												&(prim->g_to_l_rot));
-	ft_vec_quater_rot(&local_normal, &(prim->original_normal), &(prim->g_to_l_rot));
+	ft_vec_quater_rot(&local_normal, &(prim->original_normal),
+														&(prim->g_to_l_rot));
 	ft_normalize_vector(&local_normal);
-	uv.tu = (atan2(local_normal.x, local_normal.z) / (2 * FT_PI) + 0.5) + prim->textur.xmove;
+	uv.tu = (atan2(local_normal.x, local_normal.z) / (2 * FT_PI) + 0.5)
+														+ prim->textur.xmove;
 	uv.tv = (local_p.y / 10) + prim->textur.ymove;
 	if (uv.tu > 1)
 		uv.tu = uv.tu - 1;
