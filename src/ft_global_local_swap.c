@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 15:28:11 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/03/21 17:41:44 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/23 04:49:44 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	ft_rotate_all(t_prim *prim)
 	{
 		if (prim->type == SPHERE)
 		{
+			ft_rotate_sphere(prim);
 		}
 		else if (prim->type == PLANE)
 			ft_rotate_plan(prim);
@@ -51,9 +52,11 @@ void	ft_create_local_vector_spaces(t_prim *prim)
 	{
 		if (prim->type == SPHERE)
 		{
+			ft_create_local_sphere(prim);
 		}
 		else if (prim->type == PLANE)
 		{
+			ft_create_local_plane(prim);
 		}
 		else if (prim->type == CYLINDER)
 			ft_create_local_cyl(prim);

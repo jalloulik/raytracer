@@ -6,7 +6,7 @@
 #    By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/06 17:18:00 by kjalloul          #+#    #+#              #
-#    Updated: 2018/02/19 14:53:54 by kjalloul         ###   ########.fr        #
+#    Updated: 2018/05/15 09:10:32 by kjalloul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,11 @@ SRC = ft_fill_img.c\
 		ft_mlx_init.c\
 		ft_key_exit.c\
 		ft_set_3dpt.c\
-		ft_fill_img_rgb.c
+		ft_fill_img_rgb.c\
+		ft_stb_load_texture.c\
+		ft_get_texture_color.c\
+		ft_set_color.c\
+		ft_get_texture_normal.c
 
 OBJ = $(SRC:%.c=%.o)
 

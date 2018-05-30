@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 16:33:59 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/02/19 15:32:51 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/15 10:11:21 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,19 @@ typedef struct	s_color
 	unsigned char alpha;
 }				t_color;
 
+typedef struct		s_texture
+{
+	int				width;
+	int				height;
+	int				n;
+	int				valid;
+	unsigned char 	*data;
+	double			xscale;
+	double			yscale;
+	double			xmove;
+	double			ymove;
+}					t_texture;
+
 void			ft_error(char *str);
 void			ft_mlx_init(t_winenv *mlxenv);
 void			ft_create_window(t_winenv *mlxenv, int length,
@@ -108,5 +121,10 @@ void			ft_fill_img_rgb(t_mlximg img, int x, int y, t_color color);
 void			ft_create_img(t_winenv *mlxenv, int length, int height);
 int				ft_key_hook_exit(int keycode);
 void			ft_set_3dpt(t_3dpt *point, double x, double y, double z);
+void			ft_set_color(t_color *color, int r, int g, int b);
+t_color			ft_get_texture_color(t_texture *textur, int x, int y);
+void 			ft_stb_load_textur(t_texture *textur, char *file_path);
+void			ft_get_texture_normal(t_3dpt *normal, t_texture *textur,
+															int x, int y);
 
 #endif

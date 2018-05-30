@@ -6,7 +6,7 @@
 #    By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/06 17:18:00 by kjalloul          #+#    #+#              #
-#    Updated: 2018/04/27 09:00:35 by kjalloul         ###   ########.fr        #
+#    Updated: 2018/05/29 16:01:59 by kjalloul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,6 @@ SRC = main.c\
 		ft_parsing.c\
 		ft_camera.c\
 		ft_spots.c\
-		ft_color_parse.c\
 		ft_resolve_cone.c\
 		ft_quaternions.c\
 		ft_calculate_normal_primitives.c\
@@ -52,7 +51,12 @@ SRC = main.c\
 		ft_ambiant.c\
 		ft_sun.c \
 		ft_direct_light.c\
-		ft_shade.c
+		ft_shade.c\
+		ft_throw_rays.c\
+		ft_refraction.c\
+		ft_texture_load.c\
+		ft_texture_coord.c\
+		ft_shadow.c
 
 OBJ = $(SRC:%.c=$(OBJPATH)%.o)
 

@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 08:46:55 by tfavart           #+#    #+#             */
-/*   Updated: 2018/04/26 20:47:40 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/04/27 10:56:36 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ void	ft_get_ambiant(t_prim *prim, t_color *color, t_light *light);
 void	ft_ambiant_setup(char **tab, t_light **spots);
 void	ft_sun_setup(char **tab, t_light **spots);
 double	ft_test_smallest(t_light *light, t_prim *prim);
-void	ft_resolve_light(t_light *light, t_ray *ray, t_cam *cam);
+void	ft_resolve_light(t_light *light, t_3dpt *ray, t_3dpt *origin);
 
 #endif

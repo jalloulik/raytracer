@@ -1,0 +1,6 @@
+cam|origin:0:0:0|rotation:0:0:0:angle:0|translation:0:0:0
+spot|origin:0:0:0|intensity:100
+spot|origin:2:0:3|intensity:100
+plane|origin:0:0:-5|normal:0:0:1|color:r:200:g:0:b:0|rotation:0:1:0:angle:45|translation:0:0:0|reflect|refract:AIR
+plane|origin:0:0:5|normal:0:0:-1|color:r:0:g:0:b:100|rotation:0:1:0:angle:45|translation:0:0:0|reflect|refract:AIR
+cylinder|origin:2:0:0|vec:0:1:0|radius:1|color:r:00:g:250:b:0|rotation:0:0:1:angle:00|translation:0:0:0
