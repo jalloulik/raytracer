@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/30 13:03:55 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/29 17:44:03 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/30 11:39:51 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ t_prim	*ft_find_closest_exclude(t_prim *prim, t_prim *prev)
 	return (smallest);
 }
 
-t_color		ft_reflect_ray(t_prim *base, t_3dpt *origin, t_obj *obj)
+t_color	ft_reflect_ray(t_prim *base, t_3dpt *origin, t_obj *obj)
 {
 	double	cam_dot;
 	t_3dpt	path_to_cam;
-	t_3dpt light_reflect;
-	t_color reflect_color;
+	t_3dpt	light_reflect;
+	t_color	reflect_color;
 
 	ft_set_color(&reflect_color, 0, 0, 0);
 	ft_calculate_vector(&path_to_cam, &(base->p), origin);
@@ -59,12 +59,12 @@ t_color		ft_reflect_ray(t_prim *base, t_3dpt *origin, t_obj *obj)
 	return (reflect_color);
 }
 
-t_color		ft_refract_ray(t_prim *bse, t_3dpt *o, t_3dpt *ray_dir, t_obj *obj)
+t_color	ft_refract_ray(t_prim *bse, t_3dpt *o, t_3dpt *ray_dir, t_obj *obj)
 {
 	double	cam_dot;
 	t_3dpt	path_to_cam;
-	t_3dpt light_reflect;
-	t_color refract_color;
+	t_3dpt	light_reflect;
+	t_color	refract_color;
 
 	ft_set_color(&refract_color, 0, 0, 0);
 	ft_calculate_vector(&path_to_cam, &(bse->p), o);
@@ -77,12 +77,12 @@ t_color		ft_refract_ray(t_prim *bse, t_3dpt *o, t_3dpt *ray_dir, t_obj *obj)
 	return (refract_color);
 }
 
-t_color		ft_trace_ray(t_obj *obj, t_3dpt *ray_dir, t_3dpt *origin, t_prim *prev)
+t_color	ft_trace_ray(t_obj *obj, t_3dpt *ray_dir, t_3dpt *origin, t_prim *prev)
 {
-	t_color point_color;
-	t_color reflect_color;
-	t_color refract_color;
-	t_prim *base;
+	t_color	point_color;
+	t_color	reflect_color;
+	t_color	refract_color;
+	t_prim	*base;
 
 	g_limit++;
 	ft_set_color(&reflect_color, 0, 0, 0);
