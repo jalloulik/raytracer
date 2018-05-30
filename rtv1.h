@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/29 16:02:40 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/30 11:53:24 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,7 @@
 # define DENSEFLINTGLASS 1.66
 # define DIAMOND 2.417
 
-# ifndef M_PI
-# define M_PI 3.14159265358979323846
-# endif
+# define FT_PI 3.14159265358979323846
 
 # define ERRUSAGE "Usage : ./rtv1 <filename>"
 # define ERRFILE "File does not exist"
@@ -333,23 +331,31 @@ void				ft_error_cam(void);
 
 double				ft_return_prim_dist(t_prim *prim, t_3dpt *ray,
 														t_3dpt *origin);
-void				ft_resolve_prim(t_prim *prim, t_3dpt *ray_dir, t_3dpt *origin);
+void				ft_resolve_prim(t_prim *prim, t_3dpt *ray_dir,
+															t_3dpt *origin);
 
-int					ft_check_obst(t_3dpt *o, t_3dpt *p_to_light, t_prim *obst, double dist);
-void				ft_get_dotr(t_prim *small, t_light *light, t_3dpt *p, t_3dpt *origin);
+int					ft_check_obst(t_3dpt *o, t_3dpt *p_to_light, t_prim *obst,
+																double dist);
+void				ft_get_dotr(t_prim *small, t_light *light, t_3dpt *p,
+															t_3dpt *origin);
 void				ft_get_shade(t_prim *prim, t_color *color, t_light *light);
 
-t_color				ft_throw_ray(t_obj *obj, t_3dpt *ray_dir, t_3dpt *origin, t_prim *prev);
-t_color				ft_combine_colors(t_color *base, t_color *reflect, t_color *refract);
-t_color				ft_trace_ray(t_obj *obj, t_3dpt *ray_dir, t_3dpt *origin, t_prim *prev);
+t_color				ft_throw_ray(t_obj *obj, t_3dpt *ray_dir, t_3dpt *origin,
+																t_prim *prev);
+t_color				ft_combine_colors(t_color *base, t_color *reflect,
+															t_color *refract);
+t_color				ft_trace_ray(t_obj *obj, t_3dpt *ray_dir, t_3dpt *origin,
+																t_prim *prev);
 t_prim				*ft_find_closest(t_prim *prim);
-void				ft_calc_reflec_vec(t_3dpt *result, t_3dpt *norm, t_3dpt *p, t_3dpt *src);
+void				ft_calc_reflec_vec(t_3dpt *result, t_3dpt *norm, t_3dpt *p,
+																t_3dpt *src);
 t_prim				*ft_find_closest_exclude(t_prim *prim, t_prim *prev);
-void				ft_refract(t_3dpt *result, t_prim *base, t_3dpt *origin, t_3dpt *dir);
+void				ft_refract(t_3dpt *result, t_prim *base, t_3dpt *origin,
+																t_3dpt *dir);
 
-void 				ft_percentage_color(t_color *base, double percentage);
+void				ft_percentage_color(t_color *base, double percentage);
 void				ft_get_shadow(t_color *base, double percentage);
-void 				ft_sepia_filter(t_color *base);
+void				ft_sepia_filter(t_color *base);
 t_color				ft_get_sphere_texture(t_prim *prim);
 void				ft_create_local_sphere(t_prim *prim);
 void				ft_rotate_sphere(t_prim *prim);
@@ -361,7 +367,8 @@ void				ft_get_textur_cyl(t_prim *prim, t_3dpt *coord);
 void				ft_get_textur_plane(t_prim *prim, t_3dpt *coord);
 void				ft_get_coord_from_uv(t_prim *prim, t_3dpt *coord, t_uv *uv);
 double				ft_shadow_percentage(t_obj *obj, t_prim *small, int *lit);
-void				ft_calculate_vec_to_light(t_3dpt *p_to_light, t_obj *obj, t_prim *small);
+void				ft_calculate_vec_to_light(t_3dpt *p_to_light, t_obj *obj,
+																t_prim *small);
 double				ft_get_dist_to_light(t_obj *obj, t_prim *small);
 
 #endif

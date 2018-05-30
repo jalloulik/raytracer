@@ -20,8 +20,8 @@ void		ft_get_textur_sphere(t_prim *prim, t_3dpt *coord)
 	ft_vec_quater_rot(&local_normal, &(prim->original_normal),
 												&(prim->g_to_l_rot));
 	ft_normalize_vector(&local_normal);
-	uv.tu = (asin(local_normal.x) / M_PI + 0.5) + prim->textur.xmove;
-	uv.tv = (asin(local_normal.y) / M_PI + 0.5) + prim->textur.ymove;
+	uv.tu = (asin(local_normal.x) / FT_PI + 0.5) + prim->textur.xmove;
+	uv.tv = (asin(local_normal.y) / FT_PI + 0.5) + prim->textur.ymove;
 	if (uv.tu > 1)
 		uv.tu = uv.tu - 1;
 	if (uv.tv > 1)
@@ -36,10 +36,10 @@ void		ft_get_textur_cyl(t_prim *prim, t_3dpt *coord)
 
 	ft_vec_quater_rot(&local_normal, &(prim->cyl.o_to_p), &(prim->g_to_l_rot));
 	ft_normalize_vector(&local_normal);
-	uv.tu = (atan2(local_normal.x, local_normal.z) / (2 * M_PI) + 0.5) + prim->textur.xmove;
+	uv.tu = (atan2(local_normal.x, local_normal.z) / (2 * FT_PI) + 0.5) + prim->textur.xmove;
 	uv.tv = (local_normal.y * 0.5 + 0.5) + prim->textur.ymove;
-	// tu = (asin(local_normal.x) / M_PI + 0.5) + prim->textur.xmove;
-	// tv = (asin(local_normal.y) / M_PI + 0.5) + prim->textur.ymove;
+	// tu = (asin(local_normal.x) / FT_PI + 0.5) + prim->textur.xmove;
+	// tv = (asin(local_normal.y) / FT_PI + 0.5) + prim->textur.ymove;
 	if (uv.tu > 1)
 		uv.tu = uv.tu - 1;
 	if (uv.tv > 1)
