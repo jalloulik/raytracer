@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 16:22:12 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/23 05:02:10 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/30 14:58:32 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -293,11 +293,29 @@ void	ft_cone_setup(char **tab, t_prim **prims)
 	{
 		ft_check_reflection(last, tab[7]);
 		ft_check_refraction(last, tab[7]);
+		ft_check_texture(last, tab[7], "texture");
+		ft_check_texture(last, tab[7], "normal");
 	}
 	if (ft_count_tab(tab) >= 8)
 	{
 		ft_check_reflection(last, tab[8]);
 		ft_check_refraction(last, tab[8]);
+		ft_check_texture(last, tab[8], "texture");
+		ft_check_texture(last, tab[8], "normal");
+	}
+	if (ft_count_tab(tab) >= 9)
+	{
+		ft_check_reflection(last, tab[9]);
+		ft_check_refraction(last, tab[9]);
+		ft_check_texture(last, tab[9], "texture");
+		ft_check_texture(last, tab[9], "normal");
+	}
+	if (ft_count_tab(tab) >= 10)
+	{
+		ft_check_reflection(last, tab[10]);
+		ft_check_refraction(last, tab[10]);
+		ft_check_texture(last, tab[10], "texture");
+		ft_check_texture(last, tab[10], "normal");
 	}
 }
 

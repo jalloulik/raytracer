@@ -1,9 +1,10 @@
-cam|origin:0:0:20|rotation:1:0:0:angle:0|translation:0:0:0|sepia:false
+cam|origin:0:0:30|rotation:1:0:0:angle:0|translation:0:0:0|sepia:false
 spot|origin:0:0:20|intensity:100
 #spot|origin:15:15:20|intensity:100
 sphere|origin:-6:0:0|radius:3|color:r:250:g:00:b:00|rotation:1:1:0:angle:0|translation:0:0:0|texture:Stone_02_COLOR.tga:scale:4:mov:0:0|normal:Stone_02_NRM.tga:scale:4:mov:0:0
 #sphere|origin:-6:0:0|radius:3|color:r:250:g:00:b:00|rotation:0:0:1:angle:180|translation:0:0:0|texture:color_map_earth.jpg:scale:1:mov:20:90
 #sphere|origin:6:0:0|radius:3|color:r:250:g:00:b:00|rotation:0:0:1:angle:0|translation:0:0:0|texture:rock_01_dif.tga:scale:2:mov:0:0|normal:rock_01_nm.tga:scale:2:mov:0:0
 #sphere|origin:0:0:0|radius:5|color:r:250:g:00:b:00|rotation:1:1:0:angle:0|translation:0:0:0|normal:Stone_02_NRM.tga:scale:4:mov:0:0
-cylinder|origin:0:0:0|vec:0:1:0|radius:2|color:r:250:g:0:b:0|rotation:0:0:1:angle:00|translation:0:0:0|texture:Stone_02_COLOR.tga:scale:3:mov:0:0
-plane|origin:0:0:-10|normal:0:0:1|color:r:250:g:0:b:0|rotation:0:1:0:angle:40|translation:0:0:0|texture:Stone_02_COLOR.tga:scale:2:mov:0:0|normal:Stone_02_NRM.tga:scale:2:mov:0:0
+cylinder|origin:0:0:0|vec:0:1:0|radius:2|color:r:250:g:0:b:0|rotation:0:0:1:angle:0|translation:0:0:0|texture:Stone_02_COLOR.tga:scale:3:mov:0:0|normal:Stone_02_NRM.tga:scale:3:mov:0:0
+plane|origin:0:0:-10|normal:0:0:1|color:r:250:g:0:b:0|rotation:0:1:0:angle:0|translation:0:0:0|texture:Stone_02_COLOR.tga:scale:2:mov:1:1|normal:Stone_02_NRM.tga:scale:2:mov:0:0
+cone|origin:10:0:0|vec:0:1:0|angle:20|color:r:255:g:255:b:0|rotation:0:0:1:angle:0|translation:0:0:0|texture:Stone_02_COLOR.tga:scale:3:mov:0:0|normal:Stone_02_NRM.tga:scale:3:mov:0:0
