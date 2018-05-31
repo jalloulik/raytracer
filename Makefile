@@ -67,7 +67,7 @@ OBJ = $(SRC:%.c=$(OBJPATH)%.o)
 
 SRCF = $(SRCPATH)$(SRC)
 
-FLAG = -ggdb -Wall -Werror -Wextra
+FLAG = -ggdb -Wall -Werror #-Wextra
 
 all : $(NAME)
 

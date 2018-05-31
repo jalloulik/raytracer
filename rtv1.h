@@ -122,6 +122,7 @@ typedef struct		s_tore
 	double			r2;
 	t_3dpt			pos_local;
 	t_3dpt			dir_local;
+	t_3dpt			*l_p;
 }					t_tore;
 
 typedef struct		s_cyl
@@ -382,5 +383,6 @@ double 				SolveQuartic(double c[5], double s[4]);
 double				ft_resolve_tore(t_prim *prim, t_3dpt *dir, t_3dpt *origin);
 void				ft_create_local_tore(t_prim *prim);
 double 				search_min(double num[4], double nb);
+void				ft_tore_normal(t_prim *prim, t_3dpt *p);
 
 #endif
