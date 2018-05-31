@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 18:11:29 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/29 16:00:57 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/31 17:15:16 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	ft_check_lit(t_obj *obj, t_prim *small, t_color *color, t_3dpt *origin)
 	prim = obj->prim;
 	dist_to_light = ft_get_dist_to_light(obj, small);
 	ft_calculate_vec_to_light(&p_to_light, obj, small);
-	percentage = ft_shadow_percentage(obj, small, &lit);
+	percentage = ft_shadow_percent(obj, small, &lit, color);
 	obj->light->dotd = ft_calculate_dot(&p_to_light, &(small->normal));
 	if (obj->light->dotd >= 0 && obj->light->dotd <= 1)
 	{

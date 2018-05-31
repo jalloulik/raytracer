@@ -1,0 +1,5 @@
+cam|origin:0:0:30|rotation:1:0:0:angle:0|translation:0:0:0|sepia:false
+spot|origin:10:0:20|intensity:100
+cylinder|origin:0:0:5|vec:0:1:0|radius:2|color:r:250:g:0:b:0|rotation:0:0:1:angle:0|translation:0:0:0|texture:Stone_02_COLOR.tga:scale:3:mov:0:0|normal:Stone_02_NRM.tga:scale:3:mov:0:0|refract:AIR:80
+sphere|origin:-6:0:0|radius:3|color:r:250:g:00:b:00|rotation:1:1:0:angle:0|translation:0:0:0|texture:Stone_02_COLOR.tga:scale:4:mov:0:0|normal:Stone_02_NRM.tga:scale:4:mov:0:0|refract:AIR:80
+plane|origin:0:0:-10|normal:0:0:1|color:r:150:g:0:b:0|rotation:0:1:0:angle:0|translation:0:0:0
