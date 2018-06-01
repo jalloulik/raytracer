@@ -40,7 +40,14 @@ double	ft_resolve_tore(t_prim *prim, t_3dpt *dir, t_3dpt *origin)
 	nb_sol = SolveQuartic(r, s);
 	if (!nb_sol)
 		return (-1);
+	int i = 0;
+	while (i < 4)
+	{
+		printf(" nb_sol %d i : %d  t : %f\n", nb_sol, i, s[i]); 
+		i++;
+	}
 	t = search_min(s, nb_sol);
+	printf(" res :  %f\n", t); 
 	tore->l_p = calc_point(&pos_local, &dir_local, t);
 	return (t);
 }
@@ -77,8 +84,6 @@ void	ft_tore_normal(t_prim *prim, t_3dpt *p)
 	t_3dpt	o;
 
 	o.x = prim->tore.l_p->x;
-	if (o.x < 0)
-		o.x = -o.x;
 	o.y = prim->tore.l_p->y;
 	o.z = 0;
 	ft_normalize_vector(&o);
@@ -86,6 +91,12 @@ void	ft_tore_normal(t_prim *prim, t_3dpt *p)
 	o.y *= prim->tore.r1;
 	prim->normal.x = prim->tore.l_p->x - o.x;
 	prim->normal.y = prim->tore.l_p->y - o.y;
-	prim->normal.x = prim->tore.l_p->z;
+	prim->normal.z = prim->tore.l_p->z;
+	ft_normalize_vector(&prim->normal);
+	printf("p x %f y %f z %f  :  normlal : x %f,  y %f, z %f\n", prim->tore.l_p->x,
+			prim->tore.l_p->y, prim->tore.l_p->z,
+			prim->normal.x, prim->normal.y, prim->normal.z);
+	ft_swap_l_to_g(&(prim->normal), &(prim->normal),
+									&(prim->l_to_g_move), &(prim->l_to_g_rot));
 	free(prim->tore.l_p);
 }

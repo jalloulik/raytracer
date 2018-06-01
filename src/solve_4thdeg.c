@@ -24,7 +24,7 @@ double	cbrt(double x)
 	return (0);
 }
 
-double search_min(double num[4], double nb)
+double search_min(double num[4], int nb)
 {
 	double	min;
 	int		i;
@@ -33,8 +33,9 @@ double search_min(double num[4], double nb)
 		return (0);
 	i = 0;
 	min = num[0];
-	if (i < nb)
+	while (i < nb)
 	{
+		printf ("nb : %d i : %d , min : %f , num[i] : %f\n",nb, i,min,num[i]);
 		if (num[i] < min && num[i] > 0)
 			min = num[i];
 		i++;
@@ -211,7 +212,7 @@ int SolveCubic(c, s)
 }
 
 
-double	SolveQuartic(c, s)
+int		SolveQuartic(c, s)
     double c[ 5 ]; 
     double s[ 4 ];
 {

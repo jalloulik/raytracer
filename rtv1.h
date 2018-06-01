@@ -379,10 +379,10 @@ void				trie(t_3dpt *p1, t_3dpt *p2);
 double				solv_seconde(t_prim *p, t_3dpt *param, t_3dpt *pos, t_3dpt *dir);
 void    			print_cut(t_cut *cut);
 int					solve_quadratic(double *a, double *r);
-double 				SolveQuartic(double c[5], double s[4]);
+int 				SolveQuartic(double c[5], double s[4]);
 double				ft_resolve_tore(t_prim *prim, t_3dpt *dir, t_3dpt *origin);
 void				ft_create_local_tore(t_prim *prim);
-double 				search_min(double num[4], double nb);
+double 				search_min(double num[4], int nb);
 void				ft_tore_normal(t_prim *prim, t_3dpt *p);
 
 #endif

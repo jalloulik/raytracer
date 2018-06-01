@@ -52,8 +52,8 @@ static t_vect	*calc_cc(t_object *obj, t_vect *pos, t_line *cam, double t)
 	t_plane *plane;
 	t_vect	*center;
 
-	plane->n = ((t_cyl)obj->form)->dir;
-	plane->pos = ((t_cyl)obj->form)->pos;
+	plane->n = ((t_)obj->form)->dir;
+	plane->pos = ((t_)obj->form)->pos;
 	center = intersec_plane2(plane, pos);
 	return (v_sub(pos, center));
 	free(tmp);
@@ -69,7 +69,7 @@ static t_vect	*calc_norm(double t, t_line *cam, t_object *obj, t_vect *pos)
 		norm = v_sub(pos, ((t_sphere*)obj->form)->pos);
 	if (obj->type == PLANE)
 		norm = ((t_plane*)obj->form)->n;
-	if (obj->type == CYL || obj->type == CONE)
+	if (obj->type ==  || obj->type == CONE)
 		norm = calc_cc(obj, pos, cam, t);
 	if (norm)
 		return (norm);
