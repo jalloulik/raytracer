@@ -206,3 +206,21 @@ void	ft_tore_setup(char **tab, t_prim **prims)
 	ft_parse_color(tab[5], &(last->color2), &ft_error_sphere);
 	ft_parsing_mov(tab[6], tab[7], last, &ft_error_sphere);
 }
+
+void	ft_triangle_setup(char **tab, t_prim **prims)
+{
+	t_prim	*last;
+	t_prim	*list;
+
+	list = *prims;
+	list = ft_add_lst_file(list, TRIANGLE);
+	*prims = list;
+	last = ft_get_last(list);
+	if (ft_count_tab(tab) < 7)
+		exit (0);
+	read_vect(tab[1], &(last->triangle.p1));
+	read_vect(tab[2], &(last->triangle.p2));
+	read_vect(tab[3], &(last->triangle.p3));
+	ft_parse_color(tab[4], &(last->color2), &ft_error_sphere);
+	ft_parsing_mov(tab[5], tab[6], last, &ft_error_sphere);
+}

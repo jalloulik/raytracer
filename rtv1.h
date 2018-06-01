@@ -26,6 +26,7 @@
 # define CERCLE 5
 # define RECT 6
 # define TORE 7
+# define TRIANGLE 8
 # define VALID 1
 # define UNVALID 0
 
@@ -89,6 +90,13 @@ typedef struct		s_rect
 	t_3dpt			pos_local;
 	t_3dpt			dir_local;
 }					t_rect;
+
+typedef struct		s_triangle
+{
+	t_3dpt			p1;
+	t_3dpt			p2;
+	t_3dpt			p3;
+}					t_triangle;
 
 typedef struct		s_plane
 {
@@ -180,6 +188,7 @@ typedef struct		s_prim
 	t_cercle		cercle;
 	t_rect			rect;
 	t_tore			tore;
+	t_triangle		triangle;
 	double			t;
 	int				isvalid;
 	int				color;
@@ -384,5 +393,7 @@ double				ft_resolve_tore(t_prim *prim, t_3dpt *dir, t_3dpt *origin);
 void				ft_create_local_tore(t_prim *prim);
 double 				search_min(double num[4], int nb);
 void				ft_tore_normal(t_prim *prim, t_3dpt *p);
+void				ft_triangle_setup(char **tab, t_prim **prims);
+double				ft_resolve_triangle(t_prim *prim, t_3dpt *dir, t_3dpt *pos);
 
 #endif

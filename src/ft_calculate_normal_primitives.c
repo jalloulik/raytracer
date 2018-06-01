@@ -85,4 +85,5 @@ void	ft_calculate_normal(t_prim *prim, t_3dpt *p)
 		   prim->rect.dir.z);
 	else if (prim->type == TORE)
 		ft_tore_normal(prim, p);
+
 }

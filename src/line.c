@@ -26,12 +26,11 @@ double		v_l(t_3dpt *v)
 
 double		dist(t_3dpt *v, t_3dpt *v2)
 {
-	t_3dpt *u;
+	t_3dpt u;
 	double	res;
 
 	u = v_sub(v, v2);
-	res = v_l(u);
-	free(u);
+	res = v_l(&u);
 	return (res);
 }
 

@@ -61,6 +61,7 @@ SRC = main.c\
 		math.c \
 		print.c\
 		ft_resolve_tore.c\
+		ft_resolve_triangle.c\
 		solve_4thdeg.c
 
 OBJ = $(SRC:%.c=$(OBJPATH)%.o)
