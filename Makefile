@@ -6,7 +6,7 @@
 #    By: yvillepo <yvillepo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/06 17:18:00 by kjalloul          #+#    #+#              #
-#    Updated: 2018/05/17 18:32:21 by yvillepo         ###   ########.fr        #
+#    Updated: 2018/06/02 01:28:25 by yvillepo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,8 @@ SRC = main.c\
 		print.c\
 		ft_resolve_tore.c\
 		ft_resolve_triangle.c\
-		solve_4thdeg.c
+		solve_4thdeg.c\
+		solve_cubic.c
 
 OBJ = $(SRC:%.c=$(OBJPATH)%.o)
 

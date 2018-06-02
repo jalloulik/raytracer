@@ -37,47 +37,18 @@ double	ft_resolve_tore(t_prim *prim, t_3dpt *dir, t_3dpt *origin)
 													&(prim->g_to_l_rot));
 	
 	calc_param(prim,  r, &pos_local, &dir_local);
-	nb_sol = SolveQuartic(r, s);
+	nb_sol = solve_quartic(r, s);
 	if (!nb_sol)
 		return (-1);
 	int i = 0;
 	while (i < 4)
 	{
-		printf(" nb_sol %d i : %d  t : %f\n", nb_sol, i, s[i]); 
 		i++;
 	}
 	t = search_min(s, nb_sol);
-	printf(" res :  %f\n", t); 
 	tore->l_p = calc_point(&pos_local, &dir_local, t);
 	return (t);
 }
-/*
-void	ft_cylinder_normal(t_prim *prim, t_3dpt *p)
-{
-	double	dist;
-	t_3dpt	local_p;
-	t_3dpt	global_o;
-
-	dist = SQR(ft_calculate_dist(&(prim->cyl.origin), p)) -
-														SQR(prim->cyl.radius);
-	if (dist >= 0)
-		dist = sqrt(dist);
-	prim->cyl.o.x = prim->cyl.origin_local.x + dist * prim->cyl.vec_local.x;
-	prim->cyl.o.y = prim->cyl.origin_local.y + dist * prim->cyl.vec_local.y;
-	prim->cyl.o.z = prim->cyl.origin_local.z + dist * prim->cyl.vec_local.z;
-	ft_swap_g_to_l(&local_p, p,
-									&(prim->g_to_l_move), &(prim->g_to_l_rot));
-	if (local_p.y < prim->cyl.origin_local.y)
-		prim->cyl.o.y = prim->cyl.origin_local.y +
-											dist * -1 * prim->cyl.vec_local.y;
-	else if (local_p.y == prim->cyl.origin_local.y)
-		ft_set_3dpt(&(prim->cyl.o), prim->cyl.origin_local.x,
-							prim->cyl.origin_local.y, prim->cyl.origin_local.z);
-	ft_swap_l_to_g(&global_o, &(prim->cyl.o),
-									&(prim->l_to_g_move), &(prim->l_to_g_rot));
-	ft_set_3dpt(&(prim->cyl.o), global_o.x, global_o.y, global_o.z);
-	ft_calculate_vector(&(prim->normal), &(prim->cyl.o), p);
-}*/
 
 void	ft_tore_normal(t_prim *prim, t_3dpt *p)
 {
@@ -93,9 +64,6 @@ void	ft_tore_normal(t_prim *prim, t_3dpt *p)
 	prim->normal.y = prim->tore.l_p->y - o.y;
 	prim->normal.z = prim->tore.l_p->z;
 	ft_normalize_vector(&prim->normal);
-	printf("p x %f y %f z %f  :  normlal : x %f,  y %f, z %f\n", prim->tore.l_p->x,
-			prim->tore.l_p->y, prim->tore.l_p->z,
-			prim->normal.x, prim->normal.y, prim->normal.z);
 	ft_swap_l_to_g(&(prim->normal), &(prim->normal),
 									&(prim->l_to_g_move), &(prim->l_to_g_rot));
 	free(prim->tore.l_p);
