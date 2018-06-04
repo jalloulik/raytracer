@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/31 17:15:23 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/04 09:24:08 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -231,6 +231,13 @@ typedef struct		s_obj
 	t_prim			*prim;
 }					t_obj;
 
+typedef struct		s_l_p
+{
+	double			dist;
+	t_3dpt			p_to_light;
+	double			percent;
+}					t_l_p;
+
 void				ft_init_sphere(t_sphere *sphr, t_3dpt origin, double radius,
 																	int color);
 void				ft_init_cam_vectors(t_cam *cam);
@@ -333,9 +340,7 @@ double				ft_return_prim_dist(t_prim *prim, t_3dpt *ray,
 														t_3dpt *origin);
 void				ft_resolve_prim(t_prim *prim, t_3dpt *ray_dir,
 															t_3dpt *origin);
-
-int					ft_check_obst(t_3dpt *o, t_3dpt *p_to_light, t_prim *obst,
-																double dist);
+int					ft_check_obst(t_3dpt *o, t_prim *obst, t_l_p *light_path);
 void				ft_get_dotr(t_prim *small, t_light *light, t_3dpt *p,
 															t_3dpt *origin);
 void				ft_get_shade(t_prim *prim, t_color *color, t_light *light);
