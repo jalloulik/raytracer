@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:27 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/28 17:10:16 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/04 14:31:59 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,17 @@ void	ft_set_scene(t_winenv *mlxenv, t_cam *cam, t_light *light, t_prim *list)
 
 	obj.light = light;
 	obj.prim = list;
-	pos.x = -1;
+	pos.y = -1;
 	cam->vp.pos = &pos;
 	ray.cam = cam;
 	ft_get_topleft_indent(cam);
 	ft_rotate_all(obj.prim);
 	ft_translante_all(obj.prim);
 	ft_create_local_vector_spaces(obj.prim);
-	while (++pos.x < WIN_WIDTH)
+	while (++pos.y < WIN_HEIGHT)
 	{
-		pos.y = -1;
-		while (++pos.y < WIN_HEIGHT)
+		pos.x = -1;
+		while (++pos.x < WIN_WIDTH)
 		{
 			ft_get_first_ray(&ray, cam, &pos);
 			g_limit = 0;
@@ -74,7 +74,7 @@ void	ft_controller_rt(t_cam *cam, t_light *light, t_prim *list)
 	ft_create_img(&mlxenv, WIN_WIDTH, WIN_HEIGHT);
 	ft_set_scene(&mlxenv, cam, light, list);
 	mlx_put_image_to_window(mlxenv.mlxptr, mlxenv.win, mlxenv.img.ptr, 0, 0);
-	mlx_key_hook(mlxenv.win, &ft_keyhook, NULL);
+	mlx_key_hook(mlxenv.win, &ft_keyhook, &mlxenv);
 	mlx_loop(mlxenv.mlxptr);
 }
 
