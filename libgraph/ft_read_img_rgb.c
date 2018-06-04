@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fill_img_rgb.c                                  :+:      :+:    :+:   */
+/*   ft_read_img_rgb.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/19 14:52:16 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/04 13:44:08 by kjalloul         ###   ########.fr       */
+/*   Created: 2018/06/04 13:44:00 by kjalloul          #+#    #+#             */
+/*   Updated: 2018/06/04 14:24:58 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libgraph.h"
 
-void	ft_fill_img_rgb(t_mlximg img, int x, int y, t_color color)
+t_color	ft_read_img_rgb(t_mlximg *img, int x, int y)
 {
 	int		opp;
 	int		i;
+	t_color color;
 
-	if ((x >= 0) && (y >= 0) && (x < img.length)
-								&& (y < img.height))
+	ft_set_color(&color, 0, 0, 0);
+	if (img == NULL)
+		ft_error("Image does not exist");
+	if ((x >= 0) && (y >= 0) && (x < img->length)
+								&& (y < img->height))
 	{
-		opp = img.bpp / 8;
-		i = (x * opp) + (y * img.s_l);
-		img.str[i] = color.blue;
-		img.str[i + 1] = color.green;
-		img.str[i + 2] = color.red;
-		img.str[i + 3] = 0;
+		opp = img->bpp / 8;
+		i = (x * opp) + (y * img->s_l);
+		color.blue = img->str[i];
+		color.green = img->str[i + 1];
+		color.red = img->str[i + 2];
 	}
+	return (color);
 }

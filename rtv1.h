@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/04 09:24:08 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/04 14:33:34 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -376,5 +376,6 @@ void				ft_calculate_vec_to_light(t_3dpt *p_to_light, t_obj *obj,
 																t_prim *small);
 double				ft_get_dist_to_light(t_obj *obj, t_prim *small);
 void				ft_shadow_texture(t_color *base, t_color *texture);
+void				ft_save_image(t_winenv *mlxenv);
 
 #endif
