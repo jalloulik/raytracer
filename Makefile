@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yvillepo <yvillepo@student.42.fr>          +#+  +:+       +#+         #
+#    By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/06 17:18:00 by kjalloul          #+#    #+#              #
-#    Updated: 2018/06/05 18:19:24 by yvillepo         ###   ########.fr        #
+#    Updated: 2018/06/05 19:06:43 by kjalloul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,6 @@ SRC = main.c\
 		ft_parsing.c\
 		ft_camera.c\
 		ft_spots.c\
-		ft_color_parse.c\
 		ft_resolve_cone.c\
 		ft_quaternions.c\
 		ft_calculate_normal_primitives.c\
@@ -62,7 +61,14 @@ SRC = main.c\
 		ft_resolve_tore.c\
 		ft_resolve_triangle.c\
 		solve_4thdeg.c\
-		solve_cubic.c
+		solve_cubic.c\
+		ft_throw_rays.c\
+		ft_refraction.c\
+		ft_texture_load.c\
+		ft_texture_coord.c\
+		ft_shadow.c\
+		ft_save_image.c\
+		ft_perturbation.c
 
 OBJ = $(SRC:%.c=$(OBJPATH)%.o)
 

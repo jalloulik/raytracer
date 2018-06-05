@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_resolve_tore.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yvillepo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: yvillepo <yvillepo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 17:51:12 by yvillepo          #+#    #+#             */
-/*   Updated: 2018/06/05 18:10:51 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/06/05 18:56:59 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ double			ft_resolve_tore(t_prim *prim, t_3dpt *dir, t_3dpt *origin)
 	if (!(t = solve_quartic(r, s)))
 		return (-1);
 	t = search_min(s, t);
-	prim->tore.l_p = calc_point(&pos_local, &dir_local, t);
+	calc_point(&(prim->tore.l_p) ,&pos_local, &dir_local, t);
 	return (t);
 }
 
@@ -57,17 +57,16 @@ void			ft_tore_normal(t_prim *prim, t_3dpt *p)
 {
 	t_3dpt	o;
 
-	o.x = prim->tore.l_p->x;
-	o.y = prim->tore.l_p->y;
+	o.x = prim->tore.l_p.x;
+	o.y = prim->tore.l_p.y;
 	o.z = 0;
 	ft_normalize_vector(&o);
 	o.x *= prim->tore.r1;
 	o.y *= prim->tore.r1;
-	prim->normal.x = prim->tore.l_p->x - o.x;
-	prim->normal.y = prim->tore.l_p->y - o.y;
-	prim->normal.z = prim->tore.l_p->z;
+	prim->normal.x = prim->tore.l_p.x - o.x;
+	prim->normal.y = prim->tore.l_p.y - o.y;
+	prim->normal.z = prim->tore.l_p.z;
 	ft_normalize_vector(&prim->normal);
 	ft_swap_l_to_g(&(prim->normal), &(prim->normal),
 									&(prim->l_to_g_move), &(prim->l_to_g_rot));
-	free(prim->tore.l_p);
 }

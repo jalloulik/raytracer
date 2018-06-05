@@ -3,20 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   line.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yvillepo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: yvillepo <yvillepo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 11:44:22 by yvillepo          #+#    #+#             */
-/*   Updated: 2018/06/05 18:12:00 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/06/05 18:55:33 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-t_3dpt		*calc_point(t_3dpt *pos, t_3dpt *dir, double t)
+void		calc_point(t_3dpt *result, t_3dpt *pos, t_3dpt *dir, double t)
 {
-	return (new_vect(pos->x + dir->x * t,
-			pos->y + dir->y * t,
-			pos->z + dir->z * t));
+	result->x = pos->x + dir->x * t;
+	result->y = pos->y + dir->y * t;
+	result->z = pos->z + dir->z * t;
+
 }
 
 double		v_l(t_3dpt *v)

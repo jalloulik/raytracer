@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solve_cubic.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yvillepo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: yvillepo <yvillepo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 01:20:15 by yvillepo          #+#    #+#             */
-/*   Updated: 2018/06/02 03:01:36 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/06/05 18:45:27 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ static void		sol3(double tmp[12], double s[3], int *num)
 	phi = 1.0 / 3 * acos(-tmp[5] / sqrt(-tmp[6]));
 	t = 2 * sqrt(-tmp[4]);
 	s[0] = t * cos(phi);
-	s[1] = -t * cos(phi + PI / 3);
-	s[2] = -t * cos(phi - PI / 3);
+	s[1] = -t * cos(phi + FT_PI / 3);
+	s[2] = -t * cos(phi - FT_PI / 3);
 	*num = 3;
 }
 

@@ -26,5 +26,5 @@ void	ft_cross_product(t_3dpt *result, t_3dpt *vec1, t_3dpt *vec2)
 
 double	ft_degree_to_rad(double degree)
 {
-	return (degree / (180 / M_PI));
+	return (degree / (180 / FT_PI));
 }

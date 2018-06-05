@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_resolve_rect.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yvillepo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: yvillepo <yvillepo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/08 03:18:25 by yvillepo          #+#    #+#             */
-/*   Updated: 2018/06/05 17:48:28 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/06/05 18:58:01 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ static double	ft_resolve_t(t_rect *rect, t_3dpt *dir, t_3dpt *pos)
 {
 	double	d;
 	double	t;
-	t_3dpt	*pt;
+	t_3dpt	pt;
 
 	d = -(rect->pos.x * rect->dir.x + rect->pos.y * rect->dir.y +
 			rect->pos.z * rect->dir.z);
 	t = inter_plane(&(rect->dir), d, pos, dir);
-	pt = calc_point(pos, dir, t);
-	if (ft_absd(pt->x) < rect->width / 2 &&
-			ft_absd(pt->y) < rect->height / 2)
+	calc_point(&pt, pos, dir, t);
+	if (ft_absd(pt.x) < rect->width / 2 &&
+			ft_absd(pt.y) < rect->height / 2)
 		return (t);
 	return (-1);
 }
