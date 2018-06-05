@@ -6,7 +6,7 @@
 /*   By: yvillepo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 11:44:22 by yvillepo          #+#    #+#             */
-/*   Updated: 2018/05/03 18:49:49 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/06/05 18:12:00 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ double		v_l(t_3dpt *v)
 
 double		dist(t_3dpt *v, t_3dpt *v2)
 {
-	t_3dpt u;
+	t_3dpt	u;
 	double	res;
 
 	u = v_sub(v, v2);

@@ -6,13 +6,14 @@
 /*   By: yvillepo <yvillepo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 16:31:08 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/18 17:33:42 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/06/05 17:47:27 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void	ft_get_abcdet_cyl(t_cyl *cyl, t_3dpt *dir, t_3dpt *origin, t_3dpt *param)
+void	ft_get_abcdet_cyl(t_cyl *cyl, t_3dpt *dir,
+		t_3dpt *origin, t_3dpt *param)
 {
 	param->x = SQR(dir->x) + SQR(dir->z);
 	param->y = 2.0 * (dir->x * origin->x + dir->z * origin->z);

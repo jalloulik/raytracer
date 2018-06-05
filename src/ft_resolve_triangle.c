@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_resolve_triangle.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yvillepo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/05 17:48:50 by yvillepo          #+#    #+#             */
+/*   Updated: 2018/06/05 17:49:14 by yvillepo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "rtv1.h"
 
 double	ft_resolve_triangle(t_prim *prim, t_3dpt *dir, t_3dpt *pos)
 {
-	t_triangle *t;
+	t_triangle	*t;
 	t_3dpt		edge[2];
 	t_3dpt		vec[3];
 	double		d;

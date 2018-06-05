@@ -6,7 +6,7 @@
 #    By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/06 17:18:00 by kjalloul          #+#    #+#              #
-#    Updated: 2018/02/19 14:53:54 by kjalloul         ###   ########.fr        #
+#    Updated: 2018/06/05 18:20:17 by yvillepo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,6 @@ SRC = ft_fill_img.c\
 		ft_fill_img_rgb.c\
 		ft_vect.c\
 		ft_vect2.c\
-		ft_line.c\
 
 OBJ = $(SRC:%.c=%.o)
 

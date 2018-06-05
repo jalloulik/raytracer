@@ -6,12 +6,11 @@
 /*   By: yvillepo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/08 03:18:25 by yvillepo          #+#    #+#             */
-/*   Updated: 2018/05/10 20:08:27 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/06/05 17:48:28 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
-
 
 static double	ft_resolve_t(t_rect *rect, t_3dpt *dir, t_3dpt *pos)
 {
@@ -19,7 +18,7 @@ static double	ft_resolve_t(t_rect *rect, t_3dpt *dir, t_3dpt *pos)
 	double	t;
 	t_3dpt	*pt;
 
-	d = -(rect->pos.x * rect->dir.x + rect->pos.y * rect->dir.y + 
+	d = -(rect->pos.x * rect->dir.x + rect->pos.y * rect->dir.y +
 			rect->pos.z * rect->dir.z);
 	t = inter_plane(&(rect->dir), d, pos, dir);
 	pt = calc_point(pos, dir, t);
@@ -29,7 +28,7 @@ static double	ft_resolve_t(t_rect *rect, t_3dpt *dir, t_3dpt *pos)
 	return (-1);
 }
 
-double	ft_resolve_rect(t_prim *prim, t_3dpt *dir, t_3dpt *origin)
+double			ft_resolve_rect(t_prim *prim, t_3dpt *dir, t_3dpt *origin)
 {
 	t_rect	*rect;
 	t_3dpt	dir_local;

@@ -6,7 +6,7 @@
 /*   By: yvillepo <yvillepo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by yvillepo          #+#    #+#             */
-/*   Updated: 2018/06/02 03:04:03 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/06/05 18:13:09 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ double		search_min(double num[4], int nb)
 	return (min);
 }
 
-double			solv_seconde(t_prim *p, t_3dpt *param, t_3dpt *pos, t_3dpt *dir)
+double		solv_seconde(t_prim *p, t_3dpt *param, t_3dpt *pos, t_3dpt *dir)
 {
 	double		d;
 	double		t[2];
