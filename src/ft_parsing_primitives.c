@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 16:22:12 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/05 18:34:54 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/05 19:45:54 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -383,7 +383,7 @@ void	ft_rectangle_setup(char **tab, t_prim **prims)
 	*prims = list;
 	last = ft_get_last(list);
 	if (ft_count_tab(tab) < 8)
-		exit (0);
+		ft_error("parsing rect");
 	read_vect(tab[1], &(last->rect.pos));
 	read_vect(tab[2], &(last->rect.dir));
 	ft_normalize_vector(&(last->rect.dir));
@@ -403,7 +403,7 @@ void	ft_tore_setup(char **tab, t_prim **prims)
 	*prims = list;
 	last = ft_get_last(list);
 	if (ft_count_tab(tab) < 8)
-		exit (0);
+		ft_error("parsing tore");
 	read_vect(tab[1], &(last->tore.pos));
 	read_vect(tab[2], &(last->tore.dir));
 	ft_normalize_vector(&(last->tore.dir));
