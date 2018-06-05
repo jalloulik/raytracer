@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 09:19:38 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/14 09:41:00 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/05 19:04:54 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,7 @@ void				ft_lstiter(t_list *lst, void(*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int					ft_is_char_in_str(char *str, char c);
 size_t				ft_count_char(char *str, char c);
+double				ft_absd(double n);
+double				ft_atof(const char *str);
 
 #endif

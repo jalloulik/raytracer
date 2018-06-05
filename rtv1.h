@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/05 16:29:51 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/05 19:21:27 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@
 # define PLANE 2
 # define CONE 3
 # define CYLINDER 4
+# define CERCLE 5
+# define RECT 6
+# define TORE 7
+# define TRIANGLE 8
 # define VALID 1
 # define UNVALID 0
 
@@ -63,6 +67,16 @@ typedef struct		s_2dpt
 	int				y;
 }					t_2dpt;
 
+typedef struct		s_6dpt
+{
+	double			p1;
+	double			p2;
+	double			p3;
+	double			p4;
+	double			p5;
+	double			p6;
+}					t_6dpt;
+
 typedef struct		s_quater
 {
 	double			w;
@@ -70,6 +84,38 @@ typedef struct		s_quater
 	double			y;
 	double			z;
 }					t_quater;
+
+typedef struct		s_line
+{
+	t_3dpt			*pos;
+	t_3dpt			*dir;
+}					t_line;
+
+typedef struct		s_cercle
+{
+	t_3dpt			pos;
+	t_3dpt			dir;
+	double			r;
+	double			t;
+	int				color;
+}					t_cercle;
+
+typedef struct		s_rect
+{
+	t_3dpt			pos;
+	t_3dpt			dir;
+	double			height;
+	double			width;
+	t_3dpt			pos_local;
+	t_3dpt			dir_local;
+}					t_rect;
+
+typedef struct		s_triangle
+{
+	t_3dpt			p1;
+	t_3dpt			p2;
+	t_3dpt			p3;
+}					t_triangle;
 
 typedef struct		s_plane
 {
@@ -99,6 +145,17 @@ typedef struct		s_sphere
 	t_3dpt			path_to_light;
 	t_3dpt			normal;
 }					t_sphere;
+
+typedef struct		s_tore
+{
+	t_3dpt			pos;
+	t_3dpt			dir;
+	double			r1;
+	double			r2;
+	t_3dpt			pos_local;
+	t_3dpt			dir_local;
+	t_3dpt			l_p;
+}					t_tore;
 
 typedef struct		s_cyl
 {
@@ -140,6 +197,12 @@ typedef struct		s_cone
 	t_3dpt			normal;
 }					t_cone;
 
+typedef struct		t_cut
+{
+	t_3dpt			c1;
+	t_3dpt			c2;
+}					t_cut;
+
 typedef struct		s_sin_perturb
 {
 	int				status;
@@ -161,6 +224,10 @@ typedef struct		s_prim
 	t_plane			plane;
 	t_cone			cone;
 	t_cyl			cyl;
+	t_cercle		cercle;
+	t_rect			rect;
+	t_tore			tore;
+	t_triangle		triangle;
 	double			t;
 	int				isvalid;
 	int				color;
@@ -176,6 +243,7 @@ typedef struct		s_prim
 	t_3dpt			g_to_l_move;
 	t_quater		l_to_g_rot;
 	t_quater		g_to_l_rot;
+	t_cut			*cut;
 	int				reflective;
 	double			reflec_ratio;
 	double			refract_ratio;
@@ -342,8 +410,8 @@ void				ft_rotate_plan(t_prim *prim);
 void				ft_rotate_cyl(t_prim *prim);
 void				ft_rotate_cone(t_prim *prim);
 
-void				ft_check_lit(t_obj *obj, t_prim *small, t_color *color,
-																t_3dpt *origin);
+void                ft_check_lit(t_obj *obj, t_prim *small, t_color *color,
+						t_3dpt *origin);
 
 void				ft_error_sphere(void);
 void				ft_error_cone(void);
@@ -353,6 +421,30 @@ void				ft_error_cam(void);
 
 double				ft_return_prim_dist(t_prim *prim, t_3dpt *ray,
 														t_3dpt *origin);
+double				inter_plane(t_3dpt *normal, double d, t_3dpt *pos, t_3dpt *dir);
+void				calc_point(t_3dpt *result, t_3dpt *pos, t_3dpt *dir, double t);
+void				read_vect(char *svect, t_3dpt *vect);
+void				ft_cercle_setup(char **tab, t_prim **prims);
+void				ft_cercle_normal(t_prim *prim, t_3dpt *p);
+double				ft_resolve_cercle(t_prim *prim, t_3dpt *dir, t_3dpt *ray_origin);
+double				dist(t_3dpt *v, t_3dpt *v2);
+void				ft_rectangle_setup(char **tab, t_prim **prims);
+void				ft_create_local_rect(t_prim *prim);
+double				ft_resolve_rect(t_prim *prim, t_3dpt *dir, t_3dpt *origin);
+void				read_all_cut(char **str, t_prim *prim);
+void				ft_tore_setup(char **tab, t_prim **prims);
+void				trie(t_3dpt *p1, t_3dpt *p2);
+double				solv_seconde(t_3dpt *param);
+void    			print_cut(t_cut *cut);
+int					solve_quadratic(double *a, double *r);
+int 				solve_quartic(double c[5], double s[4]);
+double				ft_resolve_tore(t_prim *prim, t_3dpt *dir, t_3dpt *origin);
+void				ft_create_local_tore(t_prim *prim);
+double 				search_min(double num[4], int nb);
+void				ft_tore_normal(t_prim *prim);
+void				ft_triangle_setup(char **tab, t_prim **prims);
+double				ft_resolve_triangle(t_prim *prim, t_3dpt *dir, t_3dpt *pos);
+int					solve_cubic(double c[4],double s[3]);
 void				ft_resolve_prim(t_prim *prim, t_3dpt *ray_dir,
 															t_3dpt *origin);
 int					ft_check_obst(t_3dpt *o, t_prim *obst, t_l_p *light_path);

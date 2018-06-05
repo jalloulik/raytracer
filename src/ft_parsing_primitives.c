@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 16:22:12 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/05 16:29:02 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/05 19:58:49 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -352,4 +352,82 @@ void	ft_sphere_setup(char **tab, t_prim **prims)
 	ft_parse_color(tab[3], &(last->color2), &ft_error_sphere);
 	ft_parsing_mov(tab[4], tab[5], last, &ft_error_sphere);
 	ft_count_options(last, tab, 6);
+}
+
+void	ft_cercle_setup(char **tab, t_prim **prims)
+{
+	t_prim	*last;
+	t_prim	*list;
+
+	list = *prims;
+	list = ft_add_lst_file(list, CERCLE);
+	*prims = list;
+	last = ft_get_last(list);
+	if (ft_count_tab(tab) < 7)
+		ft_error("parsing cercle");
+	read_vect(tab[1], &(last->cercle.pos));
+	read_vect(tab[2], &(last->cercle.dir));
+	ft_normalize_vector(&(last->cercle.dir));
+	last->cercle.r =  ft_atoi(tab[3]);
+	ft_parse_color(tab[4], &(last->color2), &ft_error_sphere);
+	ft_parsing_mov(tab[5], tab[6], last, &ft_error_sphere);
+}
+
+void	ft_rectangle_setup(char **tab, t_prim **prims)
+{
+	t_prim	*last;
+	t_prim	*list;
+
+	list = *prims;
+	list = ft_add_lst_file(list, RECT);
+	*prims = list;
+	last = ft_get_last(list);
+	if (ft_count_tab(tab) < 8)
+		ft_error("parsing rect");
+	read_vect(tab[1], &(last->rect.pos));
+	read_vect(tab[2], &(last->rect.dir));
+	ft_normalize_vector(&(last->rect.dir));
+	last->rect.width =  ft_atoi(tab[3]);
+	last->rect.height =  ft_atoi(tab[4]);
+	ft_parse_color(tab[5], &(last->color2), &ft_error_sphere);
+	ft_parsing_mov(tab[6], tab[7], last, &ft_error_sphere);
+}
+
+void	ft_tore_setup(char **tab, t_prim **prims)
+{
+	t_prim	*last;
+	t_prim	*list;
+
+	list = *prims;
+	list = ft_add_lst_file(list, TORE);
+	*prims = list;
+	last = ft_get_last(list);
+	if (ft_count_tab(tab) < 8)
+		ft_error("parsing tore");
+	read_vect(tab[1], &(last->tore.pos));
+	read_vect(tab[2], &(last->tore.dir));
+	ft_normalize_vector(&(last->tore.dir));
+	last->tore.r1 =  ft_atoi(tab[3]);
+	last->tore.r2 =  ft_atoi(tab[4]);
+	ft_parse_color(tab[5], &(last->color2), &ft_error_sphere);
+	ft_parsing_mov(tab[6], tab[7], last, &ft_error_sphere);
+}
+
+void	ft_triangle_setup(char **tab, t_prim **prims)
+{
+	t_prim	*last;
+	t_prim	*list;
+
+	list = *prims;
+	list = ft_add_lst_file(list, TRIANGLE);
+	*prims = list;
+	last = ft_get_last(list);
+	if (ft_count_tab(tab) < 7)
+		ft_error("parsing triangle");
+	read_vect(tab[1], &(last->triangle.p1));
+	read_vect(tab[2], &(last->triangle.p2));
+	read_vect(tab[3], &(last->triangle.p3));
+	ft_parse_color(tab[4], &(last->color2), &ft_error_sphere);
+	ft_parsing_mov(tab[5], tab[6], last, &ft_error_sphere);
+
 }
