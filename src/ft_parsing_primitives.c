@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 16:22:12 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/30 14:58:32 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/05 16:29:02 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,50 @@ void	ft_check_reflection(t_prim *last, char *str)
 	}
 }
 
+void	ft_check_sin(t_prim *last, char *str)
+{
+	char **tmp;
+
+	tmp = ft_strsplit(str, ':');
+	if (tmp != NULL)
+	{
+		if (ft_count_tab(tmp) == 3 && ft_strequ(tmp[0], "sinx"))
+		{
+			last->sin.status = TRUE;
+			last->sin.xstatus = TRUE;
+			if (ft_atoi(tmp[1]) <= 0)
+				ft_error("Value cannot be smaller or equal to zero");
+			last->sin.x = ft_atoi(tmp[1]);
+			if (ft_atoi(tmp[2]) <= 0)
+				ft_error("Sin div cannot be smaller or equal to zero");
+			last->sin.x_div = ft_atoi(tmp[2]);
+		}
+		if (ft_count_tab(tmp) == 3 && ft_strequ(tmp[0], "siny"))
+		{
+			last->sin.status = TRUE;
+			last->sin.ystatus = TRUE;
+			if (ft_atoi(tmp[1]) <= 0)
+				ft_error("Value cannot be smaller or equal to zero");
+			last->sin.y = ft_atoi(tmp[1]);
+			if (ft_atoi(tmp[2]) <= 0)
+				ft_error("Sin div cannot be smaller or equal to zero");
+			last->sin.y_div = ft_atoi(tmp[2]);
+		}
+		if (ft_count_tab(tmp) == 3 && ft_strequ(tmp[0], "sinz"))
+		{
+			last->sin.status = TRUE;
+			last->sin.zstatus = TRUE;
+			if (ft_atoi(tmp[1]) <= 0)
+				ft_error("Value cannot be smaller or equal to zero");
+			last->sin.z = ft_atoi(tmp[1]);
+			if (ft_atoi(tmp[2]) <= 0)
+				ft_error("Sin div cannot be smaller or equal to zero");
+			last->sin.z_div = ft_atoi(tmp[2]);
+		}
+		ft_free_tab(tmp);
+	}
+}
+
 void	ft_check_texture(t_prim *last, char *str, char *type)
 {
 	char **tmp;
@@ -112,8 +156,6 @@ void	ft_check_texture(t_prim *last, char *str, char *type)
 			texture->ymove = 0;
 			texture->valid = TRUE;
 			ft_stb_load_textur(texture, filename);
-			//harcoded normal
-			// ft_stb_load_textur(&(last->textur_n), "assets/Stone_02_NRM.tga");
 			free(filename);
 			if (ft_count_tab(tmp) >= 4 && ft_strequ(tmp[2], "scale") == 1)
 			{
@@ -144,6 +186,58 @@ void	ft_check_texture(t_prim *last, char *str, char *type)
 	}
 }
 
+void	ft_count_options(t_prim *last, char **tab, int start)
+{
+	last->sin.status = FALSE;
+	last->sin.xstatus = FALSE;
+	last->sin.ystatus = FALSE;
+	last->sin.zstatus = FALSE;
+	last->reflective = FALSE;
+	last->refractive = FALSE;
+	last->textur.valid = FALSE;
+	last->textur_n.valid = FALSE;
+	if (ft_count_tab(tab) >= start)
+	{
+		ft_check_reflection(last, tab[start]);
+		ft_check_refraction(last, tab[start]);
+		ft_check_texture(last, tab[start], "texture");
+		ft_check_texture(last, tab[start], "normal");
+		ft_check_sin(last, tab[start]);
+	}
+	if (ft_count_tab(tab) >= start + 1)
+	{
+		ft_check_reflection(last, tab[start + 1]);
+		ft_check_refraction(last, tab[start + 1]);
+		ft_check_texture(last, tab[start + 1], "texture");
+		ft_check_texture(last, tab[start + 1], "normal");
+		ft_check_sin(last, tab[start + 1]);
+	}
+	if (ft_count_tab(tab) >= start + 2)
+	{
+		ft_check_reflection(last, tab[start + 2]);
+		ft_check_refraction(last, tab[start + 2]);
+		ft_check_texture(last, tab[start + 2], "texture");
+		ft_check_texture(last, tab[start + 2], "normal");
+		ft_check_sin(last, tab[start + 2]);
+	}
+	if (ft_count_tab(tab) >= start + 3)
+	{
+		ft_check_reflection(last, tab[start + 3]);
+		ft_check_refraction(last, tab[start + 3]);
+		ft_check_texture(last, tab[start + 3], "texture");
+		ft_check_texture(last, tab[start + 3], "normal");
+		ft_check_sin(last, tab[start + 3]);
+	}
+	if (ft_count_tab(tab) >= start + 4)
+	{
+		ft_check_reflection(last, tab[start + 4]);
+		ft_check_refraction(last, tab[start + 4]);
+		ft_check_texture(last, tab[start + 4], "texture");
+		ft_check_texture(last, tab[start + 4], "normal");
+		ft_check_sin(last, tab[start + 4]);
+	}
+}
+
 void	ft_plane_setup(char **tab, t_prim **prims)
 {
 	t_prim	*last;
@@ -170,36 +264,7 @@ void	ft_plane_setup(char **tab, t_prim **prims)
 	ft_free_tab(tmp);
 	ft_parse_color(tab[3], &(last->color2), &ft_error_plane);
 	ft_parsing_mov(tab[4], tab[5], last, &ft_error_plane);
-	last->reflective = 0;
-	last->refractive = 0;
-	if (ft_count_tab(tab) >= 6)
-	{
-		ft_check_reflection(last, tab[6]);
-		ft_check_refraction(last, tab[6]);
-		ft_check_texture(last, tab[6], "texture");
-		ft_check_texture(last, tab[6], "normal");
-	}
-	if (ft_count_tab(tab) >= 7)
-	{
-		ft_check_reflection(last, tab[7]);
-		ft_check_refraction(last, tab[7]);
-		ft_check_texture(last, tab[7], "texture");
-		ft_check_texture(last, tab[7], "normal");
-	}
-	if (ft_count_tab(tab) >= 8)
-	{
-		ft_check_reflection(last, tab[8]);
-		ft_check_refraction(last, tab[8]);
-		ft_check_texture(last, tab[8], "texture");
-		ft_check_texture(last, tab[8], "normal");
-	}
-	if (ft_count_tab(tab) >= 9)
-	{
-		ft_check_reflection(last, tab[9]);
-		ft_check_refraction(last, tab[9]);
-		ft_check_texture(last, tab[9], "texture");
-		ft_check_texture(last, tab[9], "normal");
-	}
+	ft_count_options(last, tab, 6);
 }
 
 void	ft_cylinder_setup(char **tab, t_prim **prims)
@@ -229,36 +294,7 @@ void	ft_cylinder_setup(char **tab, t_prim **prims)
 	ft_free_tab(tmp);
 	ft_parse_color(tab[4], &(last->color2), &ft_error_cyl);
 	ft_parsing_mov(tab[5], tab[6], last, &ft_error_cyl);
-	last->reflective = 0;
-	last->refractive = 0;
-	if (ft_count_tab(tab) >= 7)
-	{
-		ft_check_reflection(last, tab[7]);
-		ft_check_refraction(last, tab[7]);
-		ft_check_texture(last, tab[7], "texture");
-		ft_check_texture(last, tab[7], "normal");
-	}
-	if (ft_count_tab(tab) >= 8)
-	{
-		ft_check_reflection(last, tab[8]);
-		ft_check_refraction(last, tab[8]);
-		ft_check_texture(last, tab[8], "texture");
-		ft_check_texture(last, tab[8], "normal");
-	}
-	if (ft_count_tab(tab) >= 9)
-	{
-		ft_check_reflection(last, tab[9]);
-		ft_check_refraction(last, tab[9]);
-		ft_check_texture(last, tab[9], "texture");
-		ft_check_texture(last, tab[9], "normal");
-	}
-	if (ft_count_tab(tab) >= 10)
-	{
-		ft_check_reflection(last, tab[10]);
-		ft_check_refraction(last, tab[10]);
-		ft_check_texture(last, tab[10], "texture");
-		ft_check_texture(last, tab[10], "normal");
-	}
+	ft_count_options(last, tab, 7);
 }
 
 void	ft_cone_setup(char **tab, t_prim **prims)
@@ -287,36 +323,7 @@ void	ft_cone_setup(char **tab, t_prim **prims)
 	ft_free_tab(tmp);
 	ft_parse_color(tab[4], &(last->color2), &ft_error_cone);
 	ft_parsing_mov(tab[5], tab[6], last, &ft_error_cone);
-	last->reflective = 0;
-	last->refractive = 0;
-	if (ft_count_tab(tab) >= 7)
-	{
-		ft_check_reflection(last, tab[7]);
-		ft_check_refraction(last, tab[7]);
-		ft_check_texture(last, tab[7], "texture");
-		ft_check_texture(last, tab[7], "normal");
-	}
-	if (ft_count_tab(tab) >= 8)
-	{
-		ft_check_reflection(last, tab[8]);
-		ft_check_refraction(last, tab[8]);
-		ft_check_texture(last, tab[8], "texture");
-		ft_check_texture(last, tab[8], "normal");
-	}
-	if (ft_count_tab(tab) >= 9)
-	{
-		ft_check_reflection(last, tab[9]);
-		ft_check_refraction(last, tab[9]);
-		ft_check_texture(last, tab[9], "texture");
-		ft_check_texture(last, tab[9], "normal");
-	}
-	if (ft_count_tab(tab) >= 10)
-	{
-		ft_check_reflection(last, tab[10]);
-		ft_check_refraction(last, tab[10]);
-		ft_check_texture(last, tab[10], "texture");
-		ft_check_texture(last, tab[10], "normal");
-	}
+	ft_count_options(last, tab, 7);
 }
 
 void	ft_sphere_setup(char **tab, t_prim **prims)
@@ -344,36 +351,5 @@ void	ft_sphere_setup(char **tab, t_prim **prims)
 	ft_free_tab(tmp);
 	ft_parse_color(tab[3], &(last->color2), &ft_error_sphere);
 	ft_parsing_mov(tab[4], tab[5], last, &ft_error_sphere);
-	last->reflective = 0;
-	last->refractive = 0;
-	last->textur.valid = FALSE;
-	last->textur_n.valid = FALSE;
-	if (ft_count_tab(tab) >= 6)
-	{
-		ft_check_reflection(last, tab[6]);
-		ft_check_refraction(last, tab[6]);
-		ft_check_texture(last, tab[6], "texture");
-		ft_check_texture(last, tab[6], "normal");
-	}
-	if (ft_count_tab(tab) >= 7)
-	{
-		ft_check_reflection(last, tab[7]);
-		ft_check_refraction(last, tab[7]);
-		ft_check_texture(last, tab[7], "texture");
-		ft_check_texture(last, tab[7], "normal");
-	}
-	if (ft_count_tab(tab) >= 8)
-	{
-		ft_check_reflection(last, tab[8]);
-		ft_check_refraction(last, tab[8]);
-		ft_check_texture(last, tab[8], "texture");
-		ft_check_texture(last, tab[8], "normal");
-	}
-	if (ft_count_tab(tab) >= 9)
-	{
-		ft_check_reflection(last, tab[9]);
-		ft_check_refraction(last, tab[9]);
-		ft_check_texture(last, tab[9], "texture");
-		ft_check_texture(last, tab[9], "normal");
-	}
+	ft_count_options(last, tab, 6);
 }

@@ -1,0 +1,6 @@
+cam|origin:0:0:20|rotation:0:0:0:angle:0|translation:0:0:0|sepia:false
+spot|origin:0:0:20|intensity:100
+plane|origin:10:0:-10|normal:0:1:0|color:r:0:g:0:b:250|rotation:1:0:0:angle:10|translation:0:0:0|sinx:25:2|siny:25:2|sinz:25:2
+#plane|origin:10:0:-10|normal:0:1:0|color:r:0:g:0:b:250|rotation:1:0:0:angle:10|translation:0:0:0
+plane|origin:10:0:-10|normal:0:-1:0|color:r:0:g:250:b:0|rotation:1:0:0:angle:-10|translation:0:0:0|sinx:25:2
+sphere|origin:0:0:5|radius:3|color:r:250:g:00:b:00|rotation:1:0:0:angle:0|translation:0:0:0|sinx:15:2|siny:15:2|sinz:15:2

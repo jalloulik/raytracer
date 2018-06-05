@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 14:42:06 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/30 15:21:40 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/05 16:27:36 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,7 @@ void	ft_plane_normal(t_prim *prim)
 		ft_set_3dpt(&(prim->original_normal), prim->normal.x,
 									prim->normal.y, prim->normal.z);
 	if (prim->textur_n.valid == TRUE)
-	{
 		ft_get_texture_prim_normal(prim);
-	}
 }
 
 void	ft_calculate_normal(t_prim *prim, t_3dpt *p)
@@ -115,4 +113,5 @@ void	ft_calculate_normal(t_prim *prim, t_3dpt *p)
 		if (prim->textur_n.valid == TRUE)
 			ft_get_texture_prim_normal(prim);
 	}
+	ft_sine_perturbation(prim, p);
 }
