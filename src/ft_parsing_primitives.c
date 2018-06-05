@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 16:22:12 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/05 19:45:54 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/06/05 19:58:49 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -364,7 +364,7 @@ void	ft_cercle_setup(char **tab, t_prim **prims)
 	*prims = list;
 	last = ft_get_last(list);
 	if (ft_count_tab(tab) < 7)
-		exit (0);
+		ft_error("parsing cercle");
 	read_vect(tab[1], &(last->cercle.pos));
 	read_vect(tab[2], &(last->cercle.dir));
 	ft_normalize_vector(&(last->cercle.dir));
@@ -423,7 +423,7 @@ void	ft_triangle_setup(char **tab, t_prim **prims)
 	*prims = list;
 	last = ft_get_last(list);
 	if (ft_count_tab(tab) < 7)
-		exit (0);
+		ft_error("parsing triangle");
 	read_vect(tab[1], &(last->triangle.p1));
 	read_vect(tab[2], &(last->triangle.p2));
 	read_vect(tab[3], &(last->triangle.p3));
