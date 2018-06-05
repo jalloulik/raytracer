@@ -6,7 +6,7 @@
 /*   By: yvillepo <yvillepo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by yvillepo          #+#    #+#             */
-/*   Updated: 2018/06/05 19:17:42 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/06/05 19:33:03 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,7 @@ double		solv_seconde(t_3dpt *param)
 	if (param->x == 0)
 		param->x = 0.000000000000001;
 	t = (-param->y - sqrt(d)) / (2 * param->x);
+	if (t < 0)
+		t = (-param->y + sqrt(d)) / (2 * param->x);
 	return (t);
 }
