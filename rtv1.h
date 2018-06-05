@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/05 18:55:52 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/05 19:21:27 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -434,14 +434,14 @@ double				ft_resolve_rect(t_prim *prim, t_3dpt *dir, t_3dpt *origin);
 void				read_all_cut(char **str, t_prim *prim);
 void				ft_tore_setup(char **tab, t_prim **prims);
 void				trie(t_3dpt *p1, t_3dpt *p2);
-double				solv_seconde(t_prim *p, t_3dpt *param, t_3dpt *pos, t_3dpt *dir);
+double				solv_seconde(t_3dpt *param);
 void    			print_cut(t_cut *cut);
 int					solve_quadratic(double *a, double *r);
 int 				solve_quartic(double c[5], double s[4]);
 double				ft_resolve_tore(t_prim *prim, t_3dpt *dir, t_3dpt *origin);
 void				ft_create_local_tore(t_prim *prim);
 double 				search_min(double num[4], int nb);
-void				ft_tore_normal(t_prim *prim, t_3dpt *p);
+void				ft_tore_normal(t_prim *prim);
 void				ft_triangle_setup(char **tab, t_prim **prims);
 double				ft_resolve_triangle(t_prim *prim, t_3dpt *dir, t_3dpt *pos);
 int					solve_cubic(double c[4],double s[3]);

@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 14:42:06 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/05 18:42:47 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/05 19:22:01 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,6 @@ void	ft_calculate_normal(t_prim *prim, t_3dpt *p)
 		ft_set_3dpt(&(prim->normal), prim->rect.dir.x, prim->rect.dir.y,
 				prim->rect.dir.z);
 	else if (prim->type == TORE)
-		ft_tore_normal(prim, p);
+		ft_tore_normal(prim);
 	ft_sine_perturbation(prim, p);
 }

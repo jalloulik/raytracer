@@ -6,7 +6,7 @@
 /*   By: yvillepo <yvillepo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/20 11:44:22 by yvillepo          #+#    #+#             */
-/*   Updated: 2018/06/05 18:55:33 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/05 19:26:39 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void		calc_point(t_3dpt *result, t_3dpt *pos, t_3dpt *dir, double t)
 	result->x = pos->x + dir->x * t;
 	result->y = pos->y + dir->y * t;
 	result->z = pos->z + dir->z * t;
-
 }
 
 double		v_l(t_3dpt *v)
