@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 14:42:06 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/05 16:27:36 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/05 19:22:01 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,5 +113,13 @@ void	ft_calculate_normal(t_prim *prim, t_3dpt *p)
 		if (prim->textur_n.valid == TRUE)
 			ft_get_texture_prim_normal(prim);
 	}
+	else if (prim->type == CERCLE)
+		ft_set_3dpt(&(prim->normal), prim->cercle.dir.x, prim->cercle.dir.y,
+				prim->cercle.dir.z);
+	else if (prim->type == RECT)
+		ft_set_3dpt(&(prim->normal), prim->rect.dir.x, prim->rect.dir.y,
+				prim->rect.dir.z);
+	else if (prim->type == TORE)
+		ft_tore_normal(prim);
 	ft_sine_perturbation(prim, p);
 }

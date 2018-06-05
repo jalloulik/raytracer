@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 16:33:59 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/04 14:41:24 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/05 19:03:05 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,10 @@ void				ft_error(char *str);
 void				ft_mlx_init(t_winenv *mlxenv);
 void				ft_create_window(t_winenv *mlxenv, int length,
 											int height, char *title);
+double			v_scale(t_3dpt *u1, t_3dpt *u2);
+t_3dpt			v_sub(t_3dpt *u1, t_3dpt *u2);
+t_3dpt			v_prod(t_3dpt *u1, t_3dpt *u2);
+
 void				ft_fill_img(t_mlximg img, int x, int y, int color);
 void				ft_fill_img_rgb(t_mlximg img, int x, int y, t_color color);
 void				ft_create_img(t_winenv *mlxenv, int length, int height);
