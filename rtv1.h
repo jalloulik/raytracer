@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/04 14:33:34 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/05 16:29:51 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,20 @@ typedef struct		s_cone
 	t_3dpt			normal;
 }					t_cone;
 
+typedef struct		s_sin_perturb
+{
+	int				status;
+	int				xstatus;
+	int				x;
+	int				x_div;
+	int				ystatus;
+	int				y;
+	int				y_div;
+	int				zstatus;
+	int				z;
+	int				z_div;
+}					t_sin_perturb;
+
 typedef struct		s_prim
 {
 	int				type;
@@ -169,6 +183,7 @@ typedef struct		s_prim
 	double			refraction_index;
 	t_texture		textur;
 	t_texture		textur_n;
+	t_sin_perturb	sin;
 	struct s_prim	*next;
 }					t_prim;
 
@@ -371,11 +386,12 @@ void				ft_get_textur_sphere(t_prim *prim, t_3dpt *coord);
 void				ft_get_textur_cyl(t_prim *prim, t_3dpt *coord);
 void				ft_get_textur_plane(t_prim *prim, t_3dpt *coord);
 void				ft_get_coord_from_uv(t_prim *prim, t_3dpt *coord, t_uv *uv);
-double				ft_shadow_percent(t_obj *obj, t_prim *small, int *lit, t_color *color);
+double				ft_shadow_percent(t_obj *obj, t_prim *small, int *lit,
+																t_color *color);
 void				ft_calculate_vec_to_light(t_3dpt *p_to_light, t_obj *obj,
 																t_prim *small);
 double				ft_get_dist_to_light(t_obj *obj, t_prim *small);
 void				ft_shadow_texture(t_color *base, t_color *texture);
 void				ft_save_image(t_winenv *mlxenv);
-
+void				ft_sine_perturbation(t_prim *prim, t_3dpt *p);
 #endif
