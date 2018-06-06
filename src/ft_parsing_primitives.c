@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 16:22:12 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/05 19:58:49 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/06 17:15:38 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,6 +186,52 @@ void	ft_check_texture(t_prim *last, char *str, char *type)
 	}
 }
 
+void	ft_check_checkers(t_prim *last, char *str)
+{
+	char **tmp;
+
+	tmp = ft_strsplit(str, ':');
+	if (tmp != NULL)
+	{
+		if (ft_count_tab(tmp) >= 1 && (ft_strequ(tmp[0], "checkers") == 1))
+		{
+			last->checkers.valid = TRUE;
+			last->checkers.xscale = 1;
+			last->checkers.yscale = 1;
+			last->checkers.xmove = 0;
+			last->checkers.ymove = 0;
+			last->checkers.width = PROCED_WIDTH;
+			last->checkers.height = PROCED_HEIGHT;
+			if (ft_count_tab(tmp) >= 3 && ft_strequ(tmp[1], "scale") == 1)
+			{
+				last->checkers.xscale = (double)ft_atoi(tmp[2]);
+				if (ft_count_tab(tmp) >= 4 && ft_strequ(tmp[3], "mov") == 0)
+					last->checkers.yscale = (double)ft_atoi(tmp[2]);
+				else
+				{
+					last->checkers.yscale = last->checkers.xscale;
+					if (ft_count_tab(tmp) >= 5 && ft_strequ(tmp[3], "mov") == 1)
+					{
+						if (ft_atoi(tmp[4]) < 0 || ft_atoi(tmp[4]) > 100)
+							ft_error("Scale needs to be between 0 and 100");
+						last->checkers.xmove = (double)ft_atoi(tmp[4]) / 100 ;
+						if (ft_count_tab(tmp) >= 6)
+						{
+							if (ft_atoi(tmp[5]) < 0 || ft_atoi(tmp[5]) > 100)
+								ft_error("Scale needs to be between 0 and 100");
+							last->checkers.ymove = (double)ft_atoi(tmp[5]) / 100;
+						}
+						else
+							last->checkers.ymove = last->checkers.xmove;
+					}
+				}
+			}
+		}
+		ft_free_tab(tmp);
+	}
+}
+
+
 void	ft_count_options(t_prim *last, char **tab, int start)
 {
 	last->sin.status = FALSE;
@@ -196,6 +242,7 @@ void	ft_count_options(t_prim *last, char **tab, int start)
 	last->refractive = FALSE;
 	last->textur.valid = FALSE;
 	last->textur_n.valid = FALSE;
+	last->checkers.valid = FALSE;
 	if (ft_count_tab(tab) >= start)
 	{
 		ft_check_reflection(last, tab[start]);
@@ -203,6 +250,7 @@ void	ft_count_options(t_prim *last, char **tab, int start)
 		ft_check_texture(last, tab[start], "texture");
 		ft_check_texture(last, tab[start], "normal");
 		ft_check_sin(last, tab[start]);
+		ft_check_checkers(last, tab[start]);
 	}
 	if (ft_count_tab(tab) >= start + 1)
 	{
@@ -211,6 +259,7 @@ void	ft_count_options(t_prim *last, char **tab, int start)
 		ft_check_texture(last, tab[start + 1], "texture");
 		ft_check_texture(last, tab[start + 1], "normal");
 		ft_check_sin(last, tab[start + 1]);
+		ft_check_checkers(last, tab[start + 1]);
 	}
 	if (ft_count_tab(tab) >= start + 2)
 	{
@@ -219,6 +268,7 @@ void	ft_count_options(t_prim *last, char **tab, int start)
 		ft_check_texture(last, tab[start + 2], "texture");
 		ft_check_texture(last, tab[start + 2], "normal");
 		ft_check_sin(last, tab[start + 2]);
+		ft_check_checkers(last, tab[start + 2]);
 	}
 	if (ft_count_tab(tab) >= start + 3)
 	{
@@ -227,6 +277,7 @@ void	ft_count_options(t_prim *last, char **tab, int start)
 		ft_check_texture(last, tab[start + 3], "texture");
 		ft_check_texture(last, tab[start + 3], "normal");
 		ft_check_sin(last, tab[start + 3]);
+		ft_check_checkers(last, tab[start + 3]);
 	}
 	if (ft_count_tab(tab) >= start + 4)
 	{
@@ -235,7 +286,19 @@ void	ft_count_options(t_prim *last, char **tab, int start)
 		ft_check_texture(last, tab[start + 4], "texture");
 		ft_check_texture(last, tab[start + 4], "normal");
 		ft_check_sin(last, tab[start + 4]);
+		ft_check_checkers(last, tab[start + 4]);
 	}
+	if (ft_count_tab(tab) >= start + 5)
+	{
+		ft_check_reflection(last, tab[start + 5]);
+		ft_check_refraction(last, tab[start + 5]);
+		ft_check_texture(last, tab[start + 5], "texture");
+		ft_check_texture(last, tab[start + 5], "normal");
+		ft_check_sin(last, tab[start + 5]);
+		ft_check_checkers(last, tab[start + 5]);
+	}
+	if (last->textur.valid == TRUE && last->checkers.valid == TRUE)
+		ft_error("Can't have both checkers and color texture on");
 }
 
 void	ft_plane_setup(char **tab, t_prim **prims)

@@ -6,47 +6,47 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 18:27:28 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/30 15:24:47 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/06 17:31:13 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void		ft_get_coord_from_uv(t_prim *prim, t_3dpt *coord, t_uv *uv)
+void		ft_get_coord_from_uv(t_texture *textur, t_3dpt *coord, t_uv *uv)
 {
 	double scale;
 
 	scale = 1;
-	coord->x = prim->textur.width * uv->tu * prim->textur.xscale;
-	coord->y = prim->textur.height * uv->tv * prim->textur.yscale;
-	if (coord->x >= prim->textur.width && prim->textur.width > 0)
+	coord->x = textur->width * uv->tu * textur->xscale;
+	coord->y = textur->height * uv->tv * textur->yscale;
+	if (coord->x >= textur->width && textur->width > 0)
 	{
-		scale = coord->x / prim->textur.width;
-		coord->x = coord->x - (prim->textur.width * (int)scale);
+		scale = coord->x / textur->width;
+		coord->x = coord->x - (textur->width * (int)scale);
 	}
-	if (coord->y >= prim->textur.height && prim->textur.height > 0)
+	if (coord->y >= textur->height && textur->height > 0)
 	{
-		scale = coord->y / prim->textur.height;
-		coord->y = coord->y - (prim->textur.height * (int)scale);
+		scale = coord->y / textur->height;
+		coord->y = coord->y - (textur->height * (int)scale);
 	}
 }
 
-void		ft_get_texture_prim_coord(t_prim *prim, t_3dpt *coord)
+void		ft_get_texture_prim_coord(t_prim *prim, t_3dpt *coord, t_texture *t)
 {
 	if (prim->type == SPHERE)
-		ft_get_textur_sphere(prim, coord);
+		ft_get_textur_sphere(prim, coord, t);
 	else if (prim->type == CYLINDER || prim->type == CONE)
-		ft_get_textur_cyl(prim, coord);
+		ft_get_textur_cyl(prim, coord, t);
 	else if (prim->type == PLANE)
-		ft_get_textur_plane(prim, coord);
+		ft_get_textur_plane(prim, coord, t);
 }
 
-t_color		ft_get_sphere_texture(t_prim *prim)
+t_color		ft_get_prim_texture_color(t_prim *prim)
 {
 	t_3dpt	coord;
 	t_color	color;
 
-	ft_get_texture_prim_coord(prim, &coord);
+	ft_get_texture_prim_coord(prim, &coord, &(prim->textur));
 	color = ft_get_texture_color(&(prim->textur), coord.x, coord.y);
 	return (color);
 }
@@ -68,7 +68,7 @@ void		ft_get_texture_prim_normal(t_prim *prim)
 
 	if (prim->type == SPHERE || prim->type == CYLINDER ||
 								prim->type == PLANE || prim->type == CONE)
-		ft_get_texture_prim_coord(prim, &coord);
+		ft_get_texture_prim_coord(prim, &coord, &(prim->textur_n));
 	else
 		return ;
 	ft_get_texture_normal(&(text_normal), &(prim->textur_n), coord.x, coord.y);
