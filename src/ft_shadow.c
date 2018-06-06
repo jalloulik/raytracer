@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/29 16:00:08 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/04 09:29:55 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/06 17:00:35 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ void	ft_resolve_single_prim(t_prim *prim, t_3dpt *ray_dir, t_3dpt *origin)
 void	ft_shad_rfrct(t_prim *prim, t_prim *small, t_color *clr, t_l_p *l_path)
 {
 	l_path->percent = (l_path->percent + (1 - prim->refract_ratio)) / 2;
-	if (prim->textur.valid == TRUE)
+	if (prim->textur.valid == TRUE || prim->checkers.valid == TRUE)
 	{
 		ft_resolve_single_prim(prim, &(l_path->p_to_light), &(small->p));
-		prim->color2 = ft_get_sphere_texture(prim);
+		ft_get_prim_texture_color_main(prim);
 		ft_shadow_texture(clr, &(prim->color2));
 	}
 }
