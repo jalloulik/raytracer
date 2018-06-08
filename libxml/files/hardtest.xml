@@ -1,0 +1,28 @@
+<scene>
+	<cam>
+		<origin>
+			<x>0</x>
+			<y>0</y>
+			<z>20</z>
+		</origin>
+		<rotation>
+			<x>0</x>
+			<y>0</y>
+			<z>0</z>
+			<angle>0</angle>
+		</rotation>
+		<translation>
+			<x>0</x>
+			<y>0</y>
+			<z>0</z>
+		</translation>
+		<sepia>false</sepia>
+	</cam>
+	<spot><origin><x>0</x><y>0</y><z>20</z></origin><intensity>100</intensity></spot>
+	<plane>
+		<origin><x>10</x><y>0</y><z>-10</z></origin>
+		<normal><x>10</x><y>0</y><z>-10</z></normal>
+		<color><r>255</r><g>0</g><b>0</b></color>
+	</plane>
+
+</scene>

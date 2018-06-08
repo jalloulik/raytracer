@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/06 17:33:43 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/08 16:51:11 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include "libgraph.h"
+# include "libxml.h"
 
 # define WIN_WIDTH 1000
 # define WIN_HEIGHT 1000
