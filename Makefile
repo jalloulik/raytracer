@@ -6,7 +6,7 @@
 #    By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/06 17:18:00 by kjalloul          #+#    #+#              #
-#    Updated: 2018/06/05 19:15:11 by kjalloul         ###   ########.fr        #
+#    Updated: 2018/06/08 16:35:36 by yvillepo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,13 +68,14 @@ SRC = main.c\
 		ft_texture_coord.c\
 		ft_shadow.c\
 		ft_save_image.c\
-		ft_perturbation.c
+		ft_perturbation.c\
+		cut.c
 
 OBJ = $(SRC:%.c=$(OBJPATH)%.o)
 
 SRCF = $(SRCPATH)$(SRC)
 
-FLAG = -Wall -Werror -Wextra
+FLAG = -ggdb -Wall -Werror -Wextra
 
 all : $(NAME)
 

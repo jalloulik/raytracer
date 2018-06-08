@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 17:28:34 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/03/22 13:11:44 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/08 19:08:17 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ static void	ft_get_abcdet(t_sphere *sphere, t_3dpt *dir, t_3dpt *ray_origin)
 
 double		ft_resolve_sphere(t_prim *prim, t_3dpt *dir, t_3dpt *ray_origin)
 {
-	t_sphere *sphere;
+	t_sphere	*sphere;
+	double		t;
 
 	sphere = &(prim->sphere);
 	ft_get_abcdet(sphere, dir, ray_origin);
@@ -36,13 +37,16 @@ double		ft_resolve_sphere(t_prim *prim, t_3dpt *dir, t_3dpt *ray_origin)
 			sphere->a = sphere->a + 0.000000000000001;
 		sphere->t1 = (-1 * (sphere->b) + sqrt(sphere->det)) / (2.0 * sphere->a);
 		sphere->t2 = (-1 * (sphere->b) - sqrt(sphere->det)) / (2.0 * sphere->a);
-		prim->isvalid = 1;
-		if (sphere->t1 < sphere->t2 && sphere->t1 >= 0)
-			return (sphere->t1);
-		else if (sphere->t2 <= sphere->t1 && sphere->t2 >= 0)
-			return (sphere->t2);
-		else
+		if (sphere->t2 < 0)
 			return (-1);
+		prim->isvalid = 1;
 	}
-	return (-1);
+	else
+		return (-1);
+	t = inter_plane(&(prim->cut.dir), prim->cut.d, ray_origin, dir);
+	if (t > sphere->t2 && t < sphere->t1)
+		return (t);
+	if (t > sphere->t2 && t > sphere->t1)
+		return (-1);
+	return(sphere->t2);
 }

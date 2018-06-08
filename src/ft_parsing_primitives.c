@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 16:22:12 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/05 19:58:49 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/08 17:04:01 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -351,7 +351,10 @@ void	ft_sphere_setup(char **tab, t_prim **prims)
 	ft_free_tab(tmp);
 	ft_parse_color(tab[3], &(last->color2), &ft_error_sphere);
 	ft_parsing_mov(tab[4], tab[5], last, &ft_error_sphere);
-	ft_count_options(last, tab, 6);
+	if(read_cut(tab + 5, prims))
+		ft_count_options(last, tab, 6 + 3);
+	else
+		ft_count_options(last, tab, 6);
 }
 
 void	ft_cercle_setup(char **tab, t_prim **prims)
