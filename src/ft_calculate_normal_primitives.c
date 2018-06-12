@@ -45,6 +45,14 @@ void	ft_cone_normal(t_prim *prim, t_3dpt *p)
 	t_3dpt	local_p;
 	t_3dpt	global_o;
 
+	if (prim->cut.cut)
+	{
+		ft_set_3dpt(&(prim->original_normal), prim->cut.dir.x,
+											prim->cut.dir.y, prim->cut.dir.z);
+		prim->cut.cut = 0;
+		ft_putendl("okok");
+		return ;
+	}
 	ft_swap_g_to_l(&local_p, p, &(prim->g_to_l_move),
 														&(prim->g_to_l_rot));
 	if (cos(prim->cone.angle) == 0)
@@ -68,6 +76,14 @@ void	ft_cone_normal(t_prim *prim, t_3dpt *p)
 
 void	ft_sphere_normal(t_prim *prim, t_3dpt *p)
 {
+	if (prim->cut.cut)
+	{
+		ft_set_3dpt(&(prim->original_normal), prim->cut.dir.x,
+											prim->cut.dir.y, prim->cut.dir.z);
+		prim->cut.cut = 0;
+		ft_putendl("okok");
+		return ;
+	}
 	ft_calculate_vector(&(prim->normal), &(prim->sphere.origin), p);
 	if (prim->textur.valid == TRUE)
 		ft_set_3dpt(&(prim->original_normal), prim->normal.x,

@@ -31,18 +31,20 @@ double		search_min(double num[4], int nb)
 	return (min);
 }
 
-double		solv_seconde(t_3dpt *param)
+double		solv_seconde(t_prim *prim, t_3dpt *param, t_3dpt *pos, t_3dpt *dir)
 {
 	double		d;
-	double		t;
+	double		t[6];
 
 	d = param->y * param->y - 4 * param->x * param->z;
 	if (d < 0)
 		return (-1);
 	if (param->x == 0)
 		param->x = 0.000000000000001;
-	t = (-param->y - sqrt(d)) / (2 * param->x);
-	if (t < 0)
-		t = (-param->y + sqrt(d)) / (2 * param->x);
-	return (t);
+	t[2] = (-param->y - sqrt(d)) / (2 * param->x);
+	t[3] = (-param->y + sqrt(d)) / (2 * param->x);
+	if (!(prim->cut.enable))
+		return (t[2]);
+	cut(&prim->cut, pos, dir, t);
+	return (t[4]);
 }

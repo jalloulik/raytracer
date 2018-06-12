@@ -199,8 +199,12 @@ typedef struct		s_cone
 
 typedef struct		t_cut
 {
-	t_3dpt			c1;
-	t_3dpt			c2;
+	t_3dpt			pos;
+	t_3dpt			dir;
+	double			d0;
+	double			d;
+	int				enable;
+	int				cut;
 }					t_cut;
 
 typedef struct		s_sin_perturb
@@ -243,7 +247,7 @@ typedef struct		s_prim
 	t_3dpt			g_to_l_move;
 	t_quater		l_to_g_rot;
 	t_quater		g_to_l_rot;
-	t_cut			*cut;
+	t_cut			cut;
 	int				reflective;
 	double			reflec_ratio;
 	double			refract_ratio;
@@ -434,7 +438,7 @@ double				ft_resolve_rect(t_prim *prim, t_3dpt *dir, t_3dpt *origin);
 void				read_all_cut(char **str, t_prim *prim);
 void				ft_tore_setup(char **tab, t_prim **prims);
 void				trie(t_3dpt *p1, t_3dpt *p2);
-double				solv_seconde(t_3dpt *param);
+double				solv_seconde(t_prim *prim, t_3dpt *param, t_3dpt *pos, t_3dpt *dir);
 void    			print_cut(t_cut *cut);
 int					solve_quadratic(double *a, double *r);
 int 				solve_quartic(double c[5], double s[4]);
@@ -486,4 +490,6 @@ double				ft_get_dist_to_light(t_obj *obj, t_prim *small);
 void				ft_shadow_texture(t_color *base, t_color *texture);
 void				ft_save_image(t_winenv *mlxenv);
 void				ft_sine_perturbation(t_prim *prim, t_3dpt *p);
+int					cut(t_cut *cut, t_3dpt *c_pos, t_3dpt *c_dir, double *t);
+int					read_cut(char **tab, t_prim *prims);
 #endif

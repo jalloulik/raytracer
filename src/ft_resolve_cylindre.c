@@ -33,5 +33,5 @@ double	ft_resolve_cyl(t_prim *prim, t_3dpt *dir, t_3dpt *origin)
 	ft_swap_g_to_l(&origin_local, origin, &(prim->g_to_l_move),
 													&(prim->g_to_l_rot));
 	ft_get_abcdet_cyl(cyl, &dir_local, &origin_local, &param);
-	return (solv_seconde(&param));
+	return (solv_seconde(prim, &param, origin, dir));
 }

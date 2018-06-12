@@ -22,6 +22,16 @@ double		inter_plane(t_3dpt *normal, double d, t_3dpt *pos, t_3dpt *dir)
 		return (-1);
 	t = (-((normal->x * pos->x + normal->y *
 					pos->y + normal->z
-					* pos->z + d) / t));
+					* pos->z + d )/ t));
 	return (t);
 }
+
+/*
+double		inter_plane(t_plane *plane, t_line *line)
+{
+	double	d;
+
+	d = v_scale(line->dir, plane->n);
+	return (-(v_scale(plane->n, line->pos) + plane->d / d));
+}
+*/

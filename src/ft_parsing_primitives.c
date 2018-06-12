@@ -294,7 +294,10 @@ void	ft_cylinder_setup(char **tab, t_prim **prims)
 	ft_free_tab(tmp);
 	ft_parse_color(tab[4], &(last->color2), &ft_error_cyl);
 	ft_parsing_mov(tab[5], tab[6], last, &ft_error_cyl);
-	ft_count_options(last, tab, 7);
+	if(read_cut(tab + 6, last))
+		ft_count_options(last, tab, 7 + 3);
+	else
+		ft_count_options(last, tab, 7);
 }
 
 void	ft_cone_setup(char **tab, t_prim **prims)
@@ -323,7 +326,10 @@ void	ft_cone_setup(char **tab, t_prim **prims)
 	ft_free_tab(tmp);
 	ft_parse_color(tab[4], &(last->color2), &ft_error_cone);
 	ft_parsing_mov(tab[5], tab[6], last, &ft_error_cone);
-	ft_count_options(last, tab, 7);
+	if(read_cut(tab + 6, last))
+		ft_count_options(last, tab, 7 + 3);
+	else
+		ft_count_options(last, tab, 7);
 }
 
 void	ft_sphere_setup(char **tab, t_prim **prims)
@@ -351,7 +357,7 @@ void	ft_sphere_setup(char **tab, t_prim **prims)
 	ft_free_tab(tmp);
 	ft_parse_color(tab[3], &(last->color2), &ft_error_sphere);
 	ft_parsing_mov(tab[4], tab[5], last, &ft_error_sphere);
-	if(read_cut(tab + 5, prims))
+	if(read_cut(tab + 5, last))
 		ft_count_options(last, tab, 6 + 3);
 	else
 		ft_count_options(last, tab, 6);

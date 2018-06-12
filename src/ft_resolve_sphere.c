@@ -27,7 +27,7 @@ static void	ft_get_abcdet(t_sphere *sphere, t_3dpt *dir, t_3dpt *ray_origin)
 double		ft_resolve_sphere(t_prim *prim, t_3dpt *dir, t_3dpt *ray_origin)
 {
 	t_sphere	*sphere;
-	double		t;
+	double		t[6];
 
 	sphere = &(prim->sphere);
 	ft_get_abcdet(sphere, dir, ray_origin);
@@ -35,18 +35,15 @@ double		ft_resolve_sphere(t_prim *prim, t_3dpt *dir, t_3dpt *ray_origin)
 	{
 		if (sphere->a == 0)
 			sphere->a = sphere->a + 0.000000000000001;
-		sphere->t1 = (-1 * (sphere->b) + sqrt(sphere->det)) / (2.0 * sphere->a);
-		sphere->t2 = (-1 * (sphere->b) - sqrt(sphere->det)) / (2.0 * sphere->a);
+		t[2] = (-1 * (sphere->b) - sqrt(sphere->det)) / (2.0 * sphere->a);
+		t[3] = (-1 * (sphere->b) + sqrt(sphere->det)) / (2.0 * sphere->a);
 		if (sphere->t2 < 0)
 			return (-1);
 		prim->isvalid = 1;
 	}
 	else
 		return (-1);
-	t = inter_plane(&(prim->cut.dir), prim->cut.d, ray_origin, dir);
-	if (t > sphere->t2 && t < sphere->t1)
-		return (t);
-	if (t > sphere->t2 && t > sphere->t1)
-		return (-1);
-	return(sphere->t2);
+	cut(&(prim->cut), ray_origin, dir, t);
+	return (t[4]);
 }
+
