@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/05 19:21:27 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/06/12 10:50:42 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,6 +200,7 @@ typedef struct		s_cone
 typedef struct		t_cut
 {
 	t_3dpt			pos;
+	t_3dpt			pos_loc;
 	t_3dpt			dir;
 	double			d0;
 	double			d;

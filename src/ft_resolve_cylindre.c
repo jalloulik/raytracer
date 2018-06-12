@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 16:31:08 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/05 19:20:36 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/06/12 10:29:12 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ double	ft_resolve_cyl(t_prim *prim, t_3dpt *dir, t_3dpt *origin)
 	ft_swap_g_to_l(&origin_local, origin, &(prim->g_to_l_move),
 													&(prim->g_to_l_rot));
 	ft_get_abcdet_cyl(cyl, &dir_local, &origin_local, &param);
-	return (solv_seconde(prim, &param, origin, dir));
+	return (solv_seconde(prim, &param, &origin_local, &dir_local));
 }

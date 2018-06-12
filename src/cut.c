@@ -6,7 +6,7 @@
 /*   By: yvillepo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:13:36 by yvillepo          #+#    #+#             */
-/*   Updated: 2018/06/08 17:01:37 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/06/12 11:57:43 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static int	choose_t(double *t)
 			t[4] = -1;
 			return (0);
 		}
-		printf("oui\n");
+//		printf("oui\n");
 		t[4] = t[1];
 		return (1);
 	}
@@ -110,7 +110,7 @@ int			cut(t_cut *cut, t_3dpt *c_pos, t_3dpt *c_dir, double *t)
 	}
 	t[5] = t[3];
 	t[5] = search_min(t, 4);
-	printf ("%f %f %f %f %f\n", t[0], t[1], t[2], t[3], t[5]);
+//	printf ("%f %f %f %f %f\n", t[0], t[1], t[2], t[3], t[5]);
 	if (choose_t(t))
 		cut->cut = 1;
 	return (1);

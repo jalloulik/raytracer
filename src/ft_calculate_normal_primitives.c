@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 14:42:06 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/05 19:22:01 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/06/12 12:11:54 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,16 @@ void	ft_cylinder_normal(t_prim *prim, t_3dpt *p)
 	t_3dpt	local_p;
 	t_3dpt	global_o;
 
+	if (prim->cut.cut)
+	{
+		ft_set_3dpt(&(prim->normal), prim->cut.dir.x,
+											prim->cut.dir.y, prim->cut.dir.z);
+		prim->cut.cut = 0;
+		ft_vec_quater_rot(&prim->normal, &prim->cut.dir, &(prim->l_to_g_rot));
+		//klprintf(
+		printf("norm %f %f %f\n",prim->cut.dir.x, prim->cut.dir.y, prim->cut.dir.z);
+		return ;
+	}
 	dist = SQR(ft_calculate_dist(&(prim->cyl.origin), p)) -
 														SQR(prim->cyl.radius);
 	if (dist >= 0)
@@ -47,10 +57,11 @@ void	ft_cone_normal(t_prim *prim, t_3dpt *p)
 
 	if (prim->cut.cut)
 	{
-		ft_set_3dpt(&(prim->original_normal), prim->cut.dir.x,
+		ft_set_3dpt(&(prim->normal), prim->cut.dir.x,
 											prim->cut.dir.y, prim->cut.dir.z);
 		prim->cut.cut = 0;
-		ft_putendl("okok");
+		ft_vec_quater_rot(&prim->normal, &prim->cut.dir, &(prim->l_to_g_rot));
+		printf("norm %f %f %f\n",prim->cut.dir.x, prim->cut.dir.y, prim->cut.dir.z);
 		return ;
 	}
 	ft_swap_g_to_l(&local_p, p, &(prim->g_to_l_move),
@@ -78,10 +89,10 @@ void	ft_sphere_normal(t_prim *prim, t_3dpt *p)
 {
 	if (prim->cut.cut)
 	{
-		ft_set_3dpt(&(prim->original_normal), prim->cut.dir.x,
+		ft_set_3dpt(&(prim->normal), prim->cut.dir.x,
 											prim->cut.dir.y, prim->cut.dir.z);
 		prim->cut.cut = 0;
-		ft_putendl("okok");
+		ft_vec_quater_rot(&prim->normal, &prim->cut.dir, &(prim->l_to_g_rot));
 		return ;
 	}
 	ft_calculate_vector(&(prim->normal), &(prim->sphere.origin), p);
