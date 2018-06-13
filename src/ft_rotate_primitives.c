@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 16:46:22 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/13 09:55:31 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/13 13:38:00 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void	ft_rotate_cone(t_prim *prim)
 {
 	ft_set_3dpt(&(prim->vec_local_dr), 1, 0, 0);
 	ft_set_3dpt(&(prim->cone.vec_local), 0, 1, 0);
-	ft_find_quaters_between(&(prim->l_to_g_rot), &(prim->cyl.vec_local),
-															&(prim->cyl.vec));
+	ft_find_quaters_between(&(prim->l_to_g_rot), &(prim->cone.vec_local),
+															&(prim->cone.vec));
 	ft_vec_quater_rot(&(prim->vec_dr), &(prim->vec_local_dr),
 														&(prim->l_to_g_rot));
 	ft_quater_rot(&(prim->cone.vec), &(prim->cone.vec),
