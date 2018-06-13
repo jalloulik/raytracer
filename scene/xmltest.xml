@@ -115,5 +115,10 @@
 		<p2>-3:-2:0</p2>
 		<p3>-3:-5:0</p3>
 	</triangle>
+	<tore>
+		<origin><x>10</x><y>0</y><z>0</z></origin>
+		<vec><x>10</x><y>0</y><z>0</z></vec>
+		<radius>5:1</radius>
+	</tore>
 
 </scene>

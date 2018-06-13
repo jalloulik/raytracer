@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/08 16:51:11 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/13 09:56:43 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -247,6 +247,8 @@ typedef struct		s_prim
 	t_3dpt			g_to_l_move;
 	t_quater		l_to_g_rot;
 	t_quater		g_to_l_rot;
+	t_3dpt			vec_dr;
+	t_3dpt			vec_local_dr;
 	t_cut			*cut;
 	int				reflective;
 	double			reflec_ratio;
