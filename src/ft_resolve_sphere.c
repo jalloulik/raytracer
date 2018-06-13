@@ -43,6 +43,8 @@ double		ft_resolve_sphere(t_prim *prim, t_3dpt *dir, t_3dpt *ray_origin)
 	}
 	else
 		return (-1);
+	if (!(prim->cut.enable))
+		return (t[2]);
 	cut(&(prim->cut), ray_origin, dir, t);
 	return (t[4]);
 }

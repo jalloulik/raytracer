@@ -28,6 +28,7 @@ int				read_cut(char **tab, t_prim *last)
 	if (!tab[1] || !ft_strequ(tab[1], "cut"))
 	{
 		last->cut.enable = 0;
+		last->cut.cut = 0;
 		return (0);
 	}
 	last->cut.enable = 1;
@@ -44,6 +45,7 @@ int				read_cut(char **tab, t_prim *last)
 		last->cut.d0 = -v_scale(&(last->sphere.origin), &(last->cut.dir));
 	else
 		last->cut.d0 = 0;
+	last->cut.cut = 0;
 	return (1);
 }
 
@@ -99,7 +101,6 @@ int			cut(t_cut *cut, t_3dpt *c_pos, t_3dpt *c_dir, double *t)
 			t[4] = -1;
 			return (0);
 		}
-		ft_putendl("ok");
 		if (t[3] > t[0])
 		{
 			t[4] = t[0];
@@ -110,8 +111,8 @@ int			cut(t_cut *cut, t_3dpt *c_pos, t_3dpt *c_dir, double *t)
 	}
 	t[5] = t[3];
 	t[5] = search_min(t, 4);
-//	printf ("%f %f %f %f %f\n", t[0], t[1], t[2], t[3], t[5]);
 	if (choose_t(t))
 		cut->cut = 1;
+	printf (" t : %f %f %f %f %f %f\n", t[0], t[1], t[2], t[3], t[5], t[4]);
 	return (1);
 }
