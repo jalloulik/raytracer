@@ -6,7 +6,7 @@
 /*   By: yvillepo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:13:36 by yvillepo          #+#    #+#             */
-/*   Updated: 2018/06/12 11:57:43 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/06/14 02:36:41 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int				read_cut(char **tab, t_prim *last)
 		last->cut.pos.z += last->sphere.origin.z; 
 	}
 	read_vect2(tab[3], &(last->cut.dir));
+	ft_normalize_vector(&(last->cut.dir));
 	last->cut.d = -v_scale(&(last->cut.pos), &(last->cut.dir));
 	if (last->type == SPHERE)
 		last->cut.d0 = -v_scale(&(last->sphere.origin), &(last->cut.dir));
@@ -49,6 +50,42 @@ int				read_cut(char **tab, t_prim *last)
 	return (1);
 }
 
+static int	choose_t2(double *t, t_3dpt *d1, t_3dpt *d2)
+{
+	if (v_scale(d1, d2) > 0)
+	{
+		printf("cas 1 : scal %f\n",v_scale(d1, d2));
+		if (t[1] < t[2] && t[1] < t[0])
+		{
+			if (t[2] < t[0])
+			{
+				t[3] = t[1];
+				return (0);
+			}
+			t[3] = t[0];
+			return (1);
+		}
+		t[3] = -1;
+		return (0);
+	}
+	else
+	{
+		printf("cas 2 : scal %f\n",v_scale(d1, d2));
+		if (t[1] < t[2] && t[1] < t[0])
+		{
+			if (t[2] < t[0])
+			{
+				t[3] = -1;
+				return (0);
+			}
+			t[3] = t[0];
+			return (1);
+		}
+		t[3] = t[1];
+		return (0);
+	}
+}
+/*
 static int	choose_t(double *t)
 {
 	if (t[0] == t[5] || t[1] == t[5])
@@ -71,48 +108,19 @@ static int	choose_t(double *t)
 			t[4] = -1;
 			return (0);
 		}
-//		printf("oui\n");
 		t[4] = t[1];
 		return (1);
 	}
-	/*
-	else if (t[2] < t[0])
-	{
-		t[4] = t[2];
-		return (0);
-	}
-	else if (t[1] < t[0])
-	{
-	}
-	*/
 	return (0);
 }
-
+*/
 #include <stdio.h>
 
 int			cut(t_cut *cut, t_3dpt *c_pos, t_3dpt *c_dir, double *t)
 {
-	t[0] = inter_plane(&cut->dir, cut->d0, c_pos, c_dir);
 	t[1] = inter_plane(&cut->dir, cut->d, c_pos, c_dir);
-	if (cut->d0 == cut->d)
-	{
-		if (t[2] > t[0])
-		{
-			t[4] = -1;
-			return (0);
-		}
-		if (t[3] > t[0])
-		{
-			t[4] = t[0];
-			return (1);
-		}
-		t[4] = t[2];
-		return (0);
-	}
-	t[5] = t[3];
-	t[5] = search_min(t, 4);
-	if (choose_t(t))
+	if (choose_t2(&t[1], c_dir, &cut->dir))
 		cut->cut = 1;
-	printf (" t : %f %f %f %f %f %f\n", t[0], t[1], t[2], t[3], t[5], t[4]);
+	printf (" t : %f %f %f %f\n", t[1], t[2], t[3], t[4]);
 	return (1);
 }
