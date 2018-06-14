@@ -25,6 +25,7 @@ SRC = src/main.c \
 	src/interface/colonne2.c \
 	src/interface/colonne3.c \
 	src/interface/colonne4.c \
+	src/interface/colonne5.c \
 	src/interface/3d_button.c \
 	src/interface/2d_button.c \
 	src/interface/1d_button.c \
@@ -36,6 +37,8 @@ SRC = src/main.c \
 	src/user_values.c \
 	src/active_switch.c \
 	src/show_option.c \
+	src/event.c \
+	src/type.c \
 
 OBJ = $(SRC:%.c=$(OBJPATH)%.o)
 

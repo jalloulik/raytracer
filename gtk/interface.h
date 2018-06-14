@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 15:58:32 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/12 14:06:29 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/14 11:47:19 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct		s_container
 	GtkWidget		*colonne2;
 	GtkWidget		*colonne3;
 	GtkWidget		*colonne4;
+	GtkWidget		*colonne5;
 }					t_container;
 
 typedef struct		s_inter_fixe
@@ -68,13 +69,13 @@ typedef struct		s_primitive
 typedef struct		s_reflect_ui
 {
 	t_1d_button		on_off;
-	t_1d_button		value;
+	t_1d_button		pourcent;
 }					t_reflect_ui;
 
 typedef struct		s_refract_ui
 {
 	t_1d_button		on_off;
-	t_1d_button		value;
+	t_1d_button		pourcent;
 	t_1d_button		material;
 }					t_refract_ui;
 

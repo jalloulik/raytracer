@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 15:39:18 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/12 15:32:37 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/14 11:32:20 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ void			ft_show_reflect(t_interface *inter, GtkWidget *widget)
 {
 	if (gtk_switch_get_state(GTK_SWITCH(widget)) == 0)
 	{
-		gtk_widget_hide(inter->reflect.value.label_x);
-		gtk_widget_hide(inter->reflect.value.x);
+		gtk_widget_hide(inter->reflect.pourcent.label_x);
+		gtk_widget_hide(inter->reflect.pourcent.x);
 	}
 	if (gtk_switch_get_state(GTK_SWITCH(widget)) == 1)
 	{
-		gtk_widget_show_now(inter->reflect.value.label_x);
-		gtk_widget_show_now(inter->reflect.value.x);
+		gtk_widget_show_now(inter->reflect.pourcent.label_x);
+		gtk_widget_show_now(inter->reflect.pourcent.x);
 	}
 }
 
@@ -30,15 +30,15 @@ void			ft_show_refract(t_interface *inter, GtkWidget *widget)
 {
 	if (gtk_switch_get_state(GTK_SWITCH(widget)) == 0)
 	{
-		gtk_widget_hide(inter->refract.value.label_x);
-		gtk_widget_hide(inter->refract.value.x);
+		gtk_widget_hide(inter->refract.pourcent.label_x);
+		gtk_widget_hide(inter->refract.pourcent.x);
 		gtk_widget_hide(inter->refract.material.label_x);
 		gtk_widget_hide(inter->refract.material.x);
 	}
 	if (gtk_switch_get_state(GTK_SWITCH(widget)) == 1)
 	{
-		gtk_widget_show_now(inter->refract.value.label_x);
-		gtk_widget_show_now(inter->refract.value.x);
+		gtk_widget_show_now(inter->refract.pourcent.label_x);
+		gtk_widget_show_now(inter->refract.pourcent.x);
 		gtk_widget_show_now(inter->refract.material.label_x);
 		gtk_widget_show_now(inter->refract.material.x);
 	}

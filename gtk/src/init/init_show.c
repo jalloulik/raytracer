@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/12 13:41:40 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/12 14:25:52 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/14 11:50:39 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void		ft_init_show(t_interface *inter)
 {
-	gtk_widget_hide(inter->refract.value.label_x);
-	gtk_widget_hide(inter->refract.value.x);
+	gtk_widget_hide(inter->refract.pourcent.label_x);
+	gtk_widget_hide(inter->refract.pourcent.x);
 	gtk_widget_hide(inter->refract.material.label_x);
 	gtk_widget_hide(inter->refract.material.x);
 
-	gtk_widget_hide(inter->reflect.value.label_x);
-	gtk_widget_hide(inter->reflect.value.x);
+	gtk_widget_hide(inter->reflect.pourcent.label_x);
+	gtk_widget_hide(inter->reflect.pourcent.x);
 
 	gtk_widget_hide(inter->tex_c.name.label_x);
 	gtk_widget_hide(inter->tex_c.name.x);

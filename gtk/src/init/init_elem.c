@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 10:26:26 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/12 15:17:46 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/14 11:56:35 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,22 @@ void		ft_init_elem(t_elem *elem)
 	ft_set_3d(&elem->pos, 0, 0, 0);
 	ft_set_3d(&elem->translation, 0, 0, 0);
 	ft_set_3d(&elem->rot, 0, 0, 0);
+	elem->angle_rot = 0;
 	elem->angle = 0;
+	elem->rad = 0;
 	ft_set_3d(&elem->vec, 0, 0, 0);
 	elem->specular = 0;
-	elem->refract.on_off = 0;
 	elem->reflect.on_off = 0;
+	elem->reflect.pourcent = 0;
+	elem->refract.on_off = 0;
+	elem->refract.material = ft_strdup("material");
+	elem->refract.pourcent = 0;
 	elem->tex_c.on_off = 0;
-	elem->tex_c.name = NULL;
+	elem->tex_c.name = ft_strdup("texture");
 	ft_set_2d(&elem->tex_c.move, 0, 0);
 	ft_set_2d(&elem->tex_c.scale, 0, 0);
 	elem->tex_n.on_off = 0;
-	elem->tex_n.name = NULL;
+	elem->tex_n.name = ft_strdup("texture");
 	ft_set_2d(&elem->tex_n.move, 0, 0);
 	ft_set_2d(&elem->tex_n.scale, 0, 0);
 	elem->sinus.on_off = 0;

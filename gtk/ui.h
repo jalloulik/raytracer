@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 10:22:53 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/12 15:33:42 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/14 12:05:51 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ typedef struct		s_2d
 typedef struct		s_refract
 {
 	char			on_off;
-	double			material;
-	double			pourcent;
+	char			*material;
+	int				pourcent;
 }					t_refract;
 
 typedef struct		s_reflect
@@ -83,10 +83,10 @@ typedef struct		s_elem
 	t_3d			translation;
 	t_3d			vec;
 	t_3d			rot;
-	double			angle_rot;
+	int				angle_rot;
 	t_3d			color;
-	double			angle;
-	double			rad;
+	int				angle;
+	int				rad;
 	char			specular;
 	t_reflect		reflect;
 	t_refract		refract;
@@ -103,6 +103,7 @@ typedef struct		s_event_entry
 {
 	t_interface		*inter;
 	int				*value;
+	char			**value_char;
 	GtkTreeIter		iter;
 	int				index1;
 	int				index2;
@@ -115,11 +116,13 @@ void				ft_colonne1(t_interface *inter);
 void				ft_colonne2(t_interface *inter);
 void				ft_colonne3(t_interface *inter);
 void				ft_colonne4(t_interface *inter);
+void				ft_colonne5(t_interface *inter);
 
 void				ft_set_data(t_interface *inter, t_elem *elem);
 void				ft_set_3d_entry(t_3d_button *entry, t_3d elem);
 void				ft_set_2d_entry(t_2d_button *entry, t_2d elem);
-void				ft_set_1d_entry(t_1d_button *entry, int elem);
+void				ft_set_1d_entry_int(t_1d_button *entry, int elem);
+void				ft_set_1d_entry_char(t_1d_button *entry, char *elem);
 void				ft_set_3d(t_3d *elem, int x, int y, int z);
 void				ft_set_2d(t_2d *elem, int x, int y);
 
@@ -135,6 +138,7 @@ void				ft_switch(t_1d_button *swit, GtkWidget *container, char *name);
 void				ft_select_elem_actif(GtkWidget *widget, gpointer data);
 void				ft_active_switch(GtkWidget *widget, GParamSpec *pspec,
 		gpointer data);
+void				ft_event(t_event_entry *e, t_interface *inter);
 
 void				ft_init(t_interface *inter);
 void				ft_init_fix(t_interface *inter);
@@ -163,5 +167,12 @@ void				ft_show_texture_c(t_interface *inter,  GtkWidget *widget);
 void				ft_show_texture_n(t_interface *inter,  GtkWidget *widget);
 void				ft_show_checker(t_interface *inter,  GtkWidget *widget);
 void				ft_show_sinus(t_interface *inter,  GtkWidget *widget);
+
+void				ft_type_entry_1(GtkWidget *type, int **value,
+	t_elem *elem, t_interface *inter);
+void				ft_type_entry_2(GtkWidget *type, int **value,
+	t_elem *elem, t_interface *inter);
+void				ft_type_entry_3(GtkWidget *type, int **value,
+	t_elem *elem, t_interface *inter);
 
 #endif

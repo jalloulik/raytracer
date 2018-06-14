@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 10:32:07 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/11 17:00:19 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/14 11:30:54 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ void		ft_init_2d_button(t_2d_button *button)
 static void	ft_init_reflect(t_interface *inter)
 {
 	ft_init_1d_button(&inter->reflect.on_off);
-	ft_init_1d_button(&inter->reflect.value);
+	ft_init_1d_button(&inter->reflect.pourcent);
 }
 
 static void	ft_init_refract(t_interface *inter)
 {
 	ft_init_1d_button(&inter->refract.on_off);
-	ft_init_1d_button(&inter->refract.value);
+	ft_init_1d_button(&inter->refract.pourcent);
 	ft_init_1d_button(&inter->refract.material);
 }
 

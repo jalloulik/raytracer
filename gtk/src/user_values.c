@@ -6,39 +6,29 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/01 14:13:12 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/12 16:00:57 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/14 12:04:29 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ui.h"
 
-static void			ft_type(GtkWidget *type, int **value,
-t_elem *elem, t_interface *inter)
+static void			ft_type_int(GtkWidget *type, int **value,
+	t_elem *elem, t_interface *inter)
 {
-	if (type == inter->fix.pos.x)
-		*value = &elem->pos.x;
-	if (type == inter->fix.pos.y)
-		*value = &elem->pos.y;
-	if (type == inter->fix.pos.z)
-		*value = &elem->pos.z;
-	if (type == inter->fix.translation.x)
-		*value = &elem->translation.x;
-	if (type == inter->fix.translation.y)
-		*value = &elem->translation.y;
-	if (type == inter->fix.translation.z)
-		*value = &elem->translation.z;
-	if (type == inter->fix.vec.x)
-		*value = &elem->vec.x;
-	if (type == inter->fix.vec.y)
-		*value = &elem->vec.y;
-	if (type == inter->fix.vec.z)
-		*value = &elem->vec.z;
-	if (type == inter->fix.rot.x)
-		*value = &elem->rot.x;
-	if (type == inter->fix.rot.y)
-		*value = &elem->rot.y;
-	if (type == inter->fix.rot.z)
-		*value = &elem->rot.z;
+	ft_type_entry_1(type, value, elem, inter);
+	ft_type_entry_2(type, value, elem, inter);
+	ft_type_entry_3(type, value, elem, inter);
+}
+
+static void			ft_type_char(GtkWidget *type, char ***value,
+	t_elem *elem, t_interface *inter)
+{
+	if (type == inter->tex_c.name.x)
+		*value = &elem->tex_c.name;
+	if (type == inter->tex_n.name.x)
+		*value = &elem->tex_n.name;
+	if (type == inter->refract.material.x)
+		*value = &elem->refract.material;
 }
 
 void				ft_entry_value(GtkWidget *widget, gpointer data)
@@ -58,8 +48,19 @@ void				ft_entry_value(GtkWidget *widget, gpointer data)
 			0, &e->index2, 1, &e->p_text2, -1);
 			if (ft_strcmp(e->p_text1, e->p_text2) == 0)
 			{
-				ft_type(widget, &e->value, elem, e->inter);
-				*e->value = ft_atoi(gtk_entry_get_text(GTK_ENTRY(widget)));
+				if (widget == e->inter->tex_n.name.x || widget == e->inter->tex_c.name.x
+					|| widget == e->inter->refract.material.x)
+				{
+					ft_type_char(widget, &e->value_char, elem, e->inter);
+					free(*e->value_char);
+					*e->value_char = NULL;
+					*e->value_char = ft_strdup((char*)gtk_entry_get_text(GTK_ENTRY(widget)));
+				}
+				else
+				{
+					ft_type_int(widget, &e->value, elem, e->inter);
+					*e->value = ft_atoi(gtk_entry_get_text(GTK_ENTRY(widget)));
+				}
 				break ;
 			}
 			elem = elem->next;

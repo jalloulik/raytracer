@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/22 13:48:52 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/11 15:48:29 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/14 11:47:55 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,5 @@ void			ft_interface(t_interface *inter, GtkWidget *window)
 	ft_colonne2(inter);
 	ft_colonne3(inter);
 	ft_colonne4(inter);
+	ft_colonne5(inter);
 }
