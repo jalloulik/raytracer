@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/01 14:13:12 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/14 12:04:29 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/14 13:33:16 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static void			ft_type_int(GtkWidget *type, int **value,
 	ft_type_entry_1(type, value, elem, inter);
 	ft_type_entry_2(type, value, elem, inter);
 	ft_type_entry_3(type, value, elem, inter);
+	ft_type_entry_4(type, value, elem, inter);
 }
 
 static void			ft_type_char(GtkWidget *type, char ***value,
@@ -31,6 +32,25 @@ static void			ft_type_char(GtkWidget *type, char ***value,
 		*value = &elem->refract.material;
 }
 
+static void			ft_char_int(t_event_entry *e,
+	t_elem *elem, GtkWidget *widget)
+{
+	if (widget == e->inter->tex_n.name.x || widget == e->inter->tex_c.name.x
+			|| widget == e->inter->refract.material.x)
+	{
+		ft_type_char(widget, &e->value_char, elem, e->inter);
+		free(*e->value_char);
+		*e->value_char = NULL;
+		*e->value_char =
+				ft_strdup((char*)gtk_entry_get_text(GTK_ENTRY(widget)));
+	}
+	else
+	{
+		ft_type_int(widget, &e->value, elem, e->inter);
+		*e->value = ft_atoi(gtk_entry_get_text(GTK_ENTRY(widget)));
+	}
+}
+
 void				ft_entry_value(GtkWidget *widget, gpointer data)
 {
 	t_event_entry	*e;
@@ -38,29 +58,18 @@ void				ft_entry_value(GtkWidget *widget, gpointer data)
 
 	e = (t_event_entry *)data;
 	elem = e->inter->list_e;
-	if (gtk_combo_box_get_active_iter(GTK_COMBO_BOX(e->inter->list.button), &e->iter))
+	if (gtk_combo_box_get_active_iter(GTK_COMBO_BOX(e->inter->list.button),
+		&e->iter))
 	{
 		while (elem)
 		{
-			gtk_tree_model_get(GTK_TREE_MODEL(e->inter->list.store), &e->iter,
-			0, &e->index1, 1, &e->p_text1, -1);
-			gtk_tree_model_get(GTK_TREE_MODEL(e->inter->list.store), &elem->iter,
-			0, &e->index2, 1, &e->p_text2, -1);
+			gtk_tree_model_get(GTK_TREE_MODEL(e->inter->list.store),
+				&e->iter, 0, &e->index1, 1, &e->p_text1, -1);
+			gtk_tree_model_get(GTK_TREE_MODEL(e->inter->list.store),
+				&elem->iter, 0, &e->index2, 1, &e->p_text2, -1);
 			if (ft_strcmp(e->p_text1, e->p_text2) == 0)
 			{
-				if (widget == e->inter->tex_n.name.x || widget == e->inter->tex_c.name.x
-					|| widget == e->inter->refract.material.x)
-				{
-					ft_type_char(widget, &e->value_char, elem, e->inter);
-					free(*e->value_char);
-					*e->value_char = NULL;
-					*e->value_char = ft_strdup((char*)gtk_entry_get_text(GTK_ENTRY(widget)));
-				}
-				else
-				{
-					ft_type_int(widget, &e->value, elem, e->inter);
-					*e->value = ft_atoi(gtk_entry_get_text(GTK_ENTRY(widget)));
-				}
+				ft_char_int(e, elem, widget);
 				break ;
 			}
 			elem = elem->next;

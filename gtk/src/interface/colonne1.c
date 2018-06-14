@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 00:33:51 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/12 13:05:43 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/14 13:58:33 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,26 @@
 
 static void			ft_list_elem(t_interface *inter)
 {
-	GtkCellRenderer * p_cell = NULL;
- 
-	p_cell = gtk_cell_renderer_text_new ();
+	GtkCellRenderer *p_cell;
+
+	p_cell = NULL;
+	p_cell = gtk_cell_renderer_text_new();
 	inter->list.store = gtk_list_store_new(3, G_TYPE_INT, G_TYPE_STRING);
-	inter->list.button = gtk_combo_box_new_with_model(GTK_TREE_MODEL(inter->list.store));
-	gtk_cell_layout_pack_start(GTK_CELL_LAYOUT (inter->list.button), p_cell, FALSE);
-	gtk_cell_layout_set_attributes(GTK_CELL_LAYOUT (inter->list.button), p_cell, "text", 1, NULL);
-	gtk_container_add(GTK_CONTAINER(inter->cont.colonne1), inter->list.button);
+	inter->list.button =
+		gtk_combo_box_new_with_model(GTK_TREE_MODEL(inter->list.store));
+	gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(inter->list.button),
+		p_cell, FALSE);
+	gtk_cell_layout_set_attributes(GTK_CELL_LAYOUT(inter->list.button),
+		p_cell, "text", 1, NULL);
+	gtk_container_add(GTK_CONTAINER(inter->cont.colonne1),
+		inter->list.button);
 }
 
 void				ft_colonne1(t_interface *inter)
 {
 	inter->cont.colonne1 = gtk_box_new(GTK_ORIENTATION_VERTICAL, 8);
-	gtk_container_add(GTK_CONTAINER(inter->cont.principal), inter->cont.colonne1);
+	gtk_container_add(GTK_CONTAINER(inter->cont.principal),
+		inter->cont.colonne1);
 	ft_list_elem(inter);
 	ft_3d_button(&(inter->fix.pos), inter->cont.colonne1, "pos");
 	ft_3d_button(&(inter->fix.vec), inter->cont.colonne1, "vec");

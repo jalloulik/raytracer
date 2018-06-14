@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 15:39:18 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/14 11:32:20 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/14 13:20:49 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,100 +41,6 @@ void			ft_show_refract(t_interface *inter, GtkWidget *widget)
 		gtk_widget_show_now(inter->refract.pourcent.x);
 		gtk_widget_show_now(inter->refract.material.label_x);
 		gtk_widget_show_now(inter->refract.material.x);
-	}
-}
-
-void			ft_show_texture_c(t_interface *inter, GtkWidget *widget)
-{
-	if (gtk_switch_get_state(GTK_SWITCH(widget)) == 0)
-	{
-		gtk_widget_hide(inter->tex_c.name.label_x);
-		gtk_widget_hide(inter->tex_c.name.x);
-		gtk_widget_hide(inter->tex_c.move.label_x);
-		gtk_widget_hide(inter->tex_c.move.x);
-		gtk_widget_hide(inter->tex_c.move.label_y);
-		gtk_widget_hide(inter->tex_c.move.y);
-		gtk_widget_hide(inter->tex_c.scale.label_x);
-		gtk_widget_hide(inter->tex_c.scale.x);
-		gtk_widget_hide(inter->tex_c.scale.label_y);
-		gtk_widget_hide(inter->tex_c.scale.y);
-	}
-	if (gtk_switch_get_state(GTK_SWITCH(widget)) == 1)
-	{
-		gtk_widget_show_now(inter->tex_c.name.label_x);
-		gtk_widget_show_now(inter->tex_c.name.x);
-		gtk_widget_show_now(inter->tex_c.move.label_x);
-		gtk_widget_show_now(inter->tex_c.move.x);
-		gtk_widget_show_now(inter->tex_c.move.label_y);
-		gtk_widget_show_now(inter->tex_c.move.y);
-		gtk_widget_show_now(inter->tex_c.scale.label_x);
-		gtk_widget_show_now(inter->tex_c.scale.x);
-		gtk_widget_show_now(inter->tex_c.scale.label_y);
-		gtk_widget_show_now(inter->tex_c.scale.y);
-	}
-}
-
-void			ft_show_texture_n(t_interface *inter, GtkWidget *widget)
-{
-	if (gtk_switch_get_state(GTK_SWITCH(widget)) == 0)
-	{
-		gtk_widget_hide(inter->tex_n.name.label_x);
-		gtk_widget_hide(inter->tex_n.name.x);
-		gtk_widget_hide(inter->tex_n.move.label_x);
-		gtk_widget_hide(inter->tex_n.move.x);
-		gtk_widget_hide(inter->tex_n.move.label_y);
-		gtk_widget_hide(inter->tex_n.move.y);
-		gtk_widget_hide(inter->tex_n.scale.label_x);
-		gtk_widget_hide(inter->tex_n.scale.x);
-		gtk_widget_hide(inter->tex_n.scale.label_y);
-		gtk_widget_hide(inter->tex_n.scale.y);
-	}
-	if (gtk_switch_get_state(GTK_SWITCH(widget)) == 1)
-	{
-		gtk_widget_show_now(inter->tex_n.name.label_x);
-		gtk_widget_show_now(inter->tex_n.name.x);
-		gtk_widget_show_now(inter->tex_n.move.label_x);
-		gtk_widget_show_now(inter->tex_n.move.x);
-		gtk_widget_show_now(inter->tex_n.move.label_y);
-		gtk_widget_show_now(inter->tex_n.move.y);
-		gtk_widget_show_now(inter->tex_n.scale.label_x);
-		gtk_widget_show_now(inter->tex_n.scale.x);
-		gtk_widget_show_now(inter->tex_n.scale.label_y);
-		gtk_widget_show_now(inter->tex_n.scale.y);
-	}
-}
-
-void			ft_show_sinus(t_interface *inter, GtkWidget *widget)
-{
-	if (gtk_switch_get_state(GTK_SWITCH(widget)) == 0)
-	{
-		gtk_widget_hide(inter->sinus.sin_x.label_x);
-		gtk_widget_hide(inter->sinus.sin_x.x);
-		gtk_widget_hide(inter->sinus.sin_x.label_y);
-		gtk_widget_hide(inter->sinus.sin_x.y);
-		gtk_widget_hide(inter->sinus.sin_y.label_x);
-		gtk_widget_hide(inter->sinus.sin_y.x);
-		gtk_widget_hide(inter->sinus.sin_y.label_y);
-		gtk_widget_hide(inter->sinus.sin_y.y);
-		gtk_widget_hide(inter->sinus.sin_z.label_x);
-		gtk_widget_hide(inter->sinus.sin_z.x);
-		gtk_widget_hide(inter->sinus.sin_z.label_y);
-		gtk_widget_hide(inter->sinus.sin_z.y);
-	}
-	if (gtk_switch_get_state(GTK_SWITCH(widget)) == 1)
-	{
-		gtk_widget_show_now(inter->sinus.sin_x.label_x);
-		gtk_widget_show_now(inter->sinus.sin_x.x);
-		gtk_widget_show_now(inter->sinus.sin_x.label_y);
-		gtk_widget_show_now(inter->sinus.sin_x.y);
-		gtk_widget_show_now(inter->sinus.sin_y.label_x);
-		gtk_widget_show_now(inter->sinus.sin_y.x);
-		gtk_widget_show_now(inter->sinus.sin_y.label_y);
-		gtk_widget_show_now(inter->sinus.sin_y.y);
-		gtk_widget_show_now(inter->sinus.sin_z.label_x);
-		gtk_widget_show_now(inter->sinus.sin_z.x);
-		gtk_widget_show_now(inter->sinus.sin_z.label_y);
-		gtk_widget_show_now(inter->sinus.sin_z.y);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 10:20:36 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/14 10:19:04 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/14 13:13:09 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ GtkWidget			*ft_window(char *title)
 	gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_CENTER);
 	gtk_window_set_title(GTK_WINDOW(window), title);
 	gtk_window_set_default_size(GTK_WINDOW(window), 600, 400);
-	//gtk_window_set_resizable (GTK_WINDOW(window), FALSE);
+	gtk_window_set_resizable(GTK_WINDOW(window), FALSE);
 	return (window);
 }
 

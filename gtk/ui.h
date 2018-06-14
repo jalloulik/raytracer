@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 10:22:53 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/14 12:05:51 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/14 13:01:27 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,6 @@ void				ft_colonne3(t_interface *inter);
 void				ft_colonne4(t_interface *inter);
 void				ft_colonne5(t_interface *inter);
 
-void				ft_set_data(t_interface *inter, t_elem *elem);
 void				ft_set_3d_entry(t_3d_button *entry, t_3d elem);
 void				ft_set_2d_entry(t_2d_button *entry, t_2d elem);
 void				ft_set_1d_entry_int(t_1d_button *entry, int elem);
@@ -174,5 +173,12 @@ void				ft_type_entry_2(GtkWidget *type, int **value,
 	t_elem *elem, t_interface *inter);
 void				ft_type_entry_3(GtkWidget *type, int **value,
 	t_elem *elem, t_interface *inter);
+void				ft_type_entry_4(GtkWidget *type, int **value,
+	t_elem *elem, t_interface *inter);
+
+void				ft_event_entry1(t_event_entry *e, t_interface *inter);
+void				ft_event_entry2(t_event_entry *e, t_interface *inter);
+void				ft_event_entry3(t_event_entry *e, t_interface *inter);
+void				ft_event_entry4(t_event_entry *e, t_interface *inter);
 
 #endif

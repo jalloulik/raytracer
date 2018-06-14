@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 10:26:26 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/14 11:56:35 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/14 13:35:41 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,16 @@ void		ft_set_2d(t_2d *elem, int x, int y)
 {
 	elem->x = x;
 	elem->y = y;
+}
+
+void		ft_init_elem1(t_elem *elem)
+{
+	ft_set_2d(&elem->sinus.sin_x, 0, 0);
+	ft_set_2d(&elem->sinus.sin_y, 0, 0);
+	ft_set_2d(&elem->sinus.sin_z, 0, 0);
+	elem->checker.on_off = 0;
+	ft_set_2d(&elem->checker.move, 0, 0);
+	ft_set_2d(&elem->checker.scale, 0, 0);
 }
 
 void		ft_init_elem(t_elem *elem)
@@ -50,10 +60,5 @@ void		ft_init_elem(t_elem *elem)
 	ft_set_2d(&elem->tex_n.move, 0, 0);
 	ft_set_2d(&elem->tex_n.scale, 0, 0);
 	elem->sinus.on_off = 0;
-	ft_set_2d(&elem->sinus.sin_x, 0, 0);
-	ft_set_2d(&elem->sinus.sin_y, 0, 0);
-	ft_set_2d(&elem->sinus.sin_z, 0, 0);
-	elem->checker.on_off = 0;
-	ft_set_2d(&elem->checker.move, 0, 0);
-	ft_set_2d(&elem->checker.scale, 0, 0);
+	ft_init_elem1(elem);
 }

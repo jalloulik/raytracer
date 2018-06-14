@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 12:00:16 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/14 12:05:30 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/14 13:27:53 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,29 @@ void		ft_type_entry_3(GtkWidget *type, int **value,
 		*value = &elem->rad;
 	if (type == inter->angle.x)
 		*value = &elem->angle;
+	if (type == inter->checker.move.x)
+		*value = &elem->checker.move.x;
+	if (type == inter->checker.move.y)
+		*value = &elem->checker.move.y;
+	if (type == inter->checker.scale.x)
+		*value = &elem->checker.scale.x;
+	if (type == inter->checker.scale.y)
+		*value = &elem->checker.scale.y;
+}
+
+void		ft_type_entry_4(GtkWidget *type, int **value,
+	t_elem *elem, t_interface *inter)
+{
+	if (type == inter->sinus.sin_x.x)
+		*value = &elem->sinus.sin_x.x;
+	if (type == inter->sinus.sin_x.y)
+		*value = &elem->sinus.sin_x.y;
+	if (type == inter->sinus.sin_y.x)
+		*value = &elem->sinus.sin_y.x;
+	if (type == inter->sinus.sin_y.y)
+		*value = &elem->sinus.sin_y.y;
+	if (type == inter->sinus.sin_z.x)
+		*value = &elem->sinus.sin_z.x;
+	if (type == inter->sinus.sin_z.y)
+		*value = &elem->sinus.sin_z.y;
 }

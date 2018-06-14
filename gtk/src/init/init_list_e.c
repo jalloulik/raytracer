@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/12 11:50:07 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/12 13:06:54 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/14 13:40:30 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void			ft_create_camera(t_interface *inter)
 	ft_init_elem(elem);
 }
 
-void		ft_init_list_e(t_interface *inter)
+void				ft_init_list_e(t_interface *inter)
 {
 	ft_create_camera(inter);
 }

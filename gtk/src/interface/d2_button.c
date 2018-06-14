@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   2d_button.c                                        :+:      :+:    :+:   */
+/*   d2_button.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/11 12:38:34 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/12 14:05:06 by tfavart          ###   ########.fr       */
+/*   Created: 2018/06/14 13:50:37 by tfavart           #+#    #+#             */
+/*   Updated: 2018/06/14 13:51:53 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,11 @@ static void		ft_xy(t_2d_button *inter, GtkWidget *box_h, char *name)
 	gtk_container_add(GTK_CONTAINER(box_h), inter->y);
 }
 
-void			ft_2d_button(t_2d_button *inter, GtkWidget *container, char *name)
+void			ft_2d_button(t_2d_button *inter,
+	GtkWidget *container, char *name)
 {
-	GtkWidget		*box_v;
-	GtkWidget		*box_h;
+	GtkWidget	*box_v;
+	GtkWidget	*box_h;
 
 	box_v = gtk_box_new(GTK_ORIENTATION_VERTICAL, 2);
 	gtk_container_add(GTK_CONTAINER(container), box_v);

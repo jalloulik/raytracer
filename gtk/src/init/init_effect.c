@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 10:32:07 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/14 11:30:54 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/14 13:41:01 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	ft_init_texture(t_texture_ui *texture)
 	ft_init_2d_button(&texture->scale);
 }
 
-void	ft_init_effect(t_interface *inter)
+void		ft_init_effect(t_interface *inter)
 {
 	ft_init_reflect(inter);
 	ft_init_refract(inter);
