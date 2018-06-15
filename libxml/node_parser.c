@@ -6,7 +6,7 @@
 /*   By: mfrisby <mfrisby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 15:02:09 by mfrisby           #+#    #+#             */
-/*   Updated: 2018/06/08 16:28:13 by mfrisby          ###   ########.fr       */
+/*   Updated: 2018/06/15 18:47:17 by mfrisby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,11 @@ static int		balise_opened(t_node **node, char *s, int i)
 	(*node)->name = get_balise_name(s + i);
 	while (s[i] != '>')
 		i++;
-	return (i+1);
+	return (i + 1);
 }
 
 static int		get_node(t_node *node, char *s, int i, int len)
-{		
+{
 	while (s && s[i] && s[i] == ' ')
 		i++;
 	if (!s || i < 0 || !s[i] || i >= len)
@@ -85,7 +85,7 @@ static int		get_node(t_node *node, char *s, int i, int len)
 void			node_parser(t_xmlp *xmlp)
 {
 	int			ret;
-	
+
 	xmlp->node = init_node(NULL);
 	ret = get_node(xmlp->node, xmlp->content, 0, xmlp->len);
 }
