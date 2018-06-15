@@ -19,6 +19,7 @@ SRC = src/main.c \
 	src/init/init_checker.c \
 	src/init/init_list_e.c \
 	src/init/init_show.c \
+	src/init/init_show2.c \
 	src/interface/interface.c \
 	src/interface/colonne0.c \
 	src/interface/colonne1.c \
@@ -32,16 +33,19 @@ SRC = src/main.c \
 	src/interface/switch_creation.c \
 	src/ft_list.c \
 	src/fonction_elem.c \
+	src/fonction_elem_2.c \
+	src/fonction_elem_3.c \
 	src/set_data.c \
 	src/set_entry.c \
-	src/user_values.c \
+	src/set_data_show.c \
+	src/entry_values.c \
 	src/active_switch.c \
 	src/show_option.c \
 	src/show_sinus.c \
 	src/show_texture.c \
 	src/event.c \
 	src/event_entry.c \
-	src/type.c \
+	src/type_entry.c \
 
 OBJ = $(SRC:%.c=$(OBJPATH)%.o)
 

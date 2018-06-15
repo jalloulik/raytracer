@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/31 11:01:39 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/14 13:14:44 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/15 13:59:37 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static void		ft_set_entry_1d(t_interface *inter, t_elem *elem)
 	ft_set_1d_entry_char(&inter->refract.material, elem->refract.material);
 	ft_set_1d_entry_char(&inter->tex_c.name, elem->tex_c.name);
 	ft_set_1d_entry_char(&inter->tex_n.name, elem->tex_n.name);
+	ft_set_1d_entry_int(&inter->light.intensity, elem->intensity);
 }
 
 static void		ft_set_data(t_interface *inter, t_elem *elem)
@@ -65,6 +66,7 @@ static void		ft_set_data(t_interface *inter, t_elem *elem)
 		elem->sinus.on_off);
 	gtk_switch_set_active(GTK_SWITCH(inter->checker.on_off.x),
 		elem->checker.on_off);
+	gtk_switch_set_active(GTK_SWITCH(inter->sepia.x), elem->sepia);
 }
 
 void			ft_select_elem_actif(GtkWidget *widget, gpointer data)
@@ -86,6 +88,7 @@ void			ft_select_elem_actif(GtkWidget *widget, gpointer data)
 			&elem->iter, 0, &e->index2, 1, &e->p_text2, -1);
 			if (ft_strcmp(e->p_text1, e->p_text2) == 0)
 			{
+				ft_set_data_show(e->inter, elem);
 				ft_set_data(e->inter, elem);
 				break ;
 			}

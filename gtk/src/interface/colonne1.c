@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 00:33:51 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/14 13:58:33 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/15 15:03:51 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,4 @@ void				ft_colonne1(t_interface *inter)
 	gtk_container_add(GTK_CONTAINER(inter->cont.principal),
 		inter->cont.colonne1);
 	ft_list_elem(inter);
-	ft_3d_button(&(inter->fix.pos), inter->cont.colonne1, "pos");
-	ft_3d_button(&(inter->fix.vec), inter->cont.colonne1, "vec");
 }

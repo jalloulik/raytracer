@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/12 13:41:40 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/14 13:53:20 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/15 14:14:36 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,5 @@ void			ft_init_show(t_interface *inter)
 	ft_init_show_checker(inter);
 	ft_init_show_tex_c(inter);
 	ft_init_show_tex_n(inter);
+	ft_init_show_2(inter);
 }

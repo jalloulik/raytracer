@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 16:17:15 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/14 13:40:13 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/15 16:42:05 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,23 @@ static void	ft_init_cont(t_interface *inter)
 static void	ft_init_prim(t_interface *inter)
 {
 	inter->prim.sphere = NULL;
-	inter->angle.label_x = NULL;
-	inter->angle.x = NULL;
-	inter->rad.label_x = NULL;
-	inter->rad.x = NULL;
 	inter->prim.plan = NULL;
 	inter->prim.cone = NULL;
 	inter->prim.cylindre = NULL;
+	inter->prim.carre = NULL;
+	inter->prim.cercle = NULL;
+	inter->prim.triangle = NULL;
+	inter->prim.torre = NULL;
+	inter->light.spot = NULL;
+	inter->light.sun = NULL;
+	inter->light.ambiant = NULL;
+	ft_init_1d_button(&(inter->light.intensity));
+	ft_init_1d_button(&(inter->angle));
+	ft_init_1d_button(&(inter->rad));
+	ft_init_1d_button(&(inter->specular));
+	ft_init_2d_button(&(inter->size));
+	ft_init_1d_button(&(inter->sepia));
+	
 }
 
 static void	ft_init_list(t_interface *inter)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   type.c                                             :+:      :+:    :+:   */
+/*   type_entry.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/14 12:00:16 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/14 13:27:53 by tfavart          ###   ########.fr       */
+/*   Created: 2018/06/15 12:13:56 by tfavart           #+#    #+#             */
+/*   Updated: 2018/06/15 12:13:57 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,4 +106,6 @@ void		ft_type_entry_4(GtkWidget *type, int **value,
 		*value = &elem->sinus.sin_z.x;
 	if (type == inter->sinus.sin_z.y)
 		*value = &elem->sinus.sin_z.y;
+	if (type == inter->light.intensity.x)
+		*value = &elem->intensity;
 }

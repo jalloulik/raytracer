@@ -6,12 +6,12 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 15:58:32 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/14 11:47:19 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/15 16:41:38 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INTER_H
-# define INTER_H
+#ifndef INTERFACE_H
+# define INTERFACE_H
 
 typedef struct		s_3d_button
 {
@@ -64,6 +64,10 @@ typedef struct		s_primitive
 	GtkWidget		*plan;
 	GtkWidget		*cylindre;
 	GtkWidget		*cone;
+	GtkWidget		*triangle;
+	GtkWidget		*cercle;
+	GtkWidget		*carre;
+	GtkWidget		*torre;
 }					t_primitive;
 
 typedef struct		s_reflect_ui
@@ -102,6 +106,14 @@ typedef struct		s_checker_ui
 	t_2d_button		scale;
 }					t_checker_ui;
 
+typedef struct		s_light_ui
+{
+	GtkWidget		*spot;
+	GtkWidget		*sun;
+	GtkWidget		*ambiant;
+	t_1d_button		intensity;
+}					t_light_ui;
+
 typedef struct		s_list_ui
 {
 	GtkListStore	*store;
@@ -116,6 +128,8 @@ typedef struct		s_interface
 	t_1d_button		angle;
 	t_1d_button		rad;
 	t_1d_button		specular;
+	t_2d_button		size;
+	t_light_ui		light;
 	t_reflect_ui	reflect;
 	t_refract_ui	refract;
 	t_texture_ui	tex_c;
@@ -123,7 +137,7 @@ typedef struct		s_interface
 	t_sinus_ui		sinus;
 	t_list_ui		list;
 	t_checker_ui	checker;
-
+	t_1d_button		sepia;
 	t_elem			*list_e;
 }					t_interface;
 
