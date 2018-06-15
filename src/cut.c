@@ -54,73 +54,35 @@ static int	choose_t2(double *t, t_3dpt *d1, t_3dpt *d2)
 {
 	if (v_scale(d1, d2) > 0)
 	{
-		printf("cas 1 : scal %f\n",v_scale(d1, d2));
-		if (t[1] < t[2] && t[1] < t[0])
+		if (t[0] < t[1] && t[0] < t[2])
 		{
-			if (t[2] < t[0])
-			{
-				t[3] = t[1];
-				return (0);
-			}
 			t[3] = t[0];
-			return (1);
+			return (0);
 		}
 		t[3] = -1;
 		return (0);
 	}
 	else
 	{
-		printf("cas 2 : scal %f\n",v_scale(d1, d2));
-		if (t[1] < t[2] && t[1] < t[0])
+		if (t[0] < t[1] && t[0] < t[2])
 		{
-			if (t[2] < t[0])
+			if (t[1] < t[2])
 			{
 				t[3] = -1;
 				return (0);
 			}
-			t[3] = t[0];
+			t[3] = t[2];
 			return (1);
 		}
-		t[3] = t[1];
+		t[3] = t[0];
 		return (0);
 	}
 }
-/*
-static int	choose_t(double *t)
-{
-	if (t[0] == t[5] || t[1] == t[5])
-	{
-		if (t[0] < t[1] && t[1] < t[2])
-			t[4] = -1;
-		else
-			t[4] = t[2];
-		return (0);
-	}
-	else if (t[2] == t[5])
-	{
-		if (t[0] < t[1])
-		{
-			t[4] = t[2];
-			return (0);
-		}
-		else if (t[3] < t[1] && t[3] < t[0] && t[1] < t[0])
-		{
-			t[4] = -1;
-			return (0);
-		}
-		t[4] = t[1];
-		return (1);
-	}
-	return (0);
-}
-*/
-#include <stdio.h>
 
 int			cut(t_cut *cut, t_3dpt *c_pos, t_3dpt *c_dir, double *t)
 {
-	t[1] = inter_plane(&cut->dir, cut->d, c_pos, c_dir);
-	if (choose_t2(&t[1], c_dir, &cut->dir))
+	t[2] = inter_plane(&cut->dir, cut->d, c_pos, c_dir);
+	if (choose_t2(t, c_dir, &cut->dir))
 		cut->cut = 1;
-	printf (" t : %f %f %f %f\n", t[1], t[2], t[3], t[4]);
 	return (1);
 }

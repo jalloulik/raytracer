@@ -27,7 +27,7 @@ static void	ft_get_abcdet(t_sphere *sphere, t_3dpt *dir, t_3dpt *ray_origin)
 double		ft_resolve_sphere(t_prim *prim, t_3dpt *dir, t_3dpt *ray_origin)
 {
 	t_sphere	*sphere;
-	double		t[6];
+	double		t[4];
 
 	sphere = &(prim->sphere);
 	ft_get_abcdet(sphere, dir, ray_origin);
@@ -35,8 +35,8 @@ double		ft_resolve_sphere(t_prim *prim, t_3dpt *dir, t_3dpt *ray_origin)
 	{
 		if (sphere->a == 0)
 			sphere->a = sphere->a + 0.000000000000001;
-		t[2] = (-1 * (sphere->b) - sqrt(sphere->det)) / (2.0 * sphere->a);
-		t[3] = (-1 * (sphere->b) + sqrt(sphere->det)) / (2.0 * sphere->a);
+		t[0] = (-1 * (sphere->b) - sqrt(sphere->det)) / (2.0 * sphere->a);
+		t[1] = (-1 * (sphere->b) + sqrt(sphere->det)) / (2.0 * sphere->a);
 		if (sphere->t2 < 0)
 			return (-1);
 		prim->isvalid = 1;
@@ -44,8 +44,8 @@ double		ft_resolve_sphere(t_prim *prim, t_3dpt *dir, t_3dpt *ray_origin)
 	else
 		return (-1);
 	if (!(prim->cut.enable))
-		return (t[2]);
+		return (t[0]);
 	cut(&(prim->cut), ray_origin, dir, t);
-	return (t[4]);
+	return (t[3]);
 }
 

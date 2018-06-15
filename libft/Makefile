@@ -77,7 +77,7 @@ SRC = ft_putchar.c\
 	  ft_count_char.c\
 	  get_next_line.c\
 	  ft_absd.c\
-	  ft_atof.c
+	  ft_atof.c\
 
 OBJ = $(SRC:%.c=%.o)
 

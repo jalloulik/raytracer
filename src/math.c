@@ -34,17 +34,17 @@ double		search_min(double num[4], int nb)
 double		solv_seconde(t_prim *prim, t_3dpt *param, t_3dpt *pos, t_3dpt *dir)
 {
 	double		d;
-	double		t[6];
+	double		t[4];
 
 	d = param->y * param->y - 4 * param->x * param->z;
 	if (d < 0)
 		return (-1);
 	if (param->x == 0)
 		param->x = 0.000000000000001;
-	t[2] = (-param->y - sqrt(d)) / (2 * param->x);
-	t[3] = (-param->y + sqrt(d)) / (2 * param->x);
+	t[0] = (-param->y - sqrt(d)) / (2 * param->x);
+	t[1] = (-param->y + sqrt(d)) / (2 * param->x);
 	if (!(prim->cut.enable))
-		return (t[2]);
+		return (t[0]);
 	cut(&prim->cut, pos, dir, t);
-	return (t[4]);
+	return (t[3]);
 }
