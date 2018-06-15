@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/13 09:56:43 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/15 16:28:35 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -497,6 +497,6 @@ void				ft_sine_perturbation(t_prim *prim, t_3dpt *p);
 
 t_color				ft_get_prim_texture_checker(t_prim *prim);
 void				ft_get_prim_texture_color_main(t_prim *prim);
-t_color				ft_get_checkers_color(double x, double y);
+t_color		ft_get_checkers_color(double x, double y, t_texture *textur);
 
 #endif

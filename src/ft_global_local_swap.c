@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 15:28:11 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/13 13:40:04 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/13 13:45:33 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,19 +51,13 @@ void	ft_create_local_vector_spaces(t_prim *prim)
 	while (prim != NULL)
 	{
 		if (prim->type == SPHERE)
-		{
 			ft_create_local_sphere(prim);
-		}
 		else if (prim->type == PLANE)
-		{
 			ft_create_local_plane(prim);
-		}
 		else if (prim->type == CYLINDER)
 			ft_create_local_cyl(prim);
 		else if (prim->type == CONE)
-		{
 			ft_create_local_cone(prim);
-		}
 		else if (prim->type == RECT)
 			ft_create_local_rect(prim);
 		else if (prim->type == TORE)
