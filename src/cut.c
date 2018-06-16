@@ -23,41 +23,57 @@ static void		read_vect2(char *str, t_3dpt *vect)
 	ft_free_tab(tab);
 }
 
-int				read_cut(char **tab, t_prim *last)
+void			read_one_cut(char **tab, t_prim *last, t_cut *cut)
 {
-	if (!tab[1] || !ft_strequ(tab[1], "cut"))
-	{
-		last->cut.enable = 0;
-		last->cut.cut = 0;
-		return (0);
-	}
-	last->cut.enable = 1;
-	read_vect2(tab[2], &(last->cut.pos));
+	read_vect2(tab[1], &(cut->pos));
+	cut->droit = 0;
 	if (last->type == SPHERE)
 	{
-		last->cut.pos.x += last->sphere.origin.x; 
-		last->cut.pos.y += last->sphere.origin.y; 
-		last->cut.pos.z += last->sphere.origin.z; 
+		cut->pos.x += last->sphere.origin.x; 
+		cut->pos.y += last->sphere.origin.y; 
+		cut->pos.z += last->sphere.origin.z; 
 	}
-	read_vect2(tab[3], &(last->cut.dir));
-	ft_normalize_vector(&(last->cut.dir));
-	last->cut.d = -v_scale(&(last->cut.pos), &(last->cut.dir));
-	if (last->type == SPHERE)
-		last->cut.d0 = -v_scale(&(last->sphere.origin), &(last->cut.dir));
-	else
-		last->cut.d0 = 0;
-	last->cut.cut = 0;
-	return (1);
+	read_vect2(tab[2], &(cut->dir));
+	ft_normalize_vector(&(cut->dir));
+	if (cut->dir.x == 1 || cut->dir.y == 1 || cut->dir.z == 1)
+		cut->droit = 1;
+	cut->d = -v_scale(&(cut->pos), &(cut->dir));
+	cut->cut = 0;
+	cut->next = 0;
 }
 
-static int	choose_t2(double *t, t_3dpt *d1, t_3dpt *d2)
+int				read_cut(char **tab, t_prim *last)
+{
+	int		i;
+	t_cut	*cut;
+
+	if (!tab[0] || !ft_strequ(tab[0], "cut"))
+	{
+		last->cut = NULL;
+		return (0);
+	}
+	last->cut = ft_malloc(sizeof(*(last->cut)));
+	cut = last->cut;
+	read_one_cut(tab, last, cut);
+	i = 3;
+	while (tab[i] && ft_strequ(tab[i], "cut"))
+	{
+		cut->next = ft_malloc(sizeof(*(last->cut)));
+		cut = cut->next;
+		read_one_cut(&tab[i], last, cut);
+		i += 3;
+	}
+	return (i);
+}
+
+static int	choose_t(double *t, t_3dpt *d1, t_3dpt *d2)
 {
 	if (v_scale(d1, d2) > 0)
 	{
 		if (t[0] < t[1] && t[0] < t[2])
 		{
 			t[3] = t[0];
-			return (0);
+			return (2);
 		}
 		t[3] = -1;
 		return (0);
@@ -75,14 +91,48 @@ static int	choose_t2(double *t, t_3dpt *d1, t_3dpt *d2)
 			return (1);
 		}
 		t[3] = t[0];
-		return (0);
+		return (2);
 	}
 }
 
 int			cut(t_cut *cut, t_3dpt *c_pos, t_3dpt *c_dir, double *t)
 {
-	t[2] = inter_plane(&cut->dir, cut->d, c_pos, c_dir);
-	if (choose_t2(t, c_dir, &cut->dir))
-		cut->cut = 1;
+	t_cut	*head;
+	int		i;
+
+	i = 2;
+	head = cut;
+	head->cut = 0;
+	while (i)
+	{
+	while (cut)
+	{
+		if ((i == 2 && !cut->droit) || (i == 1 && cut->droit))
+		{
+			t[2] = inter_plane(&cut->dir, cut->d, c_pos, c_dir);
+			if (t[2] == -100000000000000)
+			{
+				if (cut->prec)
+					t[3] = t[0];
+				else
+				{
+					t[3] = -1;
+					return (1);
+				}
+			}
+			if ((cut->prec = choose_t(t, c_dir, &cut->dir)) == 1)
+			{
+				head->cut = 1;
+				head->normal = &cut->dir;
+			}
+			if (t[3] == -1)
+				return (1);
+			t[0] = t[3];
+		}
+		cut = cut->next;
+	}
+	cut = head;
+	i--;
+	}
 	return (1);
 }

@@ -18,14 +18,15 @@ void	ft_cylinder_normal(t_prim *prim, t_3dpt *p)
 	t_3dpt	local_p;
 	t_3dpt	global_o;
 
-	if (prim->cut.cut)
+	if (prim->cut && prim->cut->cut)
 	{
-		ft_set_3dpt(&(prim->normal), prim->cut.dir.x,
-											prim->cut.dir.y, prim->cut.dir.z);
-		prim->cut.cut = 0;
-		ft_vec_quater_rot(&prim->normal, &prim->cut.dir, &(prim->l_to_g_rot));
+		//ft_set_3dpt(&(prim->normal), prim->cut->dir.x,
+		//									prim->cut->dir.y, prim->cut->dir.z);
+		prim->normal = *prim->cut->normal;
+		prim->cut->cut = 0;
+		ft_vec_quater_rot(&prim->normal, &prim->normal, &(prim->l_to_g_rot));
 		//klprintf(
-		printf("norm %f %f %f\n",prim->cut.dir.x, prim->cut.dir.y, prim->cut.dir.z);
+//		printf("norm %f %f %f\n",prim->normal.x, prim->normal.y, prim->normal.z);
 		return ;
 	}
 	dist = SQR(ft_calculate_dist(&(prim->cyl.origin), p)) -
@@ -55,13 +56,13 @@ void	ft_cone_normal(t_prim *prim, t_3dpt *p)
 	t_3dpt	local_p;
 	t_3dpt	global_o;
 
-	if (prim->cut.cut)
+	if (prim->cut && prim->cut->cut)
 	{
-		ft_set_3dpt(&(prim->normal), prim->cut.dir.x,
-											prim->cut.dir.y, prim->cut.dir.z);
-		prim->cut.cut = 0;
-		ft_vec_quater_rot(&prim->normal, &prim->cut.dir, &(prim->l_to_g_rot));
-		printf("norm %f %f %f\n",prim->cut.dir.x, prim->cut.dir.y, prim->cut.dir.z);
+		prim->normal = *prim->cut->normal;
+		prim->cut->cut = 0;
+		ft_vec_quater_rot(&prim->normal, &prim->normal, &(prim->l_to_g_rot));
+		printf("norm %f %f %f\n",prim->cut->normal->x, prim->cut->normal->y,
+				prim->cut->normal->z);
 		return ;
 	}
 	ft_swap_g_to_l(&local_p, p, &(prim->g_to_l_move),
@@ -87,12 +88,11 @@ void	ft_cone_normal(t_prim *prim, t_3dpt *p)
 
 void	ft_sphere_normal(t_prim *prim, t_3dpt *p)
 {
-	if (prim->cut.cut)
+	if (prim->cut && prim->cut->cut)
 	{
-		ft_set_3dpt(&(prim->normal), prim->cut.dir.x,
-											prim->cut.dir.y, prim->cut.dir.z);
-		prim->cut.cut = 0;
-		ft_vec_quater_rot(&prim->normal, &prim->cut.dir, &(prim->l_to_g_rot));
+		prim->normal = *prim->cut->normal;
+		prim->cut->cut = 0;
+		ft_vec_quater_rot(&prim->normal, &prim->normal, &(prim->l_to_g_rot));
 		return ;
 	}
 	ft_calculate_vector(&(prim->normal), &(prim->sphere.origin), p);

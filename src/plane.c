@@ -19,7 +19,7 @@ double		inter_plane(t_3dpt *normal, double d, t_3dpt *pos, t_3dpt *dir)
 	t = dir->x * normal->x + dir->y * normal->y
 			+ dir->z * normal->z;
 	if (t == 0)
-		t = 0.000000000000001;
+		return (-100000000000000);
 	t = (-((normal->x * pos->x + normal->y *
 					pos->y + normal->z
 					* pos->z + d) / t));

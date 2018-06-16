@@ -43,8 +43,8 @@ double		solv_seconde(t_prim *prim, t_3dpt *param, t_3dpt *pos, t_3dpt *dir)
 		param->x = 0.000000000000001;
 	t[0] = (-param->y - sqrt(d)) / (2 * param->x);
 	t[1] = (-param->y + sqrt(d)) / (2 * param->x);
-	if (!(prim->cut.enable))
+	if (prim->cut == NULL)
 		return (t[0]);
-	cut(&prim->cut, pos, dir, t);
+	cut(prim->cut, pos, dir, t);
 	return (t[3]);
 }

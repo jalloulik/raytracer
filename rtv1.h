@@ -197,15 +197,16 @@ typedef struct		s_cone
 	t_3dpt			normal;
 }					t_cone;
 
-typedef struct		t_cut
+typedef struct		s_cut
 {
 	t_3dpt			pos;
-	t_3dpt			pos_loc;
 	t_3dpt			dir;
-	double			d0;
 	double			d;
-	int				enable;
 	int				cut;
+	int				prec;
+	int				droit;
+	t_3dpt			*normal;
+	struct s_cut	*next;
 }					t_cut;
 
 typedef struct		s_sin_perturb
@@ -248,7 +249,7 @@ typedef struct		s_prim
 	t_3dpt			g_to_l_move;
 	t_quater		l_to_g_rot;
 	t_quater		g_to_l_rot;
-	t_cut			cut;
+	t_cut			*cut;
 	int				reflective;
 	double			reflec_ratio;
 	double			refract_ratio;
