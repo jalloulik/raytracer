@@ -89,5 +89,7 @@ int					ft_is_char_in_str(char *str, char c);
 size_t				ft_count_char(char *str, char c);
 double				ft_absd(double n);
 double				ft_atof(const char *str);
+void				*ft_memaloc(size_t t);
+void				*ft_malloc(size_t t);
 
 #endif

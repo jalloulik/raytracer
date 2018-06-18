@@ -6,7 +6,7 @@
 #    By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/06 17:18:00 by kjalloul          #+#    #+#              #
-#    Updated: 2018/06/08 16:52:17 by kjalloul         ###   ########.fr        #
+#    Updated: 2018/06/18 11:42:17 by yvillepo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,14 +71,15 @@ SRC = main.c\
 		ft_shadow.c\
 		ft_save_image.c\
 		ft_perturbation.c\
+		cut.c\
 		ft_sepia.c\
-		ft_checkers.c
+		ft_checkers.c\
 
 OBJ = $(SRC:%.c=$(OBJPATH)%.o)
 
 SRCF = $(SRCPATH)$(SRC)
 
-FLAG = -Wall -Werror -Wextra
+FLAG = -ggdb -Wall -Werror -Wextra
 
 all : $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/15 16:28:35 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/18 17:08:23 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,10 +201,16 @@ typedef struct		s_cone
 	t_3dpt			normal;
 }					t_cone;
 
-typedef struct		t_cut
+typedef struct		s_cut
 {
-	t_3dpt			c1;
-	t_3dpt			c2;
+	t_3dpt			pos;
+	t_3dpt			dir;
+	double			d;
+	int				cut;
+	int				prec;
+	int				droit;
+	t_3dpt			*normal;
+	struct s_cut	*next;
 }					t_cut;
 
 typedef struct		s_sin_perturb
@@ -441,7 +447,7 @@ double				ft_resolve_rect(t_prim *prim, t_3dpt *dir, t_3dpt *origin);
 void				read_all_cut(char **str, t_prim *prim);
 void				ft_tore_setup(char **tab, t_prim **prims);
 void				trie(t_3dpt *p1, t_3dpt *p2);
-double				solv_seconde(t_3dpt *param);
+double				solv_seconde(t_prim *prim, t_3dpt *param, t_3dpt *pos, t_3dpt *dir);
 void    			print_cut(t_cut *cut);
 int					solve_quadratic(double *a, double *r);
 int 				solve_quartic(double c[5], double s[4]);
@@ -494,9 +500,11 @@ double				ft_get_dist_to_light(t_obj *obj, t_prim *small);
 void				ft_shadow_texture(t_color *base, t_color *texture);
 void				ft_save_image(t_winenv *mlxenv);
 void				ft_sine_perturbation(t_prim *prim, t_3dpt *p);
-
+void				cut(t_cut *cut, t_3dpt *c_pos, t_3dpt *c_dir, double *t);
+int					read_cut(char **tab, t_prim *prims);
+void				read_vect2(char *str, t_3dpt *vect);
 t_color				ft_get_prim_texture_checker(t_prim *prim);
 void				ft_get_prim_texture_color_main(t_prim *prim);
-t_color		ft_get_checkers_color(double x, double y, t_texture *textur);
+t_color				ft_get_checkers_color(double x, double y, t_texture *textur);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 16:22:12 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/15 16:48:04 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/18 17:07:09 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -335,6 +335,7 @@ void	ft_cylinder_setup(char **tab, t_prim **prims)
 	t_prim	*last;
 	t_prim	*list;
 	char	**tmp;
+	int		i;
 
 	list = *prims;
 	list = ft_add_lst_file(list, CYLINDER);
@@ -357,7 +358,8 @@ void	ft_cylinder_setup(char **tab, t_prim **prims)
 	ft_free_tab(tmp);
 	ft_parse_color(tab[4], &(last->color2), &ft_error_cyl);
 	ft_parsing_mov(tab[5], tab[6], last, &ft_error_cyl);
-	ft_count_options(last, tab, 7);
+	i = read_cut(tab + 7, last);
+	ft_count_options(last, tab, 7 + i);
 }
 
 void	ft_cone_setup(char **tab, t_prim **prims)
@@ -365,6 +367,7 @@ void	ft_cone_setup(char **tab, t_prim **prims)
 	t_prim	*last;
 	t_prim	*list;
 	char	**tmp;
+	int		i;
 
 	list = *prims;
 	list = ft_add_lst_file(list, CONE);
@@ -386,7 +389,8 @@ void	ft_cone_setup(char **tab, t_prim **prims)
 	ft_free_tab(tmp);
 	ft_parse_color(tab[4], &(last->color2), &ft_error_cone);
 	ft_parsing_mov(tab[5], tab[6], last, &ft_error_cone);
-	ft_count_options(last, tab, 7);
+	i = read_cut(tab + 7, last);
+	ft_count_options(last, tab, 7 + i);
 }
 
 void	ft_sphere_setup(char **tab, t_prim **prims)
@@ -394,6 +398,7 @@ void	ft_sphere_setup(char **tab, t_prim **prims)
 	t_prim	*last;
 	t_prim	*list;
 	char	**tmp;
+	int		i;
 
 	list = *prims;
 	list = ft_add_lst_file(list, SPHERE);
@@ -414,7 +419,8 @@ void	ft_sphere_setup(char **tab, t_prim **prims)
 	ft_free_tab(tmp);
 	ft_parse_color(tab[3], &(last->color2), &ft_error_sphere);
 	ft_parsing_mov(tab[4], tab[5], last, &ft_error_sphere);
-	ft_count_options(last, tab, 6);
+	i = read_cut(tab + 6, last);
+	ft_count_options(last, tab, 6 + i);
 }
 
 void	ft_cercle_setup(char **tab, t_prim **prims)
