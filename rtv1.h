@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/12 10:50:42 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/06/18 09:51:19 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -492,6 +492,7 @@ double				ft_get_dist_to_light(t_obj *obj, t_prim *small);
 void				ft_shadow_texture(t_color *base, t_color *texture);
 void				ft_save_image(t_winenv *mlxenv);
 void				ft_sine_perturbation(t_prim *prim, t_3dpt *p);
-int					cut(t_cut *cut, t_3dpt *c_pos, t_3dpt *c_dir, double *t);
+void					cut(t_cut *cut, t_3dpt *c_pos, t_3dpt *c_dir, double *t);
 int					read_cut(char **tab, t_prim *prims);
+void				read_vect2(char *str, t_3dpt *vect);
 #endif
