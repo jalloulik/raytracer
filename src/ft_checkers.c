@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 17:30:46 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/15 16:37:23 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/15 17:36:30 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ t_color		ft_get_checkers_color(double x, double y, t_texture *textur)
 {
 	t_color color;
 
-	// printf("x%f y%f width%d height%d\n", x, y, textur->width, textur->height);
 	if (x < (double)textur->width / 2 && y < (double)textur->height / 2)
 		ft_set_color(&color, 20, 20, 20);
 	else if (x < (double)textur->width / 2 && y >= (double)textur->height / 2)
