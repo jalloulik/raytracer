@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 14:42:06 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/12 12:11:54 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/06/18 15:50:35 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,9 @@ void	ft_cylinder_normal(t_prim *prim, t_3dpt *p)
 
 	if (prim->cut && prim->cut->cut)
 	{
-		//ft_set_3dpt(&(prim->normal), prim->cut->dir.x,
-		//									prim->cut->dir.y, prim->cut->dir.z);
 		prim->normal = *prim->cut->normal;
 		prim->cut->cut = 0;
 		ft_vec_quater_rot(&prim->normal, &prim->normal, &(prim->l_to_g_rot));
-		//klprintf(
-//		printf("norm %f %f %f\n",prim->normal.x, prim->normal.y, prim->normal.z);
 		return ;
 	}
 	dist = SQR(ft_calculate_dist(&(prim->cyl.origin), p)) -
@@ -61,8 +57,6 @@ void	ft_cone_normal(t_prim *prim, t_3dpt *p)
 		prim->normal = *prim->cut->normal;
 		prim->cut->cut = 0;
 		ft_vec_quater_rot(&prim->normal, &prim->normal, &(prim->l_to_g_rot));
-		printf("norm %f %f %f\n",prim->cut->normal->x, prim->cut->normal->y,
-				prim->cut->normal->z);
 		return ;
 	}
 	ft_swap_g_to_l(&local_p, p, &(prim->g_to_l_move),
