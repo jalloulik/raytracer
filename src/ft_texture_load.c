@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 18:27:28 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/06 17:31:13 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/15 16:48:12 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,15 @@ void		ft_get_coord_from_uv(t_texture *textur, t_3dpt *coord, t_uv *uv)
 	coord->y = textur->height * uv->tv * textur->yscale;
 	if (coord->x >= textur->width && textur->width > 0)
 	{
+		if (textur->width <= 0)
+			ft_error("Texture width needs to be bigger than 0");
 		scale = coord->x / textur->width;
 		coord->x = coord->x - (textur->width * (int)scale);
 	}
 	if (coord->y >= textur->height && textur->height > 0)
 	{
+		if (textur->height <= 0)
+			ft_error("Texture height needs to be bigger than 0");
 		scale = coord->y / textur->height;
 		coord->y = coord->y - (textur->height * (int)scale);
 	}
