@@ -1,0 +1,3 @@
+cam|origin:0:0:20|rotation:0:0:1:angle:0|translation:0:0:0|sepia:false
+spot|origin:0:00:20|intensity:80
+tore|o:0:0:0|d:-1:0:1|5|1|color:r:0:g:0:b:200|rotation:0:0:1:angle:0|translation:0:0:0

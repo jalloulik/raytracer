@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kjalloul <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/06 17:18:00 by kjalloul          #+#    #+#              #
-#    Updated: 2017/12/12 17:43:54 by kjalloul         ###   ########.fr        #
+#    Updated: 2018/06/05 19:05:10 by kjalloul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,7 +75,9 @@ SRC = ft_putchar.c\
 	  ft_lstmap.c\
 	  ft_is_char_in_str.c\
 	  ft_count_char.c\
-	  get_next_line.c
+	  get_next_line.c\
+	  ft_absd.c\
+	  ft_atof.c\
 
 OBJ = $(SRC:%.c=%.o)
 

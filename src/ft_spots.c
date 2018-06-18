@@ -6,11 +6,12 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 11:45:00 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/04/11 14:06:55 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/04/27 08:16:52 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+#include "rt_tf.h"
 
 static t_light	*ft_get_last_spot(t_light *last)
 {
@@ -26,7 +27,7 @@ void			ft_spot_setup(char **tab, t_light **spots)
 	char	**tmp;
 
 	list = *spots;
-	list = ft_add_lst_light(list);
+	list = ft_add_lst_light(list, LIGHT);
 	*spots = list;
 	last = ft_get_last_spot(list);
 	if (ft_count_tab(tab) < 3)
@@ -44,5 +45,6 @@ void			ft_spot_setup(char **tab, t_light **spots)
 	if (last->intensity < 0 || last->intensity > 2)
 		ft_error("Spot intensity needs to be between 0 and 200");
 	ft_free_tab(tmp);
+	last->prim.sphere.radius = 1;
 	ft_set_color(&(last->color), 255, 255, 255);
 }

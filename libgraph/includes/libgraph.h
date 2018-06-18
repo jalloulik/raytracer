@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 16:33:59 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/02/19 15:32:51 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/05 19:03:05 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,14 @@
 # define ERROR "Error"
 # define TERROR "Thread failed to create"
 
-typedef struct	s_3dpt
+typedef struct		s_3dpt
 {
 	double x;
 	double y;
 	double z;
-}				t_3dpt;
+}					t_3dpt;
 
-typedef struct	s_mlximg
+typedef struct		s_mlximg
 {
 	void	*ptr;
 	int		bpp;
@@ -78,9 +78,9 @@ typedef struct	s_mlximg
 	int		length;
 	int		height;
 	char	*str;
-}				t_mlximg;
+}					t_mlximg;
 
-typedef struct	s_winenv
+typedef struct		s_winenv
 {
 	void		*win;
 	void		*mlxptr;
@@ -89,24 +89,47 @@ typedef struct	s_winenv
 	int			height;
 	int			lpad;
 	int			tpad;
-}				t_winenv;
+}					t_winenv;
 
-typedef struct	s_color
+typedef struct		s_color
 {
 	unsigned char red;
 	unsigned char green;
 	unsigned char blue;
 	unsigned char alpha;
-}				t_color;
+}					t_color;
 
-void			ft_error(char *str);
-void			ft_mlx_init(t_winenv *mlxenv);
-void			ft_create_window(t_winenv *mlxenv, int length,
+typedef struct		s_texture
+{
+	int				width;
+	int				height;
+	int				n;
+	int				valid;
+	unsigned char	*data;
+	double			xscale;
+	double			yscale;
+	double			xmove;
+	double			ymove;
+}					t_texture;
+
+void				ft_error(char *str);
+void				ft_mlx_init(t_winenv *mlxenv);
+void				ft_create_window(t_winenv *mlxenv, int length,
 											int height, char *title);
-void			ft_fill_img(t_mlximg img, int x, int y, int color);
-void			ft_fill_img_rgb(t_mlximg img, int x, int y, t_color color);
-void			ft_create_img(t_winenv *mlxenv, int length, int height);
-int				ft_key_hook_exit(int keycode);
-void			ft_set_3dpt(t_3dpt *point, double x, double y, double z);
+double			v_scale(t_3dpt *u1, t_3dpt *u2);
+t_3dpt			v_sub(t_3dpt *u1, t_3dpt *u2);
+t_3dpt			v_prod(t_3dpt *u1, t_3dpt *u2);
+
+void				ft_fill_img(t_mlximg img, int x, int y, int color);
+void				ft_fill_img_rgb(t_mlximg img, int x, int y, t_color color);
+void				ft_create_img(t_winenv *mlxenv, int length, int height);
+int					ft_key_hook_exit(int keycode);
+void				ft_set_3dpt(t_3dpt *point, double x, double y, double z);
+void				ft_set_color(t_color *color, int r, int g, int b);
+t_color				ft_get_texture_color(t_texture *textur, int x, int y);
+void				ft_stb_load_textur(t_texture *textur, char *file_path);
+void				ft_get_texture_normal(t_3dpt *normal, t_texture *textur,
+															int x, int y);
+t_color				ft_read_img_rgb(t_mlximg *img, int x, int y);
 
 #endif

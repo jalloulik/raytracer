@@ -3,23 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/27 10:56:10 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/03/22 13:53:22 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/05 18:02:34 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+#include "rt_tf.h"
 
-t_prim	*ft_get_last(t_prim *last)
+t_prim *ft_get_last(t_prim *last)
 {
 	while (last->next != NULL)
 		last = last->next;
 	return (last);
 }
 
-void	ft_parsing_mov(char *rot, char *transl, t_prim *last, void (*err)(void))
+void		ft_parsing_mov(char *rot, char *transl,
+		t_prim *last, void (*err)(void))
 {
 	char **tmp;
 
@@ -39,7 +41,7 @@ void	ft_parsing_mov(char *rot, char *transl, t_prim *last, void (*err)(void))
 	ft_free_tab(tmp);
 }
 
-void	ft_parse_color(char *color, t_color *color2, void (*ft_err)(void))
+void		ft_parse_color(char *color, t_color *color2, void (*ft_err)(void))
 {
 	char **tmp;
 
@@ -50,7 +52,33 @@ void	ft_parse_color(char *color, t_color *color2, void (*ft_err)(void))
 	ft_free_tab(tmp);
 }
 
-void	ft_parsing_primitives(int fd, t_prim **list, t_light **spots)
+static void	ft_parsing2(char **tab, t_prim **list, t_light **spots)
+{
+	if (ft_strequ(tab[0], "plane") == 1)
+		ft_plane_setup(tab, list);
+	else if (ft_strequ(tab[0], "sphere") == 1)
+		ft_sphere_setup(tab, list);
+	else if (ft_strequ(tab[0], "cylinder") == 1)
+		ft_cylinder_setup(tab, list);
+	else if (ft_strequ(tab[0], "cone") == 1)
+		ft_cone_setup(tab, list);
+	else if (ft_strequ(tab[0], "cercle") == 1)
+		ft_cercle_setup(tab, list);
+	else if (ft_strequ(tab[0], "rect") == 1)
+		ft_rectangle_setup(tab, list);
+	else if (ft_strequ(tab[0], "tore") == 1)
+		ft_tore_setup(tab, list);
+	else if (ft_strequ(tab[0], "triangle") == 1)
+		ft_triangle_setup(tab, list);
+	else if (ft_strequ(tab[0], "spot") == 1)
+		ft_spot_setup(tab, spots);
+	else if (ft_strequ(tab[0], "ambiant") == 1)
+		ft_ambiant_setup(tab, spots);
+	else if (ft_strequ(tab[0], "sun") == 1)
+		ft_sun_setup(tab, spots);
+}
+
+void		ft_parsing_primitives(int fd, t_prim **list, t_light **spots)
 {
 	char *str;
 	char **tab;
@@ -63,23 +91,15 @@ void	ft_parsing_primitives(int fd, t_prim **list, t_light **spots)
 		tab = ft_strsplit(str, '|');
 		if (ft_count_tab(tab) > 0)
 		{
-			if (ft_strequ(tab[0], "plane") == 1)
-				ft_plane_setup(tab, list);
-			else if (ft_strequ(tab[0], "sphere") == 1)
-				ft_sphere_setup(tab, list);
-			else if (ft_strequ(tab[0], "cylinder") == 1)
-				ft_cylinder_setup(tab, list);
-			else if (ft_strequ(tab[0], "cone") == 1)
-				ft_cone_setup(tab, list);
-			else if (ft_strequ(tab[0], "spot") == 1)
-				ft_spot_setup(tab, spots);
+			ft_parsing2(tab, list, spots);
 		}
 		free(str);
 		ft_free_tab(tab);
 	}
 }
 
-void	ft_parsing_start(char *file, t_cam *cam, t_light **spot, t_prim **list)
+void		ft_parsing_start(char *file, t_cam *cam,
+		t_light **spot, t_prim **list)
 {
 	int		fd;
 	char	*str;
