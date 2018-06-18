@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 16:17:15 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/15 16:42:05 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/18 13:27:04 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static void	ft_init_cont(t_interface *inter)
 	inter->cont.colonne3 = NULL;
 	inter->cont.colonne4 = NULL;
 	inter->cont.colonne5 = NULL;
+	inter->cont.colonne6 = NULL;
 }
 
 static void	ft_init_prim(t_interface *inter)
@@ -48,6 +49,8 @@ static void	ft_init_prim(t_interface *inter)
 	ft_init_1d_button(&(inter->specular));
 	ft_init_2d_button(&(inter->size));
 	ft_init_1d_button(&(inter->sepia));
+	ft_init_1d_button(&(inter->rayon_torre.r1));
+	ft_init_1d_button(&(inter->rayon_torre.r2));
 	
 }
 

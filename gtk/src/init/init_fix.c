@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 10:14:50 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/14 15:30:52 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/18 11:27:34 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,13 @@ void		ft_init_3d_button(t_3d_button *button)
 	button->z = NULL;
 }
 
+static void	ft_init_triangle(t_interface *inter)
+{
+	ft_init_3d_button(&inter->triang.p1);
+	ft_init_3d_button(&inter->triang.p2);
+	ft_init_3d_button(&inter->triang.p3);
+}
+
 void		ft_init_fix(t_interface *inter)
 {
 	ft_init_3d_button(&inter->fix.pos);
@@ -30,4 +37,5 @@ void		ft_init_fix(t_interface *inter)
 	ft_init_3d_button(&inter->fix.rot);
 	ft_init_1d_button(&inter->fix.angle_rot);
 	ft_init_3d_button(&inter->fix.color);
+	ft_init_triangle(inter);
 }

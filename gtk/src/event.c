@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 08:52:22 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/15 12:07:32 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/18 13:55:28 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,6 @@ void			ft_event(t_event_entry *e, t_interface *inter)
 	ft_event_entry2(e, inter);
 	ft_event_entry3(e, inter);
 	ft_event_entry4(e, inter);
+	ft_event_entry5(e, inter);
 	ft_event_switch(e, inter);
 }

@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 12:12:58 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/15 12:13:00 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/18 13:42:15 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static void			ft_type_int(GtkWidget *type, int **value,
 	ft_type_entry_2(type, value, elem, inter);
 	ft_type_entry_3(type, value, elem, inter);
 	ft_type_entry_4(type, value, elem, inter);
+	ft_type_entry_5(type, value, elem, inter);
 }
 
 static void			ft_type_char(GtkWidget *type, char ***value,

@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 12:59:55 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/15 11:59:19 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/18 13:50:03 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,5 +109,31 @@ void		ft_event_entry4(t_event_entry *e, t_interface *inter)
 	g_signal_connect(G_OBJECT(inter->sinus.sin_z.y), "changed",
 		G_CALLBACK(ft_entry_value), e);
 	g_signal_connect(G_OBJECT(inter->light.intensity.x), "changed",
+		G_CALLBACK(ft_entry_value), e);
+}
+
+void		ft_event_entry5(t_event_entry *e, t_interface *inter)
+{
+	g_signal_connect(G_OBJECT(inter->triang.p1.x), "changed",
+		G_CALLBACK(ft_entry_value), e);
+	g_signal_connect(G_OBJECT(inter->triang.p1.y), "changed",
+		G_CALLBACK(ft_entry_value), e);
+	g_signal_connect(G_OBJECT(inter->triang.p1.z), "changed",
+		G_CALLBACK(ft_entry_value), e);
+	g_signal_connect(G_OBJECT(inter->triang.p2.x), "changed",
+		G_CALLBACK(ft_entry_value), e);
+	g_signal_connect(G_OBJECT(inter->triang.p2.y), "changed",
+		G_CALLBACK(ft_entry_value), e);
+	g_signal_connect(G_OBJECT(inter->triang.p2.z), "changed",
+		G_CALLBACK(ft_entry_value), e);
+	g_signal_connect(G_OBJECT(inter->triang.p3.x), "changed",
+		G_CALLBACK(ft_entry_value), e);
+	g_signal_connect(G_OBJECT(inter->triang.p3.y), "changed",
+		G_CALLBACK(ft_entry_value), e);
+	g_signal_connect(G_OBJECT(inter->triang.p3.z), "changed",
+		G_CALLBACK(ft_entry_value), e);
+	g_signal_connect(G_OBJECT(inter->rayon_torre.r1.x), "changed",
+		G_CALLBACK(ft_entry_value), e);
+	g_signal_connect(G_OBJECT(inter->rayon_torre.r2.x), "changed",
 		G_CALLBACK(ft_entry_value), e);
 }

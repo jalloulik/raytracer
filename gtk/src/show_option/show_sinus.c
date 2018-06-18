@@ -6,11 +6,11 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 13:17:47 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/14 13:25:40 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/18 12:00:52 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ui.h"
+#include "../../ui.h"
 
 static void		ft_show_sin_x(t_interface *inter, GtkWidget *widget)
 {

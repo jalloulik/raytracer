@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 10:26:26 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/15 16:42:31 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/18 11:30:58 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,25 @@ void		ft_init_elem1(t_elem *elem)
 	ft_set_2d(&elem->sinus.sin_x, 0, 0);
 	ft_set_2d(&elem->sinus.sin_y, 0, 0);
 	ft_set_2d(&elem->sinus.sin_z, 0, 0);
+	ft_set_2d(&elem->rayon_torre, 0, 0);
 	elem->checker.on_off = 0;
 	ft_set_2d(&elem->checker.move, 0, 0);
 	ft_set_2d(&elem->checker.scale, 0, 0);
 	elem->intensity = 0;
 	elem->sepia = 0;
+}
+
+static void	ft_init_elem2(t_elem *elem)
+{
+	elem->tex_n.on_off = 0;
+	elem->tex_n.name = ft_strdup("texture");
+	ft_set_2d(&elem->tex_n.move, 0, 0);
+	ft_set_2d(&elem->tex_n.scale, 0, 0);
+	elem->sinus.on_off = 0;
+	ft_set_3d(&elem->triang.p1, 0, 0, 0);
+	ft_set_3d(&elem->triang.p2, 0, 0, 0);
+	ft_set_3d(&elem->triang.p3, 0, 0, 0);
+	ft_init_elem1(elem);
 }
 
 void		ft_init_elem(t_elem *elem)
@@ -57,10 +71,5 @@ void		ft_init_elem(t_elem *elem)
 	elem->tex_c.name = ft_strdup("texture");
 	ft_set_2d(&elem->tex_c.move, 0, 0);
 	ft_set_2d(&elem->tex_c.scale, 0, 0);
-	elem->tex_n.on_off = 0;
-	elem->tex_n.name = ft_strdup("texture");
-	ft_set_2d(&elem->tex_n.move, 0, 0);
-	ft_set_2d(&elem->tex_n.scale, 0, 0);
-	elem->sinus.on_off = 0;
-	ft_init_elem1(elem);
+	ft_init_elem2(elem);
 }

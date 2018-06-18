@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 15:47:57 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/15 16:39:56 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/18 13:22:03 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void			ft_colonne2(t_interface *inter)
 	gtk_container_add(GTK_CONTAINER(inter->cont.principal),
 		inter->cont.colonne2);
 	ft_3d_button(&(inter->fix.pos), inter->cont.colonne2, "pos");
-	ft_3d_button(&(inter->fix.color), inter->cont.colonne2, "color");
+	ft_3d_button(&(inter->triang.p1), inter->cont.colonne2, "point 1");
 	ft_1d_button(&(inter->angle), inter->cont.colonne2, "angle");
 	ft_1d_button(&(inter->rad), inter->cont.colonne2, "rad");
 	ft_switch(&(inter->specular), inter->cont.colonne2, "specular");
@@ -31,6 +31,4 @@ void			ft_colonne2(t_interface *inter)
 	ft_switch(&(inter->reflect.on_off), inter->cont.colonne2, "reflect");
 	ft_1d_button(&(inter->reflect.pourcent), inter->cont.colonne2,
 		"reflect %");
-	ft_1d_button(&(inter->light.intensity), inter->cont.colonne2, "intensity");
-	//ft_2d_button(&(inter->rayon_torre), inter->cont.colonne2, "rayon");
 }

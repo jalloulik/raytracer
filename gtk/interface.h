@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 15:58:32 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/15 16:41:38 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/18 13:26:50 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct		s_container
 	GtkWidget		*colonne3;
 	GtkWidget		*colonne4;
 	GtkWidget		*colonne5;
+	GtkWidget		*colonne6;
 }					t_container;
 
 typedef struct		s_inter_fixe
@@ -114,17 +115,31 @@ typedef struct		s_light_ui
 	t_1d_button		intensity;
 }					t_light_ui;
 
+typedef struct		s_rayon_ui
+{
+	t_1d_button		r1;
+	t_1d_button		r2;
+}					t_rayon_ui;
+
 typedef struct		s_list_ui
 {
 	GtkListStore	*store;
 	GtkWidget		*button;
 }					t_list_ui;
 
+typedef struct		s_triangle
+{
+	t_3d_button		p1;
+	t_3d_button		p2;
+	t_3d_button		p3;
+}					t_triangle;
+
 typedef struct		s_interface
 {
 	t_container		cont;
 	t_inter_fixe	fix;
 	t_primitive		prim;
+	t_triangle		triang;
 	t_1d_button		angle;
 	t_1d_button		rad;
 	t_1d_button		specular;
@@ -138,6 +153,7 @@ typedef struct		s_interface
 	t_list_ui		list;
 	t_checker_ui	checker;
 	t_1d_button		sepia;
+	t_rayon_ui		rayon_torre;
 	t_elem			*list_e;
 }					t_interface;
 

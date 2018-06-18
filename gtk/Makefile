@@ -27,22 +27,26 @@ SRC = src/main.c \
 	src/interface/colonne3.c \
 	src/interface/colonne4.c \
 	src/interface/colonne5.c \
+	src/interface/colonne6.c \
 	src/interface/d3_button.c \
 	src/interface/d2_button.c \
 	src/interface/d1_button.c \
 	src/interface/switch_creation.c \
+	src/show_option/show_option.c \
+	src/show_option/show_option_2.c \
+	src/show_option/show_option_prim.c \
+	src/show_option/show_option_prim_2.c \
+	src/show_option/show_sinus.c \
+	src/show_option/show_texture.c \
+	src/show_option/set_data_show.c \
 	src/ft_list.c \
 	src/fonction_elem.c \
 	src/fonction_elem_2.c \
 	src/fonction_elem_3.c \
 	src/set_data.c \
 	src/set_entry.c \
-	src/set_data_show.c \
 	src/entry_values.c \
 	src/active_switch.c \
-	src/show_option.c \
-	src/show_sinus.c \
-	src/show_texture.c \
 	src/event.c \
 	src/event_entry.c \
 	src/type_entry.c \

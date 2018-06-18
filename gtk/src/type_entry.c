@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 12:13:56 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/15 12:13:57 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/18 13:57:22 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,4 +108,31 @@ void		ft_type_entry_4(GtkWidget *type, int **value,
 		*value = &elem->sinus.sin_z.y;
 	if (type == inter->light.intensity.x)
 		*value = &elem->intensity;
+	if (type == inter->rayon_torre.r1.x)
+		*value = &elem->rayon_torre.x;
+	if (type == inter->rayon_torre.r2.x)
+		*value = &elem->rayon_torre.y;
+}
+
+void		ft_type_entry_5(GtkWidget *type, int **value,
+	t_elem *elem, t_interface *inter)
+{
+	if (type == inter->triang.p1.x)
+		*value = &elem->triang.p1.x;
+	if (type == inter->triang.p1.y)
+		*value = &elem->triang.p1.y;
+	if (type == inter->triang.p1.z)
+		*value = &elem->triang.p1.z;
+	if (type == inter->triang.p2.x)
+		*value = &elem->triang.p2.x;
+	if (type == inter->triang.p2.y)
+		*value = &elem->triang.p2.y;
+	if (type == inter->triang.p2.z)
+		*value = &elem->triang.p2.z;
+	if (type == inter->triang.p3.x)
+		*value = &elem->triang.p3.x;
+	if (type == inter->triang.p3.y)
+		*value = &elem->triang.p3.y;
+	if (type == inter->triang.p3.z)
+		*value = &elem->triang.p3.z;
 }

@@ -6,11 +6,11 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 13:20:24 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/14 13:26:19 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/18 12:00:59 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ui.h"
+#include "../../ui.h"
 
 static void		ft_show_texture_c_move(t_interface *inter, GtkWidget *widget)
 {

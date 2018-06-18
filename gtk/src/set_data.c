@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/31 11:01:39 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/15 13:59:37 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/18 13:45:10 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ static void		ft_set_entry_3d(t_interface *inter, t_elem *elem)
 	ft_set_3d_entry(&inter->fix.vec, elem->vec);
 	ft_set_3d_entry(&inter->fix.rot, elem->rot);
 	ft_set_3d_entry(&inter->fix.color, elem->color);
+	ft_set_3d_entry(&inter->triang.p1, elem->triang.p1);
+	ft_set_3d_entry(&inter->triang.p2, elem->triang.p2);
+	ft_set_3d_entry(&inter->triang.p3, elem->triang.p3);
 }
 
 static void		ft_set_entry_2d(t_interface *inter, t_elem *elem)
@@ -45,6 +48,8 @@ static void		ft_set_entry_1d(t_interface *inter, t_elem *elem)
 	ft_set_1d_entry_char(&inter->tex_c.name, elem->tex_c.name);
 	ft_set_1d_entry_char(&inter->tex_n.name, elem->tex_n.name);
 	ft_set_1d_entry_int(&inter->light.intensity, elem->intensity);
+	ft_set_1d_entry_int(&inter->rayon_torre.r1, elem->rayon_torre.x);
+	ft_set_1d_entry_int(&inter->rayon_torre.r2, elem->rayon_torre.y);
 }
 
 static void		ft_set_data(t_interface *inter, t_elem *elem)

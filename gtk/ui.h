@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 10:22:53 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/15 14:12:42 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/18 13:49:31 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void				ft_colonne2(t_interface *inter);
 void				ft_colonne3(t_interface *inter);
 void				ft_colonne4(t_interface *inter);
 void				ft_colonne5(t_interface *inter);
+void				ft_colonne6(t_interface *inter);
 
 void				ft_set_3d_entry(t_3d_button *entry, t_3d elem);
 void				ft_set_2d_entry(t_2d_button *entry, t_2d elem);
@@ -120,10 +121,26 @@ void				ft_type_entry_3(GtkWidget *type, int **value,
 	t_elem *elem, t_interface *inter);
 void				ft_type_entry_4(GtkWidget *type, int **value,
 	t_elem *elem, t_interface *inter);
+void				ft_type_entry_5(GtkWidget *type, int **value,
+	t_elem *elem, t_interface *inter);
 
 void				ft_event_entry1(t_event_entry *e, t_interface *inter);
 void				ft_event_entry2(t_event_entry *e, t_interface *inter);
 void				ft_event_entry3(t_event_entry *e, t_interface *inter);
 void				ft_event_entry4(t_event_entry *e, t_interface *inter);
+void				ft_event_entry5(t_event_entry *e, t_interface *inter);
+
+void				ft_set_data_show_1d(t_1d_button button);
+void				ft_set_data_show_2d(t_2d_button button);
+void				ft_set_data_show_3d(t_3d_button button);
+void				ft_set_data_show_cam(t_interface *inter);
+void				ft_set_data_show_sphere(t_interface *inter);
+void				ft_set_data_show_cone(t_interface *inter);
+void				ft_set_data_show_cylindre(t_interface *inter);
+void				ft_set_data_show_plan(t_interface *inter);
+void				ft_set_data_show_cercle(t_interface *inter);
+void				ft_set_data_show_carre(t_interface *inter);
+void				ft_set_data_show_triangle(t_interface *inter);
+void				ft_set_data_show_torre(t_interface *inter);
 
 #endif

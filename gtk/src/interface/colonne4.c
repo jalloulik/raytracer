@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 15:17:48 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/15 14:30:23 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/18 13:30:04 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,6 @@ void	ft_colonne4(t_interface *inter)
 	ft_3d_button(&(inter->fix.rot), inter->cont.colonne4, "rot");
 	ft_1d_button(&inter->fix.angle_rot, inter->cont.colonne4,
 		"angle de rotation");
-	ft_switch(&inter->tex_c.on_off, inter->cont.colonne4, "texture color");
-	ft_1d_button(&(inter->tex_c.name), inter->cont.colonne4, "name");
-	ft_2d_button(&(inter->tex_c.move), inter->cont.colonne4, "move");
-	ft_2d_button(&(inter->tex_c.scale), inter->cont.colonne4, "scale");
-	ft_switch(&inter->tex_n.on_off, inter->cont.colonne4, "texture normal");
-	ft_1d_button(&(inter->tex_n.name), inter->cont.colonne4, "name");
-	ft_2d_button(&(inter->tex_n.move), inter->cont.colonne4, "move");
-	ft_2d_button(&(inter->tex_n.scale), inter->cont.colonne4, "scale");
+	ft_3d_button(&(inter->triang.p3), inter->cont.colonne4, "point 3");
+	ft_3d_button(&(inter->fix.color), inter->cont.colonne4, "color");
 }

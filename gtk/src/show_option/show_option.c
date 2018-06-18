@@ -6,11 +6,11 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 15:39:18 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/14 13:20:49 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/18 12:00:33 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ui.h"
+#include "../../ui.h"
 
 void			ft_show_reflect(t_interface *inter, GtkWidget *widget)
 {
