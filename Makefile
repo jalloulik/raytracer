@@ -6,7 +6,7 @@
 #    By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/06 17:18:00 by kjalloul          #+#    #+#              #
-#    Updated: 2018/06/08 16:35:36 by yvillepo         ###   ########.fr        #
+#    Updated: 2018/06/18 11:42:17 by yvillepo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,8 @@ OBJPATH = ./
 IPATHLIB = libft/includes
 
 IPATHGRAPH = libgraph/includes
+
+IPATHXML = libxml/includes
 
 IPATH = ./
 
@@ -69,7 +71,9 @@ SRC = main.c\
 		ft_shadow.c\
 		ft_save_image.c\
 		ft_perturbation.c\
-		cut.c
+		cut.c\
+		ft_sepia.c\
+		ft_checkers.c\
 
 OBJ = $(SRC:%.c=$(OBJPATH)%.o)
 
@@ -86,20 +90,23 @@ LIBCLEAN:
 	make clean -C libft/
 	make clean -C libgraph/
 	make clean -C minilibx_macos/
+	make clean -C libxml/
 
 LIBFCLEAN:
 	make fclean -C libft/
 	make fclean -C libgraph/
 	make fclean -C minilibx_macos/
+	make fclean -C libxml/
 
 $(OBJ): $(OBJPATH)%.o: $(SRCPATH)%.c $(IPATH)$(HEADER)
-	gcc $(FLAG) -o $@ -c $< -I$(IPATH) -I$(IPATHLIB) -I$(IPATHGRAPH) -I minilibx_macos/
+	gcc $(FLAG) -o $@ -c $< -I$(IPATH) -I$(IPATHLIB) -I$(IPATHGRAPH) -I$(IPATHXML) -I minilibx_macos/
 
 $(NAME): $(OBJ)
 	make -C libft
 	make -C libgraph
 	make -C minilibx_macos
-	gcc $(FLAG) -o $(NAME) $(OBJ) -Llibft/ -lft -Llibgraph -lgraph -Lminilibx_macos/ -lmlx -framework OpenGL -framework AppKit
+	make -C libxml
+	gcc $(FLAG) -o $(NAME) $(OBJ) -Llibft/ -lft -Llibgraph -lgraph -Llibxml/ -lxml -Lminilibx_macos/ -lmlx -framework OpenGL -framework AppKit
 
 clean: LIBCLEAN
 	/bin/rm -f $(OBJ)

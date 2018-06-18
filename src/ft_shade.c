@@ -6,29 +6,11 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 08:59:35 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/31 16:25:01 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/06 17:03:23 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
-
-void	ft_sepia_filter(t_color *base)
-{
-	double		r;
-	double		g;
-	double		b;
-
-	r = base->red * 0.393 + base->green * 0.769 + base->blue * 0.189;
-	g = base->red * 0.349 + base->green * 0.686 + base->blue * 0.168;
-	b = base->red * 0.272 + base->green * 0.534 + base->blue * 0.131;
-	if (r > 255)
-		r = 255;
-	if (g > 255)
-		g = 255;
-	if (b > 255)
-		b = 255;
-	ft_set_color(base, (int)r, (int)g, (int)b);
-}
 
 void	ft_percentage_color(t_color *base, double percentage)
 {
@@ -111,14 +93,21 @@ t_color	ft_combine_colors(t_color *base, t_color *reflect, t_color *refract)
 	return (result);
 }
 
+void	ft_get_prim_texture_color_main(t_prim *prim)
+{
+	if (prim->checkers.valid == TRUE)
+		prim->color2 = ft_get_prim_texture_checker(prim);
+	else if (prim->textur.valid == TRUE)
+		prim->color2 = ft_get_prim_texture_color(prim);
+}
+
 void	ft_get_shade(t_prim *prim, t_color *color, t_light *light)
 {
 	int		r;
 	int		g;
 	int		b;
 
-	if (prim->textur.valid == TRUE)
-		prim->color2 = ft_get_sphere_texture(prim);
+	ft_get_prim_texture_color_main(prim);
 	r = prim->color2.red * light->dotd * light->intensity + color->red;
 	g = prim->color2.green * light->dotd * light->intensity + color->green;
 	b = prim->color2.blue * light->dotd * light->intensity + color->blue;

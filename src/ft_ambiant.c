@@ -46,7 +46,7 @@ void			ft_get_ambiant(t_prim *prim, t_color *color, t_light *light)
 	int			b;
 
 	if (prim->textur.valid == TRUE)
-		prim->color2 = ft_get_sphere_texture(prim);
+		prim->color2 = ft_get_prim_texture_color(prim);
 	r = color->red + prim->color2.red * light->intensity;
 	g = color->green + prim->color2.green * light->intensity;
 	b = color->blue + prim->color2.blue * light->intensity;

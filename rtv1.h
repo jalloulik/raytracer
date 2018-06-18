@@ -15,9 +15,13 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include "libgraph.h"
+# include "libxml.h"
 
 # define WIN_WIDTH 1000
 # define WIN_HEIGHT 1000
+
+# define PROCED_WIDTH 100
+# define PROCED_HEIGHT 100
 
 # define TRUE 1
 # define FALSE 0
@@ -249,6 +253,8 @@ typedef struct		s_prim
 	t_3dpt			g_to_l_move;
 	t_quater		l_to_g_rot;
 	t_quater		g_to_l_rot;
+	t_3dpt			vec_dr;
+	t_3dpt			vec_local_dr;
 	t_cut			*cut;
 	int				reflective;
 	double			reflec_ratio;
@@ -257,6 +263,7 @@ typedef struct		s_prim
 	double			refraction_index;
 	t_texture		textur;
 	t_texture		textur_n;
+	t_texture		checkers;
 	t_sin_perturb	sin;
 	struct s_prim	*next;
 }					t_prim;
@@ -474,16 +481,17 @@ void				ft_refract(t_3dpt *result, t_prim *base, t_3dpt *origin,
 void				ft_percentage_color(t_color *base, double percentage);
 void				ft_get_shadow(t_color *base, double percentage);
 void				ft_sepia_filter(t_color *base);
-t_color				ft_get_sphere_texture(t_prim *prim);
+t_color				ft_get_prim_texture_color(t_prim *prim);
 void				ft_create_local_sphere(t_prim *prim);
 void				ft_rotate_sphere(t_prim *prim);
 void				ft_get_texture_prim_normal(t_prim *prim);
 void				ft_create_local_plane(t_prim *prim);
 
-void				ft_get_textur_sphere(t_prim *prim, t_3dpt *coord);
-void				ft_get_textur_cyl(t_prim *prim, t_3dpt *coord);
-void				ft_get_textur_plane(t_prim *prim, t_3dpt *coord);
-void				ft_get_coord_from_uv(t_prim *prim, t_3dpt *coord, t_uv *uv);
+void				ft_get_texture_prim_coord(t_prim *prim, t_3dpt *coord, t_texture *t);
+void				ft_get_textur_sphere(t_prim *prim, t_3dpt *coord, t_texture *tx);
+void				ft_get_textur_cyl(t_prim *prim, t_3dpt *coord, t_texture *tx);
+void				ft_get_textur_plane(t_prim *prim, t_3dpt *coord, t_texture *tx);
+void				ft_get_coord_from_uv(t_texture *textur, t_3dpt *coord, t_uv *uv);
 double				ft_shadow_percent(t_obj *obj, t_prim *small, int *lit,
 																t_color *color);
 void				ft_calculate_vec_to_light(t_3dpt *p_to_light, t_obj *obj,
@@ -492,7 +500,11 @@ double				ft_get_dist_to_light(t_obj *obj, t_prim *small);
 void				ft_shadow_texture(t_color *base, t_color *texture);
 void				ft_save_image(t_winenv *mlxenv);
 void				ft_sine_perturbation(t_prim *prim, t_3dpt *p);
-void					cut(t_cut *cut, t_3dpt *c_pos, t_3dpt *c_dir, double *t);
+void				cut(t_cut *cut, t_3dpt *c_pos, t_3dpt *c_dir, double *t);
 int					read_cut(char **tab, t_prim *prims);
 void				read_vect2(char *str, t_3dpt *vect);
+t_color			ft_get_prim_texture_checker(t_prim *prim);
+void				ft_get_prim_texture_color_main(t_prim *prim);
+t_color			ft_get_checkers_color(double x, double y);
+
 #endif
