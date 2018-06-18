@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 12:13:56 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/18 13:57:22 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/18 14:49:03 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,4 +135,8 @@ void		ft_type_entry_5(GtkWidget *type, int **value,
 		*value = &elem->triang.p3.y;
 	if (type == inter->triang.p3.z)
 		*value = &elem->triang.p3.z;
+	if (type == inter->size.x)
+		*value = &elem->size.x;
+	if (type == inter->size.y)
+		*value = &elem->size.y;
 }

@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 10:26:26 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/18 11:30:58 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/18 14:42:51 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void		ft_init_elem1(t_elem *elem)
 	ft_set_2d(&elem->checker.scale, 0, 0);
 	elem->intensity = 0;
 	elem->sepia = 0;
+	ft_set_2d(&elem->size, 0, 0);
 }
 
 static void	ft_init_elem2(t_elem *elem)

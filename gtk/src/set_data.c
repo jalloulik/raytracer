@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/31 11:01:39 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/18 13:45:10 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/18 14:48:26 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static void		ft_set_entry_2d(t_interface *inter, t_elem *elem)
 	ft_set_2d_entry(&inter->sinus.sin_x, elem->sinus.sin_x);
 	ft_set_2d_entry(&inter->sinus.sin_y, elem->sinus.sin_y);
 	ft_set_2d_entry(&inter->sinus.sin_z, elem->sinus.sin_z);
+	ft_set_2d_entry(&inter->size, elem->size);
 }
 
 static void		ft_set_entry_1d(t_interface *inter, t_elem *elem)

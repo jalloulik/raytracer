@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 14:10:29 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/18 11:48:35 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/18 14:43:56 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,10 @@ static void	ft_init_show_4(t_interface *inter)
 	gtk_widget_hide(inter->triang.p3.y);
 	gtk_widget_hide(inter->triang.p3.label_z);
 	gtk_widget_hide(inter->triang.p3.z);
+	gtk_widget_hide(inter->size.label_x);
+	gtk_widget_hide(inter->size.x);
+	gtk_widget_hide(inter->size.label_y);
+	gtk_widget_hide(inter->size.y);
 }
 
 static void	ft_init_show_3(t_interface *inter)

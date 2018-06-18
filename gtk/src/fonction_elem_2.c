@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 15:56:37 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/14 16:03:09 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/18 14:00:18 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void			ft_create_carre(GtkWidget *widget, gpointer data)
 			i++;
 		elem = elem->next;
 	}
-	carre = "carre";
+	carre = "rectangle";
 	elem->name = ft_strjoin(carre, ft_itoa(i));
 	ft_iter(&elem->iter, inter->list.store, i, elem->name);
 	elem->type = CARRE;

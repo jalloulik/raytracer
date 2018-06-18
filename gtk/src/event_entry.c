@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 12:59:55 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/18 13:50:03 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/18 14:50:10 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,10 @@ void		ft_event_entry4(t_event_entry *e, t_interface *inter)
 	g_signal_connect(G_OBJECT(inter->sinus.sin_z.y), "changed",
 		G_CALLBACK(ft_entry_value), e);
 	g_signal_connect(G_OBJECT(inter->light.intensity.x), "changed",
+		G_CALLBACK(ft_entry_value), e);
+	g_signal_connect(G_OBJECT(inter->size.x), "changed",
+		G_CALLBACK(ft_entry_value), e);
+	g_signal_connect(G_OBJECT(inter->size.y), "changed",
 		G_CALLBACK(ft_entry_value), e);
 }
 

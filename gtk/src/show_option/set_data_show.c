@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 13:57:19 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/18 13:33:18 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/18 14:55:23 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	ft_set_data_show_ambiant(t_interface *inter)
 	ft_set_data_show_1d(inter->light.intensity);
 }
 
-void	ft_set_data_show(t_interface *inter, t_elem *elem)
+void		ft_set_data_show(t_interface *inter, t_elem *elem)
 {
 	ft_init_show(inter);
 	if (elem->type == CAM)

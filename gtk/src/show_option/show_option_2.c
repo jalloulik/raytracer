@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 12:02:30 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/18 12:10:41 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/18 14:55:28 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,3 @@ void	ft_set_data_show_1d(t_1d_button button)
 	gtk_widget_show_now(button.label_x);
 	gtk_widget_show_now(button.x);
 }
-

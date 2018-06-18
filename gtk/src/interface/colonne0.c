@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 15:16:34 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/14 16:18:49 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/18 14:00:54 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void		ft_colonne0_1(t_interface *inter)
 	inter->prim.torre = gtk_button_new_with_label("new torre");
 	gtk_container_add(GTK_CONTAINER(inter->cont.colonne0),
 		inter->prim.torre);
-	inter->prim.carre = gtk_button_new_with_label("new carre");
+	inter->prim.carre = gtk_button_new_with_label("new rectangle");
 	gtk_container_add(GTK_CONTAINER(inter->cont.colonne0),
 		inter->prim.carre);
 	inter->prim.cercle = gtk_button_new_with_label("new cercle");

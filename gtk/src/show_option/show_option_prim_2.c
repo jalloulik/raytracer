@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 13:03:10 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/18 13:17:16 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/18 14:55:36 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,5 @@ void	ft_set_data_show_carre(t_interface *inter)
 	ft_set_data_show_1d(inter->checker.on_off);
 	ft_set_data_show_1d(inter->tex_c.on_off);
 	ft_set_data_show_1d(inter->tex_n.on_off);
+	ft_set_data_show_2d(inter->size);
 }

@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 14:34:45 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/18 11:44:22 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/18 14:41:26 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ typedef struct		s_elem
 	t_tri			triang;
 	char			sepia;
 	t_2d			rayon_torre;
+	t_2d			size;
 	struct s_elem	*next;
 }					t_elem;
 

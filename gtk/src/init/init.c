@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 16:17:15 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/18 13:27:04 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/18 14:42:06 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,12 @@ static void	ft_init_prim(t_interface *inter)
 	inter->light.spot = NULL;
 	inter->light.sun = NULL;
 	inter->light.ambiant = NULL;
+}
+
+static void	ft_init_list(t_interface *inter)
+{
+	inter->list.store = NULL;
+	inter->list.button = NULL;
 	ft_init_1d_button(&(inter->light.intensity));
 	ft_init_1d_button(&(inter->angle));
 	ft_init_1d_button(&(inter->rad));
@@ -51,13 +57,6 @@ static void	ft_init_prim(t_interface *inter)
 	ft_init_1d_button(&(inter->sepia));
 	ft_init_1d_button(&(inter->rayon_torre.r1));
 	ft_init_1d_button(&(inter->rayon_torre.r2));
-	
-}
-
-static void	ft_init_list(t_interface *inter)
-{
-	inter->list.store = NULL;
-	inter->list.button = NULL;
 }
 
 void		ft_init(t_interface *inter)

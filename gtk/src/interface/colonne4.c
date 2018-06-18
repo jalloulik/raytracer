@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 15:17:48 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/18 13:30:04 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/18 14:45:40 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,5 @@ void	ft_colonne4(t_interface *inter)
 		"angle de rotation");
 	ft_3d_button(&(inter->triang.p3), inter->cont.colonne4, "point 3");
 	ft_3d_button(&(inter->fix.color), inter->cont.colonne4, "color");
+	ft_2d_button(&(inter->size), inter->cont.colonne4, "size");
 }
