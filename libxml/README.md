@@ -21,14 +21,20 @@
 
 ### Methodes
 
-- *xmlp_get_node_content(xmlp, "path/to/content");
+- char *xmlp_get_node_content(xmlp, "path/to/content");
 	<path><to><content>hello</content></to></path>
 	retourne "hello" 
-- **xmlp_split_node_content(xmlp, "toto/tutu", '/');
+- char **xmlp_split_node_content(xmlp, "toto/tutu", '/');
 	<toto><tutu>hello/salut</tutu></toto>
 	retourne "hello" et "salut" dans un tableau
+- t_node *xmlp_get_next_node(xmlp, "scene/sphere");
+	recupere toutes les nodes ayant le meme chemin
+	renvoie la node suivante a chaque call
+	fini par renvoyer NULL
+- char *xmlp_get_child_node_content(node, "scene/sphere")
+	recupere le contenu de l'enfant d'une node
 
-### Example
+### Nodes
 
 - node-child => premier enfant
 - node->child->next => deuxieme enfant
@@ -36,3 +42,17 @@
 - node->child->next->child->next => deuxieme enfant du deuxieme enfant
 - node->child->next->child->next->next => troisieme enfant du deuxieme enfant
 - node->child->next->next->child->next => deuxieme enfant du troisieme enfant
+
+### Example
+
+t_node *node = NULL;
+char *content = NULL;
+while ((node = xmlp_get_next_node(xmlp, "scene/sphere"))) {
+	if (node) {
+		content = xmlp_get_child_node_content(node, "sphere/translation")
+		//content sphere1
+		//content sphere2
+		//etc...
+	}
+}
+

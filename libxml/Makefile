@@ -6,7 +6,7 @@
 #    By: mfrisby <mfrisby@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/13 19:08:56 by mfrisby           #+#    #+#              #
-#    Updated: 2018/06/08 16:48:54 by kjalloul         ###   ########.fr        #
+#    Updated: 2018/06/15 18:09:36 by mfrisby          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,10 @@ SRC = 	open_file.c\
 		get_balise_content.c\
 		is_balise_closed.c\
 		init_node.c\
+		xmlp_get_node.c\
+		xmlp_get_next_node.c\
 		xmlp_get_node_content.c\
+		xmlp_get_child_node_content.c\
 		xmlp_split_node_content.c
 
 OBJ = $(SRC:%.c=$(OBJPATH)%.o)

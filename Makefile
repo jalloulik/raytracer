@@ -6,7 +6,7 @@
 #    By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/06 17:18:00 by kjalloul          #+#    #+#              #
-#    Updated: 2018/06/18 11:42:17 by yvillepo         ###   ########.fr        #
+#    Updated: 2018/06/18 17:22:24 by kjalloul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = rt
 
 SRCPATH = ./src/
 
-OBJPATH = ./
+OBJPATH = ./objs/
 
 IPATHLIB = libft/includes
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   xmlp_get_node_content.c                            :+:      :+:    :+:   */
+/*   xmlp_get_child_node_content.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfrisby <mfrisby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/25 15:40:10 by mfrisby           #+#    #+#             */
-/*   Updated: 2018/06/15 18:48:12 by mfrisby          ###   ########.fr       */
+/*   Created: 2018/06/15 18:38:26 by mfrisby           #+#    #+#             */
+/*   Updated: 2018/06/15 18:45:57 by mfrisby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static char	**split_path(char *path, int *len)
 
 static char	*recursive_find(t_node *node, char **ps, int i, int len)
 {
-	char	*content;
+	char *content;
 
 	content = NULL;
 	while (node)
@@ -46,18 +46,16 @@ static char	*recursive_find(t_node *node, char **ps, int i, int len)
 	return (content);
 }
 
-char		*xmlp_get_node_content(t_xmlp *xmlp, char *path)
+char		*xmlp_get_child_node_content(t_node *node, char *path)
 {
 	int		i;
 	int		len;
 	char	**ps;
-	t_node	*node;
 
 	i = 0;
 	len = 0;
 	ps = split_path(path, &len);
 	if (!ps)
 		return (NULL);
-	node = xmlp->node->child;
 	return (recursive_find(node, ps, i, len));
 }

@@ -1,15 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libxml.h                                             :+:      :+:    :+:   */
+/*   libxml.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfrisby <mfrisby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/10 16:50:26 by mfrisby           #+#    #+#             */
-/*   Updated: 2018/06/08 16:27:21 by mfrisby          ###   ########.fr       */
+/*   Created: 2018/06/15 18:50:30 by mfrisby           #+#    #+#             */
+/*   Updated: 2018/06/15 18:50:33 by mfrisby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef LIBXML_H
 # define LIBXML_H
@@ -39,8 +38,12 @@ typedef	struct			s_node
 }						t_node;
 
 t_xmlp					*new_xmlp(char *path);
+t_node					*xmlp_get_next_node(t_xmlp *xmlp, char *path);
+t_node					*xmlp_get_node(t_xmlp *xmlp, char *path);
+char					*xmlp_get_child_node_content(t_node *node, char *path);
 char					*xmlp_get_node_content(t_xmlp *xmlp, char *path);
-char					**xmlp_split_node_content(t_xmlp *xmlp, char *path, char delimiter);
+char					**xmlp_split_node_content(t_xmlp *xmlp, char *path,
+							char delimiter);
 void					read_file(int fd, t_xmlp *xmlp);
 int						open_file(char *path);
 char					*get_const_balise(char *name, int is_open);
