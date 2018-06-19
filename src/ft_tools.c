@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 11:28:51 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/02 19:40:32 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/18 19:35:10 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_prim		*ft_add_lst_file(t_prim *list, int type)
 		list = list->next;
 	}
 	list->type = type;
+	ft_intialise_primitives(list);
 	list->next = NULL;
 	return (start);
 }

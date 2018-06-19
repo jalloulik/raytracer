@@ -6,7 +6,7 @@
 /*   By: mfrisby <mfrisby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 18:38:19 by mfrisby           #+#    #+#             */
-/*   Updated: 2018/06/15 18:44:27 by mfrisby          ###   ########.fr       */
+/*   Updated: 2018/06/19 02:27:19 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@ t_node			*xmlp_get_next_node(t_xmlp *xmlp, char *path)
 
 	i = -1;
 	node = xmlp_get_node(xmlp, path);
-	name = node->name;
+	if (node)
+		name = node->name;
 	while (node)
 	{
-		if ((ft_strcmp(node->name, name)) == 0)
+		if ((ft_strequ(node->name, name)) == 1)
 		{
 			i++;
 			if (i == end)
@@ -35,5 +36,6 @@ t_node			*xmlp_get_next_node(t_xmlp *xmlp, char *path)
 		}
 		node = node->next;
 	}
+	end = 0;
 	return (NULL);
 }

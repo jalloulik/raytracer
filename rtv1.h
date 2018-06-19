@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/18 17:08:23 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/06/19 02:18:15 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -281,6 +281,7 @@ typedef struct		s_vp
 
 typedef struct		s_cam
 {
+	int				status;
 	t_3dpt			origin;
 	double			fov;
 	t_vp			vp;
@@ -359,7 +360,7 @@ double				ft_resolve_cyl(t_prim *prim, t_3dpt *dir, t_3dpt *origin);
 void				ft_parsing_start(char *filename, t_cam *cam, t_light **spot,
 																t_prim **list);
 
-void				ft_check_camera(char *str, t_cam *cam);
+void				ft_check_camera(t_node *node, t_cam *cam);
 
 int					ft_count_tab(char **tab);
 void				ft_free_tab(char **tab);
@@ -406,16 +407,15 @@ void				ft_swap_l_to_g(t_3dpt *result, t_3dpt *source, t_3dpt *move,
 void				ft_create_local_cyl(t_prim *prim);
 void				ft_create_local_cone(t_prim *prim);
 
-void				ft_plane_setup(char **tab, t_prim **prims);
-void				ft_cylinder_setup(char **tab, t_prim **prims);
-void				ft_cone_setup(char **tab, t_prim **prims);
-void				ft_sphere_setup(char **tab, t_prim **prims);
+void				ft_plane_setup(t_node *node, t_prim **prims);
+void				ft_cylinder_setup(t_node *node, t_prim **prims);
+void				ft_cone_setup(t_node *node, t_prim **prims);
+void				ft_sphere_setup(t_node *node, t_prim **prims);
 t_prim				*ft_get_last(t_prim *last);
 void				ft_parse_color(char *color, t_color *color2,
 													void (*ft_err)(void));
-void				ft_parsing_mov(char *rot, char *transl, t_prim *last,
-														void (*ft_err)(void));
-void				ft_spot_setup(char **tab, t_light **spots);
+void				ft_parsing_mov(t_node *node, t_prim *last, char *type);
+void				ft_spot_setup(t_node *node, t_light **spots);
 
 void				ft_translante_all(t_prim *prim);
 void				ft_rotate_all(t_prim *prim);
@@ -437,15 +437,15 @@ double				ft_return_prim_dist(t_prim *prim, t_3dpt *ray,
 double				inter_plane(t_3dpt *normal, double d, t_3dpt *pos, t_3dpt *dir);
 void				calc_point(t_3dpt *result, t_3dpt *pos, t_3dpt *dir, double t);
 void				read_vect(char *svect, t_3dpt *vect);
-void				ft_cercle_setup(char **tab, t_prim **prims);
+void				ft_cercle_setup(t_node *node, t_prim **prims);
 void				ft_cercle_normal(t_prim *prim, t_3dpt *p);
 double				ft_resolve_cercle(t_prim *prim, t_3dpt *dir, t_3dpt *ray_origin);
 double				dist(t_3dpt *v, t_3dpt *v2);
-void				ft_rectangle_setup(char **tab, t_prim **prims);
+void				ft_rectangle_setup(t_node *node, t_prim **prims);
 void				ft_create_local_rect(t_prim *prim);
 double				ft_resolve_rect(t_prim *prim, t_3dpt *dir, t_3dpt *origin);
 void				read_all_cut(char **str, t_prim *prim);
-void				ft_tore_setup(char **tab, t_prim **prims);
+void				ft_tore_setup(t_node *node, t_prim **prims);
 void				trie(t_3dpt *p1, t_3dpt *p2);
 double				solv_seconde(t_prim *prim, t_3dpt *param, t_3dpt *pos, t_3dpt *dir);
 void    			print_cut(t_cut *cut);
@@ -455,7 +455,7 @@ double				ft_resolve_tore(t_prim *prim, t_3dpt *dir, t_3dpt *origin);
 void				ft_create_local_tore(t_prim *prim);
 double 				search_min(double num[4], int nb);
 void				ft_tore_normal(t_prim *prim);
-void				ft_triangle_setup(char **tab, t_prim **prims);
+void				ft_triangle_setup(t_node *node, t_prim **prims);
 double				ft_resolve_triangle(t_prim *prim, t_3dpt *dir, t_3dpt *pos);
 int					solve_cubic(double c[4],double s[3]);
 void				ft_resolve_prim(t_prim *prim, t_3dpt *ray_dir,
@@ -506,5 +506,8 @@ void				read_vect2(char *str, t_3dpt *vect);
 t_color				ft_get_prim_texture_checker(t_prim *prim);
 void				ft_get_prim_texture_color_main(t_prim *prim);
 t_color				ft_get_checkers_color(double x, double y, t_texture *textur);
+
+void				ft_intialise_primitives(t_prim *last);
+void				ft_set_3dpt_from_string(t_3dpt *point, char *str);
 
 #endif

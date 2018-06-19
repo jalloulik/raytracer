@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/27 10:56:10 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/05 18:02:34 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/06/19 03:18:04 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,25 +20,28 @@ t_prim *ft_get_last(t_prim *last)
 	return (last);
 }
 
-void		ft_parsing_mov(char *rot, char *transl,
-		t_prim *last, void (*err)(void))
+void		ft_parsing_mov(t_node *node, t_prim *last, char *type)
 {
-	char **tmp;
+	char *tmp;
+	char *content;
 
-	tmp = ft_strsplit(rot, ':');
-	if (ft_count_tab(tmp) != 6 || ft_strequ(tmp[0], "rotation") == 0
-										|| ft_strequ(tmp[4], "angle") == 0)
-		err();
-	ft_set_3dpt(&(last->rot_axis), (double)ft_atoi(tmp[1]),
-				(double)ft_atoi(tmp[2]), (double)ft_atoi(tmp[3]));
-	last->rot_angle = ft_degree_to_rad((double)ft_atoi(tmp[5]));
-	ft_free_tab(tmp);
-	tmp = ft_strsplit(transl, ':');
-	if (ft_count_tab(tmp) != 4 || ft_strequ(tmp[0], "translation") == 0)
-		err();
-	ft_set_3dpt(&(last->transl), (double)ft_atoi(tmp[1]),
-		(double)ft_atoi(tmp[2]), (double)ft_atoi(tmp[3]));
-	ft_free_tab(tmp);
+	content = NULL;
+	tmp = ft_strjoin(type, "/rotation/axis");
+	content = xmlp_get_child_node_content(node, tmp);
+	free(tmp);
+
+	if (content)
+		ft_set_3dpt_from_string(&(last->rot_axis), content);
+	tmp = ft_strjoin(type, "/rotation/angle");
+	content = xmlp_get_child_node_content(node, tmp);
+	free(tmp);
+	if (content)
+		last->rot_angle = ft_degree_to_rad((double)ft_atoi(content));
+	tmp = ft_strjoin(type, "/translation");
+	content = xmlp_get_child_node_content(node, tmp);
+	free(tmp);
+	if (content)
+		ft_set_3dpt_from_string(&(last->transl), content);
 }
 
 void		ft_parse_color(char *color, t_color *color2, void (*ft_err)(void))
@@ -46,70 +49,52 @@ void		ft_parse_color(char *color, t_color *color2, void (*ft_err)(void))
 	char **tmp;
 
 	tmp = ft_strsplit(color, ':');
-	if (ft_count_tab(tmp) != 7 || ft_strequ(tmp[0], "color") == 0)
+	if (ft_count_tab(tmp) != 3)
+	{
+		ft_putendl("fuck");
 		ft_err();
-	ft_set_color(color2, ft_atoi(tmp[2]), ft_atoi(tmp[4]), ft_atoi(tmp[6]));
+	}
+	ft_set_color(color2, ft_atoi(tmp[0]), ft_atoi(tmp[1]), ft_atoi(tmp[2]));
 	ft_free_tab(tmp);
 }
 
-static void	ft_parsing2(char **tab, t_prim **list, t_light **spots)
+void		ft_parsing_start(char *file, t_cam *cam, t_light **spot, t_prim **list)
 {
-	if (ft_strequ(tab[0], "plane") == 1)
-		ft_plane_setup(tab, list);
-	else if (ft_strequ(tab[0], "sphere") == 1)
-		ft_sphere_setup(tab, list);
-	else if (ft_strequ(tab[0], "cylinder") == 1)
-		ft_cylinder_setup(tab, list);
-	else if (ft_strequ(tab[0], "cone") == 1)
-		ft_cone_setup(tab, list);
-	else if (ft_strequ(tab[0], "cercle") == 1)
-		ft_cercle_setup(tab, list);
-	else if (ft_strequ(tab[0], "rect") == 1)
-		ft_rectangle_setup(tab, list);
-	else if (ft_strequ(tab[0], "tore") == 1)
-		ft_tore_setup(tab, list);
-	else if (ft_strequ(tab[0], "triangle") == 1)
-		ft_triangle_setup(tab, list);
-	else if (ft_strequ(tab[0], "spot") == 1)
-		ft_spot_setup(tab, spots);
-	else if (ft_strequ(tab[0], "ambiant") == 1)
-		ft_ambiant_setup(tab, spots);
-	else if (ft_strequ(tab[0], "sun") == 1)
-		ft_sun_setup(tab, spots);
-}
-
-void		ft_parsing_primitives(int fd, t_prim **list, t_light **spots)
-{
-	char *str;
-	char **tab;
-
-	str = NULL;
-	while (get_next_line(fd, &str) > 0)
-	{
-		if (str == NULL)
-			ft_error(ERROR);
-		tab = ft_strsplit(str, '|');
-		if (ft_count_tab(tab) > 0)
-		{
-			ft_parsing2(tab, list, spots);
-		}
-		free(str);
-		ft_free_tab(tab);
-	}
-}
-
-void		ft_parsing_start(char *file, t_cam *cam,
-		t_light **spot, t_prim **list)
-{
-	int		fd;
 	char	*str;
+	t_xmlp	*xmlp;
+	t_node	*node;
 
 	str = NULL;
-	if ((fd = open(file, O_RDONLY)) < 0)
-		ft_error(ERRFILE);
-	if (get_next_line(fd, &str) < 0)
+	xmlp = new_xmlp(file);
+	node = NULL;
+	cam->status = FALSE;
+	while ((node = xmlp_get_next_node(xmlp, "scene/cam")))
+	{
+		if (node && cam->status == FALSE)
+			ft_check_camera(node, cam);
+	}
+	if (cam->status == FALSE)
 		ft_error_cam();
-	ft_check_camera(str, cam);
-	free(str);
-	ft_parsing_primitives(fd, list, spot);
+	while ((node = xmlp_get_next_node(xmlp, "scene/spot")))
+		ft_spot_setup(node, spot);
+	while ((node = xmlp_get_next_node(xmlp, "scene/ambiant")))
+		ft_ambiant_setup(node, spot);
+	while ((node = xmlp_get_next_node(xmlp, "scene/sun")))
+		ft_sun_setup(node, spot);
+	while ((node = xmlp_get_next_node(xmlp, "scene/sphere")))
+		ft_sphere_setup(node, list);
+	while ((node = xmlp_get_next_node(xmlp, "scene/plane")))
+		ft_plane_setup(node, list);
+	while ((node = xmlp_get_next_node(xmlp, "scene/cylinder")))
+		ft_cylinder_setup(node, list);
+	while ((node = xmlp_get_next_node(xmlp, "scene/cone")))
+		ft_cone_setup(node, list);
+	while ((node = xmlp_get_next_node(xmlp, "scene/cercle")))
+		ft_cercle_setup(node, list);
+	while ((node = xmlp_get_next_node(xmlp, "scene/rect")))
+		ft_rectangle_setup(node, list);
+	while ((node = xmlp_get_next_node(xmlp, "scene/tore")))
+		ft_tore_setup(node, list);
+	while ((node = xmlp_get_next_node(xmlp, "scene/triangle")))
+		ft_triangle_setup(node, list);
 }

@@ -1,124 +1,95 @@
 <scene>
 	<cam>
-		<origin>
-			<x>0</x>
-			<y>0</y>
-			<z>20</z>
-		</origin>
-		<rotation>
-			<x>0</x>
-			<y>0</y>
-			<z>0</z>
-			<angle>0</angle>
-		</rotation>
-		<translation>
-			<x>0</x>
-			<y>0</y>
-			<z>0</z>
-		</translation>
+		<origin>0:0:40</origin>
 		<sepia>false</sepia>
 	</cam>
 	<spot>
-		<origin><x>0</x><y>0</y><z>20</z></origin>
+		<origin>0:0:20</origin>
 		<intensity>100</intensity>
 	</spot>
-	<ambiant><intensity>20</intensity></ambiant>
-	<sun><origin><x>0</x><y>0</y><z>20</z></origin><intensity>100</intensity></sun>
+	<ambiant><intensity>0</intensity></ambiant>
+	<sun><origin>0:0:20</origin><intensity>50</intensity></sun>
 	<plane>
-		<origin><x>10</x><y>0</y><z>-10</z></origin>
-		<normal><x>0</x><y>1</y><z>0</z></normal>
-		<color><r>250</r><g>0</g><b>0</b></color>
+		<origin>0:0:-10</origin>
+		<vec>0:0:1</vec>
+		<color>250:0:0</color>
 		<sinx><a>25</a><b>2</b></sinx>
-		<siny><a>25</a><b>2</b></siny>
-		<sinz><a>25</a><b>2</b></sinz>
-	</plane>
-	<plane>
-		<origin><x>10</x><y>0</y><z>-10</z></origin>
-		<normal><x>0</x><y>-1</y><z>0</z></normal>
-		<color><r>250</r><g>0</g><b>0</b></color>
-		<sinx><a>25</a><b>2</b></sinx>
-		<siny><a>25</a><b>2</b></siny>
+		<siny><a>25</a><b>5</b></siny>
 		<sinz><a>25</a><b>2</b></sinz>
 	</plane>
 	<sphere>
-			<origin><x>0</x><y>0</y><z>5</z></origin>
+			<origin>-5:8:-5</origin>
 			<radius>3</radius>
-			<color><r>250</r><g>0</g><b>0</b></color>
-			<refract>
-				<material>
-					AIR
-				</material>
-				<ratio>
-					100
-				</ratio>
-			</refract>
+			<color>250:0:0</color>
 			<reflect>
-				<ratio>
-					50
-				</ratio>
+				<status>true</status>
+				<ratio>50</ratio>
 			</reflect>
 	</sphere>
 	<cone>
-		<origin><x>10</x><y>0</y><z>0</z></origin>
-		<vec><x>10</x><y>0</y><z>0</z></vec>
+		<origin>8:0:0</origin>
+		<vec>0:1:0</vec>
 		<angle>20</angle>
-		<color><r>250</r><g>0</g><b>0</b></color>
+		<color>250:0:0</color>
 		<texture>
-			<file>
-				Stone_02_COLOR.tga
-			</file>
-			<scale>
-				2
-			</scale>
-			<mov>
-				1:1
-			</mov>
+			<status>true</status>
+			<file>Stone_02_COLOR.tga</file>
+			<scale><x>2</x><y>2</y></scale>
+			<mov><x>1</x><y>1</y></mov>
 		</texture>
 		<normal>
-			<file>
-				Stone_02_NRM.tga
-			</file>
+			<file>Stone_02_NRM.tga</file>
 			<scale>
-				2
+				<x>2</x><y>2</y>
 			</scale>
 			<mov>
-				0:0
+				<x>1</x><y>1</y>
 			</mov>
 		</normal>
 	</cone>
 	<cylinder>
-		<origin><x>10</x><y>0</y><z>0</z></origin>
-		<vec><x>10</x><y>0</y><z>0</z></vec>
+		<origin>0:0:0</origin>
+		<vec>0:1:0</vec>
 		<radius>2</radius>
-		<color><r>250</r><g>0</g><b>0</b></color>
+		<color>0:250:0</color>
+		<refract>
+			<status>true</status>
+			<material>AIR</material>
+			<ratio>50</ratio>
+		</refract>
 		<checkers>
+			<status>true</status>
 			<scale>
-				2
+				<x>2</x><y>2</y>
 			</scale>
 			<mov>
-				0:0
+				<x>0</x><y>0</y>
 			</mov>
 		</checkers>
 	</cylinder>
 	<rect>
-		<origin><x>10</x><y>0</y><z>0</z></origin>
-		<vec><x>10</x><y>0</y><z>0</z></vec>
-		<size>2:4</size>
+		<origin>15:7:0</origin>
+		<vec>0:0:1</vec>
+		<size><x>2</x>:<y>4</y></size>
+		<color>15:150:100</color>
 	</rect>
 	<cercle>
-		<origin><x>10</x><y>0</y><z>0</z></origin>
-		<vec><x>10</x><y>0</y><z>0</z></vec>
+		<origin>15:-7:0</origin>
+		<vec>0:0:1</vec>
 		<radius>2</radius>
+		<color>250:0:0</color>
 	</cercle>
 	<triangle>
-		<p1>-7:-2:0</p1>
-		<p2>-3:-2:0</p2>
-		<p3>-3:-5:0</p3>
+		<p1>-7:10:0</p1>
+		<p2>-5:10:0</p2>
+		<p3>-6:7:0</p3>
+		<color>150:0:0</color>
 	</triangle>
 	<tore>
-		<origin><x>10</x><y>0</y><z>0</z></origin>
-		<vec><x>10</x><y>0</y><z>0</z></vec>
-		<radius>5:1</radius>
+		<origin>-9:-4:0</origin>
+		<vec>0:0:1</vec>
+		<r1>3</r1>
+		<r2>1</r2>
+		<color>0:150:0</color>
 	</tore>
-
 </scene>
