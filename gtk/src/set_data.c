@@ -6,54 +6,13 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/31 11:01:39 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/19 09:26:59 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/19 14:22:43 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ui.h"
 
-void		ft_set_entry_3d(t_interface *inter, t_elem *elem)
-{
-	ft_set_3d_entry(&inter->fix.pos, elem->pos);
-	ft_set_3d_entry(&inter->fix.translation, elem->translation);
-	ft_set_3d_entry(&inter->fix.vec, elem->vec);
-	ft_set_3d_entry(&inter->fix.rot, elem->rot);
-	ft_set_3d_entry(&inter->fix.color, elem->color);
-	ft_set_3d_entry(&inter->triang.p1, elem->triang.p1);
-	ft_set_3d_entry(&inter->triang.p2, elem->triang.p2);
-	ft_set_3d_entry(&inter->triang.p3, elem->triang.p3);
-}
-
-void		ft_set_entry_2d(t_interface *inter, t_elem *elem)
-{
-	ft_set_2d_entry(&inter->tex_c.move, elem->tex_c.move);
-	ft_set_2d_entry(&inter->tex_c.scale, elem->tex_c.scale);
-	ft_set_2d_entry(&inter->tex_n.move, elem->tex_n.move);
-	ft_set_2d_entry(&inter->tex_n.scale, elem->tex_n.scale);
-	ft_set_2d_entry(&inter->checker.move, elem->checker.move);
-	ft_set_2d_entry(&inter->checker.scale, elem->checker.scale);
-	ft_set_2d_entry(&inter->sinus.sin_x, elem->sinus.sin_x);
-	ft_set_2d_entry(&inter->sinus.sin_y, elem->sinus.sin_y);
-	ft_set_2d_entry(&inter->sinus.sin_z, elem->sinus.sin_z);
-	ft_set_2d_entry(&inter->size, elem->size);
-}
-
-void		ft_set_entry_1d(t_interface *inter, t_elem *elem)
-{
-	ft_set_1d_entry_int(&inter->fix.angle_rot, elem->angle_rot);
-	ft_set_1d_entry_int(&inter->angle, elem->angle);
-	ft_set_1d_entry_int(&inter->rad, elem->rad);
-	ft_set_1d_entry_int(&inter->refract.pourcent, elem->refract.pourcent);
-	ft_set_1d_entry_int(&inter->reflect.pourcent, elem->reflect.pourcent);
-	ft_set_1d_entry_char(&inter->refract.material, elem->refract.material);
-	ft_set_1d_entry_char(&inter->tex_c.name, elem->tex_c.name);
-	ft_set_1d_entry_char(&inter->tex_n.name, elem->tex_n.name);
-	ft_set_1d_entry_int(&inter->light.intensity, elem->intensity);
-	ft_set_1d_entry_int(&inter->rayon_torre.r1, elem->rayon_torre.x);
-	ft_set_1d_entry_int(&inter->rayon_torre.r2, elem->rayon_torre.y);
-}
-
-void		ft_set_data(t_interface *inter, t_elem *elem)
+static void			ft_set_data(t_interface *inter, t_elem *elem)
 {
 	ft_set_entry_3d(inter, elem);
 	ft_set_entry_2d(inter, elem);
@@ -75,7 +34,27 @@ void		ft_set_data(t_interface *inter, t_elem *elem)
 	gtk_switch_set_active(GTK_SWITCH(inter->sepia.x), elem->sepia);
 }
 
-void			ft_select_elem_actif(GtkWidget *widget, gpointer data)
+static void			ft_set_select(t_event_entry *e, t_elem *elem)
+{
+	while (elem)
+	{
+		gtk_tree_model_get(GTK_TREE_MODEL(e->inter->list.store),
+		&e->iter, 1, &e->p_text1, -1);
+		gtk_tree_model_get(GTK_TREE_MODEL(e->inter->list.store),
+		&elem->iter, 1, &e->p_text2, -1);
+		if (ft_strcmp(e->p_text1, e->p_text2) == 0)
+		{
+			ft_free_p_text(e);
+			ft_set_data_show(e->inter, elem);
+			ft_set_data(e->inter, elem);
+			break ;
+		}
+		ft_free_p_text(e);
+		elem = elem->next;
+	}
+}
+
+void				ft_select_elem_actif(GtkWidget *widget, gpointer data)
 {
 	t_event_entry	*e;
 	t_elem			*elem;
@@ -86,23 +65,6 @@ void			ft_select_elem_actif(GtkWidget *widget, gpointer data)
 	if (gtk_combo_box_get_active_iter(GTK_COMBO_BOX(e->inter->list.button),
 		&e->iter))
 	{
-		while (elem)
-		{
-			gtk_tree_model_get(GTK_TREE_MODEL(e->inter->list.store),
-			&e->iter, 1, &e->p_text1, -1);
-			gtk_tree_model_get(GTK_TREE_MODEL(e->inter->list.store),
-			&elem->iter, 1, &e->p_text2, -1);
-			if (ft_strcmp(e->p_text1, e->p_text2) == 0)
-			{
-				free(e->p_text1);
-				free(e->p_text2);
-				ft_set_data_show(e->inter, elem);
-				ft_set_data(e->inter, elem);
-				break ;
-			}
-			free(e->p_text1);
-			free(e->p_text2);
-			elem = elem->next;
-		}
+		ft_set_select(e, elem);
 	}
 }

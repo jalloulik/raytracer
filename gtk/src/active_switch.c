@@ -6,11 +6,17 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 00:54:46 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/19 11:36:04 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/19 14:20:55 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ui.h"
+
+void				ft_free_p_text(t_event_entry *e)
+{
+	free(e->p_text1);
+	free(e->p_text2);
+}
 
 static void			ft_type1(GtkWidget *type, t_elem *elem,
 		t_interface *inter)
@@ -80,13 +86,11 @@ void				ft_active_switch(GtkWidget *widget, GParamSpec *pspec,
 				&elem->iter, 1, &e->p_text2, -1);
 			if (ft_strcmp(e->p_text1, e->p_text2) == 0)
 			{
-				free(e->p_text1);
-				free(e->p_text2);
+				ft_free_p_text(e);
 				ft_type(widget, elem, e->inter);
 				break ;
 			}
-			free(e->p_text1);
-			free(e->p_text2);
+			ft_free_p_text(e);
 			elem = elem->next;
 		}
 	}

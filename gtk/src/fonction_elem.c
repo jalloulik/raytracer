@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 23:39:17 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/19 11:20:24 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/19 14:18:34 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void			ft_create_sphere(GtkWidget *widget, gpointer data)
 
 	(void)widget;
 	i = 0;
-	elem = NULL;
 	inter = (t_interface *)data;
 	elem = ft_select_elem(inter);
 	while (elem->next)
@@ -59,7 +58,6 @@ void			ft_create_cone(GtkWidget *widget, gpointer data)
 
 	(void)widget;
 	i = 0;
-	elem = NULL;
 	inter = (t_interface *)data;
 	elem = ft_select_elem(inter);
 	while (elem->next)
@@ -89,7 +87,6 @@ void			ft_create_cylindre(GtkWidget *widget, gpointer data)
 
 	(void)widget;
 	i = 0;
-	elem = NULL;
 	inter = (t_interface *)data;
 	elem = ft_select_elem(inter);
 	while (elem->next)
@@ -119,7 +116,6 @@ void			ft_create_plan(GtkWidget *widget, gpointer data)
 
 	(void)widget;
 	i = 0;
-	elem = NULL;
 	inter = (t_interface *)data;
 	elem = ft_select_elem(inter);
 	while (elem->next)

@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 10:22:53 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/18 19:27:12 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/19 14:21:03 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,14 @@ t_elem				*ft_select_elem(t_interface *inter);
 void				ft_switch(t_1d_button *swit,
 		GtkWidget *container, char *name);
 void				ft_select_elem_actif(GtkWidget *widget, gpointer data);
+void				ft_set_entry_3d(t_interface *inter, t_elem *elem);
+void				ft_set_entry_2d(t_interface *inter, t_elem *elem);
+void				ft_set_entry_1d(t_interface *inter, t_elem *elem);
 void				ft_active_switch(GtkWidget *widget, GParamSpec *pspec,
 		gpointer data);
 void				ft_event(t_event_entry *e, t_interface *inter);
 void				ft_render(GtkWidget *widget, gpointer data);
+void				ft_free_p_text(t_event_entry *e);
 
 void				ft_init(t_interface *inter);
 void				ft_init_fix(t_interface *inter);

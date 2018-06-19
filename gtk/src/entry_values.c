@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 12:12:58 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/19 09:26:28 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/19 14:21:18 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,11 @@ void				ft_entry_value(GtkWidget *widget, gpointer data)
 				&elem->iter, 1, &e->p_text2, -1);
 			if (ft_strcmp(e->p_text1, e->p_text2) == 0)
 			{
-				free(e->p_text1);
-				free(e->p_text2);
+				ft_free_p_text(e);
 				ft_char_int(e, elem, widget);
 				break ;
 			}
-			free(e->p_text1);
-			free(e->p_text2);
+			ft_free_p_text(e);
 			elem = elem->next;
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 15:21:15 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/18 15:54:59 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/19 14:09:00 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void			ft_render(GtkWidget *widget, gpointer data)
 	fd = open("./scene.xml", O_WRONLY);
 	while (elem)
 	{
-		printf("%s\n", elem->name);
+		printf("%d\n", elem->type);
 		elem = elem->next;
 	}
 	close(fd);

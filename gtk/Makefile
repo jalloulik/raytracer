@@ -44,6 +44,7 @@ SRC = src/main.c \
 	src/fonction_elem_2.c \
 	src/fonction_elem_3.c \
 	src/set_data.c \
+	src/set_data_entry.c \
 	src/set_entry.c \
 	src/entry_values.c \
 	src/active_switch.c \
