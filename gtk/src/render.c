@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 15:21:15 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/19 16:11:58 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/19 16:27:53 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ void			ft_render(GtkWidget *widget, gpointer data)
 	}
 	ft_putstr_fd("</scene>\n", fd);
 	close(fd);
-	system("./test");
+	system("../rt scene.xml");
 }
