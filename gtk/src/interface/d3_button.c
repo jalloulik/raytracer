@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 13:50:48 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/14 13:55:53 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/18 17:07:00 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void		ft_x(GtkWidget **label, GtkWidget **button,
 	*button = gtk_entry_new();
 	gtk_entry_set_text(GTK_ENTRY(*button), "0");
 	gtk_container_add(GTK_CONTAINER(box_h), *button);
+	free(name);
 }
 
 static void		ft_xyz(t_3d_button *button, GtkWidget *box_h, char *name)
@@ -41,10 +42,8 @@ static void		ft_xyz(t_3d_button *button, GtkWidget *box_h, char *name)
 void			ft_3d_button(t_3d_button *button, GtkWidget *container,
 		char *name)
 {
-	GtkWidget	*box_h;
-
-	box_h = gtk_box_new(GTK_ORIENTATION_VERTICAL, 6);
-	gtk_box_set_homogeneous(GTK_BOX(box_h), TRUE);
-	gtk_container_add(GTK_CONTAINER(container), box_h);
-	ft_xyz(button, box_h, name);
+	button->box_h = gtk_box_new(GTK_ORIENTATION_VERTICAL, 6);
+	gtk_box_set_homogeneous(GTK_BOX(button->box_h), TRUE);
+	gtk_container_add(GTK_CONTAINER(container), button->box_h);
+	ft_xyz(button, button->box_h, name);
 }

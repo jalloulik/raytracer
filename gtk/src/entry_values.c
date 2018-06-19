@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 12:12:58 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/18 13:42:15 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/19 09:26:28 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,18 @@ void				ft_entry_value(GtkWidget *widget, gpointer data)
 		while (elem)
 		{
 			gtk_tree_model_get(GTK_TREE_MODEL(e->inter->list.store),
-				&e->iter, 0, &e->index1, 1, &e->p_text1, -1);
+				&e->iter, 1, &e->p_text1, -1);
 			gtk_tree_model_get(GTK_TREE_MODEL(e->inter->list.store),
-				&elem->iter, 0, &e->index2, 1, &e->p_text2, -1);
+				&elem->iter, 1, &e->p_text2, -1);
 			if (ft_strcmp(e->p_text1, e->p_text2) == 0)
 			{
+				free(e->p_text1);
+				free(e->p_text2);
 				ft_char_int(e, elem, widget);
 				break ;
 			}
+			free(e->p_text1);
+			free(e->p_text2);
 			elem = elem->next;
 		}
 	}

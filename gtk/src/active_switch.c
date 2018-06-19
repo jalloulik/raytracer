@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 00:54:46 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/15 13:32:47 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/19 11:36:04 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,14 +75,18 @@ void				ft_active_switch(GtkWidget *widget, GParamSpec *pspec,
 		while (elem)
 		{
 			gtk_tree_model_get(GTK_TREE_MODEL(e->inter->list.store),
-				&e->iter, 0, &e->index1, 1, &e->p_text1, -1);
+				&e->iter, 1, &e->p_text1, -1);
 			gtk_tree_model_get(GTK_TREE_MODEL(e->inter->list.store),
-				&elem->iter, 0, &e->index2, 1, &e->p_text2, -1);
+				&elem->iter, 1, &e->p_text2, -1);
 			if (ft_strcmp(e->p_text1, e->p_text2) == 0)
 			{
+				free(e->p_text1);
+				free(e->p_text2);
 				ft_type(widget, elem, e->inter);
 				break ;
 			}
+			free(e->p_text1);
+			free(e->p_text2);
 			elem = elem->next;
 		}
 	}

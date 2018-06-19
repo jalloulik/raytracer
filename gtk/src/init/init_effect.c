@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 10:32:07 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/14 13:41:01 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/18 17:01:14 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void		ft_init_2d_button(t_2d_button *button)
 {
+	button->box_v = NULL;
+	button->box_h = NULL;
 	button->label_x = NULL;
 	button->x = NULL;
 	button->label_y = NULL;

@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 15:56:37 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/18 14:00:18 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/19 11:24:51 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void			ft_create_carre(GtkWidget *widget, gpointer data)
 {
 	t_interface	*inter;
 	t_elem		*elem;
-	char		*carre;
+	char		*name;
+	char		*tmp;
 	int			i;
 
 	(void)widget;
@@ -30,11 +31,14 @@ void			ft_create_carre(GtkWidget *widget, gpointer data)
 			i++;
 		elem = elem->next;
 	}
-	carre = "rectangle";
-	elem->name = ft_strjoin(carre, ft_itoa(i));
-	ft_iter(&elem->iter, inter->list.store, i, elem->name);
+	name = "rectangle";
+	tmp = ft_itoa(i);
+	name = ft_strjoin(name, tmp);
+	ft_iter(&elem->iter, inter->list.store, i, name);
 	elem->type = CARRE;
 	elem->rad = 2;
+	free(tmp);
+	free(name);
 	ft_init_elem(elem);
 }
 
@@ -42,7 +46,8 @@ void			ft_create_torre(GtkWidget *widget, gpointer data)
 {
 	t_interface	*inter;
 	t_elem		*elem;
-	char		*torre;
+	char		*name;
+	char		*tmp;
 	int			i;
 
 	(void)widget;
@@ -56,11 +61,14 @@ void			ft_create_torre(GtkWidget *widget, gpointer data)
 			i++;
 		elem = elem->next;
 	}
-	torre = "torre";
-	elem->name = ft_strjoin(torre, ft_itoa(i));
-	ft_iter(&elem->iter, inter->list.store, i, elem->name);
+	name = "torre";
+	tmp = ft_itoa(i);
+	name = ft_strjoin(name, tmp);
+	ft_iter(&elem->iter, inter->list.store, i, name);
 	elem->type = TORRE;
 	elem->rad = 2;
+	free(tmp);
+	free(name);
 	ft_init_elem(elem);
 }
 
@@ -68,7 +76,8 @@ void			ft_create_triangle(GtkWidget *widget, gpointer data)
 {
 	t_interface	*inter;
 	t_elem		*elem;
-	char		*triangle;
+	char		*name;
+	char		*tmp;
 	int			i;
 
 	(void)widget;
@@ -82,11 +91,14 @@ void			ft_create_triangle(GtkWidget *widget, gpointer data)
 			i++;
 		elem = elem->next;
 	}
-	triangle = "triangle";
-	elem->name = ft_strjoin(triangle, ft_itoa(i));
-	ft_iter(&elem->iter, inter->list.store, i, elem->name);
+	name = "triangle";
+	tmp = ft_itoa(i);
+	name = ft_strjoin(name, tmp);
+	ft_iter(&elem->iter, inter->list.store, i, name);
 	elem->type = TRIANGLE;
 	elem->rad = 2;
+	free(tmp);
+	free(name);
 	ft_init_elem(elem);
 }
 
@@ -94,7 +106,8 @@ void			ft_create_cercle(GtkWidget *widget, gpointer data)
 {
 	t_interface	*inter;
 	t_elem		*elem;
-	char		*cercle;
+	char		*name;
+	char		*tmp;
 	int			i;
 
 	(void)widget;
@@ -108,10 +121,13 @@ void			ft_create_cercle(GtkWidget *widget, gpointer data)
 			i++;
 		elem = elem->next;
 	}
-	cercle = "cercle";
-	elem->name = ft_strjoin(cercle, ft_itoa(i));
-	ft_iter(&elem->iter, inter->list.store, i, elem->name);
+	name = "cercle";
+	tmp = ft_itoa(i);
+	name = ft_strjoin(name, tmp);
+	ft_iter(&elem->iter, inter->list.store, i, name);
 	elem->type = CERCLE;
 	elem->rad = 2;
+	free(tmp);
+	free(name);
 	ft_init_elem(elem);
 }

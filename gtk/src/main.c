@@ -6,19 +6,17 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 10:20:36 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/18 14:56:37 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/18 19:27:06 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ui.h"
 
-static void			ft_e(t_event_entry *e, t_interface *inter)
+void			ft_e(t_event_entry *e, t_interface *inter)
 {
 	e->inter = inter;
 	e->value = NULL;
 	e->value_char = NULL;
-	e->index1 = 0;
-	e->index2 = 0;
 	e->p_text1 = NULL;
 	e->p_text2 = NULL;
 }

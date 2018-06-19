@@ -6,13 +6,13 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/31 11:01:39 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/18 14:48:26 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/19 09:26:59 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ui.h"
 
-static void		ft_set_entry_3d(t_interface *inter, t_elem *elem)
+void		ft_set_entry_3d(t_interface *inter, t_elem *elem)
 {
 	ft_set_3d_entry(&inter->fix.pos, elem->pos);
 	ft_set_3d_entry(&inter->fix.translation, elem->translation);
@@ -24,7 +24,7 @@ static void		ft_set_entry_3d(t_interface *inter, t_elem *elem)
 	ft_set_3d_entry(&inter->triang.p3, elem->triang.p3);
 }
 
-static void		ft_set_entry_2d(t_interface *inter, t_elem *elem)
+void		ft_set_entry_2d(t_interface *inter, t_elem *elem)
 {
 	ft_set_2d_entry(&inter->tex_c.move, elem->tex_c.move);
 	ft_set_2d_entry(&inter->tex_c.scale, elem->tex_c.scale);
@@ -38,7 +38,7 @@ static void		ft_set_entry_2d(t_interface *inter, t_elem *elem)
 	ft_set_2d_entry(&inter->size, elem->size);
 }
 
-static void		ft_set_entry_1d(t_interface *inter, t_elem *elem)
+void		ft_set_entry_1d(t_interface *inter, t_elem *elem)
 {
 	ft_set_1d_entry_int(&inter->fix.angle_rot, elem->angle_rot);
 	ft_set_1d_entry_int(&inter->angle, elem->angle);
@@ -53,7 +53,7 @@ static void		ft_set_entry_1d(t_interface *inter, t_elem *elem)
 	ft_set_1d_entry_int(&inter->rayon_torre.r2, elem->rayon_torre.y);
 }
 
-static void		ft_set_data(t_interface *inter, t_elem *elem)
+void		ft_set_data(t_interface *inter, t_elem *elem)
 {
 	ft_set_entry_3d(inter, elem);
 	ft_set_entry_2d(inter, elem);
@@ -89,15 +89,19 @@ void			ft_select_elem_actif(GtkWidget *widget, gpointer data)
 		while (elem)
 		{
 			gtk_tree_model_get(GTK_TREE_MODEL(e->inter->list.store),
-			&e->iter, 0, &e->index1, 1, &e->p_text1, -1);
+			&e->iter, 1, &e->p_text1, -1);
 			gtk_tree_model_get(GTK_TREE_MODEL(e->inter->list.store),
-			&elem->iter, 0, &e->index2, 1, &e->p_text2, -1);
+			&elem->iter, 1, &e->p_text2, -1);
 			if (ft_strcmp(e->p_text1, e->p_text2) == 0)
 			{
+				free(e->p_text1);
+				free(e->p_text2);
 				ft_set_data_show(e->inter, elem);
 				ft_set_data(e->inter, elem);
 				break ;
 			}
+			free(e->p_text1);
+			free(e->p_text2);
 			elem = elem->next;
 		}
 	}

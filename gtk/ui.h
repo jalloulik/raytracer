@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 10:22:53 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/18 13:49:31 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/18 19:27:12 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <gtk/gtk.h>
 # include <libft.h>
 # include <stdlib.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
 # define SPHERE 0
 # define CONE 1
 # define PLAN 2
@@ -37,8 +40,6 @@ typedef struct		s_event_entry
 	int				*value;
 	char			**value_char;
 	GtkTreeIter		iter;
-	int				index1;
-	int				index2;
 	char			*p_text1;
 	char			*p_text2;
 }					t_event_entry;
@@ -73,6 +74,7 @@ void				ft_select_elem_actif(GtkWidget *widget, gpointer data);
 void				ft_active_switch(GtkWidget *widget, GParamSpec *pspec,
 		gpointer data);
 void				ft_event(t_event_entry *e, t_interface *inter);
+void				ft_render(GtkWidget *widget, gpointer data);
 
 void				ft_init(t_interface *inter);
 void				ft_init_fix(t_interface *inter);

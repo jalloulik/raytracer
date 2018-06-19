@@ -50,6 +50,7 @@ SRC = src/main.c \
 	src/event.c \
 	src/event_entry.c \
 	src/type_entry.c \
+	src/render.c \
 
 OBJ = $(SRC:%.c=$(OBJPATH)%.o)
 

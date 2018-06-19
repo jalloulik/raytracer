@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 15:58:32 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/18 13:26:50 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/18 17:02:20 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 typedef struct		s_3d_button
 {
+	GtkWidget		*box_h;
 	GtkWidget		*label_x;
 	GtkWidget		*x;
 	GtkWidget		*label_y;
@@ -25,6 +26,8 @@ typedef struct		s_3d_button
 
 typedef struct		s_2d_button
 {
+	GtkWidget		*box_v;
+	GtkWidget		*box_h;
 	GtkWidget		*label_x;
 	GtkWidget		*x;
 	GtkWidget		*label_y;
@@ -33,6 +36,7 @@ typedef struct		s_2d_button
 
 typedef struct		s_1d_button
 {
+	GtkWidget		*box_h;
 	GtkWidget		*label_x;
 	GtkWidget		*x;
 }					t_1d_button;
@@ -155,6 +159,7 @@ typedef struct		s_interface
 	t_1d_button		sepia;
 	t_rayon_ui		rayon_torre;
 	t_elem			*list_e;
+	GtkWidget		*render;
 }					t_interface;
 
 #endif

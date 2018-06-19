@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/24 23:39:17 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/12 11:53:26 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/19 11:20:24 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void			ft_create_sphere(GtkWidget *widget, gpointer data)
 {
 	t_interface	*inter;
 	t_elem		*elem;
-	char		*sphere;
+	char		*name;
+	char		*tmp;
 	int			i;
 
 	(void)widget;
@@ -37,11 +38,14 @@ void			ft_create_sphere(GtkWidget *widget, gpointer data)
 			i++;
 		elem = elem->next;
 	}
-	sphere = "sphere";
-	elem->name = ft_strjoin(sphere, ft_itoa(i));
-	ft_iter(&elem->iter, inter->list.store, i, elem->name);
+	name = "sphere";
+	tmp = ft_itoa(i);
+	name = ft_strjoin(name, tmp);
+	ft_iter(&elem->iter, inter->list.store, i, name);
 	elem->type = SPHERE;
 	elem->rad = 2;
+	free(tmp);
+	free(name);
 	ft_init_elem(elem);
 }
 
@@ -50,6 +54,7 @@ void			ft_create_cone(GtkWidget *widget, gpointer data)
 	t_interface	*inter;
 	t_elem		*elem;
 	char		*name;
+	char		*tmp;
 	int			i;
 
 	(void)widget;
@@ -64,10 +69,13 @@ void			ft_create_cone(GtkWidget *widget, gpointer data)
 		elem = elem->next;
 	}
 	name = "cone";
-	elem->name = ft_strjoin(name, ft_itoa(i));
-	ft_iter(&elem->iter, inter->list.store, i, elem->name);
+	tmp = ft_itoa(i);
+	name = ft_strjoin(name, tmp);
+	ft_iter(&elem->iter, inter->list.store, i, name);
 	elem->type = CONE;
 	elem->rad = 0;
+	free(tmp);
+	free(name);
 	ft_init_elem(elem);
 }
 
@@ -75,6 +83,7 @@ void			ft_create_cylindre(GtkWidget *widget, gpointer data)
 {
 	t_interface	*inter;
 	t_elem		*elem;
+	char		*tmp;
 	char		*name;
 	int			i;
 
@@ -90,10 +99,13 @@ void			ft_create_cylindre(GtkWidget *widget, gpointer data)
 		elem = elem->next;
 	}
 	name = "cylindre";
-	elem->name = ft_strjoin(name, ft_itoa(i));
-	ft_iter(&elem->iter, inter->list.store, i, elem->name);
+	tmp = ft_itoa(i);
+	name = ft_strjoin(name, tmp);
+	ft_iter(&elem->iter, inter->list.store, i, name);
 	elem->type = CYLINDRE;
 	elem->rad = 0;
+	free(tmp);
+	free(name);
 	ft_init_elem(elem);
 }
 
@@ -101,6 +113,7 @@ void			ft_create_plan(GtkWidget *widget, gpointer data)
 {
 	t_interface	*inter;
 	t_elem		*elem;
+	char		*tmp;
 	char		*name;
 	int			i;
 
@@ -116,9 +129,12 @@ void			ft_create_plan(GtkWidget *widget, gpointer data)
 		elem = elem->next;
 	}
 	name = "plan";
-	elem->name = ft_strjoin(name, ft_itoa(i));
-	ft_iter(&elem->iter, inter->list.store, i, elem->name);
+	tmp = ft_itoa(i);
+	name = ft_strjoin(name, tmp);
+	ft_iter(&elem->iter, inter->list.store, i, name);
 	elem->type = PLAN;
 	elem->rad = 0;
+	free(tmp);
+	free(name);
 	ft_init_elem(elem);
 }

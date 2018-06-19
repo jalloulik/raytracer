@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 16:17:15 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/18 14:42:06 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/18 17:00:15 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void		ft_init_1d_button(t_1d_button *button)
 {
+	button->box_h = NULL;
 	button->label_x = NULL;
 	button->x = NULL;
 }
@@ -32,6 +33,7 @@ static void	ft_init_cont(t_interface *inter)
 
 static void	ft_init_prim(t_interface *inter)
 {
+	inter->render = NULL;
 	inter->prim.sphere = NULL;
 	inter->prim.plan = NULL;
 	inter->prim.cone = NULL;

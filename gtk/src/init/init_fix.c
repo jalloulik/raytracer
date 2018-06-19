@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 10:14:50 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/18 11:27:34 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/18 17:00:32 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void		ft_init_3d_button(t_3d_button *button)
 {
+	button->box_h = NULL;
 	button->label_x = NULL;
 	button->x = NULL;
 	button->label_y = NULL;

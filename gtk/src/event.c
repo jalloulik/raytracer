@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 08:52:22 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/18 13:55:28 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/18 15:20:01 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ static void		ft_event_button(t_interface *inter)
 		G_CALLBACK(ft_create_torre), inter);
 	g_signal_connect(G_OBJECT(inter->prim.cercle), "clicked",
 		G_CALLBACK(ft_create_cercle), inter);
+	g_signal_connect(G_OBJECT(inter->render), "clicked",
+		G_CALLBACK(ft_render), inter);
 }
 
 static void		ft_event_switch(t_event_entry *e, t_interface *inter)

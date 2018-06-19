@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_list_e.c                                      :+:      :+:    :+:   */
+/*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/12 11:50:07 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/18 15:48:14 by tfavart          ###   ########.fr       */
+/*   Created: 2018/06/18 15:21:15 by tfavart           #+#    #+#             */
+/*   Updated: 2018/06/18 15:54:59 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../ui.h"
+#include "../ui.h"
 
-static void			ft_create_camera(t_interface *inter)
+void			ft_render(GtkWidget *widget, gpointer data)
 {
+	int			fd;
 	t_elem		*elem;
+	t_interface	*inter;
 
-	elem = ft_select_elem(inter);
-	elem->name = "camera";
-	ft_iter(&elem->iter, inter->list.store, 0, elem->name);
-	elem->type = CAM;
-	ft_init_elem(elem);
-}
-
-void				ft_init_list_e(t_interface *inter)
-{
-	ft_create_camera(inter);
+	(void)widget;
+	inter = (t_interface*)data;
+	elem = inter->list_e;
+	fd = open("./scene.xml", O_WRONLY);
+	while (elem)
+	{
+		printf("%s\n", elem->name);
+		elem = elem->next;
+	}
+	close(fd);
 }

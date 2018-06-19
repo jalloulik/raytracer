@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 10:26:26 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/18 14:42:51 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/18 19:33:37 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ static void	ft_init_elem2(t_elem *elem)
 
 void		ft_init_elem(t_elem *elem)
 {
+	elem->name = NULL;
 	ft_set_3d(&elem->color, 0, 0, 0);
 	ft_set_3d(&elem->pos, 0, 0, 0);
 	ft_set_3d(&elem->translation, 0, 0, 0);
