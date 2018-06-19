@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:27 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/04/26 20:40:54 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/08 16:55:25 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,16 @@ void	ft_get_first_ray(t_ray *ray, t_cam *cam, t_2dpt *pos)
 	ft_calculate_vector(&(ray->dir), &(cam->origin), &(ray->vpcurrent));
 }
 
+t_color	ft_throw_ray(t_obj *obj, t_3dpt *ray_dir, t_3dpt *origin, t_prim *prev)
+{
+	t_color		total_color;
+
+	ft_set_color(&total_color, 0, 0, 0);
+	ft_resolve_prim(obj->prim, ray_dir, origin);
+	total_color = ft_figure_color(obj, origin, prev);
+	return (total_color);
+}
+
 void	ft_set_scene(t_winenv *mlxenv, t_cam *cam, t_light *light, t_prim *list)
 {
 	t_2dpt		pos;
@@ -33,25 +43,23 @@ void	ft_set_scene(t_winenv *mlxenv, t_cam *cam, t_light *light, t_prim *list)
 
 	obj.light = light;
 	obj.prim = list;
-	pos.x = -1;
+	pos.y = -1;
 	cam->vp.pos = &pos;
 	ray.cam = cam;
 	ft_get_topleft_indent(cam);
 	ft_rotate_all(obj.prim);
 	ft_translante_all(obj.prim);
 	ft_create_local_vector_spaces(obj.prim);
-	while (++pos.x < WIN_WIDTH)
+	while (++pos.y < WIN_HEIGHT)
 	{
-		pos.y = -1;
-		while (++pos.y < WIN_HEIGHT)
+		pos.x = -1;
+		while (++pos.x < WIN_WIDTH)
 		{
 			ft_get_first_ray(&ray, cam, &pos);
-			ft_resolve_prim(obj.prim, &ray, cam);
-			ft_resolve_light(obj.light, &ray, cam);
-			if (ft_test_smallest(obj.light, obj.prim) == 1)
-				ft_set_color(&total_color, 255, 255, 255);
-			else
-				total_color = ft_figure_color(&obj, &(ray.cam->origin));
+			g_limit = 0;
+			total_color = ft_trace_ray(&obj, &(ray.dir), &(cam->origin), NULL);
+			if (cam->sepia == TRUE)
+				ft_sepia_filter(&total_color);
 			ft_fill_img_rgb(mlxenv->img, pos.x, pos.y, total_color);
 		}
 	}
@@ -66,7 +74,7 @@ void	ft_controller_rt(t_cam *cam, t_light *light, t_prim *list)
 	ft_create_img(&mlxenv, WIN_WIDTH, WIN_HEIGHT);
 	ft_set_scene(&mlxenv, cam, light, list);
 	mlx_put_image_to_window(mlxenv.mlxptr, mlxenv.win, mlxenv.img.ptr, 0, 0);
-	mlx_key_hook(mlxenv.win, &ft_keyhook, NULL);
+	mlx_key_hook(mlxenv.win, &ft_keyhook, &mlxenv);
 	mlx_loop(mlxenv.mlxptr);
 }
 

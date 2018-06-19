@@ -1,4 +1,4 @@
-cam|origin:0:0:20|rotation:1:0:0:angle:0|translation:0:0:0
+cam|origin:0:0:20|rotation:1:0:0:angle:0|translation:0:0:0|sepia:true
 spot|origin:0:5:10|intensity:80
 spot|origin:0:-3:5|intensity:80
 sphere|origin:-1:-1:5|radius:1|color:r:200:g:00:b:00|rotation:0:1:0:angle:0|translation:0:0:0

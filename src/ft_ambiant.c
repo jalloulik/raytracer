@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 08:07:13 by tfavart           #+#    #+#             */
-/*   Updated: 2018/04/26 14:40:27 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/28 17:27:22 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void			ft_get_ambiant(t_prim *prim, t_color *color, t_light *light)
 	int			g;
 	int			b;
 
+	if (prim->textur.valid == TRUE)
+		prim->color2 = ft_get_prim_texture_color(prim);
 	r = color->red + prim->color2.red * light->intensity;
 	g = color->green + prim->color2.green * light->intensity;
 	b = color->blue + prim->color2.blue * light->intensity;

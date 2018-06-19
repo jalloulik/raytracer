@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 15:34:51 by tfavart           #+#    #+#             */
-/*   Updated: 2018/04/27 09:01:34 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/04/27 10:53:29 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ double			ft_test_smallest(t_light *light, t_prim *prim)
 	return (0);
 }
 
-void			ft_resolve_light(t_light *light, t_ray *ray, t_cam *cam)
+void			ft_resolve_light(t_light *light, t_3dpt *ray, t_3dpt *origin)
 {
 	light->t = -1;
 	while (light != NULL)
@@ -51,7 +51,7 @@ void			ft_resolve_light(t_light *light, t_ray *ray, t_cam *cam)
 			light->prim.sphere.origin.y = light->origin.y;
 			light->prim.sphere.origin.z = light->origin.z;
 			light->t = ft_resolve_sphere(&(light->prim),
-									&(ray->dir), &(cam->origin));
+									ray, origin);
 		}
 		light = light->next;
 	}

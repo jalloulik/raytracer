@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 17:30:01 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/03/22 13:08:19 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/05/29 17:21:30 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	ft_calculate_vector(t_3dpt *vector, t_3dpt *start, t_3dpt *end)
 		SQR(end->z - start->z));
 	if (distance == 0)
 		distance = distance + 0.000000000000001;
+	if (vector == NULL)
+		ft_error("Vector is NULL");
 	vector->x = (end->x - start->x) / distance;
 	vector->y = (end->y - start->y) / distance;
 	vector->z = (end->z - start->z) / distance;
@@ -54,7 +56,9 @@ void	ft_normalize_vector(t_3dpt *source)
 
 	magnitude = sqrt(SQR(source->x) + SQR(source->y) + SQR(source->z));
 	if (magnitude == 0)
-		ft_error(ERRDIV);
+		magnitude = 0.000000000000001;
+	if (source == NULL)
+		ft_error("Vector is NULL");
 	source->x = source->x / magnitude;
 	source->y = source->y / magnitude;
 	source->z = source->z / magnitude;
