@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 10:22:53 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/19 14:21:03 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/19 16:07:00 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,5 +148,11 @@ void				ft_set_data_show_cercle(t_interface *inter);
 void				ft_set_data_show_carre(t_interface *inter);
 void				ft_set_data_show_triangle(t_interface *inter);
 void				ft_set_data_show_torre(t_interface *inter);
+
+void				ft_put_2d(t_2d elem, int fd);
+void				ft_put_3d(t_3d elem, int fd);
+void				ft_parse_camera(t_elem *elem, int fd);
+void				ft_parse_light(t_elem *elem, int fd);
+void				ft_parse_prim_3d(t_elem *elem, int fd);
 
 #endif

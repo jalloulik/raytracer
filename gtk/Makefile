@@ -52,6 +52,10 @@ SRC = src/main.c \
 	src/event_entry.c \
 	src/type_entry.c \
 	src/render.c \
+	src/parse_camera.c \
+	src/parse_light.c \
+	src/parse_prim_3d.c \
+	src/parse_functions.c \
 
 OBJ = $(SRC:%.c=$(OBJPATH)%.o)
 
