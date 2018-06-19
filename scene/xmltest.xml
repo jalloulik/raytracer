@@ -4,8 +4,12 @@
 		<sepia>false</sepia>
 	</cam>
 	<spot>
-		<origin>0:0:20</origin>
+		<origin>0:0:40</origin>
 		<intensity>100</intensity>
+	</spot>
+	<spot>
+		<origin>10:0:20</origin>
+		<intensity>50</intensity>
 	</spot>
 	<ambiant><intensity>0</intensity></ambiant>
 	<sun><origin>0:0:20</origin><intensity>50</intensity></sun>
@@ -25,6 +29,7 @@
 				<status>true</status>
 				<ratio>50</ratio>
 			</reflect>
+			<translation>-2:0:0</translation>
 	</sphere>
 	<cone>
 		<origin>8:0:0</origin>
@@ -66,6 +71,7 @@
 				<x>0</x><y>0</y>
 			</mov>
 		</checkers>
+		<rotation><axis>0:0:1</axis><angle>-10</angle></rotation>
 	</cylinder>
 	<rect>
 		<origin>15:7:0</origin>

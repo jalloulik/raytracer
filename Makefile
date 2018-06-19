@@ -6,7 +6,7 @@
 #    By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/06 17:18:00 by kjalloul          #+#    #+#              #
-#    Updated: 2018/06/18 17:22:24 by kjalloul         ###   ########.fr        #
+#    Updated: 2018/06/19 11:21:52 by kjalloul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,6 +74,8 @@ SRC = main.c\
 		cut.c\
 		ft_sepia.c\
 		ft_checkers.c\
+		ft_parsing_primitives2.c\
+		ft_parsing_options.c
 
 OBJ = $(SRC:%.c=$(OBJPATH)%.o)
 

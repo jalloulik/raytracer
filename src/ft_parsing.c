@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/27 10:56:10 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/19 03:18:04 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/19 11:36:13 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,49 +22,40 @@ t_prim *ft_get_last(t_prim *last)
 
 void		ft_parsing_mov(t_node *node, t_prim *last, char *type)
 {
-	char *tmp;
 	char *content;
 
 	content = NULL;
-	tmp = ft_strjoin(type, "/rotation/axis");
-	content = xmlp_get_child_node_content(node, tmp);
-	free(tmp);
-
+	content = ft_get_content_mix_path(node, type, "/rotation/axis");
 	if (content)
 		ft_set_3dpt_from_string(&(last->rot_axis), content);
-	tmp = ft_strjoin(type, "/rotation/angle");
-	content = xmlp_get_child_node_content(node, tmp);
-	free(tmp);
+	content = ft_get_content_mix_path(node, type, "/rotation/angle");
 	if (content)
 		last->rot_angle = ft_degree_to_rad((double)ft_atoi(content));
-	tmp = ft_strjoin(type, "/translation");
-	content = xmlp_get_child_node_content(node, tmp);
-	free(tmp);
+	content = ft_get_content_mix_path(node, type, "/translation");
 	if (content)
 		ft_set_3dpt_from_string(&(last->transl), content);
 }
 
-void		ft_parse_color(char *color, t_color *color2, void (*ft_err)(void))
+void		ft_parse_color(t_node *node, t_color *color2, char *type)
 {
 	char **tmp;
+	char *content;
 
-	tmp = ft_strsplit(color, ':');
+	content = ft_get_content_mix_path(node, type, "/color");
+	if (content == NULL)
+		ft_error("Need color for primitive");
+	tmp = ft_strsplit(content, ':');
 	if (ft_count_tab(tmp) != 3)
-	{
-		ft_putendl("fuck");
-		ft_err();
-	}
+		ft_error("<color>r:g:b</color> where rgb are between 0-255");
 	ft_set_color(color2, ft_atoi(tmp[0]), ft_atoi(tmp[1]), ft_atoi(tmp[2]));
 	ft_free_tab(tmp);
 }
 
 void		ft_parsing_start(char *file, t_cam *cam, t_light **spot, t_prim **list)
 {
-	char	*str;
 	t_xmlp	*xmlp;
 	t_node	*node;
 
-	str = NULL;
 	xmlp = new_xmlp(file);
 	node = NULL;
 	cam->status = FALSE;
@@ -97,4 +88,6 @@ void		ft_parsing_start(char *file, t_cam *cam, t_light **spot, t_prim **list)
 		ft_tore_setup(node, list);
 	while ((node = xmlp_get_next_node(xmlp, "scene/triangle")))
 		ft_triangle_setup(node, list);
+	if (*spot == NULL)
+		ft_error("Need at least one source of light");
 }

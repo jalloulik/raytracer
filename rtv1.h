@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/19 02:18:15 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/19 11:38:36 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -412,8 +412,7 @@ void				ft_cylinder_setup(t_node *node, t_prim **prims);
 void				ft_cone_setup(t_node *node, t_prim **prims);
 void				ft_sphere_setup(t_node *node, t_prim **prims);
 t_prim				*ft_get_last(t_prim *last);
-void				ft_parse_color(char *color, t_color *color2,
-													void (*ft_err)(void));
+void				ft_parse_color(t_node *node, t_color *color2, char *type);
 void				ft_parsing_mov(t_node *node, t_prim *last, char *type);
 void				ft_spot_setup(t_node *node, t_light **spots);
 
@@ -509,5 +508,7 @@ t_color				ft_get_checkers_color(double x, double y, t_texture *textur);
 
 void				ft_intialise_primitives(t_prim *last);
 void				ft_set_3dpt_from_string(t_3dpt *point, char *str);
+char				*ft_get_content_mix_path(t_node *node, char *type, char *path);
+void				ft_count_options(t_prim *last, t_node *node, char *type);
 
 #endif
