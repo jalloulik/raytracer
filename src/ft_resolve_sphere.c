@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 17:28:34 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/08 19:08:17 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/06/20 17:04:59 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,3 @@ double		ft_resolve_sphere(t_prim *prim, t_3dpt *dir, t_3dpt *ray_origin)
 	cut(prim->cut, ray_origin, dir, t);
 	return (t[3]);
 }
-

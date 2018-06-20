@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 08:07:13 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/19 03:18:33 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/20 15:59:54 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,12 @@ void			ft_ambiant_setup(t_node *node, t_light **spots)
 {
 	t_light		*last;
 	t_light		*list;
-	char *content;
+	char		*content;
 
 	list = *spots;
 	list = ft_add_lst_light(list, AMBIANT);
 	*spots = list;
 	last = ft_get_last_spot(list);
-
 	content = xmlp_get_child_node_content(node, "ambiant/intensity");
 	last->intensity = (double)ft_atoi(content) / 100;
 	if (last->intensity < 0 || last->intensity > 2)

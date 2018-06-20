@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 11:28:51 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/18 19:35:10 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/20 22:07:40 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,22 @@ t_prim		*ft_add_lst_file(t_prim *list, int type)
 	ft_intialise_primitives(list);
 	list->next = NULL;
 	return (start);
+}
+
+t_cut		*ft_add_lst_cut(t_cut *cut)
+{
+	t_cut	*tmp;
+
+	if (!cut)
+	{
+		cut = ft_malloc(sizeof(*cut));
+		cut->next = NULL;
+		return (cut);
+	}
+	tmp = cut;
+	cut = ft_malloc(sizeof(*cut));
+	cut->next = tmp;
+	return (cut);
 }
 
 t_light		*ft_add_lst_light(t_light *list, int type)
