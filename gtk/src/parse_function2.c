@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 11:40:39 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/20 14:04:49 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/20 18:31:58 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,21 @@ void		ft_parse_origin(t_elem *elem, int fd)
 {
 	ft_putstr_fd("<origin>", fd);
 	ft_put_3d(elem->pos, fd);
-	ft_putstr_fd("</origin>", fd);
+	ft_putstr_fd("</origin>\n", fd);
 }
 
 void		ft_parse_translation(t_elem *elem, int fd)
 {
 	ft_putstr_fd("<translation>", fd);
 	ft_put_3d(elem->translation, fd);
-	ft_putstr_fd("</translation>", fd);
+	ft_putstr_fd("</translation>\n", fd);
 }
 
 void		ft_parse_vec(t_elem *elem, int fd)
 {
 	ft_putstr_fd("<vec>", fd);
 	ft_put_3d(elem->vec, fd);
-	ft_putstr_fd("</vec>", fd);
+	ft_putstr_fd("</vec>\n", fd);
 }
 
 void		ft_parse_rotation(t_elem *elem, int fd)
@@ -42,12 +42,12 @@ void		ft_parse_rotation(t_elem *elem, int fd)
 	ft_putstr_fd("<angle>", fd);
 	ft_putnbr_fd(elem->angle_rot, fd);
 	ft_putstr_fd("</angle>", fd);
-	ft_putstr_fd("</rotation>", fd);
+	ft_putstr_fd("</rotation>\n", fd);
 }
 
 void		ft_parse_color(t_elem *elem, int fd)
 {
 	ft_putstr_fd("<color>", fd);
 	ft_put_3d(elem->color, fd);
-	ft_putstr_fd("</color>", fd);
+	ft_putstr_fd("</color>\n", fd);
 }

@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 16:22:53 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/20 16:59:05 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/20 18:19:45 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void			ft_create_spot(GtkWidget *widget, gpointer data)
 	free(tmp);
 	free(name);
 	ft_init_elem(elem);
-	elem->pos.y = 10;
+	ft_set_3d(&elem->pos, 0, 0, 10);
 }
 
 void			ft_create_sun(GtkWidget *widget, gpointer data)

@@ -1,4 +1,4 @@
-NAME = test
+NAME = ui
 
 SRCPATH = ./
 

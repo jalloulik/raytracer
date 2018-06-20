@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 15:56:37 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/20 16:54:09 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/20 18:42:25 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void			ft_create_torre(GtkWidget *widget, gpointer data)
 			i++;
 		elem = elem->next;
 	}
-	name = "torre";
+	name = "tore";
 	tmp = ft_itoa(i);
 	name = ft_strjoin(name, tmp);
 	ft_iter(&elem->iter, inter->list.store, i, name);

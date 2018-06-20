@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 13:57:19 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/18 14:55:23 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/20 18:06:39 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,12 @@
 static void	ft_set_data_show_spot(t_interface *inter)
 {
 	ft_set_data_show_3d(inter->fix.pos);
-	ft_set_data_show_3d(inter->fix.color);
 	ft_set_data_show_1d(inter->light.intensity);
 }
 
 static void	ft_set_data_show_sun(t_interface *inter)
 {
 	ft_set_data_show_3d(inter->fix.pos);
-	ft_set_data_show_3d(inter->fix.color);
 	ft_set_data_show_1d(inter->light.intensity);
 }
 
