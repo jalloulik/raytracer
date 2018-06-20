@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 16:21:43 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/20 20:10:55 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/20 21:30:42 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int		ft_initialise_cut(t_prim *prim)
 	if (prim->cut && prim->cut->cut)
 	{
 		//potential leak, why?
-		prim->normal = *prim->cut->normal;
+		// prim->normal = *prim->cut->normal;
 		prim->cut->cut = 0;
-		ft_vec_quater_rot(&prim->normal, &prim->normal, &(prim->l_to_g_rot));
+		ft_vec_quater_rot(&prim->normal, prim->cut->normal, &(prim->l_to_g_rot));
 		return (0);
 	}
 	return (1);
@@ -49,4 +49,10 @@ void	ft_intialise_primitives(t_prim *last)
 	last->textur_n.valid = FALSE;
 	last->checkers.valid = FALSE;
 	last->cut = NULL;
+}
+
+void	ft_init_obj(t_obj *obj, t_light *light, t_prim *list)
+{
+	obj->light = light;
+	obj->prim = list;
 }

@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 16:22:12 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/20 20:16:45 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/20 21:44:00 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	ft_cylinder_setup(t_node *node, t_prim **prims)
 	t_prim	*last;
 	t_prim	*list;
 	char	*content;
-	// int		i;
 
 	list = *prims;
 	list = ft_add_lst_file(list, CYLINDER);
@@ -55,8 +54,8 @@ void	ft_cylinder_setup(t_node *node, t_prim **prims)
 	ft_parse_color(node, &(last->color2), "cylinder");
 	ft_parsing_mov(node, last, "cylinder");
 	ft_count_options(last, node, "cylinder");
+	ft_cut_parsing(last, node, "cylinder");
 	// i = (tab + 7, last);
-
 }
 
 void	ft_cone_setup(t_node *node, t_prim **prims)
@@ -64,7 +63,6 @@ void	ft_cone_setup(t_node *node, t_prim **prims)
 	t_prim	*last;
 	t_prim	*list;
 	char	*content;
-	// int		i;
 
 	list = *prims;
 	list = ft_add_lst_file(list, CONE);
@@ -92,7 +90,6 @@ void	ft_sphere_setup(t_node *node, t_prim **prims)
 	t_prim	*last;
 	t_prim	*list;
 	char	*content;
-	// int		i;
 
 	content = NULL;
 	list = *prims;

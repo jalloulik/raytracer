@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/20 18:11:38 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/20 22:06:11 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -483,7 +483,7 @@ void				ft_refract(t_3dpt *result, t_prim *base, t_3dpt *origin,
 
 void				ft_percentage_color(t_color *base, double percentage);
 void				ft_get_shadow(t_color *base, double percentage);
-void				ft_sepia_filter(t_color *base);
+void				ft_sepia_filter(t_color *base, int status);
 t_color				ft_get_prim_texture_color(t_prim *prim);
 void				ft_create_local_sphere(t_prim *prim);
 void				ft_rotate_sphere(t_prim *prim);
@@ -531,5 +531,8 @@ void				ft_check_texture(t_prim *last, t_node *node, char *type);
 void				ft_check_ntexture(t_prim *last, t_node *node, char *type);
 void				ft_check_refraction(t_prim *last, t_node *node, char *type);
 void				ft_check_reflection(t_prim *last, t_node *node, char *type);
+void				ft_init_obj(t_obj *obj, t_light *light, t_prim *list);
+void				ft_cut_parsing(t_prim *last, t_node *node, char *type);
+t_cut				*ft_add_lst_cut(t_cut *cut);
 
 #endif

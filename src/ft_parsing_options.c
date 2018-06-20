@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 11:20:59 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/20 18:09:08 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/20 22:19:14 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,38 @@ void	ft_initialise_checkers(t_prim *last)
 	last->checkers.ymove = 0;
 	last->checkers.width = PROCED_WIDTH;
 	last->checkers.height = PROCED_HEIGHT;
+}
+
+void	ft_create_cut(t_prim *last, t_node *node, char *type, char *num)
+{
+	char *pos;
+	char *axis;
+
+	pos = ft_strjoin("/cut/pos", num);
+	axis = ft_strjoin("/cut/axis", num);
+	pos = ft_get_content_mix_path(node, type, pos);
+	axis = ft_get_content_mix_path(node, type, axis);
+	if (pos && axis)
+	{
+		last->cut = ft_add_lst_cut(last->cut);
+		ft_set_3dpt_from_string(&(last->cut->pos), pos);
+		ft_set_3dpt_from_string(&(last->cut->dir), axis);
+	}
+}
+
+void	ft_cut_parsing(t_prim *last, t_node *node, char *type)
+{
+	char *pos;
+	char *axis;
+
+	pos = NULL;
+	axis = NULL;
+	ft_create_cut(last, node, type, "1");
+	ft_create_cut(last, node, type, "2");
+	ft_create_cut(last, node, type, "3");
+	ft_create_cut(last, node, type, "4");
+	ft_create_cut(last, node, type, "5");
+	ft_create_cut(last, node, type, "6");
 }
 
 void	ft_check_checkers(t_prim *last, t_node *node, char *type)

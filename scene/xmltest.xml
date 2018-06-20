@@ -72,6 +72,14 @@
 			</mov>
 		</checkers>
 		<rotation><axis>0:0:1</axis><angle>-10</angle></rotation>
+		<cut>
+			<pos1>0:0:0</pos1>
+			<axis1>0:1:0</axis1>
+			<pos2>1:0:0</pos2>
+			<axis2>1:0:0</axis2>
+			<pos3>0:0:1</pos3>
+			<axis3>0:0:1</axis3>
+		</cut>
 	</cylinder>
 	<rect>
 		<origin>15:7:0</origin>

@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 11:40:09 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/20 16:00:13 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/20 20:43:06 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void		ft_cam_mov(t_node *node, t_cam *cam)
 	str = xmlp_get_child_node_content(node, "cam/rotation/angle");
 	if (str)
 		cam->rot_angle = ft_degree_to_rad((double)ft_atoi(str));
-	str = xmlp_get_child_node_content(node, "cams/translation");
+	str = xmlp_get_child_node_content(node, "cam/translation");
 	if (str)
 		ft_set_3dpt_from_string(&(cam->transl), str);
 }
@@ -38,7 +38,7 @@ void			ft_check_sepia(t_node *node, t_cam *cam)
 {
 	char *str;
 
-	str = xmlp_get_child_node_content(node, "cams/sepia");
+	str = xmlp_get_child_node_content(node, "cam/sepia");
 	if (ft_strequ(str, "true") == 1)
 		cam->sepia = TRUE;
 	else
