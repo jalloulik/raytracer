@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 14:42:06 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/18 15:50:35 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/06/20 16:22:03 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,8 @@ void	ft_cylinder_normal(t_prim *prim, t_3dpt *p)
 	t_3dpt	local_p;
 	t_3dpt	global_o;
 
-	if (prim->cut && prim->cut->cut)
-	{
-		prim->normal = *prim->cut->normal;
-		prim->cut->cut = 0;
-		ft_vec_quater_rot(&prim->normal, &prim->normal, &(prim->l_to_g_rot));
+	if (ft_initialise_cut(prim) == 0)
 		return ;
-	}
 	dist = SQR(ft_calculate_dist(&(prim->cyl.origin), p)) -
 														SQR(prim->cyl.radius);
 	if (dist >= 0)
@@ -52,13 +47,8 @@ void	ft_cone_normal(t_prim *prim, t_3dpt *p)
 	t_3dpt	local_p;
 	t_3dpt	global_o;
 
-	if (prim->cut && prim->cut->cut)
-	{
-		prim->normal = *prim->cut->normal;
-		prim->cut->cut = 0;
-		ft_vec_quater_rot(&prim->normal, &prim->normal, &(prim->l_to_g_rot));
+	if (ft_initialise_cut(prim) == 0)
 		return ;
-	}
 	ft_swap_g_to_l(&local_p, p, &(prim->g_to_l_move),
 														&(prim->g_to_l_rot));
 	if (cos(prim->cone.angle) == 0)
@@ -82,30 +72,17 @@ void	ft_cone_normal(t_prim *prim, t_3dpt *p)
 
 void	ft_sphere_normal(t_prim *prim, t_3dpt *p)
 {
-	if (prim->cut && prim->cut->cut)
-	{
-		prim->normal = *prim->cut->normal;
-		prim->cut->cut = 0;
-		ft_vec_quater_rot(&prim->normal, &prim->normal, &(prim->l_to_g_rot));
+	if (ft_initialise_cut(prim) == 0)
 		return ;
-	}
 	ft_calculate_vector(&(prim->normal), &(prim->sphere.origin), p);
-	if (prim->textur.valid == TRUE)
-		ft_set_3dpt(&(prim->original_normal), prim->normal.x,
-											prim->normal.y, prim->normal.z);
-	if (prim->textur_n.valid == TRUE)
-		ft_get_texture_prim_normal(prim);
+	ft_initialise_texturing(prim);
 }
 
 void	ft_plane_normal(t_prim *prim)
 {
 	ft_set_3dpt(&(prim->normal), prim->plane.normal.x,
 				prim->plane.normal.y, prim->plane.normal.z);
-	if (prim->textur.valid == TRUE)
-		ft_set_3dpt(&(prim->original_normal), prim->normal.x,
-									prim->normal.y, prim->normal.z);
-	if (prim->textur_n.valid == TRUE)
-		ft_get_texture_prim_normal(prim);
+	ft_initialise_texturing(prim);
 }
 
 void	ft_calculate_normal(t_prim *prim, t_3dpt *p)
@@ -118,21 +95,13 @@ void	ft_calculate_normal(t_prim *prim, t_3dpt *p)
 	{
 		ft_cylinder_normal(prim, p);
 		ft_calculate_vector(&(prim->cyl.o_to_p), &(prim->cyl.origin), p);
-		if (prim->textur.valid == TRUE)
-			ft_set_3dpt(&(prim->original_normal), prim->normal.x,
-										prim->normal.y, prim->normal.z);
-		if (prim->textur_n.valid == TRUE)
-			ft_get_texture_prim_normal(prim);
+		ft_initialise_texturing(prim);
 	}
 	else if (prim->type == CONE)
 	{
 		ft_cone_normal(prim, p);
 		ft_calculate_vector(&(prim->cyl.o_to_p), &(prim->cyl.origin), p);
-		if (prim->textur.valid == TRUE)
-			ft_set_3dpt(&(prim->original_normal), prim->normal.x,
-										prim->normal.y, prim->normal.z);
-		if (prim->textur_n.valid == TRUE)
-			ft_get_texture_prim_normal(prim);
+		ft_initialise_texturing(prim);
 	}
 	else if (prim->type == CERCLE)
 		ft_set_3dpt(&(prim->normal), prim->cercle.dir.x, prim->cercle.dir.y,

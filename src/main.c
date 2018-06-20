@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:27 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/20 15:14:42 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/20 15:54:48 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ int		main(int ac, char **av)
 	if (ac != 2)
 		ft_error(ERRUSAGE);
 	ft_parsing_start(av[1], &cam, &light, &list);
-	// return (0);
 	ft_controller_rt(&cam, light, list);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 11:40:09 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/19 03:19:00 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/20 16:00:13 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ static void		ft_camera_setup(t_node *node, t_cam *cam)
 	ft_init_cam_vec(cam);
 	ft_init_cam(cam);
 	ft_cam_mov(node, cam);
-
 	ft_check_sepia(node, cam);
 	cam->status = TRUE;
 }
@@ -64,6 +63,5 @@ void			ft_check_camera(t_node *node, t_cam *cam)
 	if (str == NULL)
 		ft_error("Camera needs origin");
 	ft_set_3dpt_from_string(&(cam->origin), str);
-
 	ft_camera_setup(node, cam);
 }
