@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 10:22:53 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/19 16:33:13 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/20 14:13:49 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+
+# include <unistd.h>
+
 # define SPHERE 0
 # define CONE 1
 # define PLAN 2
@@ -155,5 +158,22 @@ void				ft_parse_camera(t_elem *elem, int fd);
 void				ft_parse_light(t_elem *elem, int fd);
 void				ft_parse_prim_3d(t_elem *elem, int fd);
 void				ft_parse_prim_2d(t_elem *elem, int fd);
+void				ft_parse_origin(t_elem *elem, int fd);
+void				ft_parse_translation(t_elem *elem, int fd);
+void				ft_parse_vec(t_elem *elem, int fd);
+void				ft_parse_rotation(t_elem *elem, int fd);
+void				ft_parse_color(t_elem *elem, int fd);
+void				ft_parse_angle(t_elem *elem, int fd);
+void				ft_parse_rad(t_elem *elem, int fd);
+void				ft_parse_intensity(t_elem *elem, int fd);
+void				ft_parse_size(t_elem *elem, int fd);
+void				ft_parse_rayon_torre(t_elem *elem, int fd);
+void				ft_parse_texture(t_elem *elem, int fd);
+void				ft_parse_normal(t_elem *elem, int fd);
+void				ft_parse_sinus(t_elem *elem, int fd);
+void				ft_parse_checker(t_elem *elem, int fd);
+void				ft_parse_triang_p(t_elem *elem, int fd);
+void				ft_parse_refract(t_elem *elem, int fd);
+void				ft_parse_reflect(t_elem *elem, int fd);
 
 #endif

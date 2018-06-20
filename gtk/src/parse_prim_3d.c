@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 14:35:20 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/19 16:10:04 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/20 15:57:14 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,74 +15,71 @@
 static void	ft_parse_sphere(t_elem *elem, int fd)
 {
 	ft_putstr_fd("<sphere>\n", fd);
-	ft_putstr_fd("<origin>", fd);
-	ft_put_3d(elem->pos, fd);
-	ft_putstr_fd("</origin>\n", fd);
-	ft_putstr_fd("<rotation>", fd);
-	ft_put_3d(elem->rot, fd);
-	ft_putstr_fd("<angle>", fd);
-	ft_putnbr_fd(elem->angle_rot, fd);
-	ft_putstr_fd("</angle>", fd);
-	ft_putstr_fd("</rotation>\n", fd);
-	ft_putstr_fd("<translation>", fd);
-	ft_put_3d(elem->translation, fd);
-	ft_putstr_fd("</translation>\n", fd);
+	ft_parse_origin(elem, fd);
+	ft_parse_rotation(elem, fd);
+	ft_parse_translation(elem, fd);
+	ft_parse_color(elem, fd);
+	ft_parse_rad(elem, fd);
+	ft_parse_reflect(elem, fd);
+	ft_parse_refract(elem, fd);
+	ft_parse_texture(elem, fd);
+	ft_parse_normal(elem, fd);
+	ft_parse_sinus(elem, fd);
+	ft_parse_checker(elem, fd);
 	ft_putstr_fd("</sphere>\n", fd);
 }
 
 static void	ft_parse_cone(t_elem *elem, int fd)
 {
 	ft_putstr_fd("<cone>\n", fd);
-	ft_putstr_fd("<origin>", fd);
-	ft_put_3d(elem->pos, fd);
-	ft_putstr_fd("</origin>\n", fd);
-	ft_putstr_fd("<normal>", fd);
-	ft_put_3d(elem->vec, fd);
-	ft_putstr_fd("</normal>\n", fd);
-	ft_putstr_fd("<rotation>", fd);
-	ft_put_3d(elem->rot, fd);
-	ft_putstr_fd("<angle>", fd);
-	ft_putnbr_fd(elem->angle_rot, fd);
-	ft_putstr_fd("</angle>", fd);
-	ft_putstr_fd("</rotation>\n", fd);
-	ft_putstr_fd("<translation>", fd);
-	ft_put_3d(elem->translation, fd);
-	ft_putstr_fd("</translation>\n", fd);
+	ft_parse_origin(elem, fd);
+	ft_parse_rotation(elem, fd);
+	ft_parse_translation(elem, fd);
+	ft_parse_vec(elem, fd);
+	ft_parse_color(elem, fd);
+	ft_parse_angle(elem, fd);
+	ft_parse_reflect(elem, fd);
+	ft_parse_refract(elem, fd);
+	ft_parse_texture(elem, fd);
+	ft_parse_normal(elem, fd);
+	ft_parse_sinus(elem, fd);
+	ft_parse_checker(elem, fd);
 	ft_putstr_fd("</cone>\n", fd);
 }
 
 static void	ft_parse_cylindre(t_elem *elem, int fd)
 {
 	ft_putstr_fd("<cylindre>\n", fd);
-	ft_putstr_fd("<origin>", fd);
-	ft_put_3d(elem->pos, fd);
-	ft_putstr_fd("</origin>\n", fd);
-	ft_putstr_fd("<normal>", fd);
-	ft_put_3d(elem->vec, fd);
-	ft_putstr_fd("</normal>\n", fd);
-	ft_putstr_fd("<rotation>", fd);
-	ft_put_3d(elem->rot, fd);
-	ft_putstr_fd("<angle>", fd);
-	ft_putnbr_fd(elem->angle_rot, fd);
-	ft_putstr_fd("</angle>", fd);
-	ft_putstr_fd("</rotation>\n", fd);
-	ft_putstr_fd("<translation>", fd);
-	ft_put_3d(elem->translation, fd);
-	ft_putstr_fd("</translation>\n", fd);
+	ft_parse_origin(elem, fd);
+	ft_parse_rotation(elem, fd);
+	ft_parse_translation(elem, fd);
+	ft_parse_vec(elem, fd);
+	ft_parse_color(elem, fd);
+	ft_parse_rad(elem, fd);
+	ft_parse_reflect(elem, fd);
+	ft_parse_refract(elem, fd);
+	ft_parse_texture(elem, fd);
+	ft_parse_normal(elem, fd);
+	ft_parse_sinus(elem, fd);
+	ft_parse_checker(elem, fd);
 	ft_putstr_fd("</cylindre>\n", fd);
 }
 
 static void	ft_parse_plan(t_elem *elem, int fd)
 {
-	ft_putstr_fd("<plan>\n", fd);
-	ft_putstr_fd("<origin>", fd);
-	ft_put_3d(elem->pos, fd);
-	ft_putstr_fd("</origin>\n", fd);
-	ft_putstr_fd("<normal>", fd);
-	ft_put_3d(elem->vec, fd);
-	ft_putstr_fd("</normal>\n", fd);
-	
-	ft_putstr_fd("</plan>\n", fd);
+	ft_putstr_fd("<plane>\n", fd);
+	ft_parse_origin(elem, fd);
+	ft_parse_rotation(elem, fd);
+	ft_parse_translation(elem, fd);
+	ft_parse_vec(elem, fd);
+	ft_parse_color(elem, fd);
+	ft_parse_reflect(elem, fd);
+	ft_parse_refract(elem, fd);
+	ft_parse_texture(elem, fd);
+	ft_parse_normal(elem, fd);
+	ft_parse_sinus(elem, fd);
+	ft_parse_checker(elem, fd);
+	ft_putstr_fd("</plane>\n", fd);
 }
 
 void		ft_parse_prim_3d(t_elem *elem, int fd)

@@ -57,6 +57,10 @@ SRC = src/main.c \
 	src/parse_prim_3d.c \
 	src/parse_prim_2d.c \
 	src/parse_functions.c \
+	src/parse_function2.c \
+	src/parse_function3.c \
+	src/parse_function4.c \
+	src/parse_function5.c \
 
 OBJ = $(SRC:%.c=$(OBJPATH)%.o)
 
