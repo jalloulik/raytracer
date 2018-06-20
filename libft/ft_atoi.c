@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kjalloul <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 14:20:15 by kjalloul          #+#    #+#             */
-/*   Updated: 2017/11/15 19:21:17 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/19 08:06:29 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ static int		ft_skip_until_relevant(const char *str, int i)
 
 static int		check_if_dud(const char *str, int i)
 {
+	if (str == NULL)
+		return (1);
 	while (str[i] != '\0' && str[i] != '-' && str[i] != '+'
 		&& ft_isdigit(str[i]) == 0)
 	{
