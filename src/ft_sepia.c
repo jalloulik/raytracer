@@ -6,18 +6,20 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 17:03:12 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/06 17:03:30 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/20 20:41:04 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void	ft_sepia_filter(t_color *base)
+void	ft_sepia_filter(t_color *base, int status)
 {
 	double		r;
 	double		g;
 	double		b;
 
+	if (status == FALSE)
+		return ;
 	r = base->red * 0.393 + base->green * 0.769 + base->blue * 0.189;
 	g = base->red * 0.349 + base->green * 0.686 + base->blue * 0.168;
 	b = base->red * 0.272 + base->green * 0.534 + base->blue * 0.131;

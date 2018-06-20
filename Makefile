@@ -6,7 +6,7 @@
 #    By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/06 17:18:00 by kjalloul          #+#    #+#              #
-#    Updated: 2018/06/18 17:22:24 by kjalloul         ###   ########.fr        #
+#    Updated: 2018/06/20 20:14:42 by kjalloul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ SRC = main.c\
 		ft_create_local_prim.c\
 		ft_check_if_lit.c\
 		ft_errors.c\
-		parse_util.c \
+		parse_util.c\
 		ft_resolve_cercle.c\
 		ft_resolve_rect.c\
 		line.c\
@@ -59,7 +59,7 @@ SRC = main.c\
 		ft_sun.c \
 		ft_direct_light.c\
 		ft_shade.c\
-		math.c \
+		math.c\
 		ft_resolve_tore.c\
 		ft_resolve_triangle.c\
 		solve_4thdeg.c\
@@ -74,6 +74,15 @@ SRC = main.c\
 		cut.c\
 		ft_sepia.c\
 		ft_checkers.c\
+		ft_parsing_primitives2.c\
+		ft_parsing_options.c\
+		ft_initialise_prim.c\
+		ft_create_local_prim2.c\
+		ft_parsing_texture.c\
+		ft_parsing_sin.c\
+		ft_refraction_parsing.c\
+		ft_parsing_tools.c\
+		ft_shadow_shade.c
 
 OBJ = $(SRC:%.c=$(OBJPATH)%.o)
 

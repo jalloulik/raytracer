@@ -6,13 +6,14 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 16:37:05 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/03/22 13:09:02 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/20 18:13:56 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static void	ft_get_abcdet_cone(t_cone *cone, t_3dpt *dir, t_3dpt *origin, t_3dpt *param)
+static void	ft_get_abcdet_cone(t_cone *cone, t_3dpt *dir, t_3dpt *origin,
+																t_3dpt *param)
 {
 	double temp;
 
