@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 11:20:59 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/20 23:43:01 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/20 23:54:55 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	ft_create_cut(t_prim *last, t_node *node, char *type, char *num)
 	{
 		last->cut = ft_add_lst_cut(last->cut);
 		ft_set_3dpt_from_string(&(last->cut->pos), pos);
-		ft_normalize_vector(&(last->cut->pos));
 		ft_set_3dpt_from_string(&(last->cut->dir), axis);
 		ft_normalize_vector(&(last->cut->dir));
 	}
@@ -55,6 +54,7 @@ void	ft_cut_parsing(t_prim *last, t_node *node, char *type)
 	ft_create_cut(last, node, type, "4");
 	ft_create_cut(last, node, type, "5");
 	ft_create_cut(last, node, type, "6");
+	init_cut(last->cut, last);
 }
 
 void	ft_check_checkers(t_prim *last, t_node *node, char *type)
