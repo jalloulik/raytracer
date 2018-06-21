@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 10:22:53 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/20 14:13:49 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/20 22:06:09 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ void				ft_active_switch(GtkWidget *widget, GParamSpec *pspec,
 void				ft_event(t_event_entry *e, t_interface *inter);
 void				ft_render(GtkWidget *widget, gpointer data);
 void				ft_free_p_text(t_event_entry *e);
+void				ft_error(char *message);
 
 void				ft_init(t_interface *inter);
 void				ft_init_fix(t_interface *inter);
