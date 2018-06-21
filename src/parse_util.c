@@ -6,13 +6,13 @@
 /*   By: yvillepo <yvillepo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/02 19:01:34 by yvillepo          #+#    #+#             */
-/*   Updated: 2018/06/18 09:35:00 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/06/20 18:26:30 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void	read_vect(char *str, t_3dpt *vect)
+void		read_vect(char *str, t_3dpt *vect)
 {
 	char **tab;
 

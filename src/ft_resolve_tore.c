@@ -6,7 +6,7 @@
 /*   By: yvillepo <yvillepo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 17:51:12 by yvillepo          #+#    #+#             */
-/*   Updated: 2018/06/05 19:26:03 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/06/20 17:30:12 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 static	double	calc_param(t_prim *prim, double res[5],
 		t_3dpt *pos, t_3dpt *dir)
 {
-	t_tore		*tore;
-	t_3dpt		tmp;
-	double		rr;
+	t_tore	*tore;
+	t_3dpt	tmp;
+	double	rr;
 
 	tore = &(prim->tore);
 	rr = 4 * tore->r1 * tore->r1;
@@ -49,7 +49,7 @@ double			ft_resolve_tore(t_prim *prim, t_3dpt *dir, t_3dpt *origin)
 	if (!(t = solve_quartic(r, s)))
 		return (-1);
 	t = search_min(s, t);
-	calc_point(&(prim->tore.l_p) , &pos_local, &dir_local, t);
+	calc_point(&(prim->tore.l_p), &pos_local, &dir_local, t);
 	return (t);
 }
 

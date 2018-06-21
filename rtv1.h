@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/19 11:38:36 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/20 22:06:11 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -422,7 +422,7 @@ void				ft_rotate_plan(t_prim *prim);
 void				ft_rotate_cyl(t_prim *prim);
 void				ft_rotate_cone(t_prim *prim);
 
-void                ft_check_lit(t_obj *obj, t_prim *small, t_color *color,
+void				ft_check_lit(t_obj *obj, t_prim *small, t_color *color,
 						t_3dpt *origin);
 
 void				ft_error_sphere(void);
@@ -433,12 +433,15 @@ void				ft_error_cam(void);
 
 double				ft_return_prim_dist(t_prim *prim, t_3dpt *ray,
 														t_3dpt *origin);
-double				inter_plane(t_3dpt *normal, double d, t_3dpt *pos, t_3dpt *dir);
-void				calc_point(t_3dpt *result, t_3dpt *pos, t_3dpt *dir, double t);
+double				inter_plane(t_3dpt *normal, double d, t_3dpt *pos,
+																t_3dpt *dir);
+void				calc_point(t_3dpt *result, t_3dpt *pos, t_3dpt *dir,
+																	double t);
 void				read_vect(char *svect, t_3dpt *vect);
 void				ft_cercle_setup(t_node *node, t_prim **prims);
 void				ft_cercle_normal(t_prim *prim, t_3dpt *p);
-double				ft_resolve_cercle(t_prim *prim, t_3dpt *dir, t_3dpt *ray_origin);
+double				ft_resolve_cercle(t_prim *prim, t_3dpt *dir,
+															t_3dpt *ray_origin);
 double				dist(t_3dpt *v, t_3dpt *v2);
 void				ft_rectangle_setup(t_node *node, t_prim **prims);
 void				ft_create_local_rect(t_prim *prim);
@@ -446,17 +449,18 @@ double				ft_resolve_rect(t_prim *prim, t_3dpt *dir, t_3dpt *origin);
 void				read_all_cut(char **str, t_prim *prim);
 void				ft_tore_setup(t_node *node, t_prim **prims);
 void				trie(t_3dpt *p1, t_3dpt *p2);
-double				solv_seconde(t_prim *prim, t_3dpt *param, t_3dpt *pos, t_3dpt *dir);
-void    			print_cut(t_cut *cut);
+double				solv_seconde(t_prim *prim, t_3dpt *param, t_3dpt *pos,
+																t_3dpt *dir);
+void				print_cut(t_cut *cut);
 int					solve_quadratic(double *a, double *r);
-int 				solve_quartic(double c[5], double s[4]);
+int					solve_quartic(double c[5], double s[4]);
 double				ft_resolve_tore(t_prim *prim, t_3dpt *dir, t_3dpt *origin);
 void				ft_create_local_tore(t_prim *prim);
-double 				search_min(double num[4], int nb);
+double				search_min(double num[4], int nb);
 void				ft_tore_normal(t_prim *prim);
 void				ft_triangle_setup(t_node *node, t_prim **prims);
 double				ft_resolve_triangle(t_prim *prim, t_3dpt *dir, t_3dpt *pos);
-int					solve_cubic(double c[4],double s[3]);
+int					solve_cubic(double c[4], double s[3]);
 void				ft_resolve_prim(t_prim *prim, t_3dpt *ray_dir,
 															t_3dpt *origin);
 int					ft_check_obst(t_3dpt *o, t_prim *obst, t_l_p *light_path);
@@ -479,18 +483,23 @@ void				ft_refract(t_3dpt *result, t_prim *base, t_3dpt *origin,
 
 void				ft_percentage_color(t_color *base, double percentage);
 void				ft_get_shadow(t_color *base, double percentage);
-void				ft_sepia_filter(t_color *base);
+void				ft_sepia_filter(t_color *base, int status);
 t_color				ft_get_prim_texture_color(t_prim *prim);
 void				ft_create_local_sphere(t_prim *prim);
 void				ft_rotate_sphere(t_prim *prim);
 void				ft_get_texture_prim_normal(t_prim *prim);
 void				ft_create_local_plane(t_prim *prim);
 
-void				ft_get_texture_prim_coord(t_prim *prim, t_3dpt *coord, t_texture *t);
-void				ft_get_textur_sphere(t_prim *prim, t_3dpt *coord, t_texture *tx);
-void				ft_get_textur_cyl(t_prim *prim, t_3dpt *coord, t_texture *tx);
-void				ft_get_textur_plane(t_prim *prim, t_3dpt *coord, t_texture *tx);
-void				ft_get_coord_from_uv(t_texture *textur, t_3dpt *coord, t_uv *uv);
+void				ft_get_texture_prim_coord(t_prim *prim, t_3dpt *coord,
+																t_texture *t);
+void				ft_get_textur_sphere(t_prim *prim, t_3dpt *coord,
+																t_texture *tx);
+void				ft_get_textur_cyl(t_prim *prim, t_3dpt *coord,
+																t_texture *tx);
+void				ft_get_textur_plane(t_prim *prim, t_3dpt *coord,
+																t_texture *tx);
+void				ft_get_coord_from_uv(t_texture *textur, t_3dpt *coord,
+																	t_uv *uv);
 double				ft_shadow_percent(t_obj *obj, t_prim *small, int *lit,
 																t_color *color);
 void				ft_calculate_vec_to_light(t_3dpt *p_to_light, t_obj *obj,
@@ -504,11 +513,26 @@ int					read_cut(char **tab, t_prim *prims);
 void				read_vect2(char *str, t_3dpt *vect);
 t_color				ft_get_prim_texture_checker(t_prim *prim);
 void				ft_get_prim_texture_color_main(t_prim *prim);
-t_color				ft_get_checkers_color(double x, double y, t_texture *textur);
+t_color				ft_get_checkers_color(double x, double y,
+															t_texture *textur);
 
 void				ft_intialise_primitives(t_prim *last);
 void				ft_set_3dpt_from_string(t_3dpt *point, char *str);
-char				*ft_get_content_mix_path(t_node *node, char *type, char *path);
+char				*ft_get_content_mix_path(t_node *node, char *type,
+																char *path);
 void				ft_count_options(t_prim *last, t_node *node, char *type);
+
+int					ft_initialise_cut(t_prim *prim);
+void				ft_initialise_texturing(t_prim *prim);
+int					ft_compare_3dpt(t_3dpt *p1, t_3dpt *p2);
+void				ft_set_dir_rotations(t_prim *prim);
+void				ft_check_sin(t_prim *last, t_node *node, char *type);
+void				ft_check_texture(t_prim *last, t_node *node, char *type);
+void				ft_check_ntexture(t_prim *last, t_node *node, char *type);
+void				ft_check_refraction(t_prim *last, t_node *node, char *type);
+void				ft_check_reflection(t_prim *last, t_node *node, char *type);
+void				ft_init_obj(t_obj *obj, t_light *light, t_prim *list);
+void				ft_cut_parsing(t_prim *last, t_node *node, char *type);
+t_cut				*ft_add_lst_cut(t_cut *cut);
 
 #endif
