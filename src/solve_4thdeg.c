@@ -6,7 +6,7 @@
 /*   By: yvillepo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/29 22:21:54 by yvillepo          #+#    #+#             */
-/*   Updated: 2018/06/02 03:15:19 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/06/21 18:44:18 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,5 +109,6 @@ int			solve_quartic(double c[5], double s[4])
 	i = 0;
 	while (i < num)
 		s[i++] -= tmp[3];
+	//revers_tab(s);
 	return (num);
 }

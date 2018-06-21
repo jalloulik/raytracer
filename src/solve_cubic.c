@@ -6,7 +6,7 @@
 /*   By: yvillepo <yvillepo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 01:20:15 by yvillepo          #+#    #+#             */
-/*   Updated: 2018/06/05 18:45:27 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/21 15:23:25 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void		sol2(double tmp[12], double s[3], int *num)
 {
-	if (tmp[5] > -1e-9 && tmp[5] < 1e-9)
+	if (tmp[5] > -1e-5 && tmp[5] < 1e-5)
 	{
 		s[0] = 0;
 		*num = 1;
@@ -64,7 +64,7 @@ int				solve_cubic(double c[4], double s[3])
 			/ 3 * tmp[0] * tmp[1] + tmp[2]);
 	tmp[6] = tmp[4] * tmp[4] * tmp[4];
 	tmp[7] = tmp[5] * tmp[5] + tmp[6];
-	if (tmp[7] > -1e-9 && tmp[7] < 1e-9)
+	if (tmp[7] > -1e-5 && tmp[7] < 1e-5)
 		sol2(tmp, s, &num);
 	else if (tmp[7] < 0)
 		sol3(tmp, s, &num);
