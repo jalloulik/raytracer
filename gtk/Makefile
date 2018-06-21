@@ -39,6 +39,9 @@ SRC = src/main.c \
 	src/show_option/show_sinus.c \
 	src/show_option/show_texture.c \
 	src/show_option/set_data_show.c \
+	src/show_option/show_switch.c \
+	src/show_option/show_switch_sinus.c \
+	src/show_option/show_switch_texture.c \
 	src/ft_list.c \
 	src/fonction_elem.c \
 	src/fonction_elem_2.c \

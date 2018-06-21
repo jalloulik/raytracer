@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 10:22:53 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/20 22:06:09 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/21 17:17:08 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,12 @@ void				ft_show_texture_c(t_interface *inter, GtkWidget *widget);
 void				ft_show_texture_n(t_interface *inter, GtkWidget *widget);
 void				ft_show_checker(t_interface *inter, GtkWidget *widget);
 void				ft_show_sinus(t_interface *inter, GtkWidget *widget);
+void				ft_show_switch_reflect(t_interface *inter, t_elem *elem);
+void				ft_show_switch_refract(t_interface *inter, t_elem *elem);
+void				ft_show_switch_sinus(t_interface *inter, t_elem *elem);
+void				ft_show_switch_checker(t_interface *inter, t_elem *elem);
+void				ft_show_switch_texture_c(t_interface *inter, t_elem *elem);
+void				ft_show_switch_texture_n(t_interface *inter, t_elem *elem);
 
 void				ft_type_entry_1(GtkWidget *type, int **value,
 	t_elem *elem, t_interface *inter);
