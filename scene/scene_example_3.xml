@@ -1,7 +1,7 @@
 <scene>
 <cam>
-<origin>0:0:20</origin>
-<rotation><axis>0:1:0</axis><angle>0</angle></rotation>
+<origin>-8:0:0</origin>
+<rotation><axis>1:4:1</axis><angle>-25</angle></rotation>
 <translation>0:0:0</translation>
 <sepia>false</sepia>
 </cam>
@@ -13,7 +13,7 @@
 <color>64:0:255</color>
 </plane>
 <plane>
-<origin>0:-5:0</origin>
+<origin>0:-7:0</origin>
 <rotation><axis>0:1:0</axis><angle>0</angle></rotation>
 <translation>0:0:0</translation>
 <vec>0:1:0</vec>
@@ -21,7 +21,7 @@
 </plane>
 <spot>
 <origin>5:7:10</origin>
-<intensity>70</intensity>
+<intensity>80</intensity>
 </spot>
 <sphere>
 <origin>-7:-3:0</origin>
@@ -39,10 +39,10 @@
 </sphere>
 <spot>
 <origin>-5:7:10</origin>
-<intensity>70</intensity>
+<intensity>80</intensity>
 </spot>
 <cone>
-<origin>2:-3:-1</origin>
+<origin>2:-3:-2</origin>
 <rotation><axis>0:0:1</axis><angle>45</angle></rotation>
 <translation>0:0:0</translation>
 <vec>0:1:0</vec>
@@ -50,7 +50,7 @@
 <angle>15</angle>
 </cone>
 <cylinder>
-<origin>0:0:-1</origin>
+<origin>0:0:-2</origin>
 <rotation><axis>0:0:1</axis><angle>-45</angle></rotation>
 <translation>0:0:0</translation>
 <vec>0:1:0</vec>

@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 15:56:37 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/20 18:42:25 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/22 15:39:19 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void			ft_create_carre(GtkWidget *widget, gpointer data)
 	elem->type = CARRE;
 	free(tmp);
 	free(name);
-	ft_init_elem(elem);
+	ft_set_3d(&elem->vec, 0, 0, 1);
 }
 
 void			ft_create_torre(GtkWidget *widget, gpointer data)
@@ -67,6 +67,7 @@ void			ft_create_torre(GtkWidget *widget, gpointer data)
 	elem->type = TORRE;
 	free(tmp);
 	free(name);
+	ft_set_3d(&elem->vec, 0, 0, 1);
 }
 
 void			ft_create_triangle(GtkWidget *widget, gpointer data)
@@ -95,6 +96,7 @@ void			ft_create_triangle(GtkWidget *widget, gpointer data)
 	elem->type = TRIANGLE;
 	free(tmp);
 	free(name);
+	ft_set_3d(&elem->vec, 0, 0, 1);
 }
 
 void			ft_create_cercle(GtkWidget *widget, gpointer data)
@@ -123,4 +125,5 @@ void			ft_create_cercle(GtkWidget *widget, gpointer data)
 	elem->type = CERCLE;
 	free(tmp);
 	free(name);
+	ft_set_3d(&elem->vec, 0, 0, 1);
 }
