@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/27 10:56:10 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/20 17:40:35 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/22 15:19:26 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,10 @@ void		ft_parsing_start(char *file, t_cam *cam, t_light **spot,
 	t_node	*node;
 
 	xmlp = new_xmlp(file);
+	if (xmlp == NULL)
+		ft_error("File does not exist");
 	node = NULL;
+	cam->xmlp = xmlp;
 	cam->status = FALSE;
 	while ((node = xmlp_get_next_node(xmlp, "scene/cam")))
 	{

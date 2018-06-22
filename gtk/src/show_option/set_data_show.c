@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 13:57:19 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/20 18:06:39 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/21 17:17:59 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,16 @@ static void	ft_set_data_show_sun(t_interface *inter)
 static void	ft_set_data_show_ambiant(t_interface *inter)
 {
 	ft_set_data_show_1d(inter->light.intensity);
+}
+
+static void	ft_show_switch(t_interface *inter, t_elem *elem)
+{
+	ft_show_switch_reflect(inter, elem);
+	ft_show_switch_refract(inter, elem);
+	ft_show_switch_checker(inter, elem);
+	ft_show_switch_sinus(inter, elem);
+	ft_show_switch_texture_c(inter, elem);
+	ft_show_switch_texture_n(inter, elem);
 }
 
 void		ft_set_data_show(t_interface *inter, t_elem *elem)
@@ -56,4 +66,5 @@ void		ft_set_data_show(t_interface *inter, t_elem *elem)
 		ft_set_data_show_sun(inter);
 	if (elem->type == AMBIANT)
 		ft_set_data_show_ambiant(inter);
+	ft_show_switch(inter, elem);
 }

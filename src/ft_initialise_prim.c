@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 16:21:43 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/20 21:30:42 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/22 17:46:19 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	ft_intialise_primitives(t_prim *last)
 	ft_set_3dpt(&(last->rot_axis), 0, 1, 0);
 	last->rot_angle = ft_degree_to_rad(0.0);
 	ft_set_3dpt(&(last->transl), 0, 0, 0);
+	last->specular = TRUE;
 	last->sin.status = FALSE;
 	last->sin.xstatus = FALSE;
 	last->sin.ystatus = FALSE;

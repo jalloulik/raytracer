@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 17:45:10 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/20 18:07:15 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/21 16:41:23 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void		ft_initialise_texture(t_texture *texture)
 	texture->xmove = 0;
 	texture->ymove = 0;
 	texture->valid = TRUE;
+	// ft_putendl("Texture");
 }
 
 static void	ft_load_textur(t_texture *texture, char *content)
@@ -37,6 +38,9 @@ void		ft_check_ntexture(t_prim *last, t_node *node, char *type)
 	char		*content;
 
 	content = NULL;
+	content = ft_get_content_mix_path(node, type, "/normal/status");
+	if (ft_strequ(content, "true") == 0)
+		return ;
 	content = ft_get_content_mix_path(node, type, "/normal/file");
 	texture = &(last->textur_n);
 	if (content)
@@ -64,8 +68,12 @@ void		ft_check_texture(t_prim *last, t_node *node, char *type)
 	t_texture	*texture;
 	char		*content;
 
-	content = ft_get_content_mix_path(node, type, "/texture/file");
 	texture = &(last->textur);
+	content = NULL;
+	content = ft_get_content_mix_path(node, type, "/texture/status");
+	if (ft_strequ(content, "true") == 0)
+		return ;
+	content = ft_get_content_mix_path(node, type, "/texture/file");
 	if (content)
 		ft_load_textur(texture, content);
 	else

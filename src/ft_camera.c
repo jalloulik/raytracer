@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 11:40:09 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/20 20:43:06 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/21 15:08:29 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void			ft_check_sepia(t_node *node, t_cam *cam)
 static void		ft_camera_setup(t_node *node, t_cam *cam)
 {
 	ft_init_cam_vec(cam);
-	ft_init_cam(cam);
 	ft_cam_mov(node, cam);
+	ft_init_cam(cam);
 	ft_check_sepia(node, cam);
 	cam->status = TRUE;
 }

@@ -1,0 +1,7 @@
+<scene>
+	<plane>
+	</plane>
+	<plane>
+		<checkers>true</checkers>
+	</plane>
+</scene>

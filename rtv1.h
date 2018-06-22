@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/22 15:06:59 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/06/22 18:20:17 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -277,6 +277,7 @@ typedef struct		s_prim
 	t_texture		textur_n;
 	t_texture		checkers;
 	t_sin_perturb	sin;
+	int				specular;
 	struct s_prim	*next;
 }					t_prim;
 
@@ -304,6 +305,7 @@ typedef struct		s_cam
 	double			rot_angle;
 	t_3dpt			transl;
 	int				sepia;
+	t_xmlp			*xmlp;
 }					t_cam;
 
 typedef struct		s_ray
@@ -548,5 +550,6 @@ void				ft_cut_parsing(t_prim *last, t_node *node, char *type);
 t_cut				*ft_add_lst_cut(t_cut *cut);
 void				init_cut(t_cut *cut, t_prim *last);
 void 				revers_tab(double t[4]);
+void				ft_rotate_tore(t_prim *prim);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: mfrisby <mfrisby@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/13 19:08:56 by mfrisby           #+#    #+#              #
-#    Updated: 2018/06/15 18:09:36 by mfrisby          ###   ########.fr        #
+#    Updated: 2018/06/22 14:23:49 by mfrisby          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,8 @@ SRC = 	open_file.c\
 		xmlp_get_next_node.c\
 		xmlp_get_node_content.c\
 		xmlp_get_child_node_content.c\
-		xmlp_split_node_content.c
+		xmlp_split_node_content.c \
+		ft_free_tab.c
 
 OBJ = $(SRC:%.c=$(OBJPATH)%.o)
 

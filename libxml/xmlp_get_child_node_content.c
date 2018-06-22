@@ -6,14 +6,14 @@
 /*   By: mfrisby <mfrisby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 18:38:26 by mfrisby           #+#    #+#             */
-/*   Updated: 2018/06/15 18:45:57 by mfrisby          ###   ########.fr       */
+/*   Updated: 2018/06/22 18:09:48 by mfrisby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libxml.h"
 #include <stdlib.h>
 
-static char	**split_path(char *path, int *len)
+char	**split_path(char *path, int *len)
 {
 	char	**split;
 
@@ -26,7 +26,7 @@ static char	**split_path(char *path, int *len)
 	return (split);
 }
 
-static char	*recursive_find(t_node *node, char **ps, int i, int len)
+char	*recursive_find(t_node *node, char **ps, int i, int len)
 {
 	char *content;
 
@@ -41,7 +41,10 @@ static char	*recursive_find(t_node *node, char **ps, int i, int len)
 		if (i == len && node && ps && ps[i] && (ft_strcmp(node->name,
 			ps[i])) == 0)
 			return (node->content);
-		node = node->next;
+		if ((node->next && (ft_strcmp(node->next->name, "plane")) == 0))
+			node = NULL;
+		else
+			node = node->next;
 	}
 	return (content);
 }
@@ -50,6 +53,7 @@ char		*xmlp_get_child_node_content(t_node *node, char *path)
 {
 	int		i;
 	int		len;
+	char	*ret;
 	char	**ps;
 
 	i = 0;
@@ -57,5 +61,7 @@ char		*xmlp_get_child_node_content(t_node *node, char *path)
 	ps = split_path(path, &len);
 	if (!ps)
 		return (NULL);
-	return (recursive_find(node, ps, i, len));
+	ret = recursive_find(node, ps, i, len);
+	ft_free_tab(ps);
+	return (ret);
 }
