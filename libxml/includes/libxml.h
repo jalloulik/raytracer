@@ -6,7 +6,7 @@
 /*   By: mfrisby <mfrisby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 18:50:30 by mfrisby           #+#    #+#             */
-/*   Updated: 2018/06/15 18:50:33 by mfrisby          ###   ########.fr       */
+/*   Updated: 2018/06/22 14:24:28 by mfrisby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ t_node					*init_node(t_node *parent);
 char					*get_balise_name(char *s);
 char					*get_balise_content(char *s, int i);
 int						is_balise_closed(char *name, char *s);
+void					ft_free_tab(char **tab);
 
 #endif
