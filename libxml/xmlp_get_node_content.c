@@ -6,7 +6,7 @@
 /*   By: mfrisby <mfrisby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/25 15:40:10 by mfrisby           #+#    #+#             */
-/*   Updated: 2018/06/15 18:48:12 by mfrisby          ###   ########.fr       */
+/*   Updated: 2018/06/22 14:23:23 by mfrisby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static char	*recursive_find(t_node *node, char **ps, int i, int len)
 			return (node->content);
 		node = node->next;
 	}
+	ft_free_tab(ps);
 	return (content);
 }
 
