@@ -6,7 +6,7 @@
 #    By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/06 17:18:00 by kjalloul          #+#    #+#              #
-#    Updated: 2018/06/21 18:12:28 by yvillepo         ###   ########.fr        #
+#    Updated: 2018/06/22 16:36:24 by yvillepo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,6 @@ SRC = main.c\
 		ft_resolve_tore.c\
 		ft_resolve_triangle.c\
 		solve_4thdeg.c\
-		solve_cubic.c\
 		ft_throw_rays.c\
 		ft_refraction.c\
 		ft_texture_load.c\
