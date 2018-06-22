@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 14:35:20 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/20 21:45:34 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/22 18:10:44 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void	ft_parse_sphere(t_elem *elem, int fd)
 {
 	ft_putstr_fd("<sphere>\n", fd);
 	ft_parse_origin(elem, fd);
+	ft_parse_specular(elem, fd);
 	ft_parse_rotation(elem, fd);
 	ft_parse_translation(elem, fd);
 	ft_parse_color(elem, fd);

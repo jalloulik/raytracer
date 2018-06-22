@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 10:26:26 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/20 23:09:24 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/22 18:05:50 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void		ft_init_elem1(t_elem *elem)
 	ft_set_2d(&elem->sinus.sin_x, 1, 1);
 	ft_set_2d(&elem->sinus.sin_y, 1, 1);
 	ft_set_2d(&elem->sinus.sin_z, 1, 1);
-	ft_set_2d(&elem->rayon_torre, 2, 2);
+	ft_set_2d(&elem->rayon_torre, 2, 1);
 	elem->checker.on_off = 0;
 	ft_set_2d(&elem->checker.move, 0, 0);
 	ft_set_2d(&elem->checker.scale, 1, 1);
@@ -63,7 +63,7 @@ void		ft_init_elem(t_elem *elem)
 	elem->angle = 45;
 	elem->rad = 2;
 	ft_set_3d(&elem->vec, 0, 1, 0);
-	elem->specular = 0;
+	elem->specular = 1;
 	elem->reflect.on_off = 0;
 	elem->reflect.pourcent = 0;
 	elem->refract.on_off = 0;
