@@ -6,7 +6,7 @@
 #    By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/06 17:18:00 by kjalloul          #+#    #+#              #
-#    Updated: 2018/06/21 18:37:54 by kjalloul         ###   ########.fr        #
+#    Updated: 2018/06/22 14:22:34 by kjalloul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -117,7 +117,6 @@ $(NAME): $(OBJ)
 	make -C libgraph
 	make -C minilibx_macos
 	make -C libxml
-	make -C gtk
 	gcc $(FLAG) -o $(NAME) $(OBJ) -Llibft/ -lft -Llibgraph -lgraph -Llibxml/ -lxml -Lminilibx_macos/ -lmlx -framework OpenGL -framework AppKit
 
 clean: LIBCLEAN
@@ -125,5 +124,8 @@ clean: LIBCLEAN
 
 fclean: clean LIBFCLEAN
 	/bin/rm -f $(NAME)
+
+ui: all
+	make -C gtk
 
 re: fclean all
