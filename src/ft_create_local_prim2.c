@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 16:53:30 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/21 18:54:38 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/22 15:09:54 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,15 @@ void	ft_create_local_tore(t_prim *prim)
 						-1 * prim->tore.pos.y, -1 * prim->tore.pos.z);
 	ft_set_3dpt(&(prim->tore.pos_local), 0, 0, 0);
 	ft_set_3dpt(&(prim->tore.dir_local), 0, 0, 1);
-	if (ft_compare_3dpt(&(prim->tore.dir), &(prim->rot_axis)) == FALSE)
-	{
+	// if (ft_compare_3dpt(&(prim->tore.dir), &(prim->rot_axis)) == FALSE)
+	// {
 		ft_find_quaters_between(&(prim->l_to_g_rot), &(prim->tore.dir_local),
 															&(prim->tore.dir));
 		ft_find_quaters_between(&(prim->g_to_l_rot), &(prim->tore.dir),
 														&(prim->tore.dir_local));
-	}
-	else
-		ft_set_dir_rotations(prim);
+	// }
+	// else
+	// 	ft_set_dir_rotations(prim);
 }
 
 void	ft_create_local_sphere(t_prim *prim)

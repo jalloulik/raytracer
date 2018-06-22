@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 15:28:11 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/21 18:34:22 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/22 12:03:20 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,9 @@ void	ft_translante_all(t_prim *prim)
 		else if (prim->type == CONE)
 			ft_sum_vectors(&(prim->cone.origin), &(prim->cone.origin),
 															&(prim->transl));
-		else if (prim->type == TORE)
-			ft_sum_vectors(&(prim->tore.pos), &(prim->tore.pos),
-															&(prim->transl));
+		// else if (prim->type == TORE)
+		// 	ft_sum_vectors(&(prim->tore.pos), &(prim->tore.pos),
+		// 													&(prim->transl));
 		prim = prim->next;
 	}
 }
