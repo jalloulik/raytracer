@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 11:20:59 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/21 16:44:04 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/22 17:56:09 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,15 @@ void	ft_check_checkers(t_prim *last, t_node *node, char *type)
 	}
 }
 
+void	ft_check_specular(t_prim *last, t_node *node, char *type)
+{
+	char *content;
+
+	content = ft_get_content_mix_path(node, type, "/specular");
+	if (ft_strequ(content, "false") == 1)
+		last->specular = FALSE;
+}
+
 void	ft_count_options(t_prim *last, t_node *node, char *type)
 {
 	ft_check_reflection(last, node, type);
@@ -90,6 +99,7 @@ void	ft_count_options(t_prim *last, t_node *node, char *type)
 	ft_check_ntexture(last, node, type);
 	ft_check_sin(last, node, type);
 	ft_check_checkers(last, node, type);
+	ft_check_specular(last, node, type);
 	if (last->textur.valid == TRUE && last->checkers.valid == TRUE)
 		ft_error("Can't have both checkers and color texture on");
 }

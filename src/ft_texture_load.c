@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 18:27:28 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/15 16:48:12 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/22 17:28:31 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ void		ft_get_texture_prim_coord(t_prim *prim, t_3dpt *coord, t_texture *t)
 {
 	if (prim->type == SPHERE)
 		ft_get_textur_sphere(prim, coord, t);
-	else if (prim->type == CYLINDER || prim->type == CONE)
+	else if (prim->type == CYLINDER || prim->type == CONE || prim->type == TORE)
 		ft_get_textur_cyl(prim, coord, t);
-	else if (prim->type == PLANE)
+	else if (prim->type == PLANE || prim->type == CERCLE || prim->type == TRIANGLE || prim->type == RECT)
 		ft_get_textur_plane(prim, coord, t);
 }
 
