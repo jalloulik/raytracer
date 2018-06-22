@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/21 18:10:58 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/06/22 15:06:59 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define RECT 6
 # define TORE 7
 # define TRIANGLE 8
+# define ELLIPS 9
 # define VALID 1
 # define UNVALID 0
 
@@ -149,6 +150,17 @@ typedef struct		s_sphere
 	t_3dpt			path_to_light;
 	t_3dpt			normal;
 }					t_sphere;
+
+typedef struct		s_ellips
+{
+	t_3dpt			radius;
+	t_3dpt			pos;
+	t_3dpt			vec;
+	t_3dpt			origin_local;
+	t_3dpt			vec_local;
+	t_3dpt			path_to_light;
+	t_3dpt			normal;
+}					t_ellips;
 
 typedef struct		s_tore
 {
