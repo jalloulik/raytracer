@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 10:26:26 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/20 21:43:21 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/20 23:09:24 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void		ft_init_elem1(t_elem *elem)
 static void	ft_init_elem2(t_elem *elem)
 {
 	elem->tex_n.on_off = 0;
-	elem->tex_n.name = ft_strdup("Stone_02_COLOR.tga");
+	elem->tex_n.name = ft_strdup("Stone_02_NRM.tga");
 	ft_set_2d(&elem->tex_n.move, 0, 0);
 	ft_set_2d(&elem->tex_n.scale, 1, 1);
 	elem->sinus.on_off = 0;
@@ -70,7 +70,7 @@ void		ft_init_elem(t_elem *elem)
 	elem->refract.material = ft_strdup("AIR");
 	elem->refract.pourcent = 0;
 	elem->tex_c.on_off = 0;
-	elem->tex_c.name = ft_strdup("Stone_02_NRM.tga");
+	elem->tex_c.name = ft_strdup("Stone_02_COLOR.tga");
 	ft_set_2d(&elem->tex_c.move, 0, 0);
 	ft_set_2d(&elem->tex_c.scale, 1, 1);
 	ft_init_elem2(elem);
