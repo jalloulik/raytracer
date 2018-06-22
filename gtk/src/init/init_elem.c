@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 10:26:26 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/22 15:39:53 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/22 18:05:50 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void		ft_init_elem(t_elem *elem)
 	elem->angle = 45;
 	elem->rad = 2;
 	ft_set_3d(&elem->vec, 0, 1, 0);
-	elem->specular = 0;
+	elem->specular = 1;
 	elem->reflect.on_off = 0;
 	elem->reflect.pourcent = 0;
 	elem->refract.on_off = 0;

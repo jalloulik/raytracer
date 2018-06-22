@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 10:22:53 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/22 15:15:33 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/22 18:11:27 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,5 +182,6 @@ void				ft_parse_checker(t_elem *elem, int fd);
 void				ft_parse_triang_p(t_elem *elem, int fd);
 void				ft_parse_refract(t_elem *elem, int fd);
 void				ft_parse_reflect(t_elem *elem, int fd);
+void				ft_parse_specular(t_elem *elem, int fd);
 
 #endif
