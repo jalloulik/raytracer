@@ -6,53 +6,29 @@
 /*   By: yvillepo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:13:36 by yvillepo          #+#    #+#             */
-/*   Updated: 2018/06/18 10:50:29 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/06/20 23:46:38 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void			read_one_cut(char **tab, t_prim *last, t_cut *cut)
+void			init_cut(t_cut *cut, t_prim *last)
 {
-	read_vect2(tab[1], &(cut->pos));
-	cut->droit = 0;
-	if (last->type == SPHERE)
+	while (cut)
 	{
-		cut->pos.x += last->sphere.origin.x;
-		cut->pos.y += last->sphere.origin.y;
-		cut->pos.z += last->sphere.origin.z;
-	}
-	read_vect2(tab[2], &(cut->dir));
-	ft_normalize_vector(&(cut->dir));
-	if (cut->dir.x == 1 || cut->dir.y == 1 || cut->dir.z == 1)
-		cut->droit = 1;
-	cut->d = -v_scale(&(cut->pos), &(cut->dir));
-	cut->cut = 0;
-	cut->next = 0;
-}
-
-int				read_cut(char **tab, t_prim *last)
-{
-	int		i;
-	t_cut	*cut;
-
-	if (!tab[0] || !ft_strequ(tab[0], "cut"))
-	{
-		last->cut = NULL;
-		return (0);
-	}
-	last->cut = ft_malloc(sizeof(*(last->cut)));
-	cut = last->cut;
-	read_one_cut(tab, last, cut);
-	i = 3;
-	while (tab[i] && ft_strequ(tab[i], "cut"))
-	{
-		cut->next = ft_malloc(sizeof(*(last->cut)));
+		cut->droit = 0;
+		if (last->type == SPHERE)
+		{
+			cut->pos.x += last->sphere.origin.x;
+			cut->pos.y += last->sphere.origin.y;
+			cut->pos.z += last->sphere.origin.z;
+		}
+		if (cut->dir.x == 1 || cut->dir.y == 1 || cut->dir.z == 1)
+			cut->droit = 1;
+		cut->d = -v_scale(&(cut->pos), &(cut->dir));
+		cut->cut = 0;
 		cut = cut->next;
-		read_one_cut(&tab[i], last, cut);
-		i += 3;
 	}
-	return (i);
 }
 
 static int		choose_t(double *t, t_3dpt *d1, t_3dpt *d2)

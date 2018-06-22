@@ -6,13 +6,20 @@
 /*   By: yvillepo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 17:48:50 by yvillepo          #+#    #+#             */
-/*   Updated: 2018/06/05 17:49:14 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/06/20 23:25:08 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-double	ft_resolve_triangle(t_prim *prim, t_3dpt *dir, t_3dpt *pos)
+static void	inv_vect(t_3dpt *pt)
+{
+	pt->x = -pt->x;
+	pt->y = -pt->y;
+	pt->z = -pt->z;
+}
+
+double 		ft_resolve_triangle(t_prim *prim, t_3dpt *dir, t_3dpt *pos)
 {
 	t_triangle	*t;
 	t_3dpt		edge[2];
@@ -25,6 +32,8 @@ double	ft_resolve_triangle(t_prim *prim, t_3dpt *dir, t_3dpt *pos)
 	edge[1] = v_sub(&t->p3, &t->p1);
 	prim->normal = v_prod(&edge[0], &edge[1]);
 	ft_normalize_vector(&prim->normal);
+	if (v_scale(&prim->normal, dir) > 0)
+			inv_vect(&prim->normal);
 	vec[0] = v_prod(dir, &edge[1]);
 	d = v_scale(&edge[0], &vec[0]);
 	if (d < 1e-8 && d > -1e-8)

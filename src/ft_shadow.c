@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/29 16:00:08 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/06 17:00:35 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/21 17:22:22 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,10 @@ double	ft_shadow_percent(t_obj *obj, t_prim *small, int *lit, t_color *color)
 				if (prim->refractive == 1)
 					ft_shad_rfrct(prim, small, color, &light_path);
 				else
+				{
 					light_path.percent = (light_path.percent + 1) / 2;
+					break ;
+				}
 			}
 		}
 		prim = prim->next;

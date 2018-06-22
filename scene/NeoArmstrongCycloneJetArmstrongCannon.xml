@@ -1,0 +1,45 @@
+<scene>
+<cam>
+<origin>0:0:20</origin>
+<rotation><axis>0:1:0</axis><angle>0</angle></rotation>
+<translation>0:0:0</translation>
+<sepia>false</sepia>
+</cam>
+<cylinder>
+<origin>0:0:0</origin>
+<vec>0:1:0</vec>
+<color>254:195:172</color>
+<radius>2</radius>
+<cut>
+	<pos1>0:8:0</pos1>
+	<axis1>0:1:0</axis1>
+	<pos2>0:-8:0</pos2>
+	<axis2>0:-1:0</axis2>
+</cut>
+</cylinder>
+<spot>
+<origin>0:0:20</origin>
+<intensity>100</intensity>
+</spot>
+<sphere>
+<origin>0:8:0</origin>
+<rotation><axis>0:1:0</axis><angle>0</angle></rotation>
+<translation>0:0:0</translation>
+<color>254:195:172</color>
+<radius>2</radius>
+</sphere>
+<sphere>
+<origin>-1:-8:0</origin>
+<rotation><axis>0:1:0</axis><angle>0</angle></rotation>
+<translation>0:0:0</translation>
+<color>254:195:172</color>
+<radius>2</radius>
+</sphere>
+<sphere>
+<origin>1:-8:0</origin>
+<rotation><axis>0:1:0</axis><angle>0</angle></rotation>
+<translation>0:0:0</translation>
+<color>254:195:172</color>
+<radius>2</radius>
+</sphere>
+</scene>

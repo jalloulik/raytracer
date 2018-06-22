@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/20 22:06:11 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/21 18:33:02 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -534,5 +534,7 @@ void				ft_check_reflection(t_prim *last, t_node *node, char *type);
 void				ft_init_obj(t_obj *obj, t_light *light, t_prim *list);
 void				ft_cut_parsing(t_prim *last, t_node *node, char *type);
 t_cut				*ft_add_lst_cut(t_cut *cut);
+void				init_cut(t_cut *cut, t_prim *last);
+void				ft_rotate_tore(t_prim *prim);
 
 #endif
