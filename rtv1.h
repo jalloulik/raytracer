@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/21 18:33:02 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/22 15:17:57 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -292,6 +292,7 @@ typedef struct		s_cam
 	double			rot_angle;
 	t_3dpt			transl;
 	int				sepia;
+	t_xmlp			*xmlp;
 }					t_cam;
 
 typedef struct		s_ray
