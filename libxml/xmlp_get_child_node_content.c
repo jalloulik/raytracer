@@ -6,7 +6,7 @@
 /*   By: mfrisby <mfrisby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 18:38:26 by mfrisby           #+#    #+#             */
-/*   Updated: 2018/06/22 15:05:04 by mfrisby          ###   ########.fr       */
+/*   Updated: 2018/06/22 18:05:55 by mfrisby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,10 @@ char	*recursive_find(t_node *node, char **ps, int i, int len)
 		if (i == len && node && ps && ps[i] && (ft_strcmp(node->name,
 			ps[i])) == 0)
 			return (node->content);
-		node = node->next;
+		if ((node->next && (ft_strcmp(node->next->name, "plane")) == 0))
+			node = NULL;
+		else
+			node = node->next;
 	}
 	return (content);
 }
@@ -58,6 +61,7 @@ char		*xmlp_get_child_node_content(t_node *node, char *path)
 	ps = split_path(path, &len);
 	if (!ps)
 		return (NULL);
+	//ft_putendl(path);
 	ret = recursive_find(node, ps, i, len);
 	ft_free_tab(ps);
 	return (ret);
