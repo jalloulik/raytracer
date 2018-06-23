@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/27 10:56:10 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/22 15:19:26 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/23 14:35:13 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ void		ft_parsing_mov(t_node *node, t_prim *last, char *type)
 	content = NULL;
 	content = ft_get_content_mix_path(node, type, "/rotation/axis");
 	if (content)
-		ft_set_3dpt_from_string(&(last->rot_axis), content);
+		ft_set_3dpt_from_string(&(last->rot_axis), content, "vector");
 	content = ft_get_content_mix_path(node, type, "/rotation/angle");
 	if (content)
 		last->rot_angle = ft_degree_to_rad((double)ft_atoi(content));
 	content = ft_get_content_mix_path(node, type, "/translation");
 	if (content)
-		ft_set_3dpt_from_string(&(last->transl), content);
+		ft_set_3dpt_from_string(&(last->transl), content, "");
 }
 
 void		ft_parse_color(t_node *node, t_color *color2, char *type)

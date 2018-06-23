@@ -6,7 +6,7 @@
 /*   By: yvillepo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:13:36 by yvillepo          #+#    #+#             */
-/*   Updated: 2018/06/20 23:46:38 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/06/23 18:00:44 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,10 @@
 
 void			init_cut(t_cut *cut, t_prim *last)
 {
+	(void)*last;
 	while (cut)
 	{
 		cut->droit = 0;
-		if (last->type == SPHERE)
-		{
-			cut->pos.x += last->sphere.origin.x;
-			cut->pos.y += last->sphere.origin.y;
-			cut->pos.z += last->sphere.origin.z;
-		}
 		if (cut->dir.x == 1 || cut->dir.y == 1 || cut->dir.z == 1)
 			cut->droit = 1;
 		cut->d = -v_scale(&(cut->pos), &(cut->dir));
@@ -31,9 +26,9 @@ void			init_cut(t_cut *cut, t_prim *last)
 	}
 }
 
-static int		choose_t(double *t, t_3dpt *d1, t_3dpt *d2)
+static int		choose_t(double *t, t_3dpt *ray_dir, t_3dpt *cut_dir)
 {
-	if (v_scale(d1, d2) > 0)
+	if (v_scale(ray_dir, cut_dir) > 0)
 	{
 		if (t[0] < t[1] && t[0] < t[2])
 		{
@@ -70,6 +65,7 @@ static int		cut_one(t_cut *cut, t_cut *head, t_3dpt *cam[2], double *t)
 		else
 		{
 			t[3] = -1;
+			head->cut = 0;
 			return (1);
 		}
 	}
@@ -79,29 +75,32 @@ static int		cut_one(t_cut *cut, t_cut *head, t_3dpt *cam[2], double *t)
 		head->normal = &cut->dir;
 	}
 	if (t[3] == -1)
+	{
+		head->cut = 0;
 		return (1);
+	}
 	t[0] = t[3];
 	return (0);
 }
 
-void			cut(t_cut *cut, t_3dpt *c_pos, t_3dpt *c_dir, double *t)
+void			cut(t_cut *cut, t_3dpt *ray_origin, t_3dpt *ray_dir, double t[4])
 {
 	t_cut	*head;
 	int		i;
-	t_3dpt	*cam[2];
+	t_3dpt	*ray[2];
 
 	i = 2;
 	head = cut;
 	head->cut = 0;
-	cam[0] = c_pos;
-	cam[1] = c_dir;
+	ray[0] = ray_origin;
+	ray[1] = ray_dir;
 	while (i)
 	{
 		while (cut)
 		{
 			if ((i == 2 && !cut->droit) || (i == 1 && cut->droit))
 			{
-				if (cut_one(cut, head, cam, t))
+				if (cut_one(cut, head, ray, t))
 					return ;
 			}
 			cut = cut->next;

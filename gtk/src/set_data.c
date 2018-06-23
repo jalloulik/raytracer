@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/31 11:01:39 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/21 16:35:10 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/23 11:04:17 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ static void			ft_set_data(t_interface *inter, t_elem *elem)
 	gtk_switch_set_active(GTK_SWITCH(inter->checker.on_off.x),
 		elem->checker.on_off);
 	gtk_switch_set_active(GTK_SWITCH(inter->sepia.x), elem->sepia);
+	gtk_switch_set_active(GTK_SWITCH(inter->cut.on_off.x),
+		elem->cut.on_off);
 }
 
 static void			ft_set_select(t_event_entry *e, t_elem *elem)

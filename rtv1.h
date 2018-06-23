@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/22 18:20:17 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/06/23 15:25:33 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -531,7 +531,7 @@ t_color				ft_get_checkers_color(double x, double y,
 															t_texture *textur);
 
 void				ft_intialise_primitives(t_prim *last);
-void				ft_set_3dpt_from_string(t_3dpt *point, char *str);
+void				ft_set_3dpt_from_string(t_3dpt *point, char *str, char *type);
 char				*ft_get_content_mix_path(t_node *node, char *type,
 																char *path);
 void				ft_count_options(t_prim *last, t_node *node, char *type);
@@ -551,5 +551,6 @@ t_cut				*ft_add_lst_cut(t_cut *cut);
 void				init_cut(t_cut *cut, t_prim *last);
 void 				revers_tab(double t[4]);
 void				ft_rotate_tore(t_prim *prim);
+void				ft_set_valid_3dpt(t_3dpt *result, double x, double y, double z);
 
 #endif
