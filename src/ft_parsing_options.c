@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 11:20:59 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/23 14:33:43 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/23 18:43:20 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,13 @@ void	ft_create_cut(t_prim *last, t_node *node, char *type, char *num)
 {
 	char *pos;
 	char *axis;
+	char *postmp;
+	char *axistmp;
 
-	pos = ft_strjoin("/cut/pos", num);
-	axis = ft_strjoin("/cut/axis", num);
-	pos = ft_get_content_mix_path(node, type, pos);
-	axis = ft_get_content_mix_path(node, type, axis);
+	postmp = ft_strjoin("/cut/pos", num);
+	axistmp = ft_strjoin("/cut/axis", num);
+	pos = ft_get_content_mix_path(node, type, postmp);
+	axis = ft_get_content_mix_path(node, type, axistmp);
 	if (pos && axis)
 	{
 		last->cut = ft_add_lst_cut(last->cut);
@@ -39,6 +41,10 @@ void	ft_create_cut(t_prim *last, t_node *node, char *type, char *num)
 		ft_set_3dpt_from_string(&(last->cut->dir), axis, "vector");
 		ft_normalize_vector(&(last->cut->dir));
 	}
+	if (postmp != NULL)
+		free(postmp);
+	if (axistmp != NULL)
+		free(axistmp);
 }
 
 void	ft_cut_parsing(t_prim *last, t_node *node, char *type)
