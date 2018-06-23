@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 20:11:13 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/20 20:11:27 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/23 14:27:45 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_get_content_mix_path(t_node *node, char *type, char *path)
 	return (content);
 }
 
-void	ft_set_3dpt_from_string(t_3dpt *point, char *str)
+void	ft_set_3dpt_from_string(t_3dpt *point, char *str, char *type)
 {
 	char	**tmp;
 
@@ -32,7 +32,9 @@ void	ft_set_3dpt_from_string(t_3dpt *point, char *str)
 	tmp = ft_strsplit(str, ':');
 	if (ft_count_tab(tmp) != 3)
 		ft_error("Point or vector coordinates should be formated x:y:z");
-	ft_set_3dpt(point, (double)ft_atoi(tmp[0]), (double)ft_atoi(tmp[1]),
-													(double)ft_atoi(tmp[2]));
+	if (ft_strequ(type, "vector") == 1)
+		ft_set_valid_3dpt(point, (double)ft_atoi(tmp[0]), (double)ft_atoi(tmp[1]), (double)ft_atoi(tmp[2]));
+	else
+		ft_set_3dpt(point, (double)ft_atoi(tmp[0]), (double)ft_atoi(tmp[1]), (double)ft_atoi(tmp[2]));
 	ft_free_tab(tmp);
 }
