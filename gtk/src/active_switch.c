@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/02 00:54:46 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/22 18:19:53 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/23 11:02:44 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,11 @@ static void			ft_type(GtkWidget *type, t_elem *elem,
 	else if (type == inter->specular.x)
 	{
 		elem->specular = gtk_switch_get_state(GTK_SWITCH(type));
+	}
+	else if (type == inter->cut.on_off.x)
+	{
+		elem->cut.on_off = gtk_switch_get_state(GTK_SWITCH(type));
+		ft_show_cut(inter, elem);
 	}
 	else
 		ft_type1(type, elem, inter);

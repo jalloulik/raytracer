@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 14:12:31 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/19 14:12:56 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/23 11:52:40 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,18 @@ void				ft_set_entry_3d(t_interface *inter, t_elem *elem)
 	ft_set_3d_entry(&inter->triang.p1, elem->triang.p1);
 	ft_set_3d_entry(&inter->triang.p2, elem->triang.p2);
 	ft_set_3d_entry(&inter->triang.p3, elem->triang.p3);
+	ft_set_3d_entry(&inter->cut.origin_1, elem->cut.origin_1);
+	ft_set_3d_entry(&inter->cut.origin_2, elem->cut.origin_2);
+	ft_set_3d_entry(&inter->cut.origin_3, elem->cut.origin_3);
+	ft_set_3d_entry(&inter->cut.origin_4, elem->cut.origin_4);
+	ft_set_3d_entry(&inter->cut.origin_5, elem->cut.origin_5);
+	ft_set_3d_entry(&inter->cut.origin_6, elem->cut.origin_6);
+	ft_set_3d_entry(&inter->cut.axe_1, elem->cut.axe_1);
+	ft_set_3d_entry(&inter->cut.axe_2, elem->cut.axe_2);
+	ft_set_3d_entry(&inter->cut.axe_3, elem->cut.axe_3);
+	ft_set_3d_entry(&inter->cut.axe_4, elem->cut.axe_4);
+	ft_set_3d_entry(&inter->cut.axe_5, elem->cut.axe_5);
+	ft_set_3d_entry(&inter->cut.axe_6, elem->cut.axe_6);
 }
 
 void				ft_set_entry_2d(t_interface *inter, t_elem *elem)

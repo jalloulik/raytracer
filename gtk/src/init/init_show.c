@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/12 13:41:40 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/15 14:14:36 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/23 10:59:58 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ void			ft_init_show(t_interface *inter)
 	gtk_widget_hide(inter->refract.material.x);
 	gtk_widget_hide(inter->reflect.pourcent.label_x);
 	gtk_widget_hide(inter->reflect.pourcent.x);
+	gtk_widget_hide(inter->cut.on_off.label_x);
+	gtk_widget_hide(inter->cut.on_off.x);
 	ft_init_show_sinus(inter);
 	ft_init_show_checker(inter);
 	ft_init_show_tex_c(inter);

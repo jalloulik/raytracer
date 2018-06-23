@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 14:34:45 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/20 13:19:19 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/23 10:02:45 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,24 @@ typedef struct		s_checker
 	t_2d			scale;
 }					t_checker;
 
+typedef struct		s_cut
+{
+	char			on_off;
+	t_3d			origin_1;
+	t_3d			axe_1;
+	t_3d			origin_2;
+	t_3d			axe_2;
+	t_3d			origin_3;
+	t_3d			axe_3;
+	t_3d			origin_4;
+	t_3d			axe_4;
+	t_3d			origin_5;
+	t_3d			axe_5;
+	t_3d			origin_6;
+	t_3d			axe_6;
+}					t_cut;
+
+
 typedef struct		s_tri
 {
 	t_3d			p1;
@@ -90,6 +108,7 @@ typedef struct		s_elem
 	t_texture		tex_n;
 	t_sinus			sinus;
 	t_checker		checker;
+	t_cut			cut;
 	t_tri			triang;
 	char			sepia;
 	t_2d			rayon_torre;
