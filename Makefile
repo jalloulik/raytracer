@@ -6,7 +6,7 @@
 #    By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/06 17:18:00 by kjalloul          #+#    #+#              #
-#    Updated: 2018/06/22 14:22:34 by kjalloul         ###   ########.fr        #
+#    Updated: 2018/06/22 18:19:55 by yvillepo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,6 @@ SRC = main.c\
 		ft_resolve_tore.c\
 		ft_resolve_triangle.c\
 		solve_4thdeg.c\
-		solve_cubic.c\
 		ft_throw_rays.c\
 		ft_refraction.c\
 		ft_texture_load.c\
@@ -82,7 +81,8 @@ SRC = main.c\
 		ft_parsing_sin.c\
 		ft_refraction_parsing.c\
 		ft_parsing_tools.c\
-		ft_shadow_shade.c
+		ft_shadow_shade.c\
+		util.c
 
 OBJ = $(SRC:%.c=$(OBJPATH)%.o)
 
