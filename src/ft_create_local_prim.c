@@ -6,11 +6,34 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 16:51:11 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/22 12:06:37 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/23 16:03:57 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+
+int		ft_compare_3dpt_prim(t_3dpt *p1, t_3dpt *p2, char *type)
+{
+	if (ft_strequ(type, "y") == 1)
+	{
+		if (p1->x == p2->x && p1->y == -(p2->y) && p1->z == p2->z)
+			return (TRUE);
+		return (FALSE);
+	}
+	else if (ft_strequ(type, "x") == 1)
+	{
+		if (p1->x == -(p2->x) && p1->y == p2->y && p1->z == p2->z)
+			return (TRUE);
+		return (FALSE);
+	}
+	else if (ft_strequ(type, "z") == 1)
+	{
+		if (p1->x == p2->x && p1->y == p2->y && p1->z == -(p2->z))
+			return (TRUE);
+		return (FALSE);
+	}
+	return (FALSE);
+}
 
 int		ft_compare_3dpt(t_3dpt *p1, t_3dpt *p2)
 {

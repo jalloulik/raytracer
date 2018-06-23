@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/23 14:28:07 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/23 15:59:19 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -539,5 +539,6 @@ t_cut				*ft_add_lst_cut(t_cut *cut);
 void				init_cut(t_cut *cut, t_prim *last);
 void				ft_rotate_tore(t_prim *prim);
 void				ft_set_valid_3dpt(t_3dpt *result, double x, double y, double z);
+int					ft_compare_3dpt_prim(t_3dpt *p1, t_3dpt *p2, char *type);
 
 #endif
