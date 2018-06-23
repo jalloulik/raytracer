@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 16:22:12 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/20 21:44:00 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/23 14:09:51 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void	ft_cylinder_setup(t_node *node, t_prim **prims)
 	ft_parse_color(node, &(last->color2), "cylinder");
 	ft_parsing_mov(node, last, "cylinder");
 	ft_count_options(last, node, "cylinder");
-	ft_cut_parsing(last, node, "cylinder");
 	// i = (tab + 7, last);
 }
 
