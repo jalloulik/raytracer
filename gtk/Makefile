@@ -20,6 +20,8 @@ SRC = src/main.c \
 	src/init/init_list_e.c \
 	src/init/init_show.c \
 	src/init/init_show2.c \
+	src/init/init_show_cut.c \
+	src/init/init_cut.c \
 	src/interface/interface.c \
 	src/interface/colonne0.c \
 	src/interface/colonne1.c \
@@ -28,6 +30,9 @@ SRC = src/main.c \
 	src/interface/colonne4.c \
 	src/interface/colonne5.c \
 	src/interface/colonne6.c \
+	src/interface/colonne7.c \
+	src/interface/colonne8.c \
+	src/interface/colonne9.c \
 	src/interface/d3_button.c \
 	src/interface/d2_button.c \
 	src/interface/d1_button.c \
@@ -39,6 +44,7 @@ SRC = src/main.c \
 	src/show_option/show_sinus.c \
 	src/show_option/show_texture.c \
 	src/show_option/set_data_show.c \
+	src/show_option/show_cut.c \
 	src/show_option/show_switch.c \
 	src/show_option/show_switch_sinus.c \
 	src/show_option/show_switch_texture.c \
@@ -53,7 +59,9 @@ SRC = src/main.c \
 	src/active_switch.c \
 	src/event.c \
 	src/event_entry.c \
+	src/event_entry_cut.c \
 	src/type_entry.c \
+	src/type_entry_cut.c \
 	src/render.c \
 	src/parse_camera.c \
 	src/parse_light.c \
@@ -64,6 +72,7 @@ SRC = src/main.c \
 	src/parse_function3.c \
 	src/parse_function4.c \
 	src/parse_function5.c \
+	src/parse_cut.c \
 
 OBJ = $(SRC:%.c=$(OBJPATH)%.o)
 

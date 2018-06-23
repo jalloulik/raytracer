@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 14:10:29 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/18 14:43:56 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/23 10:34:09 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ void		ft_init_show_2(t_interface *inter)
 	gtk_widget_hide(inter->checker.on_off.x);
 	gtk_widget_hide(inter->tex_c.on_off.label_x);
 	gtk_widget_hide(inter->tex_c.on_off.x);
+	ft_init_show_cut(inter);
 	ft_init_show_3(inter);
 	ft_init_show_4(inter);
 	ft_init_show_5(inter);

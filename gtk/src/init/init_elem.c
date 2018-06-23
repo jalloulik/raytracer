@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 10:26:26 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/22 18:05:50 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/23 09:33:41 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@ void		ft_init_elem1(t_elem *elem)
 	ft_set_2d(&elem->checker.scale, 1, 1);
 	elem->intensity = 100;
 	elem->sepia = 0;
+	ft_set_3d(&elem->cut.origin_5, 0, 0, 0);
+	ft_set_3d(&elem->cut.axe_5, 0, 0, 0);
+	ft_set_3d(&elem->cut.origin_6, 0, 0, 0);
+	ft_set_3d(&elem->cut.axe_6, 0, 0, 0);
+	elem->cut.on_off = 0;
 	ft_set_2d(&elem->size, 2, 2);
 }
 
@@ -49,6 +54,14 @@ static void	ft_init_elem2(t_elem *elem)
 	ft_set_3d(&elem->triang.p1, 0, 0, 0);
 	ft_set_3d(&elem->triang.p2, 0, 0, 0);
 	ft_set_3d(&elem->triang.p3, 0, 0, 0);
+	ft_set_3d(&elem->cut.origin_1, 0, 0, 0);
+	ft_set_3d(&elem->cut.axe_1, 0, 0, 0);
+	ft_set_3d(&elem->cut.origin_2, 0, 0, 0);
+	ft_set_3d(&elem->cut.axe_2, 0, 0, 0);
+	ft_set_3d(&elem->cut.origin_3, 0, 0, 0);
+	ft_set_3d(&elem->cut.axe_3, 0, 0, 0);
+	ft_set_3d(&elem->cut.origin_4, 0, 0, 0);
+	ft_set_3d(&elem->cut.axe_4, 0, 0, 0);
 	ft_init_elem1(elem);
 }
 
