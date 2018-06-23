@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 11:20:59 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/22 17:56:09 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/23 14:10:01 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ void	ft_count_options(t_prim *last, t_node *node, char *type)
 	ft_check_sin(last, node, type);
 	ft_check_checkers(last, node, type);
 	ft_check_specular(last, node, type);
+	ft_cut_parsing(last, node, type);
 	if (last->textur.valid == TRUE && last->checkers.valid == TRUE)
 		ft_error("Can't have both checkers and color texture on");
 }
