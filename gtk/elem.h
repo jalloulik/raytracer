@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 14:34:45 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/23 10:02:45 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/24 17:25:00 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ typedef struct		s_cut
 	t_3d			origin_6;
 	t_3d			axe_6;
 }					t_cut;
-
 
 typedef struct		s_tri
 {
