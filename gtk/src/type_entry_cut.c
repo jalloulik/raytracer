@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/23 11:38:40 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/23 11:48:34 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/24 17:19:17 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ static void	ft_type_entry_cut_1(GtkWidget *type, int **value,
 		*value = &elem->cut.axe_2.z;
 }
 
-void	ft_type_entry_cut(GtkWidget *type, int **value,
+void		ft_type_entry_cut(GtkWidget *type, int **value,
 	t_elem *elem, t_interface *inter)
 {
 	ft_type_entry_cut_1(type, value, elem, inter);

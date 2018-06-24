@@ -6,14 +6,14 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 18:38:26 by mfrisby           #+#    #+#             */
-/*   Updated: 2018/06/24 17:02:08 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/24 17:12:32 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libxml.h"
 #include <stdlib.h>
 
-char	**split_path(char *path, int *len)
+char		**split_path(char *path, int *len)
 {
 	char	**split;
 
@@ -26,9 +26,9 @@ char	**split_path(char *path, int *len)
 	return (split);
 }
 
-char	*recursive_find(t_node *node, char **ps, int i, int len)
+char		*recursive_find(t_node *node, char **ps, int i, int len)
 {
-	char *content;
+	char	*content;
 
 	content = NULL;
 	while (node)

@@ -6,13 +6,13 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 14:34:42 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/22 18:17:49 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/24 17:17:35 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ui.h"
 
-void		ft_parse_camera(t_elem *elem, int fd)
+void	ft_parse_camera(t_elem *elem, int fd)
 {
 	if (elem->type == CAM)
 	{
