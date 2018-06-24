@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 14:35:37 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/20 21:45:08 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/24 18:16:11 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static void	ft_parse_cercle(t_elem *elem, int fd)
 	ft_parse_normal(elem, fd);
 	ft_parse_sinus(elem, fd);
 	ft_parse_checker(elem, fd);
+	ft_parse_specular(elem, fd);
 	ft_putstr_fd("</cercle>\n", fd);
 }
 
@@ -45,6 +46,7 @@ static void	ft_parse_carre(t_elem *elem, int fd)
 	ft_parse_normal(elem, fd);
 	ft_parse_sinus(elem, fd);
 	ft_parse_checker(elem, fd);
+	ft_parse_specular(elem, fd);
 	ft_putstr_fd("</rect>\n", fd);
 }
 
@@ -61,6 +63,7 @@ static void	ft_parse_triangle(t_elem *elem, int fd)
 	ft_parse_normal(elem, fd);
 	ft_parse_sinus(elem, fd);
 	ft_parse_checker(elem, fd);
+	ft_parse_specular(elem, fd);
 	ft_putstr_fd("</triangle>\n", fd);
 }
 
@@ -79,6 +82,7 @@ static void	ft_parse_torre(t_elem *elem, int fd)
 	ft_parse_normal(elem, fd);
 	ft_parse_sinus(elem, fd);
 	ft_parse_checker(elem, fd);
+	ft_parse_specular(elem, fd);
 	ft_putstr_fd("</tore>\n", fd);
 }
 
