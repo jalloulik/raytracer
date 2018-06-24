@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   xmlp_get_node.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfrisby <mfrisby@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 18:38:41 by mfrisby           #+#    #+#             */
-/*   Updated: 2018/06/22 15:07:04 by mfrisby          ###   ########.fr       */
+/*   Updated: 2018/06/24 17:01:38 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,6 @@ t_node			*xmlp_get_node(t_xmlp *xmlp, char *path)
 	if (!ps)
 		return (NULL);
 	node = recursive_find(xmlp->node->child, ps, i, len);
-	ft_free_tab(ps);
+	ft_free_tab_2(ps);
 	return (node);
 }

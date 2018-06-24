@@ -1,7 +1,7 @@
 #include "libxml.h"
 #include <stdlib.h>
 
-void		ft_free_tab(char **tab)
+void		ft_free_tab_2(char **tab)
 {
 	int i;
 
@@ -12,4 +12,10 @@ void		ft_free_tab(char **tab)
 		i++;
 	}
 	free(tab);
+}
+
+void		ft_error_2(char *str)
+{
+	ft_putendl(str);
+	exit(0);
 }

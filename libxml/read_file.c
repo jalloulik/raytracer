@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfrisby <mfrisby@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 17:48:18 by mfrisby           #+#    #+#             */
-/*   Updated: 2018/06/08 16:28:11 by mfrisby          ###   ########.fr       */
+/*   Updated: 2018/06/24 16:55:16 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void			read_file(int fd, t_xmlp *xmlp)
 	int			len;
 
 	len = file_size(fd);
-	buf = ft_strnew(len + 1);
+	if (!(buf = (char*)malloc(sizeof(char) * (len + 1))))
+		ft_error_2("probleme allocation memoire\n");
 	while (read(fd, buf, len))
 	{
 	}
