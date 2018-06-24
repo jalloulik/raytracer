@@ -1,3 +1,23 @@
-cam|origin:0:0:20|rotation:0:0:1:angle:0|translation:0:0:0|sepia:false
-spot|origin:0:00:20|intensity:80
-tore|o:0:0:0|d:0:1:0.1|5|3|color:r:0:g:0:b:200|rotation:0:0:1:angle:0|translation:0:0:0
+<scene>
+	<cam>
+		<origin>0:0:20</origin>
+		<sepia>false</sepia>
+	</cam>
+	<spot>
+		<origin>0:0:10</origin>
+		<intensity>100</intensity>
+	</spot>
+	<spot>
+		<origin>10:0:20</origin>
+		<intensity>50</intensity>
+	</spot>
+	<ambiant><intensity>0</intensity></ambiant>
+	<sun><origin>0:0:20</origin><intensity>50</intensity></sun>
+	<tore>
+		<origin>0:0:0</origin>
+		<vec>100000:10:0</vec>
+		<r1>3</r1>
+		<r2>1</r2>
+		<color>0:150:0</color>
+	</tore>
+</scene>

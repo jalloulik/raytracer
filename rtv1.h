@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/23 14:28:07 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/23 18:23:55 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define RECT 6
 # define TORE 7
 # define TRIANGLE 8
+# define ELLIPS 9
 # define VALID 1
 # define UNVALID 0
 
@@ -149,6 +150,17 @@ typedef struct		s_sphere
 	t_3dpt			path_to_light;
 	t_3dpt			normal;
 }					t_sphere;
+
+typedef struct		s_ellips
+{
+	t_3dpt			radius;
+	t_3dpt			pos;
+	t_3dpt			vec;
+	t_3dpt			origin_local;
+	t_3dpt			vec_local;
+	t_3dpt			path_to_light;
+	t_3dpt			normal;
+}					t_ellips;
 
 typedef struct		s_tore
 {
@@ -537,7 +549,9 @@ void				ft_init_obj(t_obj *obj, t_light *light, t_prim *list);
 void				ft_cut_parsing(t_prim *last, t_node *node, char *type);
 t_cut				*ft_add_lst_cut(t_cut *cut);
 void				init_cut(t_cut *cut, t_prim *last);
+void 				revers_tab(double t[4]);
 void				ft_rotate_tore(t_prim *prim);
 void				ft_set_valid_3dpt(t_3dpt *result, double x, double y, double z);
+int					ft_compare_3dpt_prim(t_3dpt *p1, t_3dpt *p2, char *type);
 
 #endif
