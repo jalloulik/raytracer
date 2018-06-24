@@ -6,17 +6,43 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 14:34:25 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/05/21 17:46:29 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/24 17:00:53 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
+void	ft_find_perpendicular_vec(t_3dpt *result, t_3dpt *source)
+{
+	if (source->z != 0)
+	{
+		result->x = 2;
+		result->y = 2;
+		result->z = (result->x * source->x + result->y * source->y) / (-1 * source->z);
+	}
+	else if (source->y != 0)
+	{
+		result->x = 2;
+		result->z = 2;
+		result->y = (result->x * source->x + result->z * source->z) / (-1 * source->y);
+	}
+	else if (source->x != 0)
+	{
+		result->y = 2;
+		result->z = 2;
+		result->x = (result->y* source->y + result->z * source->z) / (-1 * source->x);
+	}
+	ft_normalize_vector(result);
+}
+
 void	ft_find_quaters_between(t_quater *result, t_3dpt *start, t_3dpt *end)
 {
 	t_3dpt tmp;
 
-	ft_cross_product(&tmp, start, end);
+	if (ft_calculate_dot(start, end) == -1)
+		ft_find_perpendicular_vec(&tmp, start);
+	else
+		ft_cross_product(&tmp, start, end);
 	result->w = 1 + ft_calculate_dot(start, end);
 	result->x = tmp.x;
 	result->y = tmp.y;
