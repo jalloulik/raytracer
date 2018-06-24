@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   xmlp.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfrisby <mfrisby@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 18:14:18 by mfrisby           #+#    #+#             */
-/*   Updated: 2018/06/08 16:28:29 by mfrisby          ###   ########.fr       */
+/*   Updated: 2018/06/24 16:55:35 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ t_xmlp		*new_xmlp(char *path)
 	fd = open_file(path);
 	if (fd < 0)
 		return (NULL);
-	xmlp = malloc(sizeof(t_xmlp));
+	if(!(xmlp = malloc(sizeof(t_xmlp))))
+		ft_error_2("probleme allocation memoire\n");
 	xmlp->fd = fd;
 	xmlp->path = path;
 	read_file(xmlp->fd, xmlp);
