@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   xmlp_get_child_node_content.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mfrisby <mfrisby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 18:38:26 by mfrisby           #+#    #+#             */
-/*   Updated: 2018/06/24 17:12:32 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/25 16:53:37 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ char		*xmlp_get_child_node_content(t_node *node, char *path)
 	int		i;
 	int		len;
 	char	*ret;
+	char	*tmp;
 	char	**ps;
 
 	i = 1;
@@ -60,5 +61,10 @@ char		*xmlp_get_child_node_content(t_node *node, char *path)
 		return (NULL);
 	ret = recursive_find(node->child, ps, i, len);
 	ft_free_tab_2(ps);
+	if (ret != NULL)
+	{
+		tmp = dell_whitespace(ret);
+		ft_overwrite(ret, tmp);
+	}
 	return (ret);
 }

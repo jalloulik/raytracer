@@ -6,7 +6,7 @@
 /*   By: yvillepo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 17:48:50 by yvillepo          #+#    #+#             */
-/*   Updated: 2018/06/20 23:25:08 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/06/24 17:55:23 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,16 @@ static void	inv_vect(t_3dpt *pt)
 	pt->x = -pt->x;
 	pt->y = -pt->y;
 	pt->z = -pt->z;
+}
+
+void		ft_normal_triangle(t_3dpt *result, t_3dpt *p1, t_3dpt *p2,
+		t_3dpt *p3)
+{
+	t_3dpt	edge[2];
+
+	edge[0] = v_sub(p2, p1);
+	edge[1] = v_sub(p3, p1);
+	*result = v_prod(&edge[0], &edge[1]);
 }
 
 double 		ft_resolve_triangle(t_prim *prim, t_3dpt *dir, t_3dpt *pos)

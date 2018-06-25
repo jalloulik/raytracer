@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libxml.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mfrisby <mfrisby@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 18:50:30 by mfrisby           #+#    #+#             */
-/*   Updated: 2018/06/24 17:00:40 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/25 16:53:29 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,7 @@ char					*get_balise_content(char *s, int i);
 int						is_balise_closed(char *name, char *s);
 void					ft_free_tab_2(char **tab);
 void					ft_error_2(char *str);
+char					*dell_whitespace(char *str);
+void					ft_overwrite(char *result, char *source);
 
 #endif

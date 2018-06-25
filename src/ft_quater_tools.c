@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 15:20:19 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/23 16:34:26 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/25 16:08:42 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,7 @@ void	ft_normalize_quater(t_quater *source)
 	magnitude = sqrt(SQR(source->w) + SQR(source->x) + SQR(source->y)
 														+ SQR(source->z));
 	if (magnitude == 0)
-	{
-		// ft_error(ERRDIV);
-		magnitude = 0.00000000001;
-	}
+		ft_error(ERRDIV);
 	source->w = source->w / magnitude;
 	source->x = source->x / magnitude;
 	source->y = source->y / magnitude;

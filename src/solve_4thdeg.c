@@ -6,7 +6,7 @@
 /*   By: yvillepo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/29 22:21:54 by yvillepo          #+#    #+#             */
-/*   Updated: 2018/06/22 18:14:05 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/06/25 15:13:53 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,11 @@ int			solve_quadratic(double *a, double r[2])
 	return (0);
 }
 
-int SolveQuadric(double c[3], double s[2])
+int			SolveQuadric(double c[3], double s[2])
 {
-	double p, q, d;
+	double p;
+	double q;
+	double d;
 
 	p = c[1] / (2 * c[2]);
 	q = c[0] / c[2];
@@ -97,17 +99,19 @@ int SolveQuadric(double c[3], double s[2])
 	}
 }
 
-void	solve_3(double s[3], double p_q[2], double *tmp)
+void		solve_3(double s[3], double p_q[2], double *tmp)
 {
-		double phi = 1.0/3 * acos(-p_q[1] / sqrt(-tmp[0]));
-		double t = 2 * sqrt(-p_q[0]);
+		double phi;
+		double t;
 
+		phi = 1.0/3 * acos(-p_q[1] / sqrt(-tmp[0]));
+		t = 2 * sqrt(-p_q[0]);	
 		s[0] =   t * cos(phi);
 		s[1] = - t * cos(phi + FT_PI / 3);
 		s[2] = - t * cos(phi - FT_PI / 3);
 }
 
-int solve_cubic(double c[4], double s[3])
+int			solve_cubic(double c[4], double s[3])
 {
 	int     i, num;
 	double  pa[3];
@@ -154,26 +158,27 @@ int solve_cubic(double c[4], double s[3])
 }
 
 
-int		solve_quartic(double c[5], double s[4])
+int			solve_quartic(double c[5], double s[4])
 {
 	double  coeffs[ 4 ];
-	double  z, u, v, sub;
-	double  A, B, C, D;
-	double  sq_A, p, q, r;
+	t_3dpt	zuv;
+	double  param[4];
+	t_3dpt	pqr;
 	int     i, num;
+	double	sub;
 
-	A = c[1] / c[0];
-	B = c[2] / c[0];
-	C = c[3] / c[0];
-	D = c[4] / c[0];
-	sq_A = A * A;
-	p = - 3.0/8 * sq_A + B;
-	q = 1.0/8 * sq_A * A - 1.0/2 * A * B + C;
-	r = - 3.0/256*sq_A*sq_A + 1.0/16*sq_A*B - 1.0/4*A*C + D;
-	if (r > -1e-9 && r < 1e-9)
+	param[0] = c[1] / c[0];
+	param[1] = c[2] / c[0];
+	param[2] = c[3] / c[0];
+	param[3] = c[4] / c[0];
+	pqr.x = - 3.0 / 8 * param[0] * param[0]  + param[1];
+	pqr.y = 1.0 / 8 * param[0] * param[0] * param[0] - 1.0 / 2 * param[0] * param[1] + param[2];
+	pqr.z = - 3.0/256 * pow(param[0], 4) + 1.0/16 * param[0] * param[0] *
+		param[1] - 1.0 / 4 * param[0] * param[2] + param[3];
+	if (pqr.z > -1e-9 && pqr.z < 1e-9)
 	{
-		coeffs[0] = q;
-		coeffs[1] = p;
+		coeffs[0] =  pqr.y;
+		coeffs[1] =  pqr.x;
 		coeffs[2] = 0;
 		coeffs[3] = 1;
 		num = solve_cubic(coeffs, s);
@@ -181,36 +186,36 @@ int		solve_quartic(double c[5], double s[4])
 	}
 	else
 	{
-		coeffs[0] = 1.0/2 * r * p - 1.0/8 * q * q;
-		coeffs[1] = - r;
-		coeffs[2] = - 1.0/2 * p;
+		coeffs[0] = 1.0/2 *  pqr.z *  pqr.x - 1.0/8 *  pqr.y *  pqr.y;
+		coeffs[1] = -  pqr.z;
+		coeffs[2] = - 1.0/2 *  pqr.x;
 		coeffs[3] = 1;
 		solve_cubic(coeffs, s);
-		z = s[0];
-		u = z * z - r;
-		v = 2 * z - p;
-		if (u > -1e-9 && u < 1e-9)
-			u = 0;
-		else if (u > 0)
-			u = sqrt(u);
+		zuv.x = s[0];
+		zuv.y = zuv.x * zuv.x -  pqr.z;
+		zuv.z = 2 * zuv.x -  pqr.x;
+		if (zuv.y > -1e-9 && zuv.y < 1e-9)
+			zuv.y = 0;
+		else if (zuv.y > 0)
+			zuv.y = sqrt(zuv.y);
 		else
 			return 0;
-		if (v > -1e-9 && v < 1e-9)
-			v = 0;
-		else if (v > 0)
-			v = sqrt(v);
+		if (zuv.z > -1e-9 && zuv.z < 1e-9)
+			zuv.z = 0;
+		else if (zuv.z > 0)
+			zuv.z = sqrt(zuv.z);
 		else
 			return 0;
-		coeffs[0] = z - u;
-		coeffs[1] = q < 0 ? -v : v;
+		coeffs[0] = zuv.x - zuv.y;
+		coeffs[1] = pqr.y  < 0 ? -zuv.z : zuv.z;
 		coeffs[2] = 1;
 		num = SolveQuadric(coeffs, s);
-		coeffs[0]= z + u;
-		coeffs[1] = q < 0 ? v : -v;
+		coeffs[0] = zuv.x + zuv.y;
+		coeffs[1] =  pqr.y < 0 ? zuv.z : -zuv.z;
 		coeffs[2] = 1;
 		num += SolveQuadric(coeffs, s + num);
 	}
-	sub = 1.0/4 * A;
+	sub = 1.0/4 * param[0];
 	for (i = 0; i < num; ++i)
 		s[i] -= sub;
 	return num;

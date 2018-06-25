@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 20:11:13 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/23 14:27:45 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/25 16:22:51 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,10 @@ void	ft_set_3dpt_from_string(t_3dpt *point, char *str, char *type)
 	if (ft_count_tab(tmp) != 3)
 		ft_error("Point or vector coordinates should be formated x:y:z");
 	if (ft_strequ(type, "vector") == 1)
-		ft_set_valid_3dpt(point, (double)ft_atoi(tmp[0]), (double)ft_atoi(tmp[1]), (double)ft_atoi(tmp[2]));
+		ft_set_valid_3dpt(point, (double)ft_atoi(tmp[0]),
+							(double)ft_atoi(tmp[1]), (double)ft_atoi(tmp[2]));
 	else
-		ft_set_3dpt(point, (double)ft_atoi(tmp[0]), (double)ft_atoi(tmp[1]), (double)ft_atoi(tmp[2]));
+		ft_set_3dpt(point, (double)ft_atoi(tmp[0]), (double)ft_atoi(tmp[1]),
+													(double)ft_atoi(tmp[2]));
 	ft_free_tab(tmp);
 }
