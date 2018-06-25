@@ -6,17 +6,17 @@
 #    By: mfrisby <mfrisby@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/13 19:08:56 by mfrisby           #+#    #+#              #
-#    Updated: 2018/06/25 16:38:01 by kjalloul         ###   ########.fr        #
+#    Updated: 2018/06/25 19:29:07 by mfrisby          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libxml.a
 
-SRCPATH = ./
+SRCPATH = ./srcs/
 
 IPATH = ./includes/
 
-OBJPATH = ./
+OBJPATH = ./objs/
 
 HEADER = libxml.h
 
