@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/27 10:56:10 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/24 15:05:24 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/25 17:01:04 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,6 @@ void		ft_parsing_primitives(t_xmlp *xmlp, t_node *node, t_light **spot,
 		ft_rectangle_setup(node, list);
 	while ((node = xmlp_get_next_node(xmlp, "scene/tore")))
 		ft_tore_setup(node, list);
-	while ((node = xmlp_get_next_node(xmlp, "scene/triangle")))
-		ft_triangle_setup(node, list);
 }
 
 void		ft_parsing_start(char *file, t_cam *cam, t_light **spot,
