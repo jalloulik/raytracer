@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 16:53:30 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/25 13:45:05 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/25 13:50:06 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,15 @@ void	ft_create_local_cercle(t_prim *prim)
 						-1 * prim->cercle.pos.y, -1 * prim->cercle.pos.z);
 	ft_set_3dpt(&(prim->cercle.pos_local), 0, 0, 0);
 	ft_set_3dpt(&(prim->cercle.dir_local), 0, 0, 1);
-	ft_find_quaters_between(&(prim->l_to_g_rot), &(prim->cercle.dir_local),
-														&(prim->cercle.dir));
-	ft_find_quaters_between(&(prim->g_to_l_rot), &(prim->cercle.dir),
-													&(prim->cercle.dir_local));
+	if (ft_compare_3dpt(&(prim->cercle.dir), &(prim->rot_axis)) == FALSE)
+	{
+		ft_find_quaters_between(&(prim->l_to_g_rot), &(prim->cercle.dir_local),
+															&(prim->cercle.dir));
+		ft_find_quaters_between(&(prim->g_to_l_rot), &(prim->cercle.dir),
+														&(prim->cercle.dir_local));
+	}
+	else
+		ft_set_dir_rotations(prim);
 }
 
 void	ft_create_local_tore(t_prim *prim)
