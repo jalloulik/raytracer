@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/25 18:01:40 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/25 18:23:27 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,7 @@
 
 # define ERRUSAGE "Usage : ./rtv1 <filename>"
 # define ERRFILE "File does not exist"
-# define ERRCAM "Cam Usage: cam|origin:x,y,z|vd:x,y,z|vdr:x,y,z"
-# define ERRSPOT "Spot Usage: spot|origin:x:y:z|intensity"
+# define ERRCAM "Need to define a camera <cam><origin>x:y:z</origin></cam>"
 # define ERRCOLOR "Color Usage color:r:00:g:00:b:00"
 # define ERR_COLOR_RANGE "Colors can only be between 0 and 255"
 # define ERRDIV "Can not divide by 0"
