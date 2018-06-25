@@ -6,7 +6,7 @@
 #    By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/06 17:18:00 by kjalloul          #+#    #+#              #
-#    Updated: 2018/06/25 16:16:33 by kjalloul         ###   ########.fr        #
+#    Updated: 2018/06/25 18:02:24 by kjalloul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,7 +89,7 @@ OBJ = $(SRC:%.c=$(OBJPATH)%.o)
 
 SRCF = $(SRCPATH)$(SRC)
 
-FLAG = -ggdb -Wall -Werror -Wextra
+FLAG = -Wall -Werror -Wextra
 
 all : $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: yvillepo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:13:36 by yvillepo          #+#    #+#             */
-/*   Updated: 2018/06/23 18:00:44 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/06/25 18:13:52 by mfrisby          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,8 @@ static int		cut_one(t_cut *cut, t_cut *head, t_3dpt *cam[2], double *t)
 	return (0);
 }
 
-void			cut(t_cut *cut, t_3dpt *ray_origin, t_3dpt *ray_dir, double t[4])
+void			cut(t_cut *cut, t_3dpt *ray_origin, t_3dpt *ray_dir,
+					double t[4])
 {
 	t_cut	*head;
 	int		i;

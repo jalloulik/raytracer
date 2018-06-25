@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 11:10:38 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/25 15:45:28 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/25 17:52:49 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ void	ft_tore_setup(t_node *node, t_prim **prims)
 	ft_set_3dpt_from_string(&(last->tore.pos), content, "");
 	content = xmlp_get_child_node_content(node, "tore/vec");
 	ft_set_3dpt_from_string(&(last->tore.dir), content, "vector");
+	if (last->tore.dir.x == 0 && last->tore.dir.y == 1 && last->tore.dir.z == 0)
+		ft_set_3dpt(&(last->tore.dir), 0, 10000, 1);
 	ft_normalize_vector(&(last->tore.dir));
 	content = xmlp_get_child_node_content(node, "tore/r1");
 	last->tore.r1 = ft_atoi(content);
