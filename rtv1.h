@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/25 18:23:27 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/25 19:36:24 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -554,7 +554,6 @@ void				ft_init_obj(t_obj *obj, t_light *light, t_prim *list);
 void				ft_cut_parsing(t_prim *last, t_node *node, char *type);
 t_cut				*ft_add_lst_cut(t_cut *cut);
 void				init_cut(t_cut *cut, t_prim *last);
-void				revers_tab(double t[4]);
 void				ft_rotate_tore(t_prim *prim);
 void				ft_rotate_rect(t_prim *prim);
 void				ft_set_valid_3dpt(t_3dpt *result, double x, double y,
@@ -565,5 +564,7 @@ void				ft_normal_triangle(t_3dpt *result, t_3dpt *p1, t_3dpt *p2,
 																	t_3dpt *p3);
 void				ft_rotate_triangle(t_prim *prim);
 void				ft_create_local_triangle(t_prim *prim);
+int					solve_linear(double a, double b, double *r);
+void				fill_tab(double *tab, double a, double b, double c);
 
 #endif
