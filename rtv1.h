@@ -6,11 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/25 16:27:53 by kjalloul         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
->>>>>>> f0a965ff67e4c2fc5803f0bbf9d71e8728039f75
+/*   Updated: 2018/06/25 16:42:14 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -567,11 +563,9 @@ void				ft_set_valid_3dpt(t_3dpt *result, double x, double y,
 																	double z);
 void				ft_create_local_cercle(t_prim *prim);
 void				ft_rotate_cercle(t_prim *prim);
-<<<<<<< HEAD
 void				ft_normal_triangle(t_3dpt *result, t_3dpt *p1, t_3dpt *p2,
 																	t_3dpt *p3);
 void				ft_rotate_triangle(t_prim *prim);
 void				ft_create_local_triangle(t_prim *prim);
-char				*dell_whitespace(char *str);
 
 #endif
