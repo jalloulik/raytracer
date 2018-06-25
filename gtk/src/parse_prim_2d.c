@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 14:35:37 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/24 18:16:11 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/25 17:50:07 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	ft_parse_carre(t_elem *elem, int fd)
 	ft_putstr_fd("</rect>\n", fd);
 }
 
-static void	ft_parse_triangle(t_elem *elem, int fd)
+void		ft_parse_triangle(t_elem *elem, int fd)
 {
 	ft_putstr_fd("<triangle>\n", fd);
 	ft_parse_triang_p(elem, fd);
@@ -92,8 +92,6 @@ void		ft_parse_prim_2d(t_elem *elem, int fd)
 		ft_parse_cercle(elem, fd);
 	if (elem->type == CARRE)
 		ft_parse_carre(elem, fd);
-	if (elem->type == TRIANGLE)
-		ft_parse_triangle(elem, fd);
 	if (elem->type == TORRE)
 		ft_parse_torre(elem, fd);
 }

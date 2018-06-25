@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 14:35:20 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/24 18:15:55 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/25 17:45:19 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ static void	ft_parse_plan(t_elem *elem, int fd)
 	ft_parse_normal(elem, fd);
 	ft_parse_sinus(elem, fd);
 	ft_parse_checker(elem, fd);
-	ft_parse_cut(elem, fd);
 	ft_parse_specular(elem, fd);
 	ft_putstr_fd("</plane>\n", fd);
 }
