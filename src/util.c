@@ -6,14 +6,13 @@
 /*   By: yvillepo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 17:30:44 by yvillepo          #+#    #+#             */
-/*   Updated: 2018/06/25 16:15:05 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/06/25 16:25:49 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "libft.h"
+#include "rtv1.h"
 
-void 	revers_tab(double t[4])
+void	revers_tab(double t[4])
 {
 	double tmp;
 
