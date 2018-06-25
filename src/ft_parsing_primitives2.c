@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 11:10:38 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/23 14:34:51 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/24 18:06:48 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ void	ft_triangle_setup(t_node *node, t_prim **prims)
 	ft_set_3dpt_from_string(&(last->triangle.p2), content, "");
 	content = xmlp_get_child_node_content(node, "triangle/p3");
 	ft_set_3dpt_from_string(&(last->triangle.p3), content, "");
+	ft_normal_triangle(&(last->triangle.dir), &(last->triangle.p1), &(last->triangle.p1), &(last->triangle.p1));
 	ft_parse_color(node, &(last->color2), "triangle");
 	ft_parsing_mov(node, last, "triangle");
 	ft_count_options(last, node, "triangle");
