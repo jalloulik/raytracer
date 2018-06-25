@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   node_parser.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfrisby <mfrisby@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 15:02:09 by mfrisby           #+#    #+#             */
-/*   Updated: 2018/06/15 18:47:17 by mfrisby          ###   ########.fr       */
+/*   Updated: 2018/06/24 16:21:29 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static int		get_content(t_node **node, char *s, int i, int *len)
 		(*len) = 0;
 		return (i);
 	}
+	if ((*node)->content != NULL)
+		free((*node)->content);
 	(*node)->content = get_balise_content(s, i);
 	while (s && s[i] && s[i] != '<')
 		i++;

@@ -6,27 +6,37 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/15 13:57:19 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/20 18:06:39 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/24 17:20:47 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../ui.h"
 
-static void	ft_set_data_show_spot(t_interface *inter)
+static void	ft_set_data_show_light(t_interface *inter, t_elem *elem)
 {
-	ft_set_data_show_3d(inter->fix.pos);
-	ft_set_data_show_1d(inter->light.intensity);
+	if (elem->type == SPOT)
+	{
+		ft_set_data_show_3d(inter->fix.pos);
+		ft_set_data_show_1d(inter->light.intensity);
+	}
+	if (elem->type == SUN)
+	{
+		ft_set_data_show_3d(inter->fix.pos);
+		ft_set_data_show_1d(inter->light.intensity);
+	}
+	if (elem->type == AMBIANT)
+		ft_set_data_show_1d(inter->light.intensity);
 }
 
-static void	ft_set_data_show_sun(t_interface *inter)
+static void	ft_show_switch(t_interface *inter, t_elem *elem)
 {
-	ft_set_data_show_3d(inter->fix.pos);
-	ft_set_data_show_1d(inter->light.intensity);
-}
-
-static void	ft_set_data_show_ambiant(t_interface *inter)
-{
-	ft_set_data_show_1d(inter->light.intensity);
+	ft_show_switch_reflect(inter, elem);
+	ft_show_switch_refract(inter, elem);
+	ft_show_switch_checker(inter, elem);
+	ft_show_switch_sinus(inter, elem);
+	ft_show_switch_texture_c(inter, elem);
+	ft_show_switch_texture_n(inter, elem);
+	ft_show_cut(inter, elem);
 }
 
 void		ft_set_data_show(t_interface *inter, t_elem *elem)
@@ -50,10 +60,6 @@ void		ft_set_data_show(t_interface *inter, t_elem *elem)
 		ft_set_data_show_triangle(inter);
 	if (elem->type == TORRE)
 		ft_set_data_show_torre(inter);
-	if (elem->type == SPOT)
-		ft_set_data_show_spot(inter);
-	if (elem->type == SUN)
-		ft_set_data_show_sun(inter);
-	if (elem->type == AMBIANT)
-		ft_set_data_show_ambiant(inter);
+	ft_set_data_show_light(inter, elem);
+	ft_show_switch(inter, elem);
 }

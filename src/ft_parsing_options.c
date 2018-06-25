@@ -6,38 +6,34 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 11:20:59 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/20 22:19:14 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/25 15:44:49 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void	ft_initialise_checkers(t_prim *last)
-{
-	last->checkers.valid = TRUE;
-	last->checkers.xscale = 1;
-	last->checkers.yscale = 1;
-	last->checkers.xmove = 0;
-	last->checkers.ymove = 0;
-	last->checkers.width = PROCED_WIDTH;
-	last->checkers.height = PROCED_HEIGHT;
-}
-
 void	ft_create_cut(t_prim *last, t_node *node, char *type, char *num)
 {
 	char *pos;
 	char *axis;
+	char *postmp;
+	char *axistmp;
 
-	pos = ft_strjoin("/cut/pos", num);
-	axis = ft_strjoin("/cut/axis", num);
-	pos = ft_get_content_mix_path(node, type, pos);
-	axis = ft_get_content_mix_path(node, type, axis);
+	postmp = ft_strjoin("/cut/pos", num);
+	axistmp = ft_strjoin("/cut/axis", num);
+	pos = ft_get_content_mix_path(node, type, postmp);
+	axis = ft_get_content_mix_path(node, type, axistmp);
 	if (pos && axis)
 	{
 		last->cut = ft_add_lst_cut(last->cut);
-		ft_set_3dpt_from_string(&(last->cut->pos), pos);
-		ft_set_3dpt_from_string(&(last->cut->dir), axis);
+		ft_set_3dpt_from_string(&(last->cut->pos), pos, "");
+		ft_set_3dpt_from_string(&(last->cut->dir), axis, "vector");
+		ft_normalize_vector(&(last->cut->dir));
 	}
+	if (postmp != NULL)
+		free(postmp);
+	if (axistmp != NULL)
+		free(axistmp);
 }
 
 void	ft_cut_parsing(t_prim *last, t_node *node, char *type)
@@ -53,6 +49,7 @@ void	ft_cut_parsing(t_prim *last, t_node *node, char *type)
 	ft_create_cut(last, node, type, "4");
 	ft_create_cut(last, node, type, "5");
 	ft_create_cut(last, node, type, "6");
+	init_cut(last->cut, last);
 }
 
 void	ft_check_checkers(t_prim *last, t_node *node, char *type)
@@ -80,6 +77,15 @@ void	ft_check_checkers(t_prim *last, t_node *node, char *type)
 	}
 }
 
+void	ft_check_specular(t_prim *last, t_node *node, char *type)
+{
+	char *content;
+
+	content = ft_get_content_mix_path(node, type, "/specular");
+	if (ft_strequ(content, "false") == 1)
+		last->specular = FALSE;
+}
+
 void	ft_count_options(t_prim *last, t_node *node, char *type)
 {
 	ft_check_reflection(last, node, type);
@@ -88,6 +94,8 @@ void	ft_count_options(t_prim *last, t_node *node, char *type)
 	ft_check_ntexture(last, node, type);
 	ft_check_sin(last, node, type);
 	ft_check_checkers(last, node, type);
+	ft_check_specular(last, node, type);
+	ft_cut_parsing(last, node, type);
 	if (last->textur.valid == TRUE && last->checkers.valid == TRUE)
 		ft_error("Can't have both checkers and color texture on");
 }

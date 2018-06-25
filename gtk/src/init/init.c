@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 16:17:15 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/18 17:00:15 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/23 10:59:22 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ static void	ft_init_cont(t_interface *inter)
 	inter->cont.colonne4 = NULL;
 	inter->cont.colonne5 = NULL;
 	inter->cont.colonne6 = NULL;
+	inter->cont.colonne7 = NULL;
+	inter->cont.colonne8 = NULL;
+	inter->cont.colonne9 = NULL;
 }
 
 static void	ft_init_prim(t_interface *inter)
@@ -70,4 +73,5 @@ void		ft_init(t_interface *inter)
 	ft_init_effect(inter);
 	ft_init_sinus(inter);
 	ft_init_checker(inter);
+	ft_init_cut(inter);
 }

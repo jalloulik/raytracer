@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 15:58:32 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/18 17:02:20 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/23 09:52:03 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ typedef struct		s_container
 	GtkWidget		*colonne4;
 	GtkWidget		*colonne5;
 	GtkWidget		*colonne6;
+	GtkWidget		*colonne7;
+	GtkWidget		*colonne8;
+	GtkWidget		*colonne9;
 }					t_container;
 
 typedef struct		s_inter_fixe
@@ -111,6 +114,23 @@ typedef struct		s_checker_ui
 	t_2d_button		scale;
 }					t_checker_ui;
 
+typedef struct		s_cut_ui
+{
+	t_1d_button		on_off;
+	t_3d_button		origin_1;
+	t_3d_button		axe_1;
+	t_3d_button		origin_2;
+	t_3d_button		axe_2;
+	t_3d_button		origin_3;
+	t_3d_button		axe_3;
+	t_3d_button		origin_4;
+	t_3d_button		axe_4;
+	t_3d_button		origin_5;
+	t_3d_button		axe_5;
+	t_3d_button		origin_6;
+	t_3d_button		axe_6;
+}					t_cut_ui;
+
 typedef struct		s_light_ui
 {
 	GtkWidget		*spot;
@@ -159,6 +179,7 @@ typedef struct		s_interface
 	t_1d_button		sepia;
 	t_rayon_ui		rayon_torre;
 	t_elem			*list_e;
+	t_cut_ui		cut;
 	GtkWidget		*render;
 }					t_interface;
 

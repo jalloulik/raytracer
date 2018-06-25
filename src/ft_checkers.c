@@ -6,11 +6,22 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 17:30:46 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/15 17:36:30 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/25 15:45:10 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+
+void		ft_initialise_checkers(t_prim *last)
+{
+	last->checkers.valid = TRUE;
+	last->checkers.xscale = 1;
+	last->checkers.yscale = 1;
+	last->checkers.xmove = 0;
+	last->checkers.ymove = 0;
+	last->checkers.width = PROCED_WIDTH;
+	last->checkers.height = PROCED_HEIGHT;
+}
 
 t_color		ft_get_checkers_color(double x, double y, t_texture *textur)
 {

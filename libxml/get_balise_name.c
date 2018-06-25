@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_balise_name.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfrisby <mfrisby@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 16:06:57 by mfrisby           #+#    #+#             */
-/*   Updated: 2018/06/08 16:28:15 by mfrisby          ###   ########.fr       */
+/*   Updated: 2018/06/24 16:53:07 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ char		*get_balise_name(char *s)
 	len = 0;
 	while (s[len] != '>')
 		len++;
-	name = ft_strnew(len + 1);
+	if (!(name = (char*)malloc(sizeof(char) * (len + 1))))
+		ft_error_2("probleme allocation memoire\n");
 	len = 0;
 	while (s[len] != '>')
 	{

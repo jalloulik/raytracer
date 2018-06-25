@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/20 22:06:11 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/25 16:42:14 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define RECT 6
 # define TORE 7
 # define TRIANGLE 8
+# define ELLIPS 9
 # define VALID 1
 # define UNVALID 0
 
@@ -99,6 +100,8 @@ typedef struct		s_cercle
 {
 	t_3dpt			pos;
 	t_3dpt			dir;
+	t_3dpt			pos_local;
+	t_3dpt			dir_local;
 	double			r;
 	double			t;
 	int				color;
@@ -119,6 +122,9 @@ typedef struct		s_triangle
 	t_3dpt			p1;
 	t_3dpt			p2;
 	t_3dpt			p3;
+	t_3dpt			pos_local;
+	t_3dpt			dir;
+	t_3dpt			dir_local;
 }					t_triangle;
 
 typedef struct		s_plane
@@ -149,6 +155,17 @@ typedef struct		s_sphere
 	t_3dpt			path_to_light;
 	t_3dpt			normal;
 }					t_sphere;
+
+typedef struct		s_ellips
+{
+	t_3dpt			radius;
+	t_3dpt			pos;
+	t_3dpt			vec;
+	t_3dpt			origin_local;
+	t_3dpt			vec_local;
+	t_3dpt			path_to_light;
+	t_3dpt			normal;
+}					t_ellips;
 
 typedef struct		s_tore
 {
@@ -265,6 +282,7 @@ typedef struct		s_prim
 	t_texture		textur_n;
 	t_texture		checkers;
 	t_sin_perturb	sin;
+	int				specular;
 	struct s_prim	*next;
 }					t_prim;
 
@@ -292,6 +310,7 @@ typedef struct		s_cam
 	double			rot_angle;
 	t_3dpt			transl;
 	int				sepia;
+	t_xmlp			*xmlp;
 }					t_cam;
 
 typedef struct		s_ray
@@ -517,13 +536,15 @@ t_color				ft_get_checkers_color(double x, double y,
 															t_texture *textur);
 
 void				ft_intialise_primitives(t_prim *last);
-void				ft_set_3dpt_from_string(t_3dpt *point, char *str);
+void				ft_set_3dpt_from_string(t_3dpt *point, char *str,
+																	char *type);
 char				*ft_get_content_mix_path(t_node *node, char *type,
 																char *path);
 void				ft_count_options(t_prim *last, t_node *node, char *type);
 
 int					ft_initialise_cut(t_prim *prim);
 void				ft_initialise_texturing(t_prim *prim);
+void				ft_initialise_checkers(t_prim *last);
 int					ft_compare_3dpt(t_3dpt *p1, t_3dpt *p2);
 void				ft_set_dir_rotations(t_prim *prim);
 void				ft_check_sin(t_prim *last, t_node *node, char *type);
@@ -534,5 +555,17 @@ void				ft_check_reflection(t_prim *last, t_node *node, char *type);
 void				ft_init_obj(t_obj *obj, t_light *light, t_prim *list);
 void				ft_cut_parsing(t_prim *last, t_node *node, char *type);
 t_cut				*ft_add_lst_cut(t_cut *cut);
+void				init_cut(t_cut *cut, t_prim *last);
+void				revers_tab(double t[4]);
+void				ft_rotate_tore(t_prim *prim);
+void				ft_rotate_rect(t_prim *prim);
+void				ft_set_valid_3dpt(t_3dpt *result, double x, double y,
+																	double z);
+void				ft_create_local_cercle(t_prim *prim);
+void				ft_rotate_cercle(t_prim *prim);
+void				ft_normal_triangle(t_3dpt *result, t_3dpt *p1, t_3dpt *p2,
+																	t_3dpt *p3);
+void				ft_rotate_triangle(t_prim *prim);
+void				ft_create_local_triangle(t_prim *prim);
 
 #endif

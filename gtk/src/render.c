@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 15:21:15 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/20 20:52:45 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/24 17:18:50 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ void			ft_render(GtkWidget *widget, gpointer data)
 	(void)widget;
 	inter = (t_interface*)data;
 	elem = inter->list_e;
-	fd = open("./gtk/scene.xml", O_CREAT | O_TRUNC | O_WRONLY, 0755);
+	if ((fd = open("./gtk/scene.xml", O_CREAT | O_TRUNC
+		| O_WRONLY, 0644)) == -1)
+		ft_error("fichier non conforme");
 	ft_putstr_fd("<scene>\n", fd);
 	while (elem)
 	{
@@ -38,5 +40,6 @@ void			ft_render(GtkWidget *widget, gpointer data)
 	}
 	ft_putstr_fd("</scene>\n", fd);
 	close(fd);
-	system("./rt gtk/scene.xml &");
+	if ((system("./rt gtk/scene.xml &")) == -1)
+		ft_error("function system failed");
 }

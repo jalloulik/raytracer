@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_balise_content.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfrisby <mfrisby@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 17:06:15 by mfrisby           #+#    #+#             */
-/*   Updated: 2018/06/08 16:28:34 by mfrisby          ###   ########.fr       */
+/*   Updated: 2018/06/24 16:53:43 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ char		*get_balise_content(char *s, int i)
 	len = get_len(s, i);
 	if (len <= 0)
 		return (NULL);
-	content = ft_strnew(len + 1);
+	if (!(content = (char*)malloc(sizeof(char) * (len + 1))))
+		ft_error_2("probleme allocation memoire\n");
 	while (y < len)
 	{
 		content[y] = s[i];

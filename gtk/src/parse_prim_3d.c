@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 14:35:20 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/20 21:45:34 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/23 12:45:45 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void	ft_parse_sphere(t_elem *elem, int fd)
 {
 	ft_putstr_fd("<sphere>\n", fd);
 	ft_parse_origin(elem, fd);
+	ft_parse_specular(elem, fd);
 	ft_parse_rotation(elem, fd);
 	ft_parse_translation(elem, fd);
 	ft_parse_color(elem, fd);
@@ -26,6 +27,7 @@ static void	ft_parse_sphere(t_elem *elem, int fd)
 	ft_parse_normal(elem, fd);
 	ft_parse_sinus(elem, fd);
 	ft_parse_checker(elem, fd);
+	ft_parse_cut(elem, fd);
 	ft_putstr_fd("</sphere>\n", fd);
 }
 
@@ -44,6 +46,7 @@ static void	ft_parse_cone(t_elem *elem, int fd)
 	ft_parse_normal(elem, fd);
 	ft_parse_sinus(elem, fd);
 	ft_parse_checker(elem, fd);
+	ft_parse_cut(elem, fd);
 	ft_putstr_fd("</cone>\n", fd);
 }
 
@@ -62,6 +65,7 @@ static void	ft_parse_cylindre(t_elem *elem, int fd)
 	ft_parse_normal(elem, fd);
 	ft_parse_sinus(elem, fd);
 	ft_parse_checker(elem, fd);
+	ft_parse_cut(elem, fd);
 	ft_putstr_fd("</cylinder>\n", fd);
 }
 
@@ -79,6 +83,7 @@ static void	ft_parse_plan(t_elem *elem, int fd)
 	ft_parse_normal(elem, fd);
 	ft_parse_sinus(elem, fd);
 	ft_parse_checker(elem, fd);
+	ft_parse_cut(elem, fd);
 	ft_putstr_fd("</plane>\n", fd);
 }
 

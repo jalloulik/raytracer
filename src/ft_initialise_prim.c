@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 16:21:43 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/20 21:30:42 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/25 15:42:48 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@ int		ft_initialise_cut(t_prim *prim)
 {
 	if (prim->cut && prim->cut->cut)
 	{
-		//potential leak, why?
-		// prim->normal = *prim->cut->normal;
 		prim->cut->cut = 0;
-		ft_vec_quater_rot(&prim->normal, prim->cut->normal, &(prim->l_to_g_rot));
+		ft_vec_quater_rot(&prim->normal, prim->cut->normal,
+														&(prim->l_to_g_rot));
 		return (0);
 	}
 	return (1);
@@ -39,6 +38,7 @@ void	ft_intialise_primitives(t_prim *last)
 	ft_set_3dpt(&(last->rot_axis), 0, 1, 0);
 	last->rot_angle = ft_degree_to_rad(0.0);
 	ft_set_3dpt(&(last->transl), 0, 0, 0);
+	last->specular = TRUE;
 	last->sin.status = FALSE;
 	last->sin.xstatus = FALSE;
 	last->sin.ystatus = FALSE;

@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 08:52:22 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/18 15:20:01 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/23 12:26:53 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ static void		ft_event_switch(t_event_entry *e, t_interface *inter)
 		G_CALLBACK(ft_active_switch), e);
 	g_signal_connect(G_OBJECT(inter->checker.on_off.x), "notify::active",
 		G_CALLBACK(ft_active_switch), e);
+	g_signal_connect(G_OBJECT(inter->cut.on_off.x), "notify::active",
+		G_CALLBACK(ft_active_switch), e);
 }
 
 void			ft_event(t_event_entry *e, t_interface *inter)
@@ -75,5 +77,6 @@ void			ft_event(t_event_entry *e, t_interface *inter)
 	ft_event_entry3(e, inter);
 	ft_event_entry4(e, inter);
 	ft_event_entry5(e, inter);
+	ft_event_entry_cut(e, inter);
 	ft_event_switch(e, inter);
 }

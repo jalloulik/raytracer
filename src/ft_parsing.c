@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/27 10:56:10 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/20 17:40:35 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/25 17:01:04 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ void		ft_parsing_mov(t_node *node, t_prim *last, char *type)
 	content = NULL;
 	content = ft_get_content_mix_path(node, type, "/rotation/axis");
 	if (content)
-		ft_set_3dpt_from_string(&(last->rot_axis), content);
+		ft_set_3dpt_from_string(&(last->rot_axis), content, "vector");
 	content = ft_get_content_mix_path(node, type, "/rotation/angle");
 	if (content)
 		last->rot_angle = ft_degree_to_rad((double)ft_atoi(content));
 	content = ft_get_content_mix_path(node, type, "/translation");
 	if (content)
-		ft_set_3dpt_from_string(&(last->transl), content);
+		ft_set_3dpt_from_string(&(last->transl), content, "");
 }
 
 void		ft_parse_color(t_node *node, t_color *color2, char *type)
@@ -74,8 +74,6 @@ void		ft_parsing_primitives(t_xmlp *xmlp, t_node *node, t_light **spot,
 		ft_rectangle_setup(node, list);
 	while ((node = xmlp_get_next_node(xmlp, "scene/tore")))
 		ft_tore_setup(node, list);
-	while ((node = xmlp_get_next_node(xmlp, "scene/triangle")))
-		ft_triangle_setup(node, list);
 }
 
 void		ft_parsing_start(char *file, t_cam *cam, t_light **spot,
@@ -85,7 +83,10 @@ void		ft_parsing_start(char *file, t_cam *cam, t_light **spot,
 	t_node	*node;
 
 	xmlp = new_xmlp(file);
+	if (xmlp == NULL)
+		ft_error("File does not exist");
 	node = NULL;
+	cam->xmlp = xmlp;
 	cam->status = FALSE;
 	while ((node = xmlp_get_next_node(xmlp, "scene/cam")))
 	{

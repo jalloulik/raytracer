@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 10:22:53 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/20 14:13:49 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/23 12:41:10 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ void				ft_colonne3(t_interface *inter);
 void				ft_colonne4(t_interface *inter);
 void				ft_colonne5(t_interface *inter);
 void				ft_colonne6(t_interface *inter);
+void				ft_colonne7(t_interface *inter);
+void				ft_colonne8(t_interface *inter);
+void				ft_colonne9(t_interface *inter);
 
 void				ft_set_3d_entry(t_3d_button *entry, t_3d elem);
 void				ft_set_2d_entry(t_2d_button *entry, t_2d elem);
@@ -82,6 +85,7 @@ void				ft_active_switch(GtkWidget *widget, GParamSpec *pspec,
 void				ft_event(t_event_entry *e, t_interface *inter);
 void				ft_render(GtkWidget *widget, gpointer data);
 void				ft_free_p_text(t_event_entry *e);
+void				ft_error(char *message);
 
 void				ft_init(t_interface *inter);
 void				ft_init_fix(t_interface *inter);
@@ -92,9 +96,11 @@ void				ft_init_checker(t_interface *inter);
 void				ft_init_list_e(t_interface *inter);
 void				ft_init_show(t_interface *inter);
 void				ft_init_show_2(t_interface *inter);
+void				ft_init_show_cut(t_interface *inter);
 void				ft_init_3d_button(t_3d_button *button);
 void				ft_init_2d_button(t_2d_button *button);
 void				ft_init_1d_button(t_1d_button *button);
+void				ft_init_cut(t_interface *inter);
 
 void				ft_create_sphere(GtkWidget *widget, gpointer data);
 void				ft_create_cone(GtkWidget *widget, gpointer data);
@@ -121,6 +127,13 @@ void				ft_show_texture_c(t_interface *inter, GtkWidget *widget);
 void				ft_show_texture_n(t_interface *inter, GtkWidget *widget);
 void				ft_show_checker(t_interface *inter, GtkWidget *widget);
 void				ft_show_sinus(t_interface *inter, GtkWidget *widget);
+void				ft_show_switch_reflect(t_interface *inter, t_elem *elem);
+void				ft_show_switch_refract(t_interface *inter, t_elem *elem);
+void				ft_show_switch_sinus(t_interface *inter, t_elem *elem);
+void				ft_show_switch_checker(t_interface *inter, t_elem *elem);
+void				ft_show_switch_texture_c(t_interface *inter, t_elem *elem);
+void				ft_show_switch_texture_n(t_interface *inter, t_elem *elem);
+void				ft_show_cut(t_interface *inter, t_elem *elem);
 
 void				ft_type_entry_1(GtkWidget *type, int **value,
 	t_elem *elem, t_interface *inter);
@@ -132,12 +145,15 @@ void				ft_type_entry_4(GtkWidget *type, int **value,
 	t_elem *elem, t_interface *inter);
 void				ft_type_entry_5(GtkWidget *type, int **value,
 	t_elem *elem, t_interface *inter);
+void				ft_type_entry_cut(GtkWidget *type, int **value,
+	t_elem *elem, t_interface *inter);
 
 void				ft_event_entry1(t_event_entry *e, t_interface *inter);
 void				ft_event_entry2(t_event_entry *e, t_interface *inter);
 void				ft_event_entry3(t_event_entry *e, t_interface *inter);
 void				ft_event_entry4(t_event_entry *e, t_interface *inter);
 void				ft_event_entry5(t_event_entry *e, t_interface *inter);
+void				ft_event_entry_cut(t_event_entry *e, t_interface *inter);
 
 void				ft_set_data_show_1d(t_1d_button button);
 void				ft_set_data_show_2d(t_2d_button button);
@@ -175,5 +191,7 @@ void				ft_parse_checker(t_elem *elem, int fd);
 void				ft_parse_triang_p(t_elem *elem, int fd);
 void				ft_parse_refract(t_elem *elem, int fd);
 void				ft_parse_reflect(t_elem *elem, int fd);
+void				ft_parse_specular(t_elem *elem, int fd);
+void				ft_parse_cut(t_elem *elem, int fd);
 
 #endif
