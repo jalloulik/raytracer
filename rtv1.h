@@ -6,13 +6,12 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/25 16:42:14 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/25 18:01:40 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RTV1_H
 # define RTV1_H
-# include <stdio.h>
 # include <fcntl.h>
 # include "libgraph.h"
 # include "libxml.h"
