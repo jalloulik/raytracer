@@ -6,7 +6,7 @@
 /*   By: yvillepo <yvillepo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 17:51:12 by yvillepo          #+#    #+#             */
-/*   Updated: 2018/06/23 18:49:31 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/06/25 14:08:25 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ double			ft_resolve_tore(t_prim *prim, t_3dpt *dir, t_3dpt *origin)
 	double	s[4];
 	double	r[5];
 	double	t;
-	int		i = 0;
 
 	ft_vec_quater_rot(&dir_local, dir, &(prim->g_to_l_rot));
 	ft_normalize_vector(&dir_local);
@@ -48,15 +47,8 @@ double			ft_resolve_tore(t_prim *prim, t_3dpt *dir, t_3dpt *origin)
 													&(prim->g_to_l_rot));
 	calc_param(prim, r, &pos_local, &dir_local);
 	if (!(t = solve_quartic(r, s)))
-	{
-		printf("%f :", t);
 		return (-1);
-	}
-	printf("%f :", t);
 	t = search_min(s, t);
-	while (i < 4)
-		printf("%f ", s[i++]);
-	printf("\n");
 	calc_point(&(prim->tore.l_p), &pos_local, &dir_local, t);
 	return (t);
 }
