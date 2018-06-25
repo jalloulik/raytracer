@@ -6,22 +6,11 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 11:20:59 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/23 18:43:20 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/25 15:44:49 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
-
-void	ft_initialise_checkers(t_prim *last)
-{
-	last->checkers.valid = TRUE;
-	last->checkers.xscale = 1;
-	last->checkers.yscale = 1;
-	last->checkers.xmove = 0;
-	last->checkers.ymove = 0;
-	last->checkers.width = PROCED_WIDTH;
-	last->checkers.height = PROCED_HEIGHT;
-}
 
 void	ft_create_cut(t_prim *last, t_node *node, char *type, char *num)
 {

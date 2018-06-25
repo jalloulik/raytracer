@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 16:22:12 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/23 14:34:16 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/25 15:43:35 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void	ft_cylinder_setup(t_node *node, t_prim **prims)
 	ft_parse_color(node, &(last->color2), "cylinder");
 	ft_parsing_mov(node, last, "cylinder");
 	ft_count_options(last, node, "cylinder");
-	// i = (tab + 7, last);
 }
 
 void	ft_cone_setup(t_node *node, t_prim **prims)
@@ -69,7 +68,6 @@ void	ft_cone_setup(t_node *node, t_prim **prims)
 	last = ft_get_last(list);
 	content = xmlp_get_child_node_content(node, "cone/origin");
 	ft_set_3dpt_from_string(&(last->cone.origin), content, "");
-
 	content = xmlp_get_child_node_content(node, "cone/vec");
 	ft_set_3dpt_from_string(&(last->cone.vec), content, "vector");
 	content = xmlp_get_child_node_content(node, "cone/angle");
@@ -81,7 +79,6 @@ void	ft_cone_setup(t_node *node, t_prim **prims)
 	ft_parse_color(node, &(last->color2), "cone");
 	ft_parsing_mov(node, last, "cone");
 	ft_count_options(last, node, "cone");
-	// i = read_cut(tab + 7, last);
 }
 
 void	ft_sphere_setup(t_node *node, t_prim **prims)
@@ -103,6 +100,5 @@ void	ft_sphere_setup(t_node *node, t_prim **prims)
 	last->sphere.radius = ft_atoi(content);
 	ft_parse_color(node, &(last->color2), "sphere");
 	ft_parsing_mov(node, last, "sphere");
-	// i = read_cut(tab + 6, last);
 	ft_count_options(last, node, "sphere");
 }

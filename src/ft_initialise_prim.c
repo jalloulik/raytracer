@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 16:21:43 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/22 17:46:19 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/25 15:42:48 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@ int		ft_initialise_cut(t_prim *prim)
 {
 	if (prim->cut && prim->cut->cut)
 	{
-		//potential leak, why?
-		// prim->normal = *prim->cut->normal;
 		prim->cut->cut = 0;
-		ft_vec_quater_rot(&prim->normal, prim->cut->normal, &(prim->l_to_g_rot));
+		ft_vec_quater_rot(&prim->normal, prim->cut->normal,
+														&(prim->l_to_g_rot));
 		return (0);
 	}
 	return (1);

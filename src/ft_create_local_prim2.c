@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 16:53:30 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/25 15:37:05 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/25 15:39:22 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,25 +25,11 @@ void	ft_create_local_rect(t_prim *prim)
 		ft_find_quaters_between(&(prim->l_to_g_rot), &(prim->rect.dir_local),
 															&(prim->rect.dir));
 		ft_find_quaters_between(&(prim->g_to_l_rot), &(prim->rect.dir),
-														&(prim->rect.dir_local));
+													&(prim->rect.dir_local));
 	}
 	else
 		ft_set_dir_rotations(prim);
 }
-
-// void	ft_create_local_triangle(t_prim *prim)
-// {
-// 	ft_set_3dpt(&(prim->l_to_g_move), prim->triangle.p1.x, prim->triangle.p1.y,
-// 														prim->triangle.p1.z);
-// 	ft_set_3dpt(&(prim->g_to_l_move), -1 * prim->triangle.p1.x,
-// 						-1 * prim->triangle.p1.y, -1 * prim->triangle.p1.z);
-// 	ft_set_3dpt(&(prim->triangle.pos_local), 0, 0, 0);
-// 	ft_set_3dpt(&(prim->triangle.dir_local), 0, 0, 1);
-// 	ft_find_quaters_between(&(prim->l_to_g_rot), &(prim->triangle.dir_local),
-// 														&(prim->triangle.dir));
-// 	ft_find_quaters_between(&(prim->g_to_l_rot), &(prim->triangle.dir),
-// 													&(prim->triangle.dir_local));
-// }
 
 void	ft_create_local_cercle(t_prim *prim)
 {
@@ -56,9 +42,9 @@ void	ft_create_local_cercle(t_prim *prim)
 	if (ft_compare_3dpt(&(prim->cercle.dir), &(prim->rot_axis)) == FALSE)
 	{
 		ft_find_quaters_between(&(prim->l_to_g_rot), &(prim->cercle.dir_local),
-															&(prim->cercle.dir));
+														&(prim->cercle.dir));
 		ft_find_quaters_between(&(prim->g_to_l_rot), &(prim->cercle.dir),
-														&(prim->cercle.dir_local));
+													&(prim->cercle.dir_local));
 	}
 	else
 		ft_set_dir_rotations(prim);
@@ -77,7 +63,7 @@ void	ft_create_local_tore(t_prim *prim)
 		ft_find_quaters_between(&(prim->l_to_g_rot), &(prim->tore.dir_local),
 															&(prim->tore.dir));
 		ft_find_quaters_between(&(prim->g_to_l_rot), &(prim->tore.dir),
-														&(prim->tore.dir_local));
+													&(prim->tore.dir_local));
 	}
 	else
 		ft_set_dir_rotations(prim);

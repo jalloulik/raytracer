@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 15:28:11 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/25 13:58:50 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/25 15:41:41 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,7 @@ void	ft_rotate_all(t_prim *prim)
 	while (prim != NULL)
 	{
 		if (prim->type == SPHERE)
-		{
 			ft_rotate_sphere(prim);
-		}
 		else if (prim->type == PLANE)
 			ft_rotate_plan(prim);
 		else if (prim->type == CYLINDER)
@@ -48,8 +46,6 @@ void	ft_rotate_all(t_prim *prim)
 			ft_rotate_rect(prim);
 		else if (prim->type == CERCLE)
 			ft_rotate_cercle(prim);
-		// else if (prim->type == TRIANGLE)
-		// 	ft_rotate_triangle(prim);
 		prim = prim->next;
 	}
 }
@@ -72,8 +68,6 @@ void	ft_create_local_vector_spaces(t_prim *prim)
 			ft_create_local_tore(prim);
 		else if (prim->type == CERCLE)
 			ft_create_local_cercle(prim);
-		// else if (prim->type == TRIANGLE)
-		// 	ft_create_local_triangle(prim);
 		prim = prim->next;
 	}
 }
@@ -98,9 +92,11 @@ void	ft_translante_all(t_prim *prim)
 			ft_sum_vectors(&(prim->tore.pos), &(prim->tore.pos),
 															&(prim->transl));
 		else if (prim->type == RECT)
-			ft_sum_vectors(&(prim->rect.pos), &(prim->rect.pos), &(prim->transl));
+			ft_sum_vectors(&(prim->rect.pos), &(prim->rect.pos),
+															&(prim->transl));
 		else if (prim->type == CERCLE)
-			ft_sum_vectors(&(prim->cercle.pos), &(prim->cercle.pos), &(prim->transl));
+			ft_sum_vectors(&(prim->cercle.pos), &(prim->cercle.pos),
+															&(prim->transl));
 		prim = prim->next;
 	}
 }

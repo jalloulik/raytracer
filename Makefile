@@ -6,7 +6,7 @@
 #    By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/06 17:18:00 by kjalloul          #+#    #+#              #
-#    Updated: 2018/06/24 15:01:12 by kjalloul         ###   ########.fr        #
+#    Updated: 2018/06/25 16:16:33 by kjalloul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,7 +82,8 @@ SRC = main.c\
 		ft_refraction_parsing.c\
 		ft_parsing_tools.c\
 		ft_shadow_shade.c\
-		util.c
+		util.c\
+		ft_rotate_primitives2.c
 
 OBJ = $(SRC:%.c=$(OBJPATH)%.o)
 

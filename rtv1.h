@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/24 18:11:32 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/25 16:24:38 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -536,13 +536,15 @@ t_color				ft_get_checkers_color(double x, double y,
 															t_texture *textur);
 
 void				ft_intialise_primitives(t_prim *last);
-void				ft_set_3dpt_from_string(t_3dpt *point, char *str, char *type);
+void				ft_set_3dpt_from_string(t_3dpt *point, char *str,
+																	char *type);
 char				*ft_get_content_mix_path(t_node *node, char *type,
 																char *path);
 void				ft_count_options(t_prim *last, t_node *node, char *type);
 
 int					ft_initialise_cut(t_prim *prim);
 void				ft_initialise_texturing(t_prim *prim);
+void				ft_initialise_checkers(t_prim *last);
 int					ft_compare_3dpt(t_3dpt *p1, t_3dpt *p2);
 void				ft_set_dir_rotations(t_prim *prim);
 void				ft_check_sin(t_prim *last, t_node *node, char *type);
@@ -554,15 +556,16 @@ void				ft_init_obj(t_obj *obj, t_light *light, t_prim *list);
 void				ft_cut_parsing(t_prim *last, t_node *node, char *type);
 t_cut				*ft_add_lst_cut(t_cut *cut);
 void				init_cut(t_cut *cut, t_prim *last);
-void 				revers_tab(double t[4]);
+void				revers_tab(double t[4]);
 void				ft_rotate_tore(t_prim *prim);
 void				ft_rotate_rect(t_prim *prim);
-void				ft_set_valid_3dpt(t_3dpt *result, double x, double y, double z);
-// int					ft_compare_3dpt_prim(t_3dpt *p1, t_3dpt *p2, char *type);
+void				ft_set_valid_3dpt(t_3dpt *result, double x, double y,
+																	double z);
 void				ft_create_local_cercle(t_prim *prim);
 void				ft_rotate_cercle(t_prim *prim);
-void				ft_normal_triangle(t_3dpt *result, t_3dpt *p1, t_3dpt *p2, t_3dpt *p3);
-void	ft_rotate_triangle(t_prim *prim);
-void	ft_create_local_triangle(t_prim *prim);
+void				ft_normal_triangle(t_3dpt *result, t_3dpt *p1, t_3dpt *p2,
+																	t_3dpt *p3);
+void				ft_rotate_triangle(t_prim *prim);
+void				ft_create_local_triangle(t_prim *prim);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 14:34:25 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/24 17:00:53 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/25 16:09:51 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,22 @@ void	ft_find_perpendicular_vec(t_3dpt *result, t_3dpt *source)
 	{
 		result->x = 2;
 		result->y = 2;
-		result->z = (result->x * source->x + result->y * source->y) / (-1 * source->z);
+		result->z = (result->x * source->x + result->y * source->y) /
+															(-1 * source->z);
 	}
 	else if (source->y != 0)
 	{
 		result->x = 2;
 		result->z = 2;
-		result->y = (result->x * source->x + result->z * source->z) / (-1 * source->y);
+		result->y = (result->x * source->x + result->z * source->z) /
+															(-1 * source->y);
 	}
 	else if (source->x != 0)
 	{
 		result->y = 2;
 		result->z = 2;
-		result->x = (result->y* source->y + result->z * source->z) / (-1 * source->x);
+		result->x = (result->y * source->y + result->z * source->z) /
+															(-1 * source->x);
 	}
 	ft_normalize_vector(result);
 }

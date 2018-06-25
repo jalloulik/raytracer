@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 17:28:34 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/24 18:18:00 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/06/25 16:10:28 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ double		ft_resolve_sphere(t_prim *prim, t_3dpt *dir, t_3dpt *ray_origin)
 	double		t[4];
 	t_3dpt		dir_local;
 	t_3dpt		origin_local;
-	
+
 	sphere = &(prim->sphere);
 	ft_get_abcdet(sphere, dir, ray_origin);
 	if (sphere->det >= 0)
