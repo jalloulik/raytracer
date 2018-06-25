@@ -4,7 +4,7 @@ SRCPATH = ./
 
 OBJPATH = ./
 
-IPATHLIB = libft/includes
+IPATHLIB = ../libft/includes
 
 IPATH = ./
 
@@ -82,26 +82,16 @@ FLAG = -Wall -Werror -Wextra
 
 all : $(NAME)
 
-LIB:
-	make -C libft/
-
-LIBCLEAN:
-	make clean -C libft/
-
-LIBFCLEAN:
-	make fclean -C libft/
-
 $(OBJ): $(OBJPATH)%.o: $(SRCPATH)%.c $(IPATH)$(HEADER)
 	gcc $(FLAG) -o $@ -c $< -I$(IPATH) -I$(IPATHLIB) `pkg-config --cflags gtk+-3.0`
 
 $(NAME): $(OBJ)
-	make -C libft
-	gcc $(FLAG) -o $(NAME) $(OBJ) -Llibft/ -lft `pkg-config --libs gtk+-3.0`
+	gcc $(FLAG) -o $(NAME) $(OBJ) -L../libft/ -lft `pkg-config --libs gtk+-3.0`
 
-clean: LIBCLEAN
+clean:
 	/bin/rm -f $(OBJ)
 
-fclean: clean LIBFCLEAN
+fclean:
 	/bin/rm -f $(NAME)
 
 re: fclean all

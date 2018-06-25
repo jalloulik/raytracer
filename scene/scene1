@@ -1,3 +1,0 @@
-cam|origin:0:0:20|rotation:1:0:0:angle:0|translation:0:0:0
-spot|origin:0:0:20|intensity:100
-rect|origin:0:0:0| :1:0:1|5|10|color:r:00:g:00:b:255|rotation:0:1:0:angle:0|translation:0:0:0
