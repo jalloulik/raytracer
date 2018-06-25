@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/24 18:11:32 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/25 15:52:49 by yvillepo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -564,5 +564,6 @@ void				ft_rotate_cercle(t_prim *prim);
 void				ft_normal_triangle(t_3dpt *result, t_3dpt *p1, t_3dpt *p2, t_3dpt *p3);
 void	ft_rotate_triangle(t_prim *prim);
 void	ft_create_local_triangle(t_prim *prim);
+char				*dell_whitespace(char *str);
 
 #endif
