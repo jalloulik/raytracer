@@ -6,11 +6,18 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 15:37:00 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/03/22 12:29:32 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/23 14:23:20 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+
+void	ft_set_valid_3dpt(t_3dpt *result, double x, double y, double z)
+{
+	if (x == 0 && y == 0 && z == 0)
+		ft_error("Unvalid vector defined. Vector can not be null");
+	ft_set_3dpt(result, x, y, z);
+}
 
 double	ft_calculate_dot(t_3dpt *vec1, t_3dpt *vec2)
 {
@@ -26,5 +33,5 @@ void	ft_cross_product(t_3dpt *result, t_3dpt *vec1, t_3dpt *vec2)
 
 double	ft_degree_to_rad(double degree)
 {
-	return (degree / (180 / M_PI));
+	return (degree / (180 / FT_PI));
 }

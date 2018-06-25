@@ -6,133 +6,99 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 16:22:12 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/03/21 18:48:09 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/25 15:43:35 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void	ft_parse_vector(char *str, t_3dpt *vec)
-{
-	char **tmp;
-
-	tmp = ft_strsplit(str, ':');
-	if (ft_count_tab(tmp) != 4 || ft_strequ(tmp[0], "vec") == 0)
-		ft_error_cyl();
-	ft_set_3dpt(vec, (double)ft_atoi(tmp[1]),
-		(double)ft_atoi(tmp[2]), (double)ft_atoi(tmp[3]));
-	ft_normalize_vector(vec);
-	ft_free_tab(tmp);
-}
-
-void	ft_plane_setup(char **tab, t_prim **prims)
+void	ft_plane_setup(t_node *node, t_prim **prims)
 {
 	t_prim	*last;
 	t_prim	*list;
-	char	**tmp;
+	char	*content;
 
 	list = *prims;
 	list = ft_add_lst_file(list, PLANE);
 	*prims = list;
 	last = ft_get_last(list);
-	if (ft_count_tab(tab) < 6)
-		ft_error_plane();
-	tmp = ft_strsplit(tab[1], ':');
-	if (ft_count_tab(tmp) != 4 || ft_strequ(tmp[0], "origin") == 0)
-		ft_error_plane();
-	ft_set_3dpt(&(last->plane.point), (double)ft_atoi(tmp[1]),
-		(double)ft_atoi(tmp[2]), (double)ft_atoi(tmp[3]));
-	ft_free_tab(tmp);
-	tmp = ft_strsplit(tab[2], ':');
-	if (ft_count_tab(tmp) != 4 || ft_strequ(tmp[0], "normal") == 0)
-		ft_error_plane();
-	ft_set_3dpt(&(last->plane.normal), (double)ft_atoi(tmp[1]),
-		(double)ft_atoi(tmp[2]), (double)ft_atoi(tmp[3]));
-	ft_free_tab(tmp);
-	ft_parse_color(tab[3], &(last->color2), &ft_error_plane);
-	ft_parsing_mov(tab[4], tab[5], last, &ft_error_plane);
+	content = xmlp_get_child_node_content(node, "plane/origin");
+	ft_set_3dpt_from_string(&(last->plane.point), content, "");
+	content = xmlp_get_child_node_content(node, "plane/vec");
+	ft_set_3dpt_from_string(&(last->plane.normal), content, "vector");
+	ft_parse_color(node, &(last->color2), "plane");
+	ft_parsing_mov(node, last, "plane");
+	ft_count_options(last, node, "plane");
 }
 
-void	ft_cylinder_setup(char **tab, t_prim **prims)
+void	ft_cylinder_setup(t_node *node, t_prim **prims)
 {
 	t_prim	*last;
 	t_prim	*list;
-	char	**tmp;
+	char	*content;
 
 	list = *prims;
 	list = ft_add_lst_file(list, CYLINDER);
 	*prims = list;
 	last = ft_get_last(list);
-	if (ft_count_tab(tab) < 7)
-		ft_error_plane();
-	tmp = ft_strsplit(tab[1], ':');
-	if (ft_count_tab(tmp) != 4 || ft_strequ(tmp[0], "origin") == 0)
-		ft_error_cyl();
-	ft_set_3dpt(&(last->cyl.origin), (double)ft_atoi(tmp[1]),
-		(double)ft_atoi(tmp[2]), (double)ft_atoi(tmp[3]));
-	ft_free_tab(tmp);
-	ft_parse_vector(tab[2], &(last->cyl.vec));
-	tmp = ft_strsplit(tab[3], ':');
-	if (ft_count_tab(tmp) != 2 || ft_strequ(tmp[0], "radius") == 0)
-		ft_error_cyl();
-	if ((last->cyl.radius = ft_atoi(tmp[1])) <= 0)
+	content = xmlp_get_child_node_content(node, "cylinder/origin");
+	ft_set_3dpt_from_string(&(last->cyl.origin), content, "");
+	content = xmlp_get_child_node_content(node, "cylinder/vec");
+	ft_set_3dpt_from_string(&(last->cyl.vec), content, "vector");
+	content = xmlp_get_child_node_content(node, "cylinder/radius");
+	if (content == NULL)
+		ft_error("Need Radius for Cylinder");
+	last->cyl.radius = ft_atoi(content);
+	if (last->cyl.radius <= 0)
 		ft_error("Radius can not be Null or negative");
-	ft_free_tab(tmp);
-	ft_parse_color(tab[4], &(last->color2), &ft_error_cyl);
-	ft_parsing_mov(tab[5], tab[6], last, &ft_error_cyl);
+	ft_parse_color(node, &(last->color2), "cylinder");
+	ft_parsing_mov(node, last, "cylinder");
+	ft_count_options(last, node, "cylinder");
 }
 
-void	ft_cone_setup(char **tab, t_prim **prims)
+void	ft_cone_setup(t_node *node, t_prim **prims)
 {
 	t_prim	*last;
 	t_prim	*list;
-	char	**tmp;
+	char	*content;
 
 	list = *prims;
 	list = ft_add_lst_file(list, CONE);
 	*prims = list;
 	last = ft_get_last(list);
-	if (ft_count_tab(tab) < 7)
-		ft_error_plane();
-	tmp = ft_strsplit(tab[1], ':');
-	if (ft_count_tab(tmp) != 4 || ft_strequ(tmp[0], "origin") == 0)
-		ft_error_cone();
-	ft_set_3dpt(&(last->cone.origin), (double)ft_atoi(tmp[1]),
-		(double)ft_atoi(tmp[2]), (double)ft_atoi(tmp[3]));
-	ft_free_tab(tmp);
-	ft_parse_vector(tab[2], &(last->cone.vec));
-	tmp = ft_strsplit(tab[3], ':');
-	if (ft_count_tab(tmp) != 2 || ft_strequ(tmp[0], "angle") == 0)
-		ft_error_cone();
-	last->cone.angle = ft_degree_to_rad(ft_atoi(tmp[1]));
-	ft_free_tab(tmp);
-	ft_parse_color(tab[4], &(last->color2), &ft_error_cone);
-	ft_parsing_mov(tab[5], tab[6], last, &ft_error_cone);
+	content = xmlp_get_child_node_content(node, "cone/origin");
+	ft_set_3dpt_from_string(&(last->cone.origin), content, "");
+	content = xmlp_get_child_node_content(node, "cone/vec");
+	ft_set_3dpt_from_string(&(last->cone.vec), content, "vector");
+	content = xmlp_get_child_node_content(node, "cone/angle");
+	if (content == NULL)
+		ft_error("Need angle for Cone");
+	last->cone.angle = ft_degree_to_rad(ft_atoi(content));
+	if (last->cone.angle <= 0)
+		ft_error("Angle can not be Null or negative");
+	ft_parse_color(node, &(last->color2), "cone");
+	ft_parsing_mov(node, last, "cone");
+	ft_count_options(last, node, "cone");
 }
 
-void	ft_sphere_setup(char **tab, t_prim **prims)
+void	ft_sphere_setup(t_node *node, t_prim **prims)
 {
 	t_prim	*last;
 	t_prim	*list;
-	char	**tmp;
+	char	*content;
 
+	content = NULL;
 	list = *prims;
 	list = ft_add_lst_file(list, SPHERE);
 	*prims = list;
 	last = ft_get_last(list);
-	if (ft_count_tab(tab) < 6)
-		ft_error_plane();
-	tmp = ft_strsplit(tab[1], ':');
-	if (ft_count_tab(tmp) != 4 || ft_strequ(tmp[0], "origin") == 0)
-		ft_error_sphere();
-	ft_set_3dpt(&(last->sphere.origin), (double)ft_atoi(tmp[1]),
-		(double)ft_atoi(tmp[2]), (double)ft_atoi(tmp[3]));
-	ft_free_tab(tmp);
-	tmp = ft_strsplit(tab[2], ':');
-	if (ft_count_tab(tmp) != 2 || ft_strequ(tmp[0], "radius") == 0)
-		ft_error_sphere();
-	last->sphere.radius = ft_atoi(tmp[1]);
-	ft_free_tab(tmp);
-	ft_parse_color(tab[3], &(last->color2), &ft_error_sphere);
-	ft_parsing_mov(tab[4], tab[5], last, &ft_error_sphere);
+	content = xmlp_get_child_node_content(node, "sphere/origin");
+	ft_set_3dpt_from_string(&(last->sphere.origin), content, "");
+	content = xmlp_get_child_node_content(node, "sphere/radius");
+	if (content == NULL)
+		ft_error("Need Radius for sphere");
+	last->sphere.radius = ft_atoi(content);
+	ft_parse_color(node, &(last->color2), "sphere");
+	ft_parsing_mov(node, last, "sphere");
+	ft_count_options(last, node, "sphere");
 }

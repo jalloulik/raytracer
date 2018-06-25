@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 14:42:06 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/04/23 16:54:17 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/20 16:22:03 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	ft_cylinder_normal(t_prim *prim, t_3dpt *p)
 	t_3dpt	local_p;
 	t_3dpt	global_o;
 
+	if (ft_initialise_cut(prim) == 0)
+		return ;
 	dist = SQR(ft_calculate_dist(&(prim->cyl.origin), p)) -
 														SQR(prim->cyl.radius);
 	if (dist >= 0)
@@ -45,6 +47,8 @@ void	ft_cone_normal(t_prim *prim, t_3dpt *p)
 	t_3dpt	local_p;
 	t_3dpt	global_o;
 
+	if (ft_initialise_cut(prim) == 0)
+		return ;
 	ft_swap_g_to_l(&local_p, p, &(prim->g_to_l_move),
 														&(prim->g_to_l_rot));
 	if (cos(prim->cone.angle) == 0)
@@ -66,15 +70,46 @@ void	ft_cone_normal(t_prim *prim, t_3dpt *p)
 	ft_calculate_vector(&(prim->normal), &(prim->cone.o), p);
 }
 
+void	ft_sphere_normal(t_prim *prim, t_3dpt *p)
+{
+	if (ft_initialise_cut(prim) == 0)
+		return ;
+	ft_calculate_vector(&(prim->normal), &(prim->sphere.origin), p);
+	ft_initialise_texturing(prim);
+}
+
+void	ft_plane_normal(t_prim *prim)
+{
+	ft_set_3dpt(&(prim->normal), prim->plane.normal.x,
+				prim->plane.normal.y, prim->plane.normal.z);
+	ft_initialise_texturing(prim);
+}
+
 void	ft_calculate_normal(t_prim *prim, t_3dpt *p)
 {
 	if (prim->type == SPHERE)
-		ft_calculate_vector(&(prim->normal), &(prim->sphere.origin), p);
+		ft_sphere_normal(prim, p);
 	else if (prim->type == PLANE)
-		ft_set_3dpt(&(prim->normal), prim->plane.normal.x,
-					prim->plane.normal.y, prim->plane.normal.z);
+		ft_plane_normal(prim);
 	else if (prim->type == CYLINDER)
+	{
 		ft_cylinder_normal(prim, p);
+		ft_calculate_vector(&(prim->cyl.o_to_p), &(prim->cyl.origin), p);
+		ft_initialise_texturing(prim);
+	}
 	else if (prim->type == CONE)
+	{
 		ft_cone_normal(prim, p);
+		ft_calculate_vector(&(prim->cyl.o_to_p), &(prim->cyl.origin), p);
+		ft_initialise_texturing(prim);
+	}
+	else if (prim->type == CERCLE)
+		ft_set_3dpt(&(prim->normal), prim->cercle.dir.x, prim->cercle.dir.y,
+				prim->cercle.dir.z);
+	else if (prim->type == RECT)
+		ft_set_3dpt(&(prim->normal), prim->rect.dir.x, prim->rect.dir.y,
+				prim->rect.dir.z);
+	else if (prim->type == TORE)
+		ft_tore_normal(prim);
+	ft_sine_perturbation(prim, p);
 }

@@ -1,0 +1,11 @@
+<scene>
+<cam>
+<origin>0:0:20</origin><sepia>false</sepia>
+</cam>
+<spot>
+<origin>0:10:10</origin><intensity>100</intensity></spot>
+<plane>
+<origin>0:0:-10</origin><rotation><axis>0:0:0</axis><angle>0</angle></rotation><translation>0:0:0</translation><vec>0:0:1</vec><color>0:255:0</color><texture><status>false</status></texture><normal><status>false</status></normal><checker><status>false</status></checker></plane>
+<sphere>
+<origin>0:0:0</origin><rotation><axis>0:0:0</axis><angle>0</angle></rotation><translation>0:0:0</translation><color>255:0:0</color><radius>2</radius><reflect><status>false</status></reflect><refract><status>true</status><ratio>1</ratio><material>AIR</material></refract><texture><status>false</status></texture><normal><status>false</status></normal><checker><status>false</status></checker></sphere>
+</scene>
