@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 15:22:38 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/15 16:47:32 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/25 15:23:42 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ void		ft_get_textur_plane(t_prim *prim, t_3dpt *coord, t_texture *tx)
 	ft_swap_g_to_l(&local_p, &(prim->p), &(prim->g_to_l_move),
 												&(prim->g_to_l_rot));
 	uv.tu = (local_p.x / 10) + tx->xmove;
+	if (prim->normal.x == 0 && prim->normal.y == 1 && prim->normal.z == 0)
+		local_p.y = local_p.z;
 	uv.tv = (local_p.y / 10) + tx->ymove;
 	while (uv.tu < 0)
 		uv.tu = uv.tu + 1;

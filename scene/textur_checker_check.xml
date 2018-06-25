@@ -1,7 +1,7 @@
 <scene>
 	<cam>
 		<origin>0:0:20</origin>
-		<rotation><axis>1:0:0</axis><angle>-45</angle></rotation>
+		<rotation><axis>1:0:0</axis><angle>-0</angle></rotation>
 		<translation>0:0:0</translation>
 		<sepia>false</sepia>
 	</cam>
@@ -73,7 +73,7 @@
 		<origin>0:-10:0</origin>
 		<rotation><axis>0:1:0</axis><angle>0</angle></rotation>
 		<translation>0:0:0</translation>
-		<vec>0:11:0</vec>
+		<vec>0:1:0</vec>
 		<color>255:255:255</color>
 		<checkers>
 			<status>true</status>
