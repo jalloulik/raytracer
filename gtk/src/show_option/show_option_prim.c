@@ -6,7 +6,7 @@
 /*   By: tfavart <tfavart@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 12:01:59 by tfavart           #+#    #+#             */
-/*   Updated: 2018/06/23 10:45:43 by tfavart          ###   ########.fr       */
+/*   Updated: 2018/06/25 17:48:28 by tfavart          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,4 @@ void	ft_set_data_show_plan(t_interface *inter)
 	ft_set_data_show_1d(inter->tex_n.on_off);
 	ft_set_data_show_3d(inter->fix.color);
 	ft_set_data_show_3d(inter->fix.vec);
-	ft_set_data_show_1d(inter->cut.on_off);
 }
