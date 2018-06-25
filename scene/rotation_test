@@ -1,3 +1,0 @@
-cam|origin:0:0:20|rotation:1:0:0:angle:0|translation:0:0:0|sepia:false
-spot|origin:0:0:20|intensity:100
-cylinder|origin:0:0:0|vec:0:1:0|radius:2|color:r:250:g:0:b:0|rotation:1:0:0:angle:45|translation:0:0:0

@@ -1,5 +1,0 @@
-cam|origin:0:0:20|rotation:1:0:0:angle:0|translation:0:0:0|sepia:false
-spot|origin:0:0:20|intensity:80
-rect|origin:5:0:0|dir:0:0:1|2|4|color:r:0:g:200:b:00|rotation:0:1:0:angle:0|translation:0:0:0
-cercle|origin:0:0:0|dir:0:0:1|2|color:r:200:g:0:b:00|rotation:0:1:0:angle:0|translation:0:0:0
-triangle|p1:-7:-2:0|p2:-3:-2:0|p3:-5:2:0|color:r:00:g:0:b:200|rotation:0:1:0:angle:0|translation:0:0:0
