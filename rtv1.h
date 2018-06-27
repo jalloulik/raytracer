@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 12:04:54 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/25 19:36:24 by yvillepo         ###   ########.fr       */
+/*   Updated: 2018/06/25 20:25:48 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -456,7 +456,6 @@ void				calc_point(t_3dpt *result, t_3dpt *pos, t_3dpt *dir,
 																	double t);
 void				read_vect(char *svect, t_3dpt *vect);
 void				ft_cercle_setup(t_node *node, t_prim **prims);
-void				ft_cercle_normal(t_prim *prim, t_3dpt *p);
 double				ft_resolve_cercle(t_prim *prim, t_3dpt *dir,
 															t_3dpt *ray_origin);
 double				dist(t_3dpt *v, t_3dpt *v2);
@@ -566,5 +565,8 @@ void				ft_rotate_triangle(t_prim *prim);
 void				ft_create_local_triangle(t_prim *prim);
 int					solve_linear(double a, double b, double *r);
 void				fill_tab(double *tab, double a, double b, double c);
+void				ft_rect_normal(t_prim *prim);
+void				ft_tore_normal_text(t_prim *prim);
+void				ft_cercle_normal(t_prim *prim);
 
 #endif
