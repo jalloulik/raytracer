@@ -6,7 +6,7 @@
 #    By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/06 17:18:00 by kjalloul          #+#    #+#              #
-#    Updated: 2018/06/25 19:33:07 by yvillepo         ###   ########.fr        #
+#    Updated: 2018/06/25 20:16:47 by kjalloul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,7 +84,8 @@ SRC = main.c\
 		ft_shadow_shade.c\
 		util.c\
 		ft_rotate_primitives2.c\
-		ft_cubic.c
+		ft_cubic.c\
+		ft_calculate_normal_primitives2.c
 
 OBJ = $(SRC:%.c=$(OBJPATH)%.o)
 

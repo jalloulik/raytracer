@@ -6,7 +6,7 @@
 /*   By: kjalloul <kjalloul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 18:27:28 by kjalloul          #+#    #+#             */
-/*   Updated: 2018/06/25 16:21:48 by kjalloul         ###   ########.fr       */
+/*   Updated: 2018/06/25 20:04:42 by kjalloul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,7 @@ void		ft_get_texture_prim_normal(t_prim *prim)
 	t_3dpt		normal_bent;
 	t_quater	textur_to_origin;
 
-	if (prim->type == SPHERE || prim->type == CYLINDER ||
-								prim->type == PLANE || prim->type == CONE)
+	if (prim)
 		ft_get_texture_prim_coord(prim, &coord, &(prim->textur_n));
 	else
 		return ;
