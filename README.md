@@ -52,3 +52,7 @@ List of new features :
 ## Conclusion
 
 This was our first 4 people team and the scope of the project took around 4-5 months. For a lot of us who forgot most the math we have learned in high school, having to relearn what was forgotten and learn new math concepts and then applying that into code was what I believe made this project very educational.
+
+#### Links
+
+- https://github.com/nothings/stb
